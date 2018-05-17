@@ -1,5 +1,6 @@
 package view;
 
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
@@ -12,6 +13,7 @@ public class Cadastro extends PanelGeral {
 	private JTextField tdfRua, tfdNumero, tfdBairro, tfdCidade, tfdEstado, tfdComplemento, tfdCep;
 	private JLabel lblfRua, lblNumero, lblBairro, lblCidade, lblEstado, lblComplemento, lblCep;
 	
+	private JButton btnAdd;
 	
 	@Override
 	public void inicializar() {
@@ -49,6 +51,8 @@ public class Cadastro extends PanelGeral {
 		lblEstado = new JLabel("Estado:"); 
 		lblComplemento = new JLabel("Complemento:"); 
 		lblCep = new JLabel("CEP:");
+		
+		btnAdd = new JButton("Add");
 		
 		//dados do paciente
 		add(lblNome);
@@ -94,6 +98,8 @@ public class Cadastro extends PanelGeral {
 		
 		add(lblCep);
 		add(tfdCep);
+		
+		add(btnAdd);
 		
 	}
 
@@ -373,6 +379,16 @@ public class Cadastro extends PanelGeral {
 
 	public void setLblCep(JLabel lblCep) {
 		this.lblCep = lblCep;
+	}
+
+
+	public JButton getBtnAdd() {
+		return btnAdd;
+	}
+
+
+	public void setBtnAdd(JButton btnAdd) {
+		this.btnAdd = btnAdd;
 	}
 
 }
