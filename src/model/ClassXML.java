@@ -42,7 +42,7 @@ public class ClassXML {
 		XStream stream=null;
 		FileReader ler=null;
 		try {
-			 ler = new FileReader("Arquivo/arquivo.xml");
+			 ler = new FileReader("files/arquivo.xml");
 			stream = new XStream(new DomDriver());
 			stream.alias("Paciente", Paciente.class);
 			stream.alias("Endereco", Endereco.class);
