@@ -5,6 +5,8 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
+import javafx.scene.control.Separator;
+
 public class Cadastro extends PanelGeral {
 
 	//dados do paciente
@@ -78,7 +80,6 @@ public class Cadastro extends PanelGeral {
 		
 		add(lblEmail);
 		add(tfdEmail);
-		
 		
 		//dados de endereco
 		add(lblTelefone);

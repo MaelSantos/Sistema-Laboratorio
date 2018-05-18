@@ -4,7 +4,7 @@ import java.awt.GridLayout;
 
 import javax.swing.JPanel;
 
-public abstract class PanelGeral extends JPanel{
+public abstract class PanelGeral extends JPanel {
 
 	public PanelGeral() {
 		
@@ -19,5 +19,6 @@ public abstract class PanelGeral extends JPanel{
 	}
 	
 	public abstract void inicializar();
+	
 	
 }

@@ -7,6 +7,7 @@ import model.ClassXML;
 import model.Paciente;
 import model.Verificar;
 import view.Cadastro;
+import view.Mensagem;
 import view.Menu;
 import view.Principal;
 
@@ -24,6 +25,7 @@ public class Controle implements ActionListener{
 		cadastro.getBtnAdd().addActionListener(this);
 		menu.getBtnCadastro().addActionListener(this);
 		menu.getBtnConsulta().addActionListener(this);
+		menu.getBtnSair().addActionListener(this);
 	}
 
 	@Override
@@ -40,13 +42,20 @@ public class Controle implements ActionListener{
 						cadastro.getTfdSexo().getText().trim()));
 				ClassXML.gravar(ClassXML.pacientes);				
 			}
+			else
+			{
+				Mensagem.exibirMensagem("Preencha os dados nescessarios !!!");
+			}
 		}
 		
 		if(e.getSource() == menu.getBtnCadastro())
 		{
 			cadastro.setVisible(true);
 		}
-		
+		if(e.getSource() == menu.getBtnSair())
+		{
+			System.exit(0);
+		}
 	}
 	
 }
