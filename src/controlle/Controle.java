@@ -28,7 +28,7 @@ public class Controle implements ActionListener{
 		if(e.getSource() == cadastro.getBtnAdd())
 		{
 			System.out.println(Verificar.verificarCadastro(cadastro));
-			if( ! (Verificar.verificarCadastro(cadastro)))
+			if( (Verificar.verificarCadastro(cadastro)))
 			{
 				ClassXML.pacientes.add(new Paciente(
 						cadastro.getTfdNome().getText().trim(),

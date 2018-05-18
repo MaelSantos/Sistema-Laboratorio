@@ -9,7 +9,7 @@ import com.thoughtworks.xstream.io.xml.DomDriver;
 
 public class ClassXML {
 	
-	public static ArrayList<Paciente> pacientes = new ArrayList<>();
+	public static ArrayList<Paciente> pacientes = lerArquivo();
 	
 	public ClassXML() {
 	}
