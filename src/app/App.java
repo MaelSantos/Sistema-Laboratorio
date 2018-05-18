@@ -2,6 +2,7 @@ package app;
 
 import controlle.Controle;
 import view.Cadastro;
+import view.Menu;
 import view.Principal;
 
 public class App {
@@ -10,9 +11,11 @@ public class App {
 				
 		Cadastro cadastro = new Cadastro();
 
-		Principal principal = new Principal("Sistema Laboratorio", cadastro);
+		Menu menu = new Menu();
 		
-		Controle controle = new Controle(principal, cadastro);
+		Principal principal = new Principal("Sistema Laboratorio",menu, cadastro);
+		
+		Controle controle = new Controle(principal, menu, cadastro);
 		
 	}
 	

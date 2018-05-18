@@ -7,19 +7,23 @@ import model.ClassXML;
 import model.Paciente;
 import model.Verificar;
 import view.Cadastro;
+import view.Menu;
 import view.Principal;
 
 public class Controle implements ActionListener{
 
 	private Principal principal;//jframe
+	private Menu menu;//jpanel
 	private Cadastro cadastro;//jpanel
 	
-	public Controle(Principal principal, Cadastro cadastro) {
+	public Controle(Principal principal, Menu menu, Cadastro cadastro) {
 		this.principal = principal;
+		this.menu = menu;
 		this.cadastro = cadastro;
 		
 		cadastro.getBtnAdd().addActionListener(this);
-		
+		menu.getBtnCadastro().addActionListener(this);
+		menu.getBtnConsulta().addActionListener(this);
 	}
 
 	@Override
@@ -36,6 +40,11 @@ public class Controle implements ActionListener{
 						cadastro.getTfdSexo().getText().trim()));
 				ClassXML.gravar(ClassXML.pacientes);				
 			}
+		}
+		
+		if(e.getSource() == menu.getBtnCadastro())
+		{
+			cadastro.setVisible(true);
 		}
 		
 	}

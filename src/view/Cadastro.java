@@ -1,5 +1,6 @@
 package view;
 
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -14,6 +15,11 @@ public class Cadastro extends PanelGeral {
 	private JLabel lblfRua, lblNumero, lblBairro, lblCidade, lblEstado, lblComplemento, lblCep;
 	
 	private JButton btnAdd;
+	
+	public Cadastro() {
+		super();
+		setBorder(BorderFactory.createTitledBorder("Cadastro"));
+	}
 	
 	@Override
 	public void inicializar() {
