@@ -12,7 +12,7 @@ public abstract class TelaGeral extends JFrame {
 		
 		super(titulo);
 		
-		inicializar();
+//		inicializar();
 		
 		setSize(LARGURA, ALTURA);
 		

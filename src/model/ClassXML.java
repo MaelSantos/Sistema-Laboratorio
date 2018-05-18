@@ -8,6 +8,9 @@ import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.xml.DomDriver;
 
 public class ClassXML {
+	
+	public static ArrayList<Paciente> pacientes = new ArrayList<>();
+	
 	public ClassXML() {
 	}
 	public static void gravar(ArrayList<Paciente> pacientes) {
@@ -20,7 +23,7 @@ public class ClassXML {
 			
 			PrintWriter print = null;
 			try {
-				File file = new File("Base/arquivo.xml");
+				File file = new File("files/arquivo.xml");
 				print = new PrintWriter(file);
 				print.write(xml);
 				print.flush();
