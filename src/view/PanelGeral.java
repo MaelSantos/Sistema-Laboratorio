@@ -1,6 +1,7 @@
 package view;
 
 import java.awt.FlowLayout;
+import java.awt.GridLayout;
 
 import javax.swing.JPanel;
 
@@ -10,9 +11,9 @@ public abstract class PanelGeral extends JPanel{
 		
 		inicializar();
 		
-		setSize(TelaGeral.LARGURA, TelaGeral.ALTURA);
+		setLayout(new GridLayout(14, 1));
 		
-		setLayout(new FlowLayout(10, 10, 10));
+		setSize(TelaGeral.LARGURA, TelaGeral.ALTURA);
 		
 		setVisible(false);
 		

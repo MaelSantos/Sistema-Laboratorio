@@ -1,9 +1,6 @@
 package view;
 
-import java.awt.CardLayout;
 import java.awt.FlowLayout;
-import java.awt.GridLayout;
-
 import javax.swing.JFrame;
 
 public abstract class TelaGeral extends JFrame {
@@ -19,12 +16,11 @@ public abstract class TelaGeral extends JFrame {
 		
 		setSize(LARGURA, ALTURA);
 		
-		setLayout(new FlowLayout());
-//		setLayout(new CardLayout(50, 10));
-		
 		setLocationRelativeTo(null);
 		
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		
+		setLayout(null);
 		
 		setVisible(true);
 		
