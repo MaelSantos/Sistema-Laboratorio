@@ -4,20 +4,14 @@ public class Paciente {
 
 	private String nome;
 	private String cpf;
-	private int idade;
+	private String idade;
 	private String sexo;
 	private String tipoSanguineo;
 	private String email;
 	private String telefone;
 	private Endereco endereco;
 	
-	public Paciente(String nome, String cpf, String sexo) {
-		this.nome = nome;
-		this.cpf = cpf;
-		this.sexo = sexo;
-	}
-
-	public Paciente(String nome, String cpf, int idade, String sexo, String tipoSanguineo, String email,
+	public Paciente(String nome, String cpf, String idade, String sexo, String tipoSanguineo, String email,
 			String telefone, Endereco endereco) {
 		this.nome = nome;
 		this.cpf = cpf;
@@ -45,11 +39,11 @@ public class Paciente {
 		this.cpf = cpf;
 	}
 
-	public int getIdade() {
+	public String getIdade() {
 		return idade;
 	}
 
-	public void setIdade(int idade) {
+	public void setIdade(String idade) {
 		this.idade = idade;
 	}
 

@@ -13,7 +13,7 @@ public class TableModel extends AbstractTableModel {
 	
 	public TableModel() {
 		
-	    paciente=App.pacientesTest;		
+	    paciente=ClassXML.pacientes;		
 		colunas = new String[]{"NOME", "CPF", "SEXO"};		
 	
 	}
@@ -47,6 +47,26 @@ public class TableModel extends AbstractTableModel {
 		}
 		return null;
 	}
+	
+	@Override  
+	   public void setValueAt(Object aValue, int linha, int coluna) {  
+	     Paciente usuario = paciente.get(linha);
+	 
+	     switch (coluna) 
+	     {
+	     case 0:  
+	    	 usuario.setNome(aValue.toString());             
+	     case 1:  
+	    	 usuario.setCpf(aValue.toString());
+	     case 2:  
+	    	 usuario.setSexo(aValue.toString());
+
+	     default:  
+	    	 System.err.println("Índice da coluna inválido");
+	     }  
+	     fireTableCellUpdated(linha, coluna);  
+	    }      
+
 	
     public void addRow(Paciente p){
         this.paciente.add(p);

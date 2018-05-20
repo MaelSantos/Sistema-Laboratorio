@@ -1,8 +1,20 @@
 <list>
   <Paciente>
-    <nome>mael</nome>
-    <cpf></cpf>
-    <idade>0</idade>
-    <sexo></sexo>
+    <nome>Mael</nome>
+    <cpf>000.000.000-00</cpf>
+    <idade></idade>
+    <sexo>Masculino</sexo>
+    <tipoSanguineo></tipoSanguineo>
+    <email></email>
+    <telefone>(88)981169372</telefone>
+    <endereco>
+      <rua></rua>
+      <numero></numero>
+      <bairro></bairro>
+      <cidade></cidade>
+      <estado></estado>
+      <complemento></complemento>
+      <cep></cep>
+    </endereco>
   </Paciente>
 </list>

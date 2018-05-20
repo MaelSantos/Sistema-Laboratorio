@@ -10,29 +10,9 @@ public class Endereco {
 	private String complemento;
 	private String cep;
 	
-	public Endereco() {
-		// TODO Stub de construtor gerado automaticamente
-	}
-	
-	public Endereco(String rua, String numero, String bairro, String cidade, String cep) {
-		this.rua = rua;
-		this.numero = numero;
-		this.bairro = bairro;
-		this.cidade = cidade;
-		this.cep = cep;
-	}
-
-	public Endereco(String rua, String numero, String bairro, String cidade, String estado, String cep) {
-		this.rua = rua;
-		this.numero = numero;
-		this.bairro = bairro;
-		this.cidade = cidade;
-		this.estado = estado;
-		this.cep = cep;
-	}
-
 	public Endereco(String rua, String numero, String bairro, String cidade, String estado, String complemento,
 			String cep) {
+		super();
 		this.rua = rua;
 		this.numero = numero;
 		this.bairro = bairro;

@@ -1,6 +1,9 @@
 package view;
 
 import java.awt.BorderLayout;
+import java.awt.FlowLayout;
+import java.awt.GridBagLayout;
+import java.awt.GridLayout;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -27,7 +30,7 @@ public class Principal extends TelaGeral{
 		menu.setVisible(true);
 		
 		titulo = new JLabel(new ImageIcon(getClass().getClassLoader().getResource("nomeSistema.jpg")));
-		
+	
 		add(titulo,BorderLayout.NORTH);
 		add(menu,BorderLayout.WEST);
      	add(cadastro,BorderLayout.CENTER);

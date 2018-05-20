@@ -8,7 +8,8 @@ public class Verificar {
 	{
 		if(cadastro.getTfdNome().getText().trim().equals("") || 
 				cadastro.getTfdCpf().getText().trim().equals("") ||
-				cadastro.getTfdSexo().getText().trim().equals(""))
+				cadastro.getTfdSexo().getText().trim().equals("") ||
+				cadastro.getTfdTelefone().getText().trim().equals("") ) 
 			return false;
 		
 		return true;

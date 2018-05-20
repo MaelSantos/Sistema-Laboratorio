@@ -9,6 +9,7 @@ import javax.swing.JTable;
 
 import app.App;
 import model.ClassXML;
+import model.Endereco;
 import model.Paciente;
 import model.Verificar;
 import view.Cadastro;
@@ -45,14 +46,26 @@ public class Controle implements ActionListener{
 		
 		if(e.getSource() == cadastro.getBtnAdd())
 		{
-			System.out.println(Verificar.verificarCadastro(cadastro));
 			if( (Verificar.verificarCadastro(cadastro)))
 			{
 				ClassXML.pacientes.add(new Paciente(
-						cadastro.getTfdNome().getText().trim(),
+						cadastro.getTfdNome().getText().trim(), 
 						cadastro.getTfdCpf().getText().trim(), 
-						cadastro.getTfdSexo().getText().trim()));
-				ClassXML.gravar(ClassXML.pacientes);				
+						cadastro.getTfdIdade().getText().trim(), 
+						cadastro.getTfdSexo().getText().trim(), 
+						cadastro.getTfdSangue().getText().trim(), 
+						cadastro.getTfdEmail().getText().trim(), 
+						cadastro.getTfdTelefone().getText().trim(), 				
+						new Endereco(
+								cadastro.getTdfRua().getText().trim(), 
+								cadastro.getTfdNumero().getText().trim(), 
+								cadastro.getTfdBairro().getText().trim(), 
+								cadastro.getTfdCidade().getText().trim(), 
+								cadastro.getTfdEstado().getText().trim(), 
+								cadastro.getTfdComplemento().getText().trim(), 
+								cadastro.getTfdCep().getText().trim())));
+				ClassXML.gravar(ClassXML.pacientes);	
+				Mensagem.exibirMensagem("Salvo Com Sucesso!!!");
 			}
 			else
 			{
@@ -77,7 +90,7 @@ public class Controle implements ActionListener{
 		{
 			System.out.println("esta entrando");
 			if(!consulta.getConsultaT().getText().trim().equals("")) {
-				consulta.getTabelaModel().pesquisa(consulta.getConsultaT().getText(), App.pacientesTest);
+				consulta.getTabelaModel().pesquisa(consulta.getConsultaT().getText(), ClassXML.pacientes);
 					    
 			}else {
 				Mensagem.exibirMensagem("Insira o Nome ou Cpf do Paciente");
