@@ -53,4 +53,6 @@ public class ClassXML {
 		}
 		return (ArrayList<Paciente>) stream.fromXML(ler);
 	}
+	
+	
 }

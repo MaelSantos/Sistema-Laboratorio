@@ -10,12 +10,14 @@ public class Principal extends TelaGeral{
 	private JLabel titulo;
 	private Cadastro cadastro;
 	private Menu menu;
+	private Consulta consulta;
 	
-	public Principal(String titulo, Menu menu, Cadastro cadastro) {
+	public Principal(String titulo, Menu menu, Cadastro cadastro,Consulta consulta) {
 		super(titulo);
 		
 		this.cadastro = cadastro;
 		this.menu = menu;
+		this.consulta= consulta;
 		inicializar();
 	}
 
@@ -24,11 +26,12 @@ public class Principal extends TelaGeral{
 		
 		menu.setVisible(true);
 		
-		titulo = new JLabel(new ImageIcon(getClass().getClassLoader().getResource("nomeSistema.jpeg")));
+		titulo = new JLabel(new ImageIcon(getClass().getClassLoader().getResource("nomeSistema.jpg")));
 		
 		add(titulo,BorderLayout.NORTH);
 		add(menu,BorderLayout.WEST);
-		add(cadastro,BorderLayout.CENTER);
+     	add(cadastro,BorderLayout.CENTER);
+		add(consulta,BorderLayout.CENTER);
 		
 	}
 
