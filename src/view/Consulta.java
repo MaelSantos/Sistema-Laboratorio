@@ -29,6 +29,7 @@ public class Consulta extends PanelGeral {
 	public Consulta() {
 		super();
 		setBorder(BorderFactory.createTitledBorder("Consulta"));
+		setLayout(new FlowLayout());	    
 	}
 
 	@Override
@@ -36,11 +37,11 @@ public class Consulta extends PanelGeral {
 		
 		
 		
-		setLayout(new FlowLayout());	    
 		consultaT=new JTextField(40);		
 		consultaB= new JButton("Pesquisa");	
 		tabelaModel= new TableModel();	
 		tabela=new JTable(tabelaModel);
+		tabela.setPreferredScrollableViewportSize(new Dimension(500, 400));
 		
 	
 		scrollpane=new JScrollPane(tabela);

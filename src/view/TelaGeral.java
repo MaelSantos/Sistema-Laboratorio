@@ -5,7 +5,7 @@ import javax.swing.JFrame;
 public abstract class TelaGeral extends JFrame {
 
 	public static final int LARGURA = 700;
-	public static final int ALTURA = 500;
+	public static final int ALTURA = 600;
 	
 	public TelaGeral(String titulo) {
 		
