@@ -29,7 +29,7 @@ public class Consulta extends PanelGeral {
 	public Consulta() {
 		super();
 		setBorder(BorderFactory.createTitledBorder("Consulta"));
-		setLayout(new FlowLayout());	    
+		setLayout(new FlowLayout(0, 10, 10));	    
 	}
 
 	@Override
