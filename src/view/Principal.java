@@ -25,6 +25,7 @@ public class Principal extends TelaGeral{
 		this.menu = menu;
 		this.consulta= consulta;
 		inicializar();
+		setVisible(true);
 	}
 
 	@Override
