@@ -1,13 +1,8 @@
 package controlle;
 
-import java.awt.ScrollPane;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
-
-import app.App;
 import model.ClassXML;
 import model.Endereco;
 import model.Paciente;

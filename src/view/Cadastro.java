@@ -11,11 +11,8 @@ import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
 import javax.swing.JSeparator;
 import javax.swing.JTextField;
-<<<<<<< HEAD
-=======
 import javax.swing.text.DefaultFormatterFactory;
 import javax.swing.text.MaskFormatter;
->>>>>>> Versão 1.4
 
 public class Cadastro extends PanelGeral {
 
