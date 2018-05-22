@@ -56,7 +56,7 @@ public class Controle implements ActionListener{
 								cadastro.getTfdNumero().getText().trim(), 
 								cadastro.getTfdBairro().getText().trim(), 
 								cadastro.getTfdCidade().getText().trim(), 
-								cadastro.getTfdEstado().getText().trim(), 
+								cadastro.getCbxEstado().getSelectedItem().toString().trim(), 
 								cadastro.getTfdComplemento().getText().trim(), 
 								cadastro.getTfdCep().getText().trim()))))
 				Mensagem.exibirMensagem("Adicionado com Sucesso");

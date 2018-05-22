@@ -20,10 +20,10 @@ public class Cadastro extends PanelGeral {
 	private JFormattedTextField tfdNome, tfdCpf, tfdNascimento, tfdEmail, tfdTelefone, tfdCep;
 	private JLabel lblNome, lblCpf, lblNascimento, lblSangue, lblSexo, lblEmail, lblTelefone;
 	//dados do endereco
-	private JTextField tdfRua, tfdNumero, tfdBairro, tfdCidade, tfdEstado, tfdComplemento;
+	private JTextField tdfRua, tfdNumero, tfdBairro, tfdCidade, tfdComplemento;
 	private JLabel lblfRua, lblNumero, lblBairro, lblCidade, lblEstado, lblComplemento, lblCep;
 	
-	private JComboBox<String> cbxSangue, cbxSexo;
+	private JComboBox<String> cbxSangue, cbxSexo, cbxEstado;
 	private JButton btnAdd;
 	
 	public Cadastro() {
@@ -65,10 +65,8 @@ public class Cadastro extends PanelGeral {
 			
 		})); 
 		
-		String[] san = {"O+","O-","A+","A-","B+","B-","AB+","AB-"};
-		String[] sex = {"Masculino","Feminino"};
-		cbxSangue = new JComboBox<>(san); 
-		cbxSexo = new JComboBox<>(sex);
+		cbxSangue = new JComboBox<>(new String[]{"O+","O-","A+","A-","B+","B-","AB+","AB-"}); 
+		cbxSexo = new JComboBox<>(new String[] {"Masculino","Feminino"});
 		
 		lblNome = new JLabel("Nome:"); 
 		lblCpf = new JLabel("CPF:"); 
@@ -83,7 +81,11 @@ public class Cadastro extends PanelGeral {
 		tfdNumero = new JTextField(10); 
 		tfdBairro = new JTextField(10); 
 		tfdCidade = new JTextField(10); 
-		tfdEstado = new JTextField(10); 
+		cbxEstado = new JComboBox<>(new String[] {"Acre – AC", "Alagoas – AL", "Amapá – AP", "Amazonas – AM", "Bahia – BA", "Ceará – CE", 
+				"Distrito Federal – DF", "Espírito Santo – ES", "Goiás – GO", "Maranhão – MA", "Mato Grosso – MT", "Mato Grosso do Sul – MS", 
+				"Minas Gerais – MG", "Pará – PA", "Paraíba – PB", "Paraná – PR", "Pernambuco – PE", "Piauí – PI", "Roraima – RR", "Rondônia – RO",
+				"Rio de Janeiro – RJ","Rio Grande do Norte – RN", "Rio Grande do Sul – RS", "Santa Catarina – SC", "São Paulo – SP", "Sergipe – SE",
+				"Tocantins – TO"});
 		tfdComplemento = new JTextField(10); 
 		
 		lblfRua = new JLabel("Rua:");
@@ -135,7 +137,7 @@ public class Cadastro extends PanelGeral {
 		add(lblEstado);
 		
 		add(tfdCidade);
-		add(tfdEstado);
+		add(cbxEstado);
 		
 		add(lblComplemento);
 		add(lblCep);
@@ -227,8 +229,8 @@ public class Cadastro extends PanelGeral {
 	/**
 	 * @return o tfdEstado
 	 */
-	public JTextField getTfdEstado() {
-		return tfdEstado;
+	public JComboBox<String> getCbxEstado() {
+		return cbxEstado;
 	}
 
 	/**

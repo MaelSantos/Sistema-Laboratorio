@@ -12,7 +12,6 @@ public class Verificar {
 				cadastro.getTfdTelefone().getText().trim().length() != 15 ||
 				cadastro.getTfdRua().getText().trim().equals("") || 
 				cadastro.getTfdNumero().getText().trim().equals("") ||
-				cadastro.getTfdEstado().getText().trim().equals("") ||
 				cadastro.getTfdBairro().getText().trim().equals("") || 
 				cadastro.getTfdCep().getText().trim().equals("") ||
 				cadastro.getTfdCidade().getText().trim().equals(""))
