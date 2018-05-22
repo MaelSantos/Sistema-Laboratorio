@@ -61,7 +61,7 @@ public class Controle implements ActionListener{
 								cadastro.getTfdCep().getText().trim()))))
 				Mensagem.exibirMensagem("Adicionado com Sucesso");
 				else
-					Mensagem.exibirMensagem("Falha Ao Adicionar");
+					Mensagem.exibirMensagem("Falha Ao Adicionar - Dados Podem Esta faltando ou Repetidos");
 			}
 			else
 			{

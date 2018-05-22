@@ -61,11 +61,6 @@ public class Principal extends TelaGeral{
      	add(cadastro, cons);
      	add(consulta, cons);
 		
-//		add(titulo,BorderLayout.NORTH);
-//		add(menu,BorderLayout.WEST);
-//     	add(cadastro,BorderLayout.CENTER);
-//		add(consulta,BorderLayout.CENTER);
-		
 	}
 
 }
