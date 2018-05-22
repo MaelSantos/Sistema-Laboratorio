@@ -64,7 +64,7 @@ public class Principal extends TelaGeral{
 		cons.anchor = GridBagConstraints.CENTER;
      	add(cadastro, cons);
      	add(consulta, cons);
-     	add(detalhesPaciente);
+     	add(detalhesPaciente,cons);
 		
 	}
 

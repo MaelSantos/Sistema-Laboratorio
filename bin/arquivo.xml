@@ -1,38 +1,38 @@
 <list>
-  <Paciente>
+  <model.Paciente>
     <nome>Abimael Jonas Furtuoso Dos Santos</nome>
     <cpf>000.000.000-01</cpf>
     <idade>02/09/1998</idade>
     <sexo>Masculino</sexo>
     <tipoSanguineo>A+</tipoSanguineo>
     <email>maelsantos777@gmail.com</email>
-    <telefone>(88)9 8116-9372</telefone>
+    <telefone>(87)9 9999-9999</telefone>
     <endereco>
       <rua>Quirino Cordeiro Magalhï¿½es</rua>
       <numero>1240</numero>
       <bairro>AABB</bairro>
-      <cidade>Serra Talhada</cidade>
-      <estado>PE</estado>
+      <cidade>Serra Talhjkhjhjk</cidade>
+      <estado>Acre – AC</estado>
       <complemento>Perto Da Academia Das Cidades</complemento>
       <cep>00000-00</cep>
     </endereco>
-  </Paciente>
-  <Paciente>
-    <nome>Luis Filipe ALves</nome>
+  </model.Paciente>
+  <model.Paciente>
+    <nome>Luis Filipe ALves da Silva</nome>
     <cpf>000.000.000-00</cpf>
-    <idade>15/04/1998</idade>
+    <idade>08/04/1999</idade>
     <sexo>Masculino</sexo>
     <tipoSanguineo>O+</tipoSanguineo>
     <email>luisFilpeAlv@gmail.com</email>
-    <telefone>(88)9 7772-6791</telefone>
+    <telefone>(  )      -</telefone>
     <endereco>
       <rua>sei la</rua>
       <numero>15</numero>
       <bairro>sei la</bairro>
-      <cidade>sei la</cidade>
-      <estado>PE</estado>
-      <complemento>sei la</complemento>
+      <cidade>Sao Jose do Belmonte</cidade>
+      <estado>Acre – AC</estado>
+      <complemento>nbmn</complemento>
       <cep>78712-219</cep>
     </endereco>
-  </Paciente>
+  </model.Paciente>
 </list>
