@@ -2,19 +2,14 @@ package view;
 
 import java.awt.Dimension;
 import java.awt.FlowLayout;
-import java.awt.GridLayout;
-import java.awt.ScrollPane;
-import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-import model.ClassXML;
-import model.Paciente;
+
 import model.TableModel;
 
 public class Consulta extends PanelGeral {
@@ -24,6 +19,7 @@ public class Consulta extends PanelGeral {
 	private JScrollPane scrollpane;
 	private TableModel tabelaModel;
 	private JTable tabela;
+	private JButton detalhesButton;
 	
 	
 	public Consulta() {
@@ -46,15 +42,22 @@ public class Consulta extends PanelGeral {
 	
 		scrollpane=new JScrollPane(tabela);
 		
+		detalhesButton=new JButton("Detalhes");
 		
 		add(consultaT);
 		add(consultaB);
+		add(detalhesButton);
 		add(scrollpane);
 		
 		
+		
 	}
-
 	
+	
+
+	public JButton getDetalhesButton() {
+		return detalhesButton;
+	}
 
 	public JTextField getConsultaT() {
 		return consultaT;
@@ -95,6 +98,10 @@ public class Consulta extends PanelGeral {
 
 	public void setTabelaModel(TableModel tabelaModel) {
 		this.tabelaModel = tabelaModel;
+	}
+
+	public void setDetalhesButton(JButton detalhesButton) {
+		this.detalhesButton = detalhesButton;
 	}
 	
 
