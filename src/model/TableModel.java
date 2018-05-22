@@ -71,6 +71,7 @@ public class TableModel extends AbstractTableModel {
     public void addRow(Paciente p){
         this.paciente.add(p);
         this.fireTableDataChanged();
+        fireTableStructureChanged();
     }
     
     public void removeRow(int linha){
@@ -78,15 +79,15 @@ public class TableModel extends AbstractTableModel {
         this.fireTableRowsDeleted(linha, linha);
     }
     public void pesquisa(String nomeCpf,ArrayList<Paciente> pacientes) {
-    	paciente= new ArrayList<Paciente>();
+    	paciente = new ArrayList<>();
     	
     	for(Paciente p:pacientes) {
     		if(p.getNome().toLowerCase().contains(nomeCpf.toLowerCase())||p.getCpf().toLowerCase().contains(nomeCpf.toLowerCase())) {
     			addRow(p);
     		}
-    		
     	}
-    	
+    	fireTableStructureChanged();
+    	System.gc();
     }
   
 

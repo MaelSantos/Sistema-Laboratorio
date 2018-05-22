@@ -4,12 +4,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import model.ClassXML;
-import model.DetalhesPaciente;
 import model.Endereco;
 import model.Paciente;
 import model.Verificar;
 import view.Cadastro;
 import view.Consulta;
+import view.DetalhesPaciente;
 import view.Mensagem;
 import view.Menu;
 import view.Principal;

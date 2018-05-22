@@ -2,9 +2,9 @@ package app;
 
 import controlle.Controle;
 import model.ClassXML;
-import model.DetalhesPaciente;
 import view.Cadastro;
 import view.Consulta;
+import view.DetalhesPaciente;
 import view.Menu;
 import view.Principal;
 
