@@ -97,6 +97,14 @@ public class TableModel extends AbstractTableModel {
 	public void setColunas(String[] colunas) {
 		this.colunas = colunas;
 	}
+
+	public ArrayList<Paciente> getPaciente() {
+		return paciente;
+	}
+
+	public void setPaciente(ArrayList<Paciente> paciente) {
+		this.paciente = paciente;
+	}
 	
 
 }

@@ -254,6 +254,66 @@ public class Cadastro extends PanelGeral {
 		return btnAdd;
 	}
 
+	public JLabel getLblNome() {
+		return lblNome;
+	}
 
+	public JLabel getLblCpf() {
+		return lblCpf;
+	}
+
+	public JLabel getLblNascimento() {
+		return lblNascimento;
+	}
+
+	public JLabel getLblSangue() {
+		return lblSangue;
+	}
+
+	public JLabel getLblSexo() {
+		return lblSexo;
+	}
+
+	public JLabel getLblEmail() {
+		return lblEmail;
+	}
+
+	public JLabel getLblTelefone() {
+		return lblTelefone;
+	}
+
+	public JTextField getTdfRua() {
+		return tdfRua;
+	}
+
+	public JLabel getLblfRua() {
+		return lblfRua;
+	}
+
+	public JLabel getLblNumero() {
+		return lblNumero;
+	}
+
+	public JLabel getLblBairro() {
+		return lblBairro;
+	}
+
+	public JLabel getLblCidade() {
+		return lblCidade;
+	}
+
+	public JLabel getLblEstado() {
+		return lblEstado;
+	}
+
+	public JLabel getLblComplemento() {
+		return lblComplemento;
+	}
+
+	public JLabel getLblCep() {
+		return lblCep;
+	}
+
+	
 
 }

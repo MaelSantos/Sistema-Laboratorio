@@ -30,6 +30,39 @@ public class ClassXML {
 		return false;
 	}
 	
+	public static void editarPaciente(Paciente paciente) {
+		XStream stream = new XStream(new DomDriver());
+		File file =  new File("files/arquivo.xml");
+		int indice = 0;
+		for(int i = 0; i < pacientes.size(); i++) {
+			if(paciente.getCpf().equals(pacientes.get(i).getCpf())) {
+				indice = i;
+				
+			}
+		}
+		
+		
+		pacientes.remove(indice);
+		pacientes.add(indice, paciente);
+		
+		
+		stream.processAnnotations(Paciente.class);
+		
+		String text =  stream.toXML(pacientes);
+		
+		
+		PrintWriter writer;
+		
+		try {
+			writer = new PrintWriter(file);
+			writer.write(text);
+			writer.flush();
+			writer.close();
+		}catch (FileNotFoundException e) {
+			
+		}	
+	}
+	
 	public static void gravar(ArrayList<Paciente> pacientes) {
 		
 			XStream stream =  new XStream(new DomDriver());

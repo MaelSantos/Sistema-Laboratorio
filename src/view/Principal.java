@@ -7,19 +7,23 @@ import java.awt.Insets;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
+import model.DetalhesPaciente;
+
 public class Principal extends TelaGeral{
 	
 	private JLabel titulo;
 	private Cadastro cadastro;
 	private Menu menu;
 	private Consulta consulta;
+	private DetalhesPaciente detalhesPaciente;
 	
-	public Principal(String titulo, Menu menu, Cadastro cadastro,Consulta consulta) {
+	public Principal(String titulo, Menu menu, Cadastro cadastro,Consulta consulta, DetalhesPaciente detalhesPaciente) {
 		super(titulo);
 		
 		this.cadastro = cadastro;
 		this.menu = menu;
 		this.consulta= consulta;
+		this.detalhesPaciente = detalhesPaciente;
 		inicializar();
 		setVisible(true);
 	}
@@ -60,6 +64,7 @@ public class Principal extends TelaGeral{
 		cons.anchor = GridBagConstraints.CENTER;
      	add(cadastro, cons);
      	add(consulta, cons);
+     	add(detalhesPaciente);
 		
 	}
 

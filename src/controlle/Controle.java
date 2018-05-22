@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import model.ClassXML;
+import model.DetalhesPaciente;
 import model.Endereco;
 import model.Paciente;
 import model.Verificar;
@@ -19,19 +20,24 @@ public class Controle implements ActionListener{
 	private Menu menu;//jpanel
 	private Cadastro cadastro;//jpanel
 	private Consulta consulta;//jpanel
+	DetalhesPaciente detalhesPaciente;
 	
-	public Controle(Principal principal, Menu menu, Cadastro cadastro,Consulta consulta) {
+	public Controle(Principal principal, Menu menu, Cadastro cadastro,Consulta consulta, DetalhesPaciente detalhesPaciente) {
 		this.principal = principal;
 		this.menu = menu;
 		this.cadastro = cadastro;
 		this.consulta= consulta;
+		this.detalhesPaciente=detalhesPaciente;
 		
 	
 		cadastro.getBtnAdd().addActionListener(this);
 		consulta.getConsultaB().addActionListener(this);
+		consulta.getDetalhesButton().addActionListener(this);
 		menu.getBtnCadastro().addActionListener(this);
 		menu.getBtnConsulta().addActionListener(this);
 		menu.getBtnSair().addActionListener(this);
+		detalhesPaciente.getBtnAdd().addActionListener(this);
+		detalhesPaciente.getBntVoltar().addActionListener(this);
 		
 		
 	}
@@ -73,12 +79,14 @@ public class Controle implements ActionListener{
 		{ 
 			
 			consulta.setVisible(false);
+			detalhesPaciente.setVisible(false);
 			cadastro.setVisible(true);
 			
 		}
 		if(e.getSource() == menu.getBtnConsulta())
 		{
 			cadastro.setVisible(false);
+			detalhesPaciente.setVisible(false);
 			consulta.setVisible(true);
 		}
 		
@@ -91,6 +99,38 @@ public class Controle implements ActionListener{
 			}else {
 				Mensagem.exibirMensagem("Insira o Nome ou Cpf do Paciente");
 			}
+		}
+		if (e.getSource()==consulta.getDetalhesButton()) {
+			int select = consulta.getTabela().getSelectedRow();
+			detalhesPaciente.autoPreencher(consulta.getTabelaModel().getPaciente().get(select));
+			
+			consulta.setVisible(false);
+			detalhesPaciente.setVisible(true);
+		}
+		if(e.getSource()==detalhesPaciente.getBtnAdd()) {
+			Paciente paciente = new Paciente(
+					detalhesPaciente.getTfdNome().getText().trim(), 
+					detalhesPaciente.getTfdCpf().getText().trim(), 
+					detalhesPaciente.getTfdNascimento().getText().trim(), 
+					detalhesPaciente.getCbxSexo().getSelectedItem().toString().trim(), 
+					detalhesPaciente.getCbxSangue().getSelectedItem().toString().trim(), 
+					detalhesPaciente.getTfdEmail().getText().trim(), 
+					detalhesPaciente.getTfdTelefone().getText().trim(), 				
+					new Endereco(
+							detalhesPaciente.getTfdRua().getText().trim(), 
+							detalhesPaciente.getTfdNumero().getText().trim(), 
+							detalhesPaciente.getTfdBairro().getText().trim(), 
+							detalhesPaciente.getTfdCidade().getText().trim(), 
+							detalhesPaciente.getCbxEstado().getSelectedItem().toString().trim(), 
+							detalhesPaciente.getTfdComplemento().getText().trim(), 
+							detalhesPaciente.getTfdCep().getText().trim()));
+							
+			ClassXML.editarPaciente(paciente);
+		}
+		
+		if(e.getSource()==detalhesPaciente.getBntVoltar()) {
+			detalhesPaciente.setVisible(false);
+			consulta.setVisible(true);
 		}
 		
 		if(e.getSource() == menu.getBtnSair())
