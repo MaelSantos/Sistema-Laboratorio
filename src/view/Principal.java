@@ -1,15 +1,13 @@
 package view;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.GridLayout;
 import java.awt.Insets;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+
+import model.DetalhesPaciente;
 
 public class Principal extends TelaGeral{
 	
@@ -17,13 +15,15 @@ public class Principal extends TelaGeral{
 	private Cadastro cadastro;
 	private Menu menu;
 	private Consulta consulta;
+	private DetalhesPaciente detalhesPaciente;
 	
-	public Principal(String titulo, Menu menu, Cadastro cadastro,Consulta consulta) {
+	public Principal(String titulo, Menu menu, Cadastro cadastro,Consulta consulta, DetalhesPaciente detalhesPaciente) {
 		super(titulo);
 		
 		this.cadastro = cadastro;
 		this.menu = menu;
 		this.consulta= consulta;
+		this.detalhesPaciente = detalhesPaciente;
 		inicializar();
 		setVisible(true);
 	}
@@ -55,8 +55,8 @@ public class Principal extends TelaGeral{
 		add(titulo, cons);
 		cons.gridheight = GridBagConstraints.REMAINDER;
 		cons.weightx = 0;
-		cons.weighty = 0;
-		cons.fill = GridBagConstraints.NONE;
+		cons.weighty = 0.9;
+		cons.fill = GridBagConstraints.VERTICAL;
 		cons.gridwidth = GridBagConstraints.RELATIVE;
 		cons.anchor = GridBagConstraints.WEST;
 		add(menu, cons);
@@ -64,11 +64,7 @@ public class Principal extends TelaGeral{
 		cons.anchor = GridBagConstraints.CENTER;
      	add(cadastro, cons);
      	add(consulta, cons);
-		
-//		add(titulo,BorderLayout.NORTH);
-//		add(menu,BorderLayout.WEST);
-//     	add(cadastro,BorderLayout.CENTER);
-//		add(consulta,BorderLayout.CENTER);
+     	add(detalhesPaciente,cons);
 		
 	}
 

@@ -1,14 +1,10 @@
 package controlle;
 
-import java.awt.ScrollPane;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
-
-import app.App;
 import model.ClassXML;
+import model.DetalhesPaciente;
 import model.Endereco;
 import model.Paciente;
 import model.Verificar;
@@ -24,19 +20,24 @@ public class Controle implements ActionListener{
 	private Menu menu;//jpanel
 	private Cadastro cadastro;//jpanel
 	private Consulta consulta;//jpanel
+	DetalhesPaciente detalhesPaciente;
 	
-	public Controle(Principal principal, Menu menu, Cadastro cadastro,Consulta consulta) {
+	public Controle(Principal principal, Menu menu, Cadastro cadastro,Consulta consulta, DetalhesPaciente detalhesPaciente) {
 		this.principal = principal;
 		this.menu = menu;
 		this.cadastro = cadastro;
 		this.consulta= consulta;
+		this.detalhesPaciente=detalhesPaciente;
 		
 	
 		cadastro.getBtnAdd().addActionListener(this);
 		consulta.getConsultaB().addActionListener(this);
+		consulta.getDetalhesButton().addActionListener(this);
 		menu.getBtnCadastro().addActionListener(this);
 		menu.getBtnConsulta().addActionListener(this);
 		menu.getBtnSair().addActionListener(this);
+		detalhesPaciente.getBtnAdd().addActionListener(this);
+		detalhesPaciente.getBntVoltar().addActionListener(this);
 		
 		
 	}
@@ -48,24 +49,25 @@ public class Controle implements ActionListener{
 		{
 			if( (Verificar.verificarCadastro(cadastro)))
 			{
-				ClassXML.pacientes.add(new Paciente(
+				if(ClassXML.addPaciente(new Paciente(
 						cadastro.getTfdNome().getText().trim(), 
 						cadastro.getTfdCpf().getText().trim(), 
-						cadastro.getTfdIdade().getText().trim(), 
-						cadastro.getTfdSexo().getText().trim(), 
-						cadastro.getTfdSangue().getText().trim(), 
+						cadastro.getTfdNascimento().getText().trim(), 
+						cadastro.getCbxSexo().getSelectedItem().toString().trim(), 
+						cadastro.getCbxSangue().getSelectedItem().toString().trim(), 
 						cadastro.getTfdEmail().getText().trim(), 
 						cadastro.getTfdTelefone().getText().trim(), 				
 						new Endereco(
-								cadastro.getTdfRua().getText().trim(), 
+								cadastro.getTfdRua().getText().trim(), 
 								cadastro.getTfdNumero().getText().trim(), 
 								cadastro.getTfdBairro().getText().trim(), 
 								cadastro.getTfdCidade().getText().trim(), 
-								cadastro.getTfdEstado().getText().trim(), 
+								cadastro.getCbxEstado().getSelectedItem().toString().trim(), 
 								cadastro.getTfdComplemento().getText().trim(), 
-								cadastro.getTfdCep().getText().trim())));
-				ClassXML.gravar(ClassXML.pacientes);	
-				Mensagem.exibirMensagem("Salvo Com Sucesso!!!");
+								cadastro.getTfdCep().getText().trim()))))
+				Mensagem.exibirMensagem("Adicionado com Sucesso");
+				else
+					Mensagem.exibirMensagem("Falha Ao Adicionar - Dados Podem Esta faltando ou Repetidos");
 			}
 			else
 			{
@@ -77,12 +79,14 @@ public class Controle implements ActionListener{
 		{ 
 			
 			consulta.setVisible(false);
+			detalhesPaciente.setVisible(false);
 			cadastro.setVisible(true);
 			
 		}
 		if(e.getSource() == menu.getBtnConsulta())
 		{
 			cadastro.setVisible(false);
+			detalhesPaciente.setVisible(false);
 			consulta.setVisible(true);
 		}
 		
@@ -95,6 +99,38 @@ public class Controle implements ActionListener{
 			}else {
 				Mensagem.exibirMensagem("Insira o Nome ou Cpf do Paciente");
 			}
+		}
+		if (e.getSource()==consulta.getDetalhesButton()) {
+			int select = consulta.getTabela().getSelectedRow();
+			detalhesPaciente.autoPreencher(consulta.getTabelaModel().getPaciente().get(select));
+			
+			consulta.setVisible(false);
+			detalhesPaciente.setVisible(true);
+		}
+		if(e.getSource()==detalhesPaciente.getBtnAdd()) {
+			Paciente paciente = new Paciente(
+					detalhesPaciente.getTfdNome().getText().trim(), 
+					detalhesPaciente.getTfdCpf().getText().trim(), 
+					detalhesPaciente.getTfdNascimento().getText().trim(), 
+					detalhesPaciente.getCbxSexo().getSelectedItem().toString().trim(), 
+					detalhesPaciente.getCbxSangue().getSelectedItem().toString().trim(), 
+					detalhesPaciente.getTfdEmail().getText().trim(), 
+					detalhesPaciente.getTfdTelefone().getText().trim(), 				
+					new Endereco(
+							detalhesPaciente.getTfdRua().getText().trim(), 
+							detalhesPaciente.getTfdNumero().getText().trim(), 
+							detalhesPaciente.getTfdBairro().getText().trim(), 
+							detalhesPaciente.getTfdCidade().getText().trim(), 
+							detalhesPaciente.getCbxEstado().getSelectedItem().toString().trim(), 
+							detalhesPaciente.getTfdComplemento().getText().trim(), 
+							detalhesPaciente.getTfdCep().getText().trim()));
+							
+			ClassXML.editarPaciente(paciente);
+		}
+		
+		if(e.getSource()==detalhesPaciente.getBntVoltar()) {
+			detalhesPaciente.setVisible(false);
+			consulta.setVisible(true);
 		}
 		
 		if(e.getSource() == menu.getBtnSair())
