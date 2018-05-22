@@ -6,7 +6,11 @@
     <sexo>Masculino</sexo>
     <tipoSanguineo>A+</tipoSanguineo>
     <email>maelsantos777@gmail.com</email>
+<<<<<<< HEAD
     <telefone>(98)9 8098-0980</telefone>
+=======
+    <telefone>(87)9 9999-9999</telefone>
+>>>>>>> 7643bcb98407556df04ad761bf2c7030e9e9906f
     <endereco>
       <rua>Quirino Cordeiro Magalh�es</rua>
       <numero>1240</numero>
