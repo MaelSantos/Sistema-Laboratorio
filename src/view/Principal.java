@@ -55,8 +55,8 @@ public class Principal extends TelaGeral{
 		add(titulo, cons);
 		cons.gridheight = GridBagConstraints.REMAINDER;
 		cons.weightx = 0;
-		cons.weighty = 0;
-		cons.fill = GridBagConstraints.NONE;
+		cons.weighty = 0.9;
+//		cons.fill = GridBagConstraints.NONE;
 		cons.gridwidth = GridBagConstraints.RELATIVE;
 		cons.anchor = GridBagConstraints.WEST;
 		add(menu, cons);

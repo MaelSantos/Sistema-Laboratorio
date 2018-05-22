@@ -11,8 +11,25 @@ public class ClassXML {
 	
 	public static ArrayList<Paciente> pacientes = lerArquivo();
 	
-	public ClassXML() {
+	public static boolean addPaciente(Paciente paciente)
+	{
+		boolean add = true;
+		for(Paciente p : pacientes)
+		{
+			if(p.getCpf().equalsIgnoreCase(paciente.getCpf()))
+			{
+				add = false;
+			}						
+		}
+		if(add)
+		{
+			pacientes.add(paciente);
+			gravar(pacientes);
+			return true;
+		}
+		return false;
 	}
+	
 	public static void gravar(ArrayList<Paciente> pacientes) {
 		
 			XStream stream =  new XStream(new DomDriver());

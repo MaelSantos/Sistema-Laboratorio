@@ -48,24 +48,25 @@ public class Controle implements ActionListener{
 		{
 			if( (Verificar.verificarCadastro(cadastro)))
 			{
-				ClassXML.pacientes.add(new Paciente(
+				if(ClassXML.addPaciente(new Paciente(
 						cadastro.getTfdNome().getText().trim(), 
 						cadastro.getTfdCpf().getText().trim(), 
-						cadastro.getTfdIdade().getText().trim(), 
-						cadastro.getTfdSexo().getText().trim(), 
-						cadastro.getTfdSangue().getText().trim(), 
+						cadastro.getTfdNascimento().getText().trim(), 
+						cadastro.getCbxSexo().getSelectedItem().toString().trim(), 
+						cadastro.getCbxSangue().getSelectedItem().toString().trim(), 
 						cadastro.getTfdEmail().getText().trim(), 
 						cadastro.getTfdTelefone().getText().trim(), 				
 						new Endereco(
-								cadastro.getTdfRua().getText().trim(), 
+								cadastro.getTfdRua().getText().trim(), 
 								cadastro.getTfdNumero().getText().trim(), 
 								cadastro.getTfdBairro().getText().trim(), 
 								cadastro.getTfdCidade().getText().trim(), 
 								cadastro.getTfdEstado().getText().trim(), 
 								cadastro.getTfdComplemento().getText().trim(), 
-								cadastro.getTfdCep().getText().trim())));
-				ClassXML.gravar(ClassXML.pacientes);	
-				Mensagem.exibirMensagem("Salvo Com Sucesso!!!");
+								cadastro.getTfdCep().getText().trim()))))
+				Mensagem.exibirMensagem("Adicionado com Sucesso");
+				else
+					Mensagem.exibirMensagem("Falha Ao Adicionar");
 			}
 			else
 			{

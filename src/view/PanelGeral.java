@@ -10,7 +10,7 @@ public abstract class PanelGeral extends JPanel {
 		
 		inicializar();
 		
-		setLayout(new GridLayout(17, 2));
+		setLayout(new GridLayout(16, 2, 0, 3));
 		
 		setSize(TelaGeral.LARGURA, TelaGeral.ALTURA);
 		
