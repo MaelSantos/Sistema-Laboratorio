@@ -79,6 +79,9 @@ public class TableModel extends AbstractTableModel {
         this.fireTableRowsDeleted(linha, linha);
     }
     public void pesquisa(String nomeCpf,ArrayList<Paciente> pacientes) {
+    	
+    	paciente=new ArrayList<>();
+    	
     	paciente = new ArrayList<>();
     	
     	for(Paciente p:pacientes) {
@@ -86,8 +89,14 @@ public class TableModel extends AbstractTableModel {
     			addRow(p);
     		}
     	}
+    	this.fireTableDataChanged();
+    	
     	fireTableStructureChanged();
     	System.gc();
+    }
+    public void voltaTabelaCompleta() {
+    	paciente=ClassXML.pacientes;
+    	this.fireTableDataChanged();
     }
   
 

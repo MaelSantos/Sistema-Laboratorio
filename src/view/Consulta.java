@@ -15,7 +15,7 @@ import model.TableModel;
 public class Consulta extends PanelGeral {
 	
 	private JTextField consultaT;
-	private JButton consultaB;
+	private JButton consultaB,voltarTabelaCompleta;
 	private JScrollPane scrollpane;
 	private TableModel tabelaModel;
 	private JTable tabela;
@@ -36,6 +36,7 @@ public class Consulta extends PanelGeral {
 		consultaT=new JTextField(40);		
 		consultaB= new JButton("Pesquisa");	
 		tabelaModel= new TableModel();	
+		voltarTabelaCompleta=new JButton("Tabela Completa");
 		tabela=new JTable(tabelaModel);
 		tabela.setPreferredScrollableViewportSize(new Dimension(500, 400));
 		
@@ -47,6 +48,7 @@ public class Consulta extends PanelGeral {
 		add(consultaT);
 		add(consultaB);
 		add(detalhesButton);
+		add(voltarTabelaCompleta);
 		add(scrollpane);
 		
 		
@@ -103,6 +105,15 @@ public class Consulta extends PanelGeral {
 	public void setDetalhesButton(JButton detalhesButton) {
 		this.detalhesButton = detalhesButton;
 	}
+
+	public JButton getVoltarTabelaCompleta() {
+		return voltarTabelaCompleta;
+	}
+
+	public void setVoltarTabelaCompleta(JButton voltarTabelaCompleta) {
+		this.voltarTabelaCompleta = voltarTabelaCompleta;
+	}
+	
 	
 
 	

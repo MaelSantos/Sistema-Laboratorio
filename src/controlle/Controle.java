@@ -33,6 +33,7 @@ public class Controle implements ActionListener{
 		cadastro.getBtnAdd().addActionListener(this);
 		consulta.getConsultaB().addActionListener(this);
 		consulta.getDetalhesButton().addActionListener(this);
+		consulta.getVoltarTabelaCompleta().addActionListener(this);
 		menu.getBtnCadastro().addActionListener(this);
 		menu.getBtnConsulta().addActionListener(this);
 		menu.getBtnSair().addActionListener(this);
@@ -92,11 +93,11 @@ public class Controle implements ActionListener{
 		
 		if(e.getSource() == consulta.getConsultaB())
 		{
-			System.out.println("esta entrando");
 			if(!consulta.getConsultaT().getText().trim().equals("")) {
 				consulta.getTabelaModel().pesquisa(consulta.getConsultaT().getText(), ClassXML.pacientes);
 					    
 			}else {
+				consulta.getTabelaModel().setPaciente(ClassXML.lerArquivo());
 				Mensagem.exibirMensagem("Insira o Nome ou Cpf do Paciente");
 			}
 		}
@@ -106,6 +107,12 @@ public class Controle implements ActionListener{
 			
 			consulta.setVisible(false);
 			detalhesPaciente.setVisible(true);
+		}
+		
+		if(e.getSource() == consulta.getVoltarTabelaCompleta())
+		{
+				consulta.getTabelaModel().voltaTabelaCompleta();
+
 		}
 		if(e.getSource()==detalhesPaciente.getBtnAdd()) {
 			Paciente paciente = new Paciente(
