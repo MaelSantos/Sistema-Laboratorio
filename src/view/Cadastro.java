@@ -17,14 +17,14 @@ import javax.swing.text.MaskFormatter;
 public class Cadastro extends PanelGeral {
 
 	//dados do paciente
-	private JFormattedTextField tfdNome, tfdCpf, tfdNascimento, tfdEmail, tfdTelefone, tfdCep;
-	private JLabel lblNome, lblCpf, lblNascimento, lblSangue, lblSexo, lblEmail, lblTelefone;
+	protected JFormattedTextField tfdNome, tfdCpf, tfdNascimento, tfdEmail, tfdTelefone, tfdCep;
+	protected JLabel lblNome, lblCpf, lblNascimento, lblSangue, lblSexo, lblEmail, lblTelefone;
 	//dados do endereco
-	private JTextField tdfRua, tfdNumero, tfdBairro, tfdCidade, tfdComplemento;
-	private JLabel lblfRua, lblNumero, lblBairro, lblCidade, lblEstado, lblComplemento, lblCep;
+	protected JTextField tdfRua, tfdNumero, tfdBairro, tfdCidade, tfdComplemento;
+	protected JLabel lblfRua, lblNumero, lblBairro, lblCidade, lblEstado, lblComplemento, lblCep;
 	
-	private JComboBox<String> cbxSangue, cbxSexo, cbxEstado;
-	private JButton btnAdd;
+	protected JComboBox<String> cbxSangue, cbxSexo, cbxEstado;
+	protected JButton btnAdd;
 	
 	public Cadastro() {
 		super();
