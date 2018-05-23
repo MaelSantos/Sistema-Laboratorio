@@ -1,10 +1,9 @@
-package model;
+package view;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 
 import model.Paciente;
-import view.Cadastro;
 
 @SuppressWarnings("serial")
 public class DetalhesPaciente extends Cadastro{

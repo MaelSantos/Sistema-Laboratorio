@@ -71,6 +71,7 @@ public class TableModel extends AbstractTableModel {
     public void addRow(Paciente p){
         this.paciente.add(p);
         this.fireTableDataChanged();
+        fireTableStructureChanged();
     }
     
     public void removeRow(int linha){
@@ -81,15 +82,17 @@ public class TableModel extends AbstractTableModel {
     	
     	paciente=new ArrayList<>();
     	
+    	paciente = new ArrayList<>();
     	
     	for(Paciente p:pacientes) {
     		if(p.getNome().toLowerCase().contains(nomeCpf.toLowerCase())||p.getCpf().toLowerCase().contains(nomeCpf.toLowerCase())) {
     			addRow(p);
     		}
-    		
     	}
     	this.fireTableDataChanged();
     	
+    	fireTableStructureChanged();
+    	System.gc();
     }
     public void voltaTabelaCompleta() {
     	paciente=ClassXML.pacientes;

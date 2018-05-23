@@ -7,8 +7,6 @@ import java.awt.Insets;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
-import model.DetalhesPaciente;
-
 public class Principal extends TelaGeral{
 	
 	private JLabel titulo;
