@@ -20,7 +20,7 @@ public class App {
 		
 		Menu menu = new Menu();
 		
-		Principal principal = new Principal("Sistema Laboratorio", menu, cadastro,consulta, detalhesPaciente);
+		Principal principal = new Principal("Sistema Laboratorio", menu, cadastro, consulta, detalhesPaciente);
 		
 		Controle controle = new Controle(principal, menu, cadastro,consulta,detalhesPaciente);
 		
