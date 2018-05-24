@@ -1,8 +1,7 @@
 package view;
 
-import java.awt.BorderLayout;
-import java.awt.CardLayout;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
@@ -13,22 +12,24 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
-import java.io.IOException;
 
 import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JSeparator;
 import javax.swing.JTextField;
 
 public class CadastroFuncionario extends Cadastro {
 
 	private JTextField tfdCargo;
 	private JLabel lblCargo;
+	
+	private JLabel lblSenha, lblConfirmar, lblLogin;
+	private JTextField tfdSenha, tfdConfirmar, tfdLogin; 
 	
 	private BufferedImage imagem;
 	private JButton btnAddImagem,btnRemoveImage;
@@ -38,11 +39,18 @@ public class CadastroFuncionario extends Cadastro {
 	public CadastroFuncionario() {
 		super();
 		setBorder(BorderFactory.createTitledBorder("Cadastro De Funcionarios"));
-		setVisible(true);
+		
 	}
 	
 	@Override
 	public void inicializar() {
+		super.inicializar();
+		
+		Component[] comp = getComponents();
+		for(Component co : comp)
+			remove(co);
+		
+		System.gc();
 		
 		fcsImagem = new JFileChooser();
 		btnAddImagem = new JButton("Adicionar Imagem");
@@ -57,6 +65,15 @@ public class CadastroFuncionario extends Cadastro {
 		
 		tfdCargo = new JTextField(10);
 		lblCargo = new JLabel("Cargo:");
+		
+		lblSenha = new JLabel("Senha:"); 
+		lblConfirmar = new JLabel("Confirme Sua Senha:");
+		lblLogin = new JLabel("Login:");
+		tfdSenha = new JTextField(10);
+		tfdConfirmar = new JTextField(10);
+		tfdLogin = new JTextField(10);
+		
+		btnAdd.setText("Criar Conta");
 		
 		btnAddImagem.addActionListener(new ActionListener() {
 			@Override
@@ -85,11 +102,11 @@ public class CadastroFuncionario extends Cadastro {
 		
 		GridBagConstraints c = new GridBagConstraints(
 				GridBagConstraints.RELATIVE, //gridx
-				GridBagConstraints.RELATIVE, //gridy
+				GridBagConstraints.REMAINDER, //gridy
 				GridBagConstraints.RELATIVE, //gridwidth
-				GridBagConstraints.RELATIVE, //gridheight
+				GridBagConstraints.REMAINDER, //gridheight
 				0.1, //weightx
-				0.1, //weighty
+				1, //weighty
 				GridBagConstraints.WEST, //anchor
 				GridBagConstraints.NONE, //fill
 				new Insets(0, 0, 0, 0), //insets
@@ -98,41 +115,104 @@ public class CadastroFuncionario extends Cadastro {
 		
 		setLayout(new GridBagLayout());
 		JPanel p = new JPanel();
-		p.setPreferredSize(new Dimension(200, 200));
-		p.setLayout(new FlowLayout());
-		p.setBackground(Color.blue);
+		p.setSize(150, 600);
+		p.setPreferredSize(new Dimension(150, 500));
+		p.setMaximumSize(new Dimension(150, 500));
+	
+		p.setLayout(new FlowLayout(10));
+		p.setBorder(BorderFactory.createTitledBorder("Dados Conta"));
+		p.setBackground(Color.cyan);
 		p.add(lblImagem);
 		p.add(btnAddImagem);
 		p.add(btnRemoveImage);
 		
-		p.setVisible(true);
-		c.anchor = GridBagConstraints.NORTHWEST;
-		c.fill = GridBagConstraints.NONE;
-		add(p,c);
-
-		JPanel t = new JPanel();
-		t.setPreferredSize(new Dimension(200, 200));
-		t.setLayout(new GridLayout(20, 2));
-		t.setBackground(Color.blue);
+		p.add(lblLogin);
+		p.add(tfdLogin);
 		
+		p.add(lblSenha);
+		p.add(tfdSenha);
+		
+		p.add(lblConfirmar);
+		p.add(tfdConfirmar);
+		
+		p.add(btnAdd);
+		
+		p.setVisible(true);
+		
+		c.gridheight = GridBagConstraints.REMAINDER;
+		c.anchor = GridBagConstraints.NORTHWEST;
+		c.fill = GridBagConstraints.VERTICAL;
+//		c.gridwidth = 0;
+//		c.gridheight = 500;
+
+//		c.fill = GridBagConstraints.NONE;
+		
+		add(p,c);
+		
+		JPanel t = new JPanel();
+		t.setLayout(new GridLayout(17, 2));
+		t.setBorder(BorderFactory.createTitledBorder("Dados Funcionario"));
+		
+		c.weightx = 0.9;
+//		c.weighty = 1;
+		c.gridheight = GridBagConstraints.REMAINDER;
+		c.gridwidth = GridBagConstraints.REMAINDER;
 		c.anchor = GridBagConstraints.CENTER;
+		c.fill = GridBagConstraints.BOTH;
 		t.add(lblCargo,c);
 		t.add(tfdCargo,c);
 		
+		//dados do paciente
+		t.add(lblNome);
+		t.add(lblCpf);
 		
-//		super.inicializar();
+		t.add(tfdNome);
+		t.add(tfdCpf);
+		
+		t.add(lblNascimento);
+		t.add(lblSexo);
+		
+		t.add(tfdNascimento);
+		t.add(cbxSexo);
+		
+		t.add(lblSangue);
+		t.add(lblEmail);
+		
+		t.add(cbxSangue);
+		t.add(tfdEmail);
+		
+		t.add(new JSeparator(JSeparator.HORIZONTAL));
+		t.add(new JSeparator(JSeparator.HORIZONTAL));
+		
+		//dados de endereco
+		t.add(lblTelefone);
+		t.add(lblfRua);
+		
+		t.add(tfdTelefone);
+		t.add(tdfRua);
+		
+		t.add(lblNumero);
+		t.add(lblBairro);
+		
+		t.add(tfdNumero);
+		t.add(tfdBairro);
+		
+		t.add(lblCidade);
+		t.add(lblEstado);
+		
+		t.add(tfdCidade);
+		t.add(cbxEstado);
+		
+		t.add(lblComplemento);
+		t.add(lblCep);
+		
+		t.add(tfdComplemento);
+		t.add(tfdCep);
+		
+		add(t,c);
+		
 	}
 	
-	public static void main(String[] args) {
-		JFrame f = new JFrame("Teste");
-		f.setSize(700, 500);
-		f.setLocationRelativeTo(null);
-		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
-		f.add(new CadastroFuncionario(), BorderLayout.CENTER);
-		f.setVisible(true);
-	}
-
 	//metodos de acesso
 	public JTextField getTfdCargo() {
 		return tfdCargo;

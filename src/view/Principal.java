@@ -14,14 +14,17 @@ public class Principal extends TelaGeral{
 	private Menu menu;
 	private Consulta consulta;
 	private DetalhesPaciente detalhesPaciente;
+	private CadastroFuncionario cadastroFuncionario;
 	
-	public Principal(String titulo, Menu menu, Cadastro cadastro,Consulta consulta, DetalhesPaciente detalhesPaciente) {
+	public Principal(String titulo, Menu menu, Cadastro cadastro,Consulta consulta, 
+			DetalhesPaciente detalhesPaciente, CadastroFuncionario cadastroFuncionario) {
 		super(titulo);
 		
 		this.cadastro = cadastro;
 		this.menu = menu;
 		this.consulta= consulta;
 		this.detalhesPaciente = detalhesPaciente;
+		this.cadastroFuncionario = cadastroFuncionario;
 		inicializar();
 		setVisible(true);
 	}
@@ -63,7 +66,7 @@ public class Principal extends TelaGeral{
      	add(cadastro, cons);
      	add(consulta, cons);
      	add(detalhesPaciente,cons);
-		
+		add(cadastroFuncionario,cons);
 	}
 
 }

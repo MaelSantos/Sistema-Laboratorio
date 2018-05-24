@@ -8,6 +8,7 @@ import model.Endereco;
 import model.Paciente;
 import model.Verificar;
 import view.Cadastro;
+import view.CadastroFuncionario;
 import view.Consulta;
 import view.DetalhesPaciente;
 import view.Mensagem;
@@ -20,26 +21,29 @@ public class Controle implements ActionListener{
 	private Menu menu;//jpanel
 	private Cadastro cadastro;//jpanel
 	private Consulta consulta;//jpanel
-	DetalhesPaciente detalhesPaciente;
+	private DetalhesPaciente detalhesPaciente;
+	private CadastroFuncionario cadastroFuncionario;
 	
-	public Controle(Principal principal, Menu menu, Cadastro cadastro,Consulta consulta, DetalhesPaciente detalhesPaciente) {
+	public Controle(Principal principal, Menu menu, Cadastro cadastro,Consulta consulta, DetalhesPaciente detalhesPaciente,
+			CadastroFuncionario cadastroFuncionario) {
 		this.principal = principal;
 		this.menu = menu;
 		this.cadastro = cadastro;
 		this.consulta= consulta;
 		this.detalhesPaciente=detalhesPaciente;
+		this.cadastroFuncionario = cadastroFuncionario;
 		
-	
 		cadastro.getBtnAdd().addActionListener(this);
 		consulta.getConsultaB().addActionListener(this);
 		consulta.getDetalhesButton().addActionListener(this);
 		consulta.getVoltarTabelaCompleta().addActionListener(this);
 		menu.getBtnCadastro().addActionListener(this);
+		menu.getBtnCadastroFuncionario().addActionListener(this);
 		menu.getBtnConsulta().addActionListener(this);
 		menu.getBtnSair().addActionListener(this);
 		detalhesPaciente.getBtnAdd().addActionListener(this);
 		detalhesPaciente.getBntVoltar().addActionListener(this);
-		
+		cadastroFuncionario.getBtnAdd().addActionListener(this);
 		
 	}
 
@@ -81,6 +85,7 @@ public class Controle implements ActionListener{
 			
 			consulta.setVisible(false);
 			detalhesPaciente.setVisible(false);
+			cadastroFuncionario.setVisible(false);
 			cadastro.setVisible(true);
 			
 		}
@@ -88,7 +93,16 @@ public class Controle implements ActionListener{
 		{
 			cadastro.setVisible(false);
 			detalhesPaciente.setVisible(false);
+			cadastroFuncionario.setVisible(false);
 			consulta.setVisible(true);
+		}
+		
+		if(e.getSource() == menu.getBtnCadastroFuncionario())
+		{
+			cadastro.setVisible(false);
+			detalhesPaciente.setVisible(false);
+			consulta.setVisible(false);
+			cadastroFuncionario.setVisible(true);
 		}
 		
 		if(e.getSource() == consulta.getConsultaB())

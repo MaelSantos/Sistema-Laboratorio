@@ -1,5 +1,6 @@
 package view;
 
+import java.awt.Color;
 import java.awt.GridLayout;
 
 import javax.swing.JPanel;
@@ -8,12 +9,13 @@ public abstract class PanelGeral extends JPanel {
 
 	public PanelGeral() {
 		
-		setLayout(new GridLayout(16, 2, 0, 3));
+		setSize(TelaGeral.LARGURA, TelaGeral.ALTURA);
 
+		setLayout(new GridLayout(16, 2, 0, 3));
+		
 		inicializar();
 		
-		
-		setSize(TelaGeral.LARGURA, TelaGeral.ALTURA);
+//		setBackground(new Color(95,158,160));
 		
 		setVisible(false);
 		
