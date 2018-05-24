@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.Graphics;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
@@ -119,9 +120,18 @@ public class CadastroFuncionario extends Cadastro {
 		p.setPreferredSize(new Dimension(150, 500));
 		p.setMaximumSize(new Dimension(150, 500));
 	
-		p.setLayout(new FlowLayout(10));
+		p.setLayout(new FlowLayout());
 		p.setBorder(BorderFactory.createTitledBorder("Dados Conta"));
-		p.setBackground(Color.cyan);
+		p.setBackground(new Color(176,224,230));
+		p.setVisible(true);
+		
+		c.gridheight = GridBagConstraints.REMAINDER;
+		c.anchor = GridBagConstraints.NORTHWEST;
+		c.fill = GridBagConstraints.VERTICAL;
+//		c.gridwidth = 0;
+//		c.gridheight = 500;
+
+//		c.fill = GridBagConstraints.NONE;
 		p.add(lblImagem);
 		p.add(btnAddImagem);
 		p.add(btnRemoveImage);
@@ -137,21 +147,12 @@ public class CadastroFuncionario extends Cadastro {
 		
 		p.add(btnAdd);
 		
-		p.setVisible(true);
-		
-		c.gridheight = GridBagConstraints.REMAINDER;
-		c.anchor = GridBagConstraints.NORTHWEST;
-		c.fill = GridBagConstraints.VERTICAL;
-//		c.gridwidth = 0;
-//		c.gridheight = 500;
-
-//		c.fill = GridBagConstraints.NONE;
-		
 		add(p,c);
 		
 		JPanel t = new JPanel();
 		t.setLayout(new GridLayout(17, 2));
 		t.setBorder(BorderFactory.createTitledBorder("Dados Funcionario"));
+		t.setBackground(new Color(176,224,230));
 		
 		c.weightx = 0.9;
 //		c.weighty = 1;
@@ -159,8 +160,8 @@ public class CadastroFuncionario extends Cadastro {
 		c.gridwidth = GridBagConstraints.REMAINDER;
 		c.anchor = GridBagConstraints.CENTER;
 		c.fill = GridBagConstraints.BOTH;
-		t.add(lblCargo,c);
-		t.add(tfdCargo,c);
+		t.add(lblCargo);
+		t.add(tfdCargo);
 		
 		//dados do paciente
 		t.add(lblNome);

@@ -39,7 +39,7 @@ public class TableModel extends AbstractTableModel {
 		
 		switch(coluna) {
 		case 0:
-			return paciente.get(linha).getNome();
+			return paciente.get(linha).getNomeCompleto();
 		case 1:
 			return paciente.get(linha).getCpf();
 		case 2:
@@ -55,7 +55,7 @@ public class TableModel extends AbstractTableModel {
 	     switch (coluna) 
 	     {
 	     case 0:  
-	    	 usuario.setNome(aValue.toString());             
+	    	 usuario.setNomeCompleto(aValue.toString());             
 	     case 1:  
 	    	 usuario.setCpf(aValue.toString());
 	     case 2:  

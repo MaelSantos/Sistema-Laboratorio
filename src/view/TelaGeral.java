@@ -1,12 +1,18 @@
 package view;
 
+import java.awt.Color;
+import java.awt.GradientPaint;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.geom.Point2D;
+
 import javax.swing.JFrame;
 
 public abstract class TelaGeral extends JFrame {
 
 	public static final int LARGURA = 700;
 	public static final int ALTURA = 600;
-	
+		
 	public TelaGeral(String titulo) {
 		
 		super(titulo);
@@ -19,12 +25,13 @@ public abstract class TelaGeral extends JFrame {
 		
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		
-//		setLayout(null);
+		getContentPane().setBackground(new Color(176,224,230));
 		
 		setVisible(true);
 		
 	}
 	
 	public abstract void inicializar(); 
+	
 	
 }
