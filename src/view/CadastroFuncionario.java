@@ -119,7 +119,8 @@ public class CadastroFuncionario extends Cadastro {
 		p.setSize(150, 600);
 		p.setPreferredSize(new Dimension(150, 500));
 		p.setMaximumSize(new Dimension(150, 500));
-	
+		p.setMinimumSize(new Dimension(150, 0));
+		
 		p.setLayout(new FlowLayout());
 		p.setBorder(BorderFactory.createTitledBorder("Dados Conta"));
 		p.setBackground(new Color(176,224,230));
@@ -128,10 +129,7 @@ public class CadastroFuncionario extends Cadastro {
 		c.gridheight = GridBagConstraints.REMAINDER;
 		c.anchor = GridBagConstraints.NORTHWEST;
 		c.fill = GridBagConstraints.VERTICAL;
-//		c.gridwidth = 0;
-//		c.gridheight = 500;
 
-//		c.fill = GridBagConstraints.NONE;
 		p.add(lblImagem);
 		p.add(btnAddImagem);
 		p.add(btnRemoveImage);
@@ -155,7 +153,6 @@ public class CadastroFuncionario extends Cadastro {
 		t.setBackground(new Color(176,224,230));
 		
 		c.weightx = 0.9;
-//		c.weighty = 1;
 		c.gridheight = GridBagConstraints.REMAINDER;
 		c.gridwidth = GridBagConstraints.REMAINDER;
 		c.anchor = GridBagConstraints.CENTER;
@@ -182,8 +179,8 @@ public class CadastroFuncionario extends Cadastro {
 		t.add(cbxSangue);
 		t.add(tfdEmail);
 		
-		t.add(new JSeparator(JSeparator.HORIZONTAL));
-		t.add(new JSeparator(JSeparator.HORIZONTAL));
+		t.add(new JSeparator(JSeparator.HORIZONTAL)).setSize(100, 100);
+		t.add(new JSeparator(JSeparator.HORIZONTAL)).setSize(100, 100);
 		
 		//dados de endereco
 		t.add(lblTelefone);

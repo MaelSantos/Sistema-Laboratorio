@@ -1,5 +1,6 @@
 package view;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 
@@ -30,16 +31,14 @@ public class Consulta extends PanelGeral {
 
 	@Override
 	public void inicializar() {
-		
-		
-		
+	
 		consultaT=new JTextField(40);		
 		consultaB= new JButton("Pesquisa");	
 		tabelaModel= new TableModel();	
 		voltarTabelaCompleta=new JButton("Tabela Completa");
 		tabela=new JTable(tabelaModel);
 		tabela.setPreferredScrollableViewportSize(new Dimension(500, 400));
-		
+//		tabela.setBackground(new Color(176,224,230));
 	
 		scrollpane=new JScrollPane(tabela);
 		

@@ -37,19 +37,13 @@ public abstract class PanelGeral extends JPanel {
 	
 	@Override
 	protected void paintComponent(Graphics g) {
-		// TODO Stub de método gerado automaticamente
 		super.paintComponent(g);
 		Graphics2D graficos = (Graphics2D) g;
 		
-		graficos.drawImage(fundo, 0, 0, null);
-//		graficos.drawImage(fundo, 0, 0,getWidth(),getHeight(), null);
+//		graficos.drawImage(fundo, 0, 0, null);
+		graficos.drawImage(fundo, 0, 0,getWidth(),getHeight(), null);
 				
-		try {
-			repaint();
-			Thread.sleep(50);
-		} catch (Exception e) {
-			// TODO: handle exception
-		}		
+		
 	}
 	
 }
