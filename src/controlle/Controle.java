@@ -4,13 +4,16 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import model.ClassXML;
+import model.ClassXMLFuncionario;
 import model.Endereco;
+import model.Funcionario;
 import model.Paciente;
 import model.Verificar;
 import view.Cadastro;
 import view.CadastroFuncionario;
 import view.Consulta;
 import view.DetalhesPaciente;
+import view.Login;
 import view.Mensagem;
 import view.Menu;
 import view.Principal;
@@ -23,8 +26,9 @@ public class Controle implements ActionListener{
 	private Consulta consulta;//jpanel
 	private DetalhesPaciente detalhesPaciente;
 	private CadastroFuncionario cadastroFuncionario;
+	Login login;
 	
-	public Controle(Principal principal, Menu menu, Cadastro cadastro,Consulta consulta, DetalhesPaciente detalhesPaciente,
+	public Controle(Login login,Principal principal, Menu menu, Cadastro cadastro,Consulta consulta, DetalhesPaciente detalhesPaciente,
 			CadastroFuncionario cadastroFuncionario) {
 		this.principal = principal;
 		this.menu = menu;
@@ -32,6 +36,7 @@ public class Controle implements ActionListener{
 		this.consulta= consulta;
 		this.detalhesPaciente=detalhesPaciente;
 		this.cadastroFuncionario = cadastroFuncionario;
+		this.login= login;
 		
 		cadastro.getBtnAdd().addActionListener(this);
 		consulta.getConsultaB().addActionListener(this);
@@ -44,7 +49,8 @@ public class Controle implements ActionListener{
 		detalhesPaciente.getBtnAdd().addActionListener(this);
 		detalhesPaciente.getBntVoltar().addActionListener(this);
 		cadastroFuncionario.getBtnAdd().addActionListener(this);
-		
+		login.getBntEntrar().addActionListener(this);
+		login.getBntSair().addActionListener(this);
 	}
 
 	@Override
@@ -70,6 +76,38 @@ public class Controle implements ActionListener{
 								cadastro.getCbxEstado().getSelectedItem().toString().trim(), 
 								cadastro.getTfdComplemento().getText().trim(), 
 								cadastro.getTfdCep().getText().trim()))))
+				Mensagem.exibirMensagem("Adicionado com Sucesso");
+				else
+					Mensagem.exibirMensagem("Falha Ao Adicionar - Dados Podem Esta faltando ou Repetidos");
+			}
+			else
+			{
+				Mensagem.exibirMensagem("Preencha os dados nescessarios !!!");
+			}
+		}
+		
+		if(e.getSource() == cadastroFuncionario.getBtnAdd())
+		{
+			if( (Verificar.verificarCadastro(cadastroFuncionario)))
+			{
+				if(ClassXMLFuncionario.addPaciente(new Funcionario(
+						cadastroFuncionario.getTfdLogin().getText().trim(), 
+						cadastroFuncionario.getTfdSenha().getText().trim(), 
+						cadastroFuncionario.getTfdNome().getText().trim(),
+						new Endereco(
+								cadastroFuncionario.getTfdRua().getText().trim(), 
+								cadastroFuncionario.getTfdNumero().getText().trim(), 
+								cadastroFuncionario.getTfdBairro().getText().trim(), 
+								cadastroFuncionario.getTfdCidade().getText().trim(), 
+								cadastroFuncionario.getCbxEstado().getSelectedItem().toString().trim(), 
+								cadastroFuncionario.getTfdComplemento().getText().trim(), 
+								cadastroFuncionario.getTfdCep().getText().trim()),
+						cadastroFuncionario.getTfdCpf().getText().trim(), 
+						cadastroFuncionario.getTfdNascimento().getText().trim(), 
+						cadastroFuncionario.getCbxSexo().getSelectedItem().toString().trim(), 
+						cadastroFuncionario.getCbxSangue().getSelectedItem().toString().trim(), 
+						cadastroFuncionario.getTfdEmail().getText().trim(), 
+						cadastroFuncionario.getTfdTelefone().getText().trim())))
 				Mensagem.exibirMensagem("Adicionado com Sucesso");
 				else
 					Mensagem.exibirMensagem("Falha Ao Adicionar - Dados Podem Esta faltando ou Repetidos");
@@ -156,7 +194,22 @@ public class Controle implements ActionListener{
 		
 		if(e.getSource() == menu.getBtnSair())
 		{
+			principal.setVisible(false);
+			login.getLoginField().setText(null);
+			login.getSenhaField().setText(null);
+			login.setVisible(true);
+		}
+		if(e.getSource()==login.getBntEntrar()) {
+			if(login.verificarLogin(login.getLoginField().getText(), login.getSenhaField().getPassword())) {
+				login.setVisible(false);
+				principal.setVisible(true);
+			}else {
+				Mensagem.exibirMensagem("Login ou  Senga Incorretos !!!");
+			}
+		}
+		if (e.getSource()==login.getBntSair()) {
 			System.exit(0);
+			
 		}
 	}
 	

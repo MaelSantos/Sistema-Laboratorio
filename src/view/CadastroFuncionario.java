@@ -232,4 +232,37 @@ public class CadastroFuncionario extends Cadastro {
 		return fcsImagem;
 	}
 
+	public JLabel getLblCargo() {
+		return lblCargo;
+	}
+
+	public JLabel getLblSenha() {
+		return lblSenha;
+	}
+
+	public JLabel getLblConfirmar() {
+		return lblConfirmar;
+	}
+
+	public JLabel getLblLogin() {
+		return lblLogin;
+	}
+
+	public JTextField getTfdSenha() {
+		return tfdSenha;
+	}
+
+	public JTextField getTfdConfirmar() {
+		return tfdConfirmar;
+	}
+
+	public JTextField getTfdLogin() {
+		return tfdLogin;
+	}
+
+	public JLabel getLblImagem() {
+		return lblImagem;
+	}
+
+	
 }

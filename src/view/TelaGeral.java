@@ -27,7 +27,7 @@ public abstract class TelaGeral extends JFrame {
 		
 		getContentPane().setBackground(new Color(176,224,230));
 		
-		setVisible(true);
+		setVisible(false);
 		
 	}
 	

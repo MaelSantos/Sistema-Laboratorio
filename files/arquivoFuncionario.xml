@@ -1,0 +1,46 @@
+<list>
+  <Funcionario>
+    <login>as asd</login>
+    <senha></senha>
+    <nomeCompleto>asd asd</nomeCompleto>
+    <nome>asd</nome>
+    <sobrenome>asd</sobrenome>
+    <endereco>
+      <rua></rua>
+      <numero></numero>
+      <bairro></bairro>
+      <cidade></cidade>
+      <estado></estado>
+      <complemento></complemento>
+      <cep></cep>
+    </endereco>
+    <cpf></cpf>
+    <idade></idade>
+    <sexo></sexo>
+    <tipoSanguineo></tipoSanguineo>
+    <email></email>
+    <telefone></telefone>
+  </Funcionario>
+  <Funcionario>
+    <login>filipe</login>
+    <senha>filipe</senha>
+    <nomeCompleto>Luiz Filipe</nomeCompleto>
+    <nome>Luiz</nome>
+    <sobrenome>Filipe</sobrenome>
+    <endereco>
+      <rua>mnasdjk</rua>
+      <numero>12</numero>
+      <bairro>jkhkjhjk</bairro>
+      <cidade>sdijkjksa</cidade>
+      <estado>Acre – AC</estado>
+      <complemento>dsahf&apos;</complemento>
+      <cep>99999-999</cep>
+    </endereco>
+    <cpf>000.000.000-02</cpf>
+    <idade>00/00/0000</idade>
+    <sexo>Masculino</sexo>
+    <tipoSanguineo>O+</tipoSanguineo>
+    <email>jkhsakhjsa</email>
+    <telefone>(87)9 9999-9999</telefone>
+  </Funcionario>
+</list>

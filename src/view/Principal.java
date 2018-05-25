@@ -26,7 +26,7 @@ public class Principal extends TelaGeral{
 		this.detalhesPaciente = detalhesPaciente;
 		this.cadastroFuncionario = cadastroFuncionario;
 		inicializar();
-		setVisible(true);
+		setVisible(false);
 	}
 
 	@Override
