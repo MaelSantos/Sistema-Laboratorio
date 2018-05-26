@@ -14,6 +14,7 @@ import model.ClassXML;
 import model.ClassXMLFuncionario;
 import model.Funcionario;
 import model.Paciente;
+import model.Usuario;
 
 public class Login extends JFrame{
 	JLabel imgFundo, loginLabel, senhaLabel;
@@ -56,19 +57,25 @@ public class Login extends JFrame{
 		setVisible(true);
 	}
 	
-	public boolean verificarLogin(String login, char[] password) {
+	public Usuario verificarLogin(String login, char[] password) {
 		String senha = String.copyValueOf(password);
 		for (Funcionario funcionario : ClassXMLFuncionario.funcionarios) {
 			if(funcionario.getLogin().equals(login)&&funcionario.getSenha().equals(senha)) {
-				return true;
+				return funcionario;
 			}
 		}
 		for (Paciente paciente : ClassXML.pacientes) {
 			if(paciente.getLogin().equals(login)&&paciente.getSenha().equals(senha)) {
-				return true;
+				return paciente;
 			}
 		}
 		
+		return null;
+	}
+	public boolean verificarTipoUsuario(Usuario usuario) {
+		if(usuario instanceof Funcionario) {
+			return true;
+		}
 		return false;
 	}
 

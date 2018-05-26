@@ -12,7 +12,7 @@ public class ClassXMLFuncionario {
 	
 	public static ArrayList<Funcionario> funcionarios = lerArquivo();
 	
-	public static boolean addPaciente(Funcionario funcionario)
+	public static boolean addFuncionario(Funcionario funcionario)
 	{
 		boolean add = true;
 		for(Funcionario f : funcionarios)

@@ -5,6 +5,7 @@ import java.awt.Color;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 
+
 public class Menu extends PanelGeral {
 
 	private JButton btnCadastro, btnConsulta,btnCadastroFuncionario ,btnSair;
@@ -18,7 +19,6 @@ public class Menu extends PanelGeral {
 	
 	@Override
 	public void inicializar() {
-		
 		btnCadastro = new JButton("Cadastro Paciente");
 		btnCadastroFuncionario = new JButton("Cadastro Funcionario");
 		btnConsulta = new JButton("Consulta");
@@ -47,5 +47,8 @@ public class Menu extends PanelGeral {
 	public JButton getBtnCadastroFuncionario() {
 		return btnCadastroFuncionario;
 	}
+
+	
+	
 
 }

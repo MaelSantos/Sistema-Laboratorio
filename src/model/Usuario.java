@@ -53,6 +53,24 @@ public abstract class Usuario {
 		}
 	}
 	
+	public Usuario(String login, String senha, String nomeCompleto, Endereco endereco, String cpf,
+			String idade, String sexo, String tipoSanguineo, String email, String telefone) {
+		this.login = login;
+		this.senha = senha;
+		this.nomeCompleto = nomeCompleto;
+		
+		this.nome = nomeCompleto.split(" ")[0];
+		this.sobrenome = nomeCompleto.split(" ")[1];
+		
+		this.endereco = endereco;
+		this.cpf = cpf;
+		this.idade = idade;
+		this.sexo = sexo;
+		this.tipoSanguineo = tipoSanguineo;
+		this.email = email;
+		this.telefone = telefone;
+	}
+	
 	@SuppressWarnings("resource")
 	public static void copyFile(File source, File destination) throws IOException {
         if (destination.exists())
