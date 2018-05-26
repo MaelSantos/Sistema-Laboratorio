@@ -1,27 +1,5 @@
 <list>
   <Funcionario>
-    <login>as asd</login>
-    <senha></senha>
-    <nomeCompleto>asd asd</nomeCompleto>
-    <nome>asd</nome>
-    <sobrenome>asd</sobrenome>
-    <endereco>
-      <rua></rua>
-      <numero></numero>
-      <bairro></bairro>
-      <cidade></cidade>
-      <estado></estado>
-      <complemento></complemento>
-      <cep></cep>
-    </endereco>
-    <cpf></cpf>
-    <idade></idade>
-    <sexo></sexo>
-    <tipoSanguineo></tipoSanguineo>
-    <email></email>
-    <telefone></telefone>
-  </Funcionario>
-  <Funcionario>
     <login>filipe</login>
     <senha>filipe</senha>
     <nomeCompleto>Luiz Filipe</nomeCompleto>
@@ -32,7 +10,7 @@
       <numero>12</numero>
       <bairro>jkhkjhjk</bairro>
       <cidade>sdijkjksa</cidade>
-      <estado>Acre – AC</estado>
+      <estado>Acre ï¿½ AC</estado>
       <complemento>dsahf&apos;</complemento>
       <cep>99999-999</cep>
     </endereco>
@@ -42,5 +20,27 @@
     <tipoSanguineo>O+</tipoSanguineo>
     <email>jkhsakhjsa</email>
     <telefone>(87)9 9999-9999</telefone>
+  </Funcionario>
+  <Funcionario>
+    <login>mael_santos7</login>
+    <senha>0708</senha>
+    <nomeCompleto>Mael Santos</nomeCompleto>
+    <nome>Mael</nome>
+    <sobrenome>Santos</sobrenome>
+    <endereco>
+      <rua>00</rua>
+      <numero>00</numero>
+      <bairro>00</bairro>
+      <cidade>00</cidade>
+      <estado>Cearï¿½ ï¿½ CE</estado>
+      <complemento>00</complemento>
+      <cep>00000-000</cep>
+    </endereco>
+    <cpf>000.000.000-00</cpf>
+    <idade>02/09/1998</idade>
+    <sexo>Masculino</sexo>
+    <tipoSanguineo>A+</tipoSanguineo>
+    <email>maelsantos777@gmail.com</email>
+    <telefone>(00)0 0000-0000</telefone>
   </Funcionario>
 </list>

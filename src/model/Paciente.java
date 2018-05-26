@@ -8,7 +8,7 @@ public class Paciente extends Usuario{
 			String telefone, Endereco endereco) {
 		
 //		(login, senha, nomeCompleto, endereco, cpf, idade, sexo, tipoSanguineo, email, telefone)
-		super(nomeCompleto,cpf,nomeCompleto,endereco,cpf,idade,sexo,tipoSanguineo,email,telefone);
+		super(nomeCompleto,cpf,nomeCompleto,endereco,cpf,idade,sexo,tipoSanguineo,email,telefone,"");
 
 	}
 		

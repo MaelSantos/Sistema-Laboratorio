@@ -1,12 +1,6 @@
 package app;
 
-import java.util.ArrayList;
-
 import controlle.Controle;
-import model.ClassXML;
-import model.ClassXMLFuncionario;
-import model.Endereco;
-import model.Funcionario;
 import view.Cadastro;
 import view.CadastroFuncionario;
 import view.Consulta;

@@ -107,7 +107,8 @@ public class Controle implements ActionListener{
 						cadastroFuncionario.getCbxSexo().getSelectedItem().toString().trim(), 
 						cadastroFuncionario.getCbxSangue().getSelectedItem().toString().trim(), 
 						cadastroFuncionario.getTfdEmail().getText().trim(), 
-						cadastroFuncionario.getTfdTelefone().getText().trim())))
+						cadastroFuncionario.getTfdTelefone().getText().trim(),
+						cadastroFuncionario.getFcsImagem().getSelectedFile().getAbsolutePath())))
 				Mensagem.exibirMensagem("Adicionado com Sucesso");
 				else
 					Mensagem.exibirMensagem("Falha Ao Adicionar - Dados Podem Esta faltando ou Repetidos");

@@ -1,4 +1,5 @@
 package model;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -68,6 +69,7 @@ public class ClassXMLFuncionario {
 			XStream stream =  new XStream(new DomDriver());
 			stream.alias("Funcionario", Funcionario.class);
 			stream.alias("Endereco", Endereco.class);
+			stream.alias("Imagem", BufferedImage.class);
 			String xml = stream.toXML(funcionarios);
 			
 			

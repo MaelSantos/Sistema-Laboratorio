@@ -2,7 +2,11 @@
 package model;
 
 import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.nio.channels.FileChannel;
 
 import javax.imageio.ImageIO;
 
@@ -17,6 +21,7 @@ public abstract class Usuario {
 	private String tipoSanguineo;
 	private String email;
 	private String telefone;
+	private String caminho;
 	
 	private BufferedImage imagem;
 
@@ -38,43 +43,34 @@ public abstract class Usuario {
 		this.telefone = telefone;
 		
 		try {
-			this.imagem = ImageIO.read(getClass().getClassLoader().getResourceAsStream(caminho));
-		} catch (IOException e) {
+			this.caminho = nome+".jpg";
+			copyFile(new File(caminho), new File("res/"+nome+caminho.toString().substring(caminho.toString().lastIndexOf("."), caminho.toString().length())));
+			this.imagem = ImageIO.read(getClass().getClassLoader().getResourceAsStream(this.caminho));
+			
+		} catch (Exception e) {
 			System.err.println("Erro ao carregar imagem!!!"+e.getMessage());
 			e.printStackTrace();
 		}
 	}
-
-	public Usuario(String login, String senha, String nomeCompleto, Endereco endereco, String cpf,
-			String idade, String sexo, String tipoSanguineo, String email, String telefone) {
-		this.login = login;
-		this.senha = senha;
-		this.nomeCompleto = nomeCompleto;
-		
-		this.nome = nomeCompleto.split(" ")[0];
-		this.sobrenome = nomeCompleto.split(" ")[1];
-		
-		this.endereco = endereco;
-		this.cpf = cpf;
-		this.idade = idade;
-		this.sexo = sexo;
-		this.tipoSanguineo = tipoSanguineo;
-		this.email = email;
-		this.telefone = telefone;
-		
-	}	
 	
-	public Usuario(String login, String senha, String caminho) {
-		this.login = login;
-		this.senha = senha;
-		
-		try {
-			this.imagem = ImageIO.read(getClass().getClassLoader().getResourceAsStream(caminho));
-		} catch (IOException e) {
-			System.err.println("Erro ao carregar imagem!!!"+e.getMessage());
-			e.printStackTrace();
-		}
-	}
+	@SuppressWarnings("resource")
+	public static void copyFile(File source, File destination) throws IOException {
+        if (destination.exists())
+            destination.delete();
+        FileChannel sourceChannel = null;
+        FileChannel destinationChannel = null;
+        try {
+            sourceChannel = new FileInputStream(source).getChannel();
+            destinationChannel = new FileOutputStream(destination).getChannel();
+            sourceChannel.transferTo(0, sourceChannel.size(),
+                    destinationChannel);
+        } finally {
+            if (sourceChannel != null && sourceChannel.isOpen())
+                sourceChannel.close();
+            if (destinationChannel != null && destinationChannel.isOpen())
+                destinationChannel.close();
+       }
+   }
 	
 	public Usuario(String login, String senha) {
 		this.login = login;
@@ -186,4 +182,12 @@ public abstract class Usuario {
 		this.nomeCompleto = nomeCompleto;
 	}
 
+	public String getCaminho() {
+		return caminho;
+	}
+
+	public void setCaminho(String caminho) {
+		this.caminho = caminho;
+	}
+	
 }
