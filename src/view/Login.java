@@ -1,5 +1,6 @@
 package view;
 
+import java.awt.Font;
 import java.awt.font.ImageGraphicAttribute;
 import java.util.ArrayList;
 
@@ -20,7 +21,7 @@ public class Login extends JFrame{
 	JLabel imgFundo, loginLabel, senhaLabel;
 	JTextField loginField;
 	JPasswordField senhaField;
-	JButton bntEntrar, bntSair;
+	JLabel bntEntrar, bntSair;
 	
 	public Login() {
 		setSize(700,500);
@@ -34,15 +35,26 @@ public class Login extends JFrame{
 		senhaLabel.setBounds(200, 300, 100, 30);
 		
 		loginField = new JTextField();
-		loginField.setBounds(200, 260, 300, 30);
+		loginField.setBounds(200, 260, 300, 35);
 		
 		senhaField= new JPasswordField();
-		senhaField.setBounds(200, 340, 300, 30);
+		senhaField.setBounds(200, 340, 300, 35);
 		
-		bntEntrar = new JButton("Entrar");
-		bntEntrar.setBounds(200, 400, 150, 30);
+		loginLabel.setFont(new Font("Futura Md Bt", Font.LAYOUT_LEFT_TO_RIGHT,15));
+		senhaLabel.setFont(new Font("Futura Md Bt", Font.LAYOUT_LEFT_TO_RIGHT,15));
+		loginField.setFont(new Font("Futura Md Bt", Font.BOLD,15));
+		senhaField.setFont(new Font("Futura Md Bt", Font.BOLD,15));
 		
-		bntSair = new JButton("Sair");
+		try {
+			bntEntrar = new JLabel(new ImageIcon(getClass().getClassLoader().getResource("entrar.png")));
+			bntSair = new JLabel(new ImageIcon(getClass().getClassLoader().getResource("sair.png")));
+			imgFundo = new JLabel(new ImageIcon(getClass().getClassLoader().getResource("fundoLogin.jpg")));
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+		
+		bntEntrar.setBounds(200, 400, 150, 30);		
 		bntSair.setBounds(350, 400, 150, 30);
 				
 		add(loginLabel);
@@ -50,9 +62,7 @@ public class Login extends JFrame{
 		add(senhaLabel);
 		add(senhaField);
 		add(bntEntrar);
-		add(bntSair);
-		
-		imgFundo = new JLabel(new ImageIcon(getClass().getClassLoader().getResource("fundoLogin.jpg")));
+		add(bntSair);		
 		add(imgFundo);
 		setVisible(true);
 	}
@@ -99,13 +109,12 @@ public class Login extends JFrame{
 		return senhaField;
 	}
 
-	public JButton getBntEntrar() {
+	public JLabel getBntEntrar() {
 		return bntEntrar;
 	}
 
-	public JButton getBntSair() {
+	public JLabel getBntSair() {
 		return bntSair;
 	}
-	
 	
 }

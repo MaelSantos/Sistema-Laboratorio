@@ -2,8 +2,9 @@ package controlle;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
-
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 import model.ClassXML;
 import model.ClassXMLFuncionario;
@@ -23,7 +24,7 @@ import view.Menu;
 import view.Perfil;
 import view.Principal;
 
-public class Controle implements ActionListener{
+public class Controle extends MouseAdapter implements ActionListener{
 
 	private Principal principal;//jframe
 	private Menu menu;//jpanel
@@ -60,8 +61,8 @@ public class Controle implements ActionListener{
 		detalhesFuncionario.getBtnVoltar().addActionListener(this);
 		detalhesFuncionario.getBtnAdd().addActionListener(this);
 		cadastroFuncionario.getBtnAdd().addActionListener(this);
-		login.getBntEntrar().addActionListener(this);
-		login.getBntSair().addActionListener(this);
+		login.getBntEntrar().addMouseListener(this);
+		login.getBntSair().addMouseListener(this);
 		
 		//menu.getBtnDetalhesFuncionario().addActionListener(this);
 	}
@@ -238,7 +239,31 @@ public class Controle implements ActionListener{
 			login.getSenhaField().setText(null);
 			login.setVisible(true);
 		}
-		if (e.getSource() == login.getBntEntrar()) {
+		
+		if (e.getSource()==perfil.getBtnEditarDados()) {
+			cadastro.setVisible(false);
+			cadastroFuncionario.setVisible(false);
+			detalhesPaciente.setVisible(false);
+			consulta.setVisible(false);
+			
+			if(login.verificarTipoUsuario(perfil.getUsuario())) {
+				detalhesFuncionario.autoPreencher((Funcionario)perfil.getUsuario());
+				detalhesFuncionario.setVisible(true);
+			}else {
+				detalhesPaciente.autoPreencher((Paciente)perfil.getUsuario());
+				detalhesPaciente.setVisible(true);
+			}
+			
+
+		}
+		
+		
+	}
+
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		
+        if (e.getSource() == login.getBntEntrar()) {
 			
 			Usuario usuario = login.verificarLogin(login.getLoginField().getText(),
 					login.getSenhaField().getPassword());
@@ -260,27 +285,13 @@ public class Controle implements ActionListener{
 				Mensagem.exibirMensagem("Login ou  Senha Incorretos !!!");
 			}
 		}
-		if (e.getSource()==perfil.getBtnEditarDados()) {
-			cadastro.setVisible(false);
-			cadastroFuncionario.setVisible(false);
-			detalhesPaciente.setVisible(false);
-			consulta.setVisible(false);
-			
-			if(login.verificarTipoUsuario(perfil.getUsuario())) {
-				detalhesFuncionario.autoPreencher((Funcionario)perfil.getUsuario());
-				detalhesFuncionario.setVisible(true);
-			}else {
-				detalhesPaciente.autoPreencher((Paciente)perfil.getUsuario());
-				detalhesPaciente.setVisible(true);
-			}
-			
-
-		}
 		if (e.getSource() == login.getBntSair()) {
 			System.exit(0);
 
 		}
 		
 	}
+
+	
 
 }
