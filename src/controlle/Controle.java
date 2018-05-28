@@ -253,7 +253,7 @@ public class Controle implements ActionListener{
 					menu.add(perfil);
 					
 				}
-				perfil.getBtnEditarDados().addActionListener(this);
+				perfil.getBtnEditarDados().addActionListener(this); 
 				login.setVisible(false);
 				principal.setVisible(true);
 			} else {

@@ -20,7 +20,8 @@ public class Perfil extends JPanel {
 	private String tipo;
 	public Perfil(Usuario usuario, String tipo) {
 		//caminho = "C:\\Users\\Felipe\\Desktop\\img_teste.png";
-		// setLayout(new FlowLayout());
+		//setLayout(new FlowLayout());
+		
 		this.usuario=usuario;
 		this.tipo=tipo;
 		

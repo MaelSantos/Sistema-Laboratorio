@@ -23,27 +23,27 @@ public class Login extends JFrame{
 	JButton bntEntrar, bntSair;
 	
 	public Login() {
-		setSize(600,500);
+		setSize(700,500);
 		setUndecorated(true);
 		setLocationRelativeTo(null);
 		
 		loginLabel = new JLabel("Login: ");
-		loginLabel.setBounds(170,220,100,30);
+		loginLabel.setBounds(200,220,100,30);
 		
 		senhaLabel = new JLabel("Senha: ");
-		senhaLabel.setBounds(170, 300, 100, 30);
+		senhaLabel.setBounds(200, 300, 100, 30);
 		
 		loginField = new JTextField();
-		loginField.setBounds(170, 260, 300, 30);
+		loginField.setBounds(200, 260, 300, 30);
 		
 		senhaField= new JPasswordField();
-		senhaField.setBounds(170, 340, 300, 30);
+		senhaField.setBounds(200, 340, 300, 30);
 		
 		bntEntrar = new JButton("Entrar");
-		bntEntrar.setBounds(170, 400, 150, 30);
+		bntEntrar.setBounds(200, 400, 150, 30);
 		
 		bntSair = new JButton("Sair");
-		bntSair.setBounds(320, 400, 150, 30);
+		bntSair.setBounds(350, 400, 150, 30);
 				
 		add(loginLabel);
 		add(loginField);
@@ -52,7 +52,7 @@ public class Login extends JFrame{
 		add(bntEntrar);
 		add(bntSair);
 		
-		imgFundo = new JLabel(new ImageIcon(getClass().getClassLoader().getResource("fundoLogin.jpeg")));
+		imgFundo = new JLabel(new ImageIcon(getClass().getClassLoader().getResource("fundoLogin.jpg")));
 		add(imgFundo);
 		setVisible(true);
 	}
