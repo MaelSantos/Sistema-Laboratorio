@@ -30,6 +30,7 @@ public class Perfil extends JPanel {
 		setSize(100, 90);
 		setPreferredSize(new Dimension(100, 90));
 		setMinimumSize(new Dimension(100, 90));
+		//setLayout(new FlowLayout());
 		
 		this.usuario=usuario;
 		this.tipo=tipo;

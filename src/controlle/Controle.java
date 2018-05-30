@@ -2,8 +2,9 @@ package controlle;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
-
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 import model.ClassXML;
 import model.ClassXMLFuncionario;
@@ -23,7 +24,7 @@ import view.Menu;
 import view.Perfil;
 import view.Principal;
 
-public class Controle implements ActionListener{
+public class Controle extends MouseAdapter implements ActionListener{
 
 	private Principal principal;//jframe
 	private Menu menu;//jpanel
@@ -59,11 +60,13 @@ public class Controle implements ActionListener{
 		detalhesFuncionario.getBtnVoltar().addActionListener(this);
 		detalhesFuncionario.getBtnAdd().addActionListener(this);
 		cadastroFuncionario.getBtnAdd().addActionListener(this);
-		login.getBntEntrar().addActionListener(this);
-		login.getBntSair().addActionListener(this);
+//		login.getBntEntrar().addActionListener(this);
+//		login.getBntSair().addActionListener(this);
 		perfil.getBtnEditarDados().addActionListener(this);
 		perfil.getBtnSair().addActionListener(this);
 		
+		login.getBntEntrar().addMouseListener(this);
+		login.getBntSair().addMouseListener(this);
 		
 		//menu.getBtnDetalhesFuncionario().addActionListener(this);
 	}
@@ -255,29 +258,7 @@ public class Controle implements ActionListener{
 			login.getSenhaField().setText(null);
 			login.setVisible(true);
 		}
-		if (e.getSource() == login.getBntEntrar()) {
-			
-			Usuario usuario = login.verificarLogin(login.getLoginField().getText(),
-					login.getSenhaField().getPassword());
-			if (usuario != null) {
-				
-				if (login.verificarTipoUsuario(usuario)) {
-					
-					perfil.atualiarUsuario(usuario, "Funcionario");
-					menu.getBtnCadastro().setVisible(true);
-					menu.getBtnCadastroFuncionario().setVisible(true);
-				} else {
-					perfil.atualiarUsuario(usuario, "Cliente");
-					menu.getBtnCadastro().setVisible(false);
-					menu.getBtnCadastroFuncionario().setVisible(false);
-				}
-				
-				login.setVisible(false);
-				principal.setVisible(true);
-			} else {
-				Mensagem.exibirMensagem("Login ou  Senha Incorretos !!!");
-			}
-		}
+		
 		if (e.getSource()==perfil.getBtnEditarDados()) {
 			cadastro.setVisible(false);
 			cadastroFuncionario.setVisible(false);
@@ -294,11 +275,43 @@ public class Controle implements ActionListener{
 			
 
 		}
+		
+		
+	}
+
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		
+        if (e.getSource() == login.getBntEntrar()) {
+			
+			Usuario usuario = login.verificarLogin(login.getLoginField().getText(),
+					login.getSenhaField().getPassword());
+			if (usuario != null) {
+				
+				if (login.verificarTipoUsuario(usuario)) {
+					
+					perfil.atualiarUsuario(usuario, "Funcionario");
+					menu.getBtnCadastro().setVisible(true);
+					menu.getBtnCadastroFuncionario().setVisible(true);
+				} else {
+					perfil.atualiarUsuario(usuario, "Cliente");
+					menu.getBtnCadastro().setVisible(false);
+					menu.getBtnCadastroFuncionario().setVisible(false);
+				}
+				perfil.getBtnEditarDados().addActionListener(this); 
+				login.setVisible(false);
+				principal.setVisible(true);
+			} else {
+				Mensagem.exibirMensagem("Login ou  Senha Incorretos !!!");
+			}
+		}
 		if (e.getSource() == login.getBntSair()) {
 			System.exit(0);
 
 		}
 		
 	}
+
+	
 
 }
