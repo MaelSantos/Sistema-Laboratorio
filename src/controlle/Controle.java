@@ -36,8 +36,7 @@ public class Controle implements ActionListener{
 	private Perfil perfil;
 
 	public Controle(Login login,Principal principal, Menu menu, Cadastro cadastro,Consulta consulta, DetalhesPaciente detalhesPaciente,
-			CadastroFuncionario cadastroFuncionario, DetalhesFuncionario detalhesFuncionario) {
-		perfil=new Perfil(new Usuario("",""){}, "");
+			CadastroFuncionario cadastroFuncionario, DetalhesFuncionario detalhesFuncionario,Perfil perfil) {
 		this.principal = principal;
 		this.menu = menu;
 		this.cadastro = cadastro;
@@ -46,6 +45,7 @@ public class Controle implements ActionListener{
 		this.cadastroFuncionario = cadastroFuncionario;
 		this.detalhesFuncionario = detalhesFuncionario;
 		this.login= login;
+		this.perfil = perfil;
 
 		cadastro.getBtnAdd().addActionListener(this);
 		consulta.getConsultaB().addActionListener(this);
@@ -54,7 +54,6 @@ public class Controle implements ActionListener{
 		menu.getBtnCadastro().addActionListener(this);
 		menu.getBtnCadastroFuncionario().addActionListener(this);
 		menu.getBtnConsulta().addActionListener(this);
-		menu.getBtnSair().addActionListener(this);
 		detalhesPaciente.getBtnAdd().addActionListener(this);
 		detalhesPaciente.getBntVoltar().addActionListener(this);
 		detalhesFuncionario.getBtnVoltar().addActionListener(this);
@@ -62,6 +61,9 @@ public class Controle implements ActionListener{
 		cadastroFuncionario.getBtnAdd().addActionListener(this);
 		login.getBntEntrar().addActionListener(this);
 		login.getBntSair().addActionListener(this);
+		perfil.getBtnEditarDados().addActionListener(this);
+		perfil.getBtnSair().addActionListener(this);
+		
 		
 		//menu.getBtnDetalhesFuncionario().addActionListener(this);
 	}
@@ -103,6 +105,10 @@ public class Controle implements ActionListener{
 		{
 			if( (Verificar.verificarCadastro(cadastroFuncionario)))
 			{
+				if(detalhesFuncionario.getTfdSenha().getText()
+						.equals(detalhesFuncionario.getTfdConfirmar().getText())
+						&& !detalhesFuncionario.getTfdSenha().getText().trim().equals(""))
+				{
 				if(ClassXMLFuncionario.addFuncionario(new Funcionario(
 						cadastroFuncionario.getTfdLogin().getText().trim(), 
 						cadastroFuncionario.getTfdSenha().getText().trim(), 
@@ -125,12 +131,16 @@ public class Controle implements ActionListener{
 					Mensagem.exibirMensagem("Adicionado com Sucesso");
 				else
 					Mensagem.exibirMensagem("Falha Ao Adicionar - Dados Podem Esta faltando ou Repetidos");
+				}
+				else
+					Mensagem.exibirMensagem("Senhar Repetidas");
 			}
 			else
 			{
 				Mensagem.exibirMensagem("Preencha os dados nescessarios !!!");
 			}
 		}
+
 
 		if(e.getSource() == menu.getBtnCadastro())
 		{ 
@@ -202,23 +212,30 @@ public class Controle implements ActionListener{
 		}
 
 		if (e.getSource() == detalhesFuncionario.getBtnAdd()) {
-			Funcionario funcionario = new Funcionario(
-					detalhesFuncionario.getTfdLogin().getText().trim(),
-					detalhesFuncionario.getTfdSenha().getText().trim(),
-					detalhesFuncionario.getTfdNome().getText().trim(),
-					new Endereco(detalhesFuncionario.getTfdRua().getText().trim(),
-							detalhesFuncionario.getTfdRua().getText().trim(),
-							detalhesFuncionario.getTfdBairro().getText(),
-							detalhesFuncionario.getTfdCidade().getText().trim(),
-							detalhesFuncionario.getCbxEstado().getSelectedItem().toString().trim(),
-							detalhesFuncionario.getTfdComplemento().getText().trim(),
-							detalhesFuncionario.getTfdCep().getText().trim()),
-
-					detalhesFuncionario.getTfdCpf().getText(), detalhesFuncionario.getTfdNascimento().getText().trim(),
-					detalhesFuncionario.getCbxSexo().toString(), detalhesFuncionario.getCbxSangue().toString().trim(),
-					detalhesFuncionario.getTfdEmail().getText(), detalhesFuncionario.getTfdEmail().getText().trim());
-
-			// Falta o editar funcionario
+			if(detalhesFuncionario.getTfdSenha().getText()
+					.equals(detalhesFuncionario.getTfdConfirmar().getText())
+					&& !detalhesFuncionario.getTfdSenha().getText().trim().equals(""))
+			{
+				Funcionario funcionario = new Funcionario(
+						detalhesFuncionario.getTfdLogin().getText().trim(),
+						detalhesFuncionario.getTfdSenha().getText().trim(),
+						detalhesFuncionario.getTfdNome().getText().trim(),
+						new Endereco(detalhesFuncionario.getTfdRua().getText().trim(),
+								detalhesFuncionario.getTfdRua().getText().trim(),
+								detalhesFuncionario.getTfdBairro().getText(),
+								detalhesFuncionario.getTfdCidade().getText().trim(),
+								detalhesFuncionario.getCbxEstado().getSelectedItem().toString().trim(),
+								detalhesFuncionario.getTfdComplemento().getText().trim(),
+								detalhesFuncionario.getTfdCep().getText().trim()),
+						
+						detalhesFuncionario.getTfdCpf().getText(), detalhesFuncionario.getTfdNascimento().getText().trim(),
+						detalhesFuncionario.getCbxSexo().toString(), detalhesFuncionario.getCbxSangue().toString().trim(),
+						detalhesFuncionario.getTfdEmail().getText(), detalhesFuncionario.getTfdEmail().getText().trim());
+				
+				// Falta o editar funcionario				
+			}
+			else
+				Mensagem.exibirMensagem("Senhas Diferentes!!!");
 		}
 
 		if(e.getSource()==detalhesPaciente.getBntVoltar()) {
@@ -231,7 +248,7 @@ public class Controle implements ActionListener{
 			consulta.setVisible(true);
 		}
 
-		if(e.getSource() == menu.getBtnSair())
+		if(e.getSource() == perfil.getBtnSair())
 		{
 			principal.setVisible(false);
 			login.getLoginField().setText(null);
@@ -243,17 +260,18 @@ public class Controle implements ActionListener{
 			Usuario usuario = login.verificarLogin(login.getLoginField().getText(),
 					login.getSenhaField().getPassword());
 			if (usuario != null) {
-				menu.remove(perfil);
+				
 				if (login.verificarTipoUsuario(usuario)) {
 					
-					perfil = new Perfil(usuario, "Funcionario");
-					menu.add(perfil);
+					perfil.atualiarUsuario(usuario, "Funcionario");
+					menu.getBtnCadastro().setVisible(true);
+					menu.getBtnCadastroFuncionario().setVisible(true);
 				} else {
-					perfil = new Perfil(usuario, "Cliente");
-					menu.add(perfil);
-					
+					perfil.atualiarUsuario(usuario, "Cliente");
+					menu.getBtnCadastro().setVisible(false);
+					menu.getBtnCadastroFuncionario().setVisible(false);
 				}
-				perfil.getBtnEditarDados().addActionListener(this);
+				
 				login.setVisible(false);
 				principal.setVisible(true);
 			} else {

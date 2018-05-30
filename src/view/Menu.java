@@ -8,7 +8,7 @@ import javax.swing.JButton;
 
 public class Menu extends PanelGeral {
 
-	private JButton btnCadastro, btnConsulta,btnCadastroFuncionario ,btnSair;
+	private JButton btnCadastro, btnConsulta, btnCadastroFuncionario;
 	
 	public Menu() {
 		super();
@@ -22,12 +22,10 @@ public class Menu extends PanelGeral {
 		btnCadastro = new JButton("Cadastro Paciente");
 		btnCadastroFuncionario = new JButton("Cadastro Funcionario");
 		btnConsulta = new JButton("Consulta");
-		btnSair = new JButton("Sair");
 
+		add(btnConsulta);
 		add(btnCadastro);
 		add(btnCadastroFuncionario);
-		add(btnConsulta);
-		add(btnSair);
 		
 	}
 
@@ -40,15 +38,8 @@ public class Menu extends PanelGeral {
 		return btnConsulta;
 	}
 
-	public JButton getBtnSair() {
-		return btnSair;
-	}
-
 	public JButton getBtnCadastroFuncionario() {
 		return btnCadastroFuncionario;
 	}
-
-	
-	
 
 }

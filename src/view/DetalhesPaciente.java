@@ -11,6 +11,7 @@ public class DetalhesPaciente extends Cadastro{
 	private Paciente paciente;
 	private JButton bntVoltar;
 	public DetalhesPaciente() {
+
 		setBorder(BorderFactory.createTitledBorder("Detalhes"));
 		getBtnAdd().setText("Salvar");
 		bntVoltar=new JButton("Voltar");

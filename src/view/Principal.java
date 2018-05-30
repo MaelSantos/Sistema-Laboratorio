@@ -16,8 +16,11 @@ public class Principal extends TelaGeral{
 	private DetalhesPaciente detalhesPaciente;
 	private CadastroFuncionario cadastroFuncionario;
 	private DetalhesFuncionario detalhesFuncionario;
+	private Perfil perfil;
+	
 	public Principal(String titulo, Menu menu, Cadastro cadastro,Consulta consulta, 
-			DetalhesPaciente detalhesPaciente, CadastroFuncionario cadastroFuncionario, DetalhesFuncionario detalhesFuncionario) {
+			DetalhesPaciente detalhesPaciente, CadastroFuncionario cadastroFuncionario, 
+			DetalhesFuncionario detalhesFuncionario, Perfil perfil) {
 		super(titulo);
 		
 		this.cadastro = cadastro;
@@ -26,6 +29,7 @@ public class Principal extends TelaGeral{
 		this.detalhesPaciente = detalhesPaciente;
 		this.cadastroFuncionario = cadastroFuncionario;
 		this.detalhesFuncionario = detalhesFuncionario;
+		this.perfil = perfil;
 		inicializar();
 		setVisible(false);
 	}
@@ -52,14 +56,19 @@ public class Principal extends TelaGeral{
 		
 		setLayout(new GridBagLayout());
 		
+//		cons.anchor = GridBagConstraints.NORTHEAST;
+//		cons.fill = GridBagConstraints.NONE;
 		cons.gridwidth = GridBagConstraints.REMAINDER; //gridheight
-		cons.anchor = GridBagConstraints.NORTH;
-		add(titulo, cons);
+		cons.anchor = GridBagConstraints.NORTHEAST;
+//		cons.fill = GridBagConstraints.VERTICAL;
+		add(perfil,cons);
+//		add(titulo, cons);
+		
 		cons.gridheight = GridBagConstraints.REMAINDER;
 		cons.weightx = 0;
 		cons.weighty = 0.9;
-		cons.fill = GridBagConstraints.VERTICAL;
 		cons.gridwidth = GridBagConstraints.RELATIVE;
+		cons.fill = GridBagConstraints.VERTICAL;
 		cons.anchor = GridBagConstraints.WEST;
 		add(menu, cons);
 		cons.fill = GridBagConstraints.BOTH;

@@ -21,6 +21,7 @@ import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JSeparator;
 import javax.swing.JTextField;
 
@@ -30,7 +31,8 @@ public class CadastroFuncionario extends Cadastro {
 	private JLabel lblCargo;
 	
 	private JLabel lblSenha, lblConfirmar, lblLogin;
-	private JTextField tfdSenha, tfdConfirmar, tfdLogin; 
+	private JTextField tfdLogin; 
+	private JPasswordField tfdSenha, tfdConfirmar;
 	
 	private BufferedImage imagem;
 	private JButton btnAddImagem,btnRemoveImage;
@@ -70,8 +72,8 @@ public class CadastroFuncionario extends Cadastro {
 		lblSenha = new JLabel("Senha:"); 
 		lblConfirmar = new JLabel("Confirme Sua Senha:");
 		lblLogin = new JLabel("Login:");
-		tfdSenha = new JTextField(10);
-		tfdConfirmar = new JTextField(10);
+		tfdSenha = new JPasswordField(10);
+		tfdConfirmar = new JPasswordField(10);
 		tfdLogin = new JTextField(10);
 		
 		btnAdd.setText("Criar Conta");
@@ -248,11 +250,11 @@ public class CadastroFuncionario extends Cadastro {
 		return lblLogin;
 	}
 
-	public JTextField getTfdSenha() {
+	public JPasswordField getTfdSenha() {
 		return tfdSenha;
 	}
 
-	public JTextField getTfdConfirmar() {
+	public JPasswordField getTfdConfirmar() {
 		return tfdConfirmar;
 	}
 

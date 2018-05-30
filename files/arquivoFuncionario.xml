@@ -89,4 +89,27 @@
     <telefone>(34)3 4343-4343</telefone>
     <caminho>asd.jpg</caminho>
   </Funcionario>
+  <Funcionario>
+    <login>mama</login>
+    <senha>mama</senha>
+    <nomeCompleto>hhh jj</nomeCompleto>
+    <nome>hhh</nome>
+    <sobrenome>jj</sobrenome>
+    <endereco>
+      <rua>8</rua>
+      <numero>8</numero>
+      <bairro>8</bairro>
+      <cidade>8</cidade>
+      <estado>Acre – AC</estado>
+      <complemento>8</complemento>
+      <cep>88888-888</cep>
+    </endereco>
+    <cpf>898.888.888-88</cpf>
+    <idade>88/88/8888</idade>
+    <sexo>Masculino</sexo>
+    <tipoSanguineo>O+</tipoSanguineo>
+    <email>888</email>
+    <telefone>(88)8 8888-8888</telefone>
+    <caminho>hhh.jpg</caminho>
+  </Funcionario>
 </list>

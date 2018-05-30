@@ -1,8 +1,5 @@
 package view;
 
-import java.awt.font.ImageGraphicAttribute;
-import java.util.ArrayList;
-
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -16,17 +13,24 @@ import model.Funcionario;
 import model.Paciente;
 import model.Usuario;
 
-public class Login extends JFrame{
+public class Login extends TelaGeral{
+	
 	JLabel imgFundo, loginLabel, senhaLabel;
 	JTextField loginField;
 	JPasswordField senhaField;
 	JButton bntEntrar, bntSair;
 	
-	public Login() {
+	public Login(String titulo) {
+		super(titulo);
 		setSize(600,500);
 		setUndecorated(true);
 		setLocationRelativeTo(null);
 		
+		inicializar();
+	}
+	
+	@Override
+	public void inicializar() {
 		loginLabel = new JLabel("Login: ");
 		loginLabel.setBounds(170,220,100,30);
 		
@@ -55,6 +59,7 @@ public class Login extends JFrame{
 		imgFundo = new JLabel(new ImageIcon(getClass().getClassLoader().getResource("fundoLogin.jpeg")));
 		add(imgFundo);
 		setVisible(true);
+		
 	}
 	
 	public Usuario verificarLogin(String login, char[] password) {
@@ -106,6 +111,7 @@ public class Login extends JFrame{
 	public JButton getBntSair() {
 		return bntSair;
 	}
+
 	
 	
 }
