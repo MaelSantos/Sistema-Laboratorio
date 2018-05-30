@@ -3,6 +3,7 @@ package view;
 import java.awt.Color;
 
 import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
 
@@ -19,10 +20,15 @@ public class Menu extends PanelGeral {
 	
 	@Override
 	public void inicializar() {
-		btnCadastro = new JButton("Cadastro Paciente");
-		btnCadastroFuncionario = new JButton("Cadastro Funcionario");
-		btnConsulta = new JButton("Consulta");
+		
+		btnCadastro = new JButton(new ImageIcon(getClass().getClassLoader().getResource("cadastrarPaciente.png")));
+		btnCadastroFuncionario = new JButton(new ImageIcon(getClass().getClassLoader().getResource("cadastrarFuncionario.png")));
+		btnConsulta = new JButton(new ImageIcon(getClass().getClassLoader().getResource("consulta.png")));
 
+		btnConsulta.setContentAreaFilled(false);
+		btnCadastroFuncionario.setContentAreaFilled(false);
+		btnCadastro.setContentAreaFilled(false);
+		
 		add(btnConsulta);
 		add(btnCadastro);
 		add(btnCadastroFuncionario);

@@ -22,7 +22,7 @@ public class Login extends TelaGeral{
 	
 	public Login(String titulo) {
 		super(titulo);
-		setSize(600,500);
+		setSize(700,500);
 		setUndecorated(true);
 		setLocationRelativeTo(null);
 		

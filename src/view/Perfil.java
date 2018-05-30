@@ -58,9 +58,10 @@ public class Perfil extends JPanel {
 		}
 		labeltipo =  new JLabel(tipo + ":");
 		labelNome = new JLabel(usuario.getNome());
-		btnEditarDados = new JButton("Editar Dados");
-		btnSair = new JButton("Sair");
-
+		btnEditarDados = new JButton(new ImageIcon(getClass().getClassLoader().getResource("editarConta.png")));
+		btnSair = new JButton(new ImageIcon(getClass().getClassLoader().getResource("sairPerfil.png")));
+		btnSair.setContentAreaFilled(false);
+		btnEditarDados.setContentAreaFilled(false);
 		try {
 			fundo = ImageIO.read(getClass().getClassLoader().getResourceAsStream("nomeSistema.jpg"));
 		} catch (IOException e) {
