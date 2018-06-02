@@ -5,15 +5,18 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.ArrayList;
 
 import model.ClassXML;
 import model.ClassXMLFuncionario;
 import model.Endereco;
+import model.Exame;
 import model.Funcionario;
 import model.Paciente;
 import model.Usuario;
 import model.Verificar;
 import view.Cadastro;
+import view.CadastroExames;
 import view.CadastroFuncionario;
 import view.Consulta;
 import view.DetalhesFuncionario;
@@ -35,9 +38,10 @@ public class Controle extends MouseAdapter implements ActionListener{
 	private DetalhesFuncionario detalhesFuncionario;//jpanel
 	private Login login;//jpanel
 	private Perfil perfil;
+	private CadastroExames cadastroExames;
 
 	public Controle(Login login,Principal principal, Menu menu, Cadastro cadastro,Consulta consulta, DetalhesPaciente detalhesPaciente,
-			CadastroFuncionario cadastroFuncionario, DetalhesFuncionario detalhesFuncionario,Perfil perfil) {
+			CadastroFuncionario cadastroFuncionario, DetalhesFuncionario detalhesFuncionario,Perfil perfil, CadastroExames cadastroExames) {
 		this.principal = principal;
 		this.menu = menu;
 		this.cadastro = cadastro;
@@ -47,6 +51,7 @@ public class Controle extends MouseAdapter implements ActionListener{
 		this.detalhesFuncionario = detalhesFuncionario;
 		this.login= login;
 		this.perfil = perfil;
+		this.cadastroExames = cadastroExames;
 
 		cadastro.getBtnAdd().addActionListener(this);
 		consulta.getConsultaB().addActionListener(this);
@@ -55,15 +60,22 @@ public class Controle extends MouseAdapter implements ActionListener{
 		menu.getBtnCadastro().addActionListener(this);
 		menu.getBtnCadastroFuncionario().addActionListener(this);
 		menu.getBtnConsulta().addActionListener(this);
+		menu.getBtnCadastrarExame().addActionListener(this);
 		detalhesPaciente.getBtnAdd().addActionListener(this);
 		detalhesPaciente.getBntVoltar().addActionListener(this);
 		detalhesFuncionario.getBtnVoltar().addActionListener(this);
 		detalhesFuncionario.getBtnAdd().addActionListener(this);
 		cadastroFuncionario.getBtnAdd().addActionListener(this);
+		cadastroExames.getBtnSalvar().addActionListener(this);
 //		login.getBntEntrar().addActionListener(this);
 //		login.getBntSair().addActionListener(this);
+		
+		
+		
 		perfil.getBtnEditarDados().addActionListener(this);
 		perfil.getBtnSair().addActionListener(this);
+		
+		
 		
 		login.getBntEntrar().addMouseListener(this);
 		login.getBntSair().addMouseListener(this);
@@ -168,6 +180,13 @@ public class Controle extends MouseAdapter implements ActionListener{
 			detalhesPaciente.setVisible(false);
 			consulta.setVisible(false);
 			cadastroFuncionario.setVisible(true);
+		}
+		if(e.getSource() == menu.getBtnCadastrarExame()) {
+			cadastro.setVisible(false);
+			detalhesPaciente.setVisible(false);
+			consulta.setVisible(false);
+			cadastroFuncionario.setVisible(false);
+			cadastroExames.setVisible(true);
 		}
 
 		if(e.getSource() == consulta.getConsultaB())
@@ -275,7 +294,25 @@ public class Controle extends MouseAdapter implements ActionListener{
 			
 
 		}
-		
+		if(e.getSource() == cadastroExames.getBtnSalvar()) {
+			
+			Exame exame = new Exame(cadastroExames.getFieldNomeMedico().getText(),cadastroExames.getFieldcpfPaciente().getText(), cadastroExames.getTextAreaParecer().getText());
+			ArrayList<Paciente> pacientes = ClassXML.lerArquivo();
+			
+			
+			for (Paciente pacienteAtual : pacientes) {
+				if(pacienteAtual.getCpf().equals(cadastroExames.getFieldcpfPaciente().getText())) {
+					pacienteAtual.getExames().add(exame);
+					ClassXML.editarPaciente(pacienteAtual);
+				}
+			}
+			
+			
+			
+			cadastroExames.getFieldcpfPaciente().setText("");
+			cadastroExames.getFieldNomeMedico().setText("");
+			cadastroExames.getTextAreaParecer().setText("");
+		}
 		
 	}
 

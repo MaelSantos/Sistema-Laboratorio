@@ -53,7 +53,7 @@ public class Login extends TelaGeral{
 			bntSair = new JLabel(new ImageIcon(getClass().getClassLoader().getResource("sair.png")));
 			imgFundo = new JLabel(new ImageIcon(getClass().getClassLoader().getResource("fundoLogin.jpg")));			
 		} catch (Exception e) {
-			// TODO: handle exception
+			System.out.println("Erro");
 		}
 		
 		bntEntrar.setBounds(200, 400, 150, 30);		
