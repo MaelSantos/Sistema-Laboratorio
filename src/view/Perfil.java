@@ -61,7 +61,9 @@ public class Perfil extends JPanel {
 		btnEditarDados = new JButton(new ImageIcon(getClass().getClassLoader().getResource("editarConta.png")));
 		btnSair = new JButton(new ImageIcon(getClass().getClassLoader().getResource("sairPerfil.png")));
 		btnSair.setContentAreaFilled(false);
+		btnSair.setBorderPainted(false);
 		btnEditarDados.setContentAreaFilled(false);
+		btnEditarDados.setBorderPainted(false);
 		try {
 			fundo = ImageIO.read(getClass().getClassLoader().getResourceAsStream("nomeSistema.jpg"));
 		} catch (IOException e) {

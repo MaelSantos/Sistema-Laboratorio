@@ -26,8 +26,11 @@ public class Menu extends PanelGeral {
 		btnConsulta = new JButton(new ImageIcon(getClass().getClassLoader().getResource("consulta.png")));
 
 		btnConsulta.setContentAreaFilled(false);
+		btnConsulta.setBorderPainted(false);
 		btnCadastroFuncionario.setContentAreaFilled(false);
+		btnCadastroFuncionario.setBorderPainted(false);
 		btnCadastro.setContentAreaFilled(false);
+		btnCadastro.setBorderPainted(false);
 		
 		add(btnConsulta);
 		add(btnCadastro);
