@@ -28,7 +28,7 @@ public class Cadastro extends PanelGeral {
 	
 	public Cadastro() {
 		super();
-		setBorder(BorderFactory.createTitledBorder("Cadastro"));
+		setBorder(BorderFactory.createTitledBorder("Cadastro de Pacientes"));
 	}
 	
 	@Override

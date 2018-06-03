@@ -9,7 +9,7 @@ import javax.swing.JButton;
 
 public class Menu extends PanelGeral {
 
-	private JButton btnCadastro, btnConsulta, btnCadastroFuncionario;
+	private JButton btnCadastro, btnConsulta, btnCadastroFuncionario, btnCadastrarExame;
 	
 	public Menu() {
 		super();
@@ -24,6 +24,8 @@ public class Menu extends PanelGeral {
 		btnCadastro = new JButton(new ImageIcon(getClass().getClassLoader().getResource("cadastrarPaciente.png")));
 		btnCadastroFuncionario = new JButton(new ImageIcon(getClass().getClassLoader().getResource("cadastrarFuncionario.png")));
 		btnConsulta = new JButton(new ImageIcon(getClass().getClassLoader().getResource("consulta.png")));
+		
+		btnCadastrarExame = new JButton("Cadastrar Exame");
 
 		btnConsulta.setContentAreaFilled(false);
 		btnConsulta.setBorderPainted(false);
@@ -35,6 +37,7 @@ public class Menu extends PanelGeral {
 		add(btnConsulta);
 		add(btnCadastro);
 		add(btnCadastroFuncionario);
+		add(btnCadastrarExame);
 		
 	}
 
@@ -50,5 +53,10 @@ public class Menu extends PanelGeral {
 	public JButton getBtnCadastroFuncionario() {
 		return btnCadastroFuncionario;
 	}
+
+	public JButton getBtnCadastrarExame() {
+		return btnCadastrarExame;
+	}
+	
 
 }

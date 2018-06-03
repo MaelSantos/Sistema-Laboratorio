@@ -17,10 +17,11 @@ public class Principal extends TelaGeral{
 	private CadastroFuncionario cadastroFuncionario;
 	private DetalhesFuncionario detalhesFuncionario;
 	private Perfil perfil;
+	private CadastroExames cadastroExames;
 	
 	public Principal(String titulo, Menu menu, Cadastro cadastro,Consulta consulta, 
 			DetalhesPaciente detalhesPaciente, CadastroFuncionario cadastroFuncionario, 
-			DetalhesFuncionario detalhesFuncionario, Perfil perfil) {
+			DetalhesFuncionario detalhesFuncionario, Perfil perfil, CadastroExames cadastroExames) {
 		super(titulo);
 		
 		this.cadastro = cadastro;
@@ -30,6 +31,7 @@ public class Principal extends TelaGeral{
 		this.cadastroFuncionario = cadastroFuncionario;
 		this.detalhesFuncionario = detalhesFuncionario;
 		this.perfil = perfil;
+		this.cadastroExames = cadastroExames;
 		inicializar();
 		setVisible(false);
 	}
@@ -78,6 +80,7 @@ public class Principal extends TelaGeral{
      	add(detalhesPaciente,cons);
 		add(cadastroFuncionario,cons);
 		add(detalhesFuncionario,cons);
+		add(cadastroExames, cons);
 	}
 
 }

@@ -5,6 +5,7 @@ import javax.swing.UIManager;
 import controlle.Controle;
 import model.Usuario;
 import view.Cadastro;
+import view.CadastroExames;
 import view.CadastroFuncionario;
 import view.Consulta;
 import view.DetalhesFuncionario;
@@ -32,6 +33,9 @@ public class App {
 		
 		DetalhesPaciente detalhesPaciente =new DetalhesPaciente();
 		
+		CadastroExames cadastroExames = new CadastroExames();
+		
+		
 		DetalhesFuncionario detalhesFuncionario =  new DetalhesFuncionario();
 		
 		CadastroFuncionario cadastroFuncionario = new CadastroFuncionario();
@@ -41,9 +45,9 @@ public class App {
 		Perfil perfil = new Perfil(new Usuario("",""){}, "");
 	
 		Principal principal = new Principal("Sistema Laboratorio", menu, cadastro, consulta, detalhesPaciente, cadastroFuncionario,
-				detalhesFuncionario, perfil);
+				detalhesFuncionario, perfil,cadastroExames);
 		
-		Controle controle = new Controle(login,principal, menu, cadastro,consulta,detalhesPaciente, cadastroFuncionario,  detalhesFuncionario, perfil);
+		Controle controle = new Controle(login,principal, menu, cadastro,consulta,detalhesPaciente, cadastroFuncionario,  detalhesFuncionario, perfil,cadastroExames);
 		
 	}
 	
