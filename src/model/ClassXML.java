@@ -11,6 +11,7 @@ import com.thoughtworks.xstream.io.xml.DomDriver;
 public class ClassXML {
 	
 	public static ArrayList<Paciente> pacientes = lerArquivo();
+	public static ArrayList<Exame> examesTotais = new ArrayList<>();
 	
 	public static boolean addPaciente(Paciente paciente)
 	{

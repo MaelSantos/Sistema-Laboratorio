@@ -6,6 +6,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.AbstractTableModel;
 
+import model.ClassXML;
 import model.Exame;
 
 public class ConsultaExames extends PanelGeral {
@@ -21,7 +22,7 @@ public class ConsultaExames extends PanelGeral {
 	@Override
 	public void inicializar() {
 		
-		model = new TableModel();
+		model = new TableModel(ClassXML.examesTotais);
 		tblExames = new JTable(model);
 		scpExames = new JScrollPane(tblExames);
 		
