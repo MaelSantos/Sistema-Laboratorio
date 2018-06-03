@@ -2,6 +2,9 @@ package model;
 
 import java.util.ArrayList;
 
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+
+@XStreamAlias(value = "Paciente") 
 public class Paciente extends Usuario{
 
 	private ArrayList<Exame>exames;

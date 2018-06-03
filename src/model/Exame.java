@@ -1,13 +1,14 @@
 package model;
 
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+
+@XStreamAlias(value = "Exame") 
 public class Exame {
 	private String nomeMedico, cpfPaciente, parecer;
-	
 	
 	public Exame() {
 		
 	}
-
 
 	public Exame(String nomeMedico, String parecer) {
 		super();
@@ -15,15 +16,13 @@ public class Exame {
 		this.parecer = parecer;
 		
 	}
-	
-	
+		
 	public Exame(String nomeMedico, String cpfPaciente, String parecer) {
 		super();
 		this.nomeMedico = nomeMedico;
 		this.cpfPaciente = cpfPaciente;
 		this.parecer = parecer;
 	}
-
 
 	public String getNomeMedico() {
 		return nomeMedico;
@@ -54,8 +53,4 @@ public class Exame {
 		this.parecer = parecer;
 	}
 	
-	
-	
-	
-
 }

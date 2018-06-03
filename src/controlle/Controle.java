@@ -19,6 +19,7 @@ import view.Cadastro;
 import view.CadastroExames;
 import view.CadastroFuncionario;
 import view.Consulta;
+import view.ConsultaExames;
 import view.DetalhesFuncionario;
 import view.DetalhesPaciente;
 import view.Login;
@@ -39,9 +40,11 @@ public class Controle extends MouseAdapter implements ActionListener{
 	private Login login;//jpanel
 	private Perfil perfil;
 	private CadastroExames cadastroExames;
+	private ConsultaExames consultaExames;
 
 	public Controle(Login login,Principal principal, Menu menu, Cadastro cadastro,Consulta consulta, DetalhesPaciente detalhesPaciente,
-			CadastroFuncionario cadastroFuncionario, DetalhesFuncionario detalhesFuncionario,Perfil perfil, CadastroExames cadastroExames) {
+			CadastroFuncionario cadastroFuncionario, DetalhesFuncionario detalhesFuncionario,
+			Perfil perfil, CadastroExames cadastroExames, ConsultaExames consultaExames) {
 		this.principal = principal;
 		this.menu = menu;
 		this.cadastro = cadastro;
@@ -52,6 +55,7 @@ public class Controle extends MouseAdapter implements ActionListener{
 		this.login= login;
 		this.perfil = perfil;
 		this.cadastroExames = cadastroExames;
+		this.consultaExames = consultaExames;
 
 		cadastro.getBtnAdd().addActionListener(this);
 		consulta.getConsultaB().addActionListener(this);
@@ -61,6 +65,7 @@ public class Controle extends MouseAdapter implements ActionListener{
 		menu.getBtnCadastroFuncionario().addActionListener(this);
 		menu.getBtnConsulta().addActionListener(this);
 		menu.getBtnCadastrarExame().addActionListener(this);
+		menu.getBtnConsultaExames().addActionListener(this);
 		detalhesPaciente.getBtnAdd().addActionListener(this);
 		detalhesPaciente.getBntVoltar().addActionListener(this);
 		detalhesFuncionario.getBtnVoltar().addActionListener(this);
@@ -70,12 +75,8 @@ public class Controle extends MouseAdapter implements ActionListener{
 //		login.getBntEntrar().addActionListener(this);
 //		login.getBntSair().addActionListener(this);
 		
-		
-		
 		perfil.getBtnEditarDados().addActionListener(this);
 		perfil.getBtnSair().addActionListener(this);
-		
-		
 		
 		login.getBntEntrar().addMouseListener(this);
 		login.getBntSair().addMouseListener(this);
@@ -159,12 +160,11 @@ public class Controle extends MouseAdapter implements ActionListener{
 
 		if(e.getSource() == menu.getBtnCadastro())
 		{ 
-
 			consulta.setVisible(false);
 			detalhesPaciente.setVisible(false);
 			cadastroFuncionario.setVisible(false);
 			cadastro.setVisible(true);
-
+			consultaExames.setVisible(false);
 		}
 		if(e.getSource() == menu.getBtnConsulta())
 		{
@@ -172,6 +172,7 @@ public class Controle extends MouseAdapter implements ActionListener{
 			detalhesPaciente.setVisible(false);
 			cadastroFuncionario.setVisible(false);
 			consulta.setVisible(true);
+			consultaExames.setVisible(false);
 		}
 
 		if(e.getSource() == menu.getBtnCadastroFuncionario())
@@ -180,6 +181,7 @@ public class Controle extends MouseAdapter implements ActionListener{
 			detalhesPaciente.setVisible(false);
 			consulta.setVisible(false);
 			cadastroFuncionario.setVisible(true);
+			consultaExames.setVisible(false);
 		}
 		if(e.getSource() == menu.getBtnCadastrarExame()) {
 			cadastro.setVisible(false);
@@ -187,6 +189,16 @@ public class Controle extends MouseAdapter implements ActionListener{
 			consulta.setVisible(false);
 			cadastroFuncionario.setVisible(false);
 			cadastroExames.setVisible(true);
+			consultaExames.setVisible(false);
+		}
+		if(e.getSource() == menu.getBtnConsultaExames()) {
+			
+			cadastro.setVisible(false);
+			detalhesPaciente.setVisible(false);
+			consulta.setVisible(false);
+			cadastroFuncionario.setVisible(false);
+			cadastroExames.setVisible(false);
+			consultaExames.setVisible(true);
 		}
 
 		if(e.getSource() == consulta.getConsultaB())
@@ -291,14 +303,11 @@ public class Controle extends MouseAdapter implements ActionListener{
 				detalhesPaciente.autoPreencher((Paciente)perfil.getUsuario());
 				detalhesPaciente.setVisible(true);
 			}
-			
-
 		}
 		if(e.getSource() == cadastroExames.getBtnSalvar()) {
 			
 			Exame exame = new Exame(cadastroExames.getFieldNomeMedico().getText(),cadastroExames.getFieldcpfPaciente().getText(), cadastroExames.getTextAreaParecer().getText());
 			ArrayList<Paciente> pacientes = ClassXML.lerArquivo();
-			
 			
 			for (Paciente pacienteAtual : pacientes) {
 				if(pacienteAtual.getCpf().equals(cadastroExames.getFieldcpfPaciente().getText())) {
@@ -306,9 +315,6 @@ public class Controle extends MouseAdapter implements ActionListener{
 					ClassXML.editarPaciente(pacienteAtual);
 				}
 			}
-			
-			
-			
 			cadastroExames.getFieldcpfPaciente().setText("");
 			cadastroExames.getFieldNomeMedico().setText("");
 			cadastroExames.getTextAreaParecer().setText("");

@@ -69,6 +69,7 @@ public class ClassXML {
 			XStream stream =  new XStream(new DomDriver());
 			stream.alias("Paciente", Paciente.class);
 			stream.alias("Endereco", Endereco.class);
+			stream.alias("Exame", Exame.class);
 			String xml = stream.toXML(pacientes);
 			
 			
@@ -97,6 +98,7 @@ public class ClassXML {
 			stream = new XStream(new DomDriver());
 			stream.alias("Paciente", Paciente.class);
 			stream.alias("Endereco", Endereco.class);
+			stream.alias("Exame", Exame.class);
 			
 					
 		} catch (Exception e) {

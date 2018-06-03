@@ -1,5 +1,8 @@
 package model;
 
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+
+@XStreamAlias(value = "Endereco") 
 public class Endereco {
 
 	private String rua;

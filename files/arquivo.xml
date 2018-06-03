@@ -1,5 +1,5 @@
 <list>
-  <model.Paciente>
+  <Paciente>
     <login>abimael jonas furtuoso dos santos</login>
     <senha>198.218.921-89</senha>
     <nomeCompleto>abimael jonas furtuoso dos santos</nomeCompleto>
@@ -20,8 +20,8 @@
     <tipoSanguineo>O+</tipoSanguineo>
     <email>mmamammam</email>
     <telefone>(88)9 9889-8989</telefone>
-  </model.Paciente>
-  <model.Paciente>
+  </Paciente>
+  <Paciente>
     <login>Felipe Douglas</login>
     <senha>108.590.464-43</senha>
     <nomeCompleto>Felipe Douglas</nomeCompleto>
@@ -32,7 +32,7 @@
       <numero>56</numero>
       <bairro>tal tal</bairro>
       <cidade>tal ali</cidade>
-      <estado>Acre – AC</estado>
+      <estado>Acre ï¿½ AC</estado>
       <complemento>ali</complemento>
       <cep>88888-888</cep>
     </endereco>
@@ -44,21 +44,21 @@
     <telefone>(88)8 8888-8888</telefone>
     <caminho>Felipe.jpg</caminho>
     <exames>
-      <model.Exame>
-        <nomeMedico>Felipe Brandão</nomeMedico>
+      <Exame>
+        <nomeMedico>Felipe Brandï¿½o</nomeMedico>
         <cpfPaciente>108.590.464-43</cpfPaciente>
-        <parecer>Tomar rémedio</parecer>
-      </model.Exame>
-      <model.Exame>
-        <nomeMedico>Felipe Brandão</nomeMedico>
+        <parecer>Tomar rï¿½medio</parecer>
+      </Exame>
+      <Exame>
+        <nomeMedico>Felipe Brandï¿½o</nomeMedico>
         <cpfPaciente>108.590.464-43</cpfPaciente>
-        <parecer>Tomar rémedio</parecer>
-      </model.Exame>
-      <model.Exame>
+        <parecer>Tomar rï¿½medio</parecer>
+      </Exame>
+      <Exame>
         <nomeMedico>Felipe Alencar</nomeMedico>
         <cpfPaciente>108.590.464-43</cpfPaciente>
-        <parecer>Tomar 3 remédios.</parecer>
-      </model.Exame>
+        <parecer>Tomar 3 remï¿½dios.</parecer>
+      </Exame>
     </exames>
-  </model.Paciente>
+  </Paciente>
 </list>
