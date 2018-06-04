@@ -59,6 +59,14 @@
         <cpfPaciente>108.590.464-43</cpfPaciente>
         <parecer>Tomar 3 rem�dios.</parecer>
       </Exame>
+      <Exame>
+        <nomeMedico>Felipe Oliveira</nomeMedico>
+        <cpfPaciente>108.590.464-43</cpfPaciente>
+        <parecer>tAL TAL</parecer>
+        <tipoExame>PSA</tipoExame>
+        <tipoAmostra>Sangue</tipoAmostra>
+        <status>Em processo</status>
+      </Exame>
     </exames>
   </Paciente>
 </list>

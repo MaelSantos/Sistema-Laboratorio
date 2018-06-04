@@ -4,25 +4,26 @@ import com.thoughtworks.xstream.annotations.XStreamAlias;
 
 @XStreamAlias(value = "Exame") 
 public class Exame {
-	private String nomeMedico, cpfPaciente, parecer;
+	private String nomeMedico, cpfPaciente, parecer, tipoExame, tipoAmostra, status;
 	
 	public Exame() {
 		
 	}
 
-	public Exame(String nomeMedico, String parecer) {
-		super();
-		this.nomeMedico = nomeMedico;
-		this.parecer = parecer;
-		
-	}
-		
-	public Exame(String nomeMedico, String cpfPaciente, String parecer) {
+	
+
+	public Exame(String nomeMedico, String cpfPaciente, String parecer, String tipoExame, String tipoAmostra,
+			String status) {
 		super();
 		this.nomeMedico = nomeMedico;
 		this.cpfPaciente = cpfPaciente;
 		this.parecer = parecer;
+		this.tipoExame = tipoExame;
+		this.tipoAmostra = tipoAmostra;
+		this.status = status;
 	}
+
+
 
 	public String getNomeMedico() {
 		return nomeMedico;
