@@ -1,8 +1,12 @@
 package view;
 
+import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.util.ArrayList;
 
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JTabbedPane;
 import javax.swing.JTable;
 import javax.swing.table.AbstractTableModel;
 
@@ -14,9 +18,12 @@ public class ConsultaExames extends PanelGeral {
 	private JTable tblExames;
 	private TableModel model;
 	private JScrollPane scpExames;
+	private JTabbedPane tbpExames;
+	
 	
 	public ConsultaExames() {
 		super();
+		setLayout(new FlowLayout());
 	}
 
 	@Override
@@ -26,9 +33,19 @@ public class ConsultaExames extends PanelGeral {
 		tblExames = new JTable(model);
 		scpExames = new JScrollPane(tblExames);
 		
+		model.addRow(new Exame("Abimael", "000000", "Ta morto faz tempo", "embalsamento", "corpo todo", "morto"));
+		tbpExames = new JTabbedPane();
 		
-		add(scpExames);
+		JPanel p = new JPanel();
+		p.add(scpExames);
+		tbpExames.add("Exames Disponiveis",new JPanel());
+		tbpExames.add("Todos os Exames", p);
+		tbpExames.setPreferredSize(new Dimension(550, getHeight()));
+		add(tbpExames);
 
+		for(int i = 0; i < model.getColumnCount(); i++)
+			tblExames.getColumnModel().getColumn(i).setPreferredWidth(model.colunas[i].length());
+		model.fireTableDataChanged();
 	}
 
 	public class TableModel extends AbstractTableModel {
@@ -53,7 +70,9 @@ public class ConsultaExames extends PanelGeral {
 	    }
 		@Override
 		public int getColumnCount() {
-			// TODO Auto-generated method stub
+			
+	
+			
 			return colunas.length;
 		}
 		@Override
