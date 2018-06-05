@@ -21,13 +21,13 @@ import javax.swing.text.MaskFormatter;
 
 public class CadastroExames extends PanelGeral {
 	
-	private JLabel labelcpfPaciente, labelNomeMedico, labelParecer, labelTipoExame,labelTipoAmostra, labelStatus;
+	private JLabel labelcpfPaciente, labelNomeMedico, labelParecer, labelTipoExame,labelTipoAmostra;
 	private JTextField  fieldNomeMedico, fieldTipoExame;
 	private JFormattedTextField fieldcpfPaciente;
 	private JScrollPane scrollPane;
 	private JTextArea textAreaParecer;
 	private JButton btnSalvar;
-	private JComboBox<String>comboBoxStatus, comboBoxTipoAmostra;
+	private JComboBox<String> comboBoxTipoAmostra;
 	
 	
 	public CadastroExames() {
@@ -45,7 +45,6 @@ public class CadastroExames extends PanelGeral {
 		labelNomeMedico =  new JLabel("Medico:");
 		labelcpfPaciente = new JLabel("Paciente: Nome Paciente");
 		labelParecer = new JLabel("Parecer:");
-		labelStatus = new JLabel("Status:");
 		labelTipoAmostra = new JLabel("Tipo de amostra:");
 		labelTipoExame = new JLabel("Tipo de exame:");
 		
@@ -75,12 +74,6 @@ public class CadastroExames extends PanelGeral {
 		btnSalvar.setBackground(Color.GREEN);
 		
 		//Combo
-		comboBoxStatus = new JComboBox<>();
-		
-		comboBoxStatus.addItem("");
-		comboBoxStatus.addItem("Concluído");
-		comboBoxStatus.addItem("Em processo");
-		comboBoxStatus.addItem("Em espera");
 		
 		
 		comboBoxTipoAmostra = new JComboBox<>();
@@ -105,8 +98,6 @@ public class CadastroExames extends PanelGeral {
 		add(fieldTipoExame);
 		add(labelParecer);
 		add(scrollPane);
-		add(labelStatus);
-		add(comboBoxStatus);
 		add(btnSalvar);
 		
 		
@@ -157,17 +148,10 @@ public class CadastroExames extends PanelGeral {
 		return labelTipoAmostra;
 	}
 
-	public JLabel getLabelStatus() {
-		return labelStatus;
-	}
-
 	public JTextField getFieldTipoExame() {
 		return fieldTipoExame;
 	}
 
-	public JComboBox<String> getComboBoxStatus() {
-		return comboBoxStatus;
-	}
 
 	public JComboBox<String> getComboBoxTipoAmostra() {
 		return comboBoxTipoAmostra;

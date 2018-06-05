@@ -24,10 +24,9 @@ public class Menu extends PanelGeral {
 		
 		btnCadastro = new JButton(new ImageIcon(getClass().getClassLoader().getResource("cadastrarPaciente.png")));
 		btnCadastroFuncionario = new JButton(new ImageIcon(getClass().getClassLoader().getResource("cadastrarFuncionario.png")));
-		btnConsulta = new JButton(new ImageIcon(getClass().getClassLoader().getResource("consulta.png")));
-		
-		btnCadastrarExame = new JButton("Cadastrar Exame");
-		btnConsultaExames = new JButton("Consultar Exames");
+		btnConsulta = new JButton(new ImageIcon(getClass().getClassLoader().getResource("consulta.png")));		
+		btnCadastrarExame = new JButton(new ImageIcon(getClass().getClassLoader().getResource("cadastrarExame.png")));
+		btnConsultaExames = new JButton(new ImageIcon(getClass().getClassLoader().getResource("consultarExame.png")));
 
 		btnConsulta.setContentAreaFilled(false);
 		btnConsulta.setBorderPainted(false);
@@ -35,6 +34,11 @@ public class Menu extends PanelGeral {
 		btnCadastroFuncionario.setBorderPainted(false);
 		btnCadastro.setContentAreaFilled(false);
 		btnCadastro.setBorderPainted(false);
+		btnCadastrarExame.setContentAreaFilled(false);
+		btnCadastrarExame.setBorderPainted(false);
+		btnConsultaExames.setContentAreaFilled(false);
+		btnConsultaExames.setBorderPainted(false);
+		
 		
 		add(btnConsulta);
 		add(btnCadastro);

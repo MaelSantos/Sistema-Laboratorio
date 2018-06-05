@@ -33,7 +33,7 @@ public class ConsultaExames extends PanelGeral {
 		tblExames = new JTable(model);
 		scpExames = new JScrollPane(tblExames);
 		
-		model.addRow(new Exame("Abimael", "000000", "Ta morto faz tempo", "embalsamento", "corpo todo", "morto"));
+//		model.addRow(new Exame("Abimael", "000000", "Ta morto faz tempo", "embalsamento", "corpo todo", "morto"));
 		tbpExames = new JTabbedPane();
 		
 		JPanel p = new JPanel();

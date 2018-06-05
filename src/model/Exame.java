@@ -12,15 +12,15 @@ public class Exame {
 
 	
 
-	public Exame(String nomeMedico, String cpfPaciente, String parecer, String tipoExame, String tipoAmostra,
-			String status) {
+	public Exame(String nomeMedico, String cpfPaciente, String parecer, String tipoExame, String tipoAmostra
+			) {
 		super();
 		this.nomeMedico = nomeMedico;
 		this.cpfPaciente = cpfPaciente;
 		this.parecer = parecer;
 		this.tipoExame = tipoExame;
 		this.tipoAmostra = tipoAmostra;
-		this.status = status;
+		this.status = "Em Espera";
 	}
 
 
