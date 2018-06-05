@@ -274,20 +274,9 @@ public class Controle extends MouseAdapter implements ActionListener {
 				detalhesPaciente.setVisible(true);
 			}
 		}
-		if (e.getSource() == cadastroExames.getBtnSalvar()) {
+	/*	if (e.getSource() == cadastroExames.getBtnSalvar()) {
 			String status = "", tipoAmostra = "";
-			
-
-			if (cadastroExames.getComboBoxStatus().getSelectedIndex() == 0) {
-				
-			} else if (cadastroExames.getComboBoxStatus().getSelectedIndex() == 1) {
-				status = "Concluído";
-			} else if (cadastroExames.getComboBoxStatus().getSelectedIndex() == 2) {
-				status = "Em processo";
-			} else if (cadastroExames.getComboBoxStatus().getSelectedIndex() == 3) {
-				status = "Em espera";
-			}
-			
+						
 			
 			if(cadastroExames.getComboBoxTipoAmostra().getSelectedIndex() == 0) {
 				tipoAmostra = "Outro";
@@ -306,9 +295,7 @@ public class Controle extends MouseAdapter implements ActionListener {
 			}
 			 
 			try {
-				Exame exame = new Exame(cadastroExames.getFieldNomeMedico().getText(), cadastroExames.getFieldcpfPaciente().getText(),
-						cadastroExames.getTextAreaParecer().getText(), cadastroExames.getFieldTipoExame().getText(),
-						 tipoAmostra, status);
+				Exame exame = new Exame(tipoAmostra, tipoAmostra, tipoAmostra, tipoAmostra, tipoAmostra);
 						ArrayList<Paciente> pacientes = ClassXML.lerArquivo();
 						
 						for (Paciente pacienteAtual : pacientes) {
@@ -326,9 +313,9 @@ public class Controle extends MouseAdapter implements ActionListener {
 			cadastroExames.getFieldNomeMedico().setText("");
 			cadastroExames.getTextAreaParecer().setText("");
 			cadastroExames.getFieldTipoExame().setText("");
-		}
+		}*/
 
-	}
+	} 
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
