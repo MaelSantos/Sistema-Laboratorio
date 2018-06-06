@@ -1,0 +1,22 @@
+<list>
+  <ExameValor>
+    <nome>Hemograma</nome>
+    <tipoDeColeta>Sangue</tipoDeColeta>
+    <valor>40.0</valor>
+  </ExameValor>
+  <ExameValor>
+    <nome>Espermograma</nome>
+    <tipoDeColeta>Esperma</tipoDeColeta>
+    <valor>20.0</valor>
+  </ExameValor>
+  <ExameValor>
+    <nome>Triglicérides</nome>
+    <tipoDeColeta>Sangue</tipoDeColeta>
+    <valor>40.0</valor>
+  </ExameValor>
+  <ExameValor>
+    <nome>Exame de Urina</nome>
+    <tipoDeColeta>Urina</tipoDeColeta>
+    <valor>30.0</valor>
+  </ExameValor>
+</list>

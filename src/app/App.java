@@ -3,6 +3,8 @@ package app;
 import javax.swing.UIManager;
 
 import controlle.Controle;
+import model.ExameValor;
+import model.ExamesValorXML;
 import model.Usuario;
 import view.Cadastro;
 import view.CadastroExames;
@@ -51,6 +53,9 @@ public class App {
 		
 		Controle controle = new Controle(login,principal, menu, cadastro,consulta,detalhesPaciente
 				, cadastroFuncionario,  detalhesFuncionario, perfil,cadastroExames,consultaExames);
+		
+		
+		
 		
 	}
 	

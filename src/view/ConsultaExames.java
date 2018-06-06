@@ -12,6 +12,7 @@ import javax.swing.table.AbstractTableModel;
 
 import model.ClassXML;
 import model.Exame;
+import model.TableModelExameValor;
 
 public class ConsultaExames extends PanelGeral {
 
@@ -32,13 +33,15 @@ public class ConsultaExames extends PanelGeral {
 		model = new TableModel(ClassXML.examesTotais);
 		tblExames = new JTable(model);
 		scpExames = new JScrollPane(tblExames);
+	
 		
 //		model.addRow(new Exame("Abimael", "000000", "Ta morto faz tempo", "embalsamento", "corpo todo", "morto"));
 		tbpExames = new JTabbedPane();
-		
 		JPanel p = new JPanel();
+		JPanel pEV=new JPanel();
 		p.add(scpExames);
-		tbpExames.add("Exames Disponiveis",new JPanel());
+		pEV.add(new JScrollPane(new JTable(new TableModelExameValor())));
+		tbpExames.add("Exames Disponiveis",pEV);
 		tbpExames.add("Todos os Exames", p);
 		tbpExames.setPreferredSize(new Dimension(550, getHeight()));
 		add(tbpExames);
