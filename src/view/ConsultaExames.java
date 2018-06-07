@@ -1,5 +1,6 @@
 package view;
 
+import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.util.ArrayList;
@@ -10,8 +11,8 @@ import javax.swing.JTabbedPane;
 import javax.swing.JTable;
 import javax.swing.table.AbstractTableModel;
 
-import model.ClassXML;
-import model.Exame;
+import model.BancoDados;
+import model.MarcarExame;
 
 public class ConsultaExames extends PanelGeral {
 
@@ -24,34 +25,29 @@ public class ConsultaExames extends PanelGeral {
 	
 	public ConsultaExames() {
 		super();
-		setLayout(new FlowLayout());
+		setLayout(new BorderLayout());
+		add(tbpExames,BorderLayout.CENTER);
 	}
 
 	@Override
 	public void inicializar() {
 		
-		model = new TableModel(ClassXML.examesTotais);
+		model = new TableModel(BancoDados.getInstance().getExamesMarcados());
 		tblExames = new JTable(model);
 		scpExames = new JScrollPane(tblExames);
 	
-		
-		model.addRow(new Exame("Abimael", "000000", "Ta morto faz tempo", "embalsamento", "corpo todo"));
 		tbpExames = new JTabbedPane();
 		total = new JPanel();
 		disponiveis = new JPanel();
+		total.setLayout(new BorderLayout());
+		disponiveis.setLayout(new BorderLayout());
 		
-		total.add(scpExames);
+		total.add(scpExames,BorderLayout.CENTER);
+		disponiveis.add(new JScrollPane(new JTable(new TableModelExameGeral())),BorderLayout.CENTER);
 		tbpExames.add("Exames Disponiveis",disponiveis);
 		tbpExames.add("Todos os Exames", total);
-		JPanel p = new JPanel();
-		JPanel pEV=new JPanel();
-		p.add(scpExames);
-		pEV.add(new JScrollPane(new JTable(new TableModelExameValor())));
-		tbpExames.add("Exames Disponiveis",pEV);
-		tbpExames.add("Todos os Exames", p);
 
 		tbpExames.setPreferredSize(new Dimension(550, getHeight()));
-		add(tbpExames);
 
 		for(int i = 0; i < model.getColumnCount(); i++)
 			tblExames.getColumnModel().getColumn(i).setPreferredWidth(model.colunas[i].length());
@@ -61,14 +57,14 @@ public class ConsultaExames extends PanelGeral {
 	public class TableModel extends AbstractTableModel {
 		
 		private String [] colunas;	
-		private ArrayList<Exame> exames;
+		private ArrayList<MarcarExame> exames;
 
 		public TableModel() {
 			exames = new ArrayList<>();	
 			colunas = new String[]{"Codigo", "Paciente", "Medico", "Exame", "Parecer", "Tipo De Amostra", "Estado"};		
 		}
 		
-		public TableModel(ArrayList<Exame> exames) {
+		public TableModel(ArrayList<MarcarExame> exames) {
 			this.exames = exames;		
 			colunas = new String[]{"Codigo", "Paciente", "Medico", "Exame", "Parecer", "Tipo De Amostra", "Estado"};
 		}
@@ -81,8 +77,6 @@ public class ConsultaExames extends PanelGeral {
 		@Override
 		public int getColumnCount() {
 			
-	
-			
 			return colunas.length;
 		}
 		@Override
@@ -93,58 +87,62 @@ public class ConsultaExames extends PanelGeral {
 
 		@Override
 		public Object getValueAt(int linha, int coluna) {
-			Exame exame = exames.get(linha);
+			MarcarExame exame = exames.get(linha);
 			
-//			"Codigo", "Paciente", "Medico", "Exame", "Parecer", "Tipo De Amostra", "Estado"};
+//			"Codigo", "Paciente", "Medico", "Exame", "Parecer", "Tipo De Coleta", "Estado"};
 			switch(coluna) {
 			case 0:
-				return exame.getCPFPaciente();
+				return exame.getExame().getCodigo();
 			case 1:
+				return exame.getCpfPaciente();
+			case 2:
 				return exame.getNomeMedico();
-//			case 2:
-//				return exames.get(linha).getTipoExame();
 			case 3:
+				return exame.getExame().getTipoExame();
+			case 4:
 				return exame.getParecer();
-//			case 4:
-//				return exames.get(linha).getTipoAmostra();
-//			case 5:
-//				return exames.get(linha).getEstado();
+			case 5:
+				return exame.getExame().getTipoDeColeta();
+			case 6:
+				return exame.getStatus();
 			}
 			return null;
 		}
 		
 		@Override  
 		public void setValueAt(Object aValue, int linha, int coluna) {  
-			Exame exame = exames.get(linha);
+			MarcarExame exame = exames.get(linha);
 
-			Exame e = null;
-			if (aValue instanceof Exame) {
-				e = (Exame) aValue;
+			MarcarExame e = null;
+			if (aValue instanceof MarcarExame) {
+				e = (MarcarExame) aValue;
 			}
 			
-//			"Codigo", "Paciente", "Medico", "Exame", "Parecer", "Tipo De Amostra", "Estado"};
+//			"Codigo", "Paciente", "Medico", "Exame", "Parecer", "Tipo De Coleta", "Estado"};
 			switch (coluna) 
 			{
 			case 0:  
-				exame.setNCPFPaciente(e.getCPFPaciente());             
-				case 1:  
-					exame.setNomeMedico(e.getNomeMedico());
-//				case 2:
-//					exame.setTipoExame(e.getTipoExame());
-				case 3:  
-					exame.setParecer(e.getParecer());
-//				case 4:
-//					exame.setTipoAmostra(e.getTipoAmostra());
-//				case 5:
-//					exame.setEstado()(e.getEstado());
-				default:  
-					System.err.println("Índice da coluna inválido");
+				exame.getExame().setCodigo((e.getExame().getCodigo()));
+			case 1:  
+				exame.setCpfPaciente(e.getCpfPaciente());
+			case 2:  
+				exame.setNomeMedico(e.getNomeMedico());
+			case 3:
+				exame.getExame().setTipoExame(e.getExame().getTipoExame());
+			case 4:  
+				exame.setParecer(e.getParecer());
+			case 5:
+				exame.getExame().setTipoDeColeta(e.getExame().getTipoDeColeta());
+			case 6:
+				exame.setStatus(e.getStatus());
+			default:  
+				System.err.println("Índice da coluna inválido");
 			}  
 			fireTableCellUpdated(linha, coluna);  
 		}      
 
 
-		public void addRow(Exame e){
+		public void addRow(MarcarExame e){
 			this.exames.add(e);
 			this.fireTableDataChanged();
 			fireTableStructureChanged();
@@ -184,11 +182,11 @@ public class ConsultaExames extends PanelGeral {
 			this.colunas = colunas;
 		}
 
-		public ArrayList<Exame> getExames() {
+		public ArrayList<MarcarExame> getExames() {
 			return exames;
 		}
 
-		public void setExames(ArrayList<Exame> exames) {
+		public void setExames(ArrayList<MarcarExame> exames) {
 			this.exames = exames;
 		}
 

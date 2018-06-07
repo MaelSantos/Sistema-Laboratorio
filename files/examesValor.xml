@@ -1,22 +1,26 @@
 <list>
-  <ExameValor>
-    <nome>Hemograma</nome>
-    <tipoDeColeta>Sangue</tipoDeColeta>
-    <valor>40.0</valor>
-  </ExameValor>
-  <ExameValor>
-    <nome>Espermograma</nome>
-    <tipoDeColeta>Esperma</tipoDeColeta>
-    <valor>20.0</valor>
-  </ExameValor>
-  <ExameValor>
-    <nome>Triglicérides</nome>
-    <tipoDeColeta>Sangue</tipoDeColeta>
-    <valor>40.0</valor>
-  </ExameValor>
-  <ExameValor>
-    <nome>Exame de Urina</nome>
-    <tipoDeColeta>Urina</tipoDeColeta>
-    <valor>30.0</valor>
-  </ExameValor>
+	<ExameGeral>
+		<codigo>001</codigo>
+		<tipoExame>Hemograma</tipoExame>
+		<tipoDeColeta>Sangue</tipoDeColeta>
+		<valor>40.0</valor>
+	</ExameGeral>
+	<ExameGeral>
+		<codigo>003</codigo>
+		<tipoExame>Espermograma</tipoExame>
+		<tipoDeColeta>Esperma</tipoDeColeta>
+		<valor>20.0</valor>
+	</ExameGeral>
+	<ExameGeral>
+		<codigo>002</codigo>
+		<tipoExame>Triglicï¿½rides</tipoExame>
+		<tipoDeColeta>Sangue</tipoDeColeta>
+		<valor>40.0</valor>
+	</ExameGeral>
+	<ExameGeral>
+		<codigo>004</codigo>
+		<tipoExame>Exame de Urina</tipoExame>
+		<tipoDeColeta>Urina</tipoDeColeta>
+		<valor>30.0</valor>
+	</ExameGeral>
 </list>

@@ -7,8 +7,7 @@ import javax.swing.JLabel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-import model.ClassXML;
-import model.ClassXMLFuncionario;
+import model.BancoDados;
 import model.Funcionario;
 import model.Paciente;
 import model.Usuario;
@@ -72,12 +71,12 @@ public class Login extends TelaGeral{
 	
 	public Usuario verificarLogin(String login, char[] password) {
 		String senha = String.copyValueOf(password);
-		for (Funcionario funcionario : ClassXMLFuncionario.funcionarios) {
+		for (Funcionario funcionario : BancoDados.getInstance().getFuncionarios()) {
 			if(funcionario.getLogin().equals(login)&&funcionario.getSenha().equals(senha)) {
 				return funcionario;
 			}
 		}
-		for (Paciente paciente : ClassXML.pacientes) {
+		for (Paciente paciente : BancoDados.getInstance().getPacientes()) {
 			if(paciente.getLogin().equals(login)&&paciente.getSenha().equals(senha)) {
 				return paciente;
 			}

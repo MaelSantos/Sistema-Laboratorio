@@ -1,3 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
 <list>
   <Paciente>
     <login>abimael jonas</login>
@@ -43,30 +45,30 @@
     <email>fd@gmaill.com</email>
     <telefone>(88)8 8888-8888</telefone>
     <caminho>Felipe.jpg</caminho>
-    <exames>
-      <Exame>
-        <nomeMedico>Felipe Brand�o</nomeMedico>
-        <cpfPaciente>108.590.464-43</cpfPaciente>
-        <parecer>Tomar r�medio</parecer>
-      </Exame>
-      <Exame>
-        <nomeMedico>Felipe Brand�o</nomeMedico>
-        <cpfPaciente>108.590.464-43</cpfPaciente>
-        <parecer>Tomar r�medio</parecer>
-      </Exame>
-      <Exame>
-        <nomeMedico>Felipe Alencar</nomeMedico>
-        <cpfPaciente>108.590.464-43</cpfPaciente>
-        <parecer>Tomar 3 rem�dios.</parecer>
-      </Exame>
-      <Exame>
-        <nomeMedico>Felipe Oliveira</nomeMedico>
-        <cpfPaciente>108.590.464-43</cpfPaciente>
-        <parecer>tAL TAL</parecer>
-        <tipoExame>PSA</tipoExame>
-        <tipoAmostra>Sangue</tipoAmostra>
-        <status>Em processo</status>
-      </Exame>
-    </exames>
+    <exames/>
+  </Paciente>
+  <Paciente>
+    <login>teste banco</login>
+    <senha>000.000.000-00</senha>
+    <nomeCompleto>teste banco</nomeCompleto>
+    <nome>teste</nome>
+    <sobrenome>banco</sobrenome>
+    <endereco>
+      <rua>0</rua>
+      <numero>0</numero>
+      <bairro>0</bairro>
+      <cidade>0</cidade>
+      <estado>Acre � AC</estado>
+      <complemento>0</complemento>
+      <cep>00000-000</cep>
+    </endereco>
+    <cpf>000.000.000-00</cpf>
+    <idade>00/00/0000</idade>
+    <sexo>Masculino</sexo>
+    <tipoSanguineo>O+</tipoSanguineo>
+    <email>0</email>
+    <telefone>(00)0 0000-0000</telefone>
+    <caminho>teste.jpg</caminho>
+    <exames/>
   </Paciente>
 </list>

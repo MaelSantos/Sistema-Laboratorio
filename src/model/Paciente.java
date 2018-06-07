@@ -7,7 +7,7 @@ import com.thoughtworks.xstream.annotations.XStreamAlias;
 @XStreamAlias(value = "Paciente") 
 public class Paciente extends Usuario{
 
-	private ArrayList<Exame>exames;
+	private ArrayList<MarcarExame>exames;
 	
 	public Paciente(String nomeCompleto, String cpf, String idade, String sexo, String tipoSanguineo, String email,
 			String telefone, Endereco endereco) {
@@ -18,11 +18,11 @@ public class Paciente extends Usuario{
 
 	}
 
-	public ArrayList<Exame> getExames() {
+	public ArrayList<MarcarExame> getExames() {
 		return exames;
 	}
 
-	public void setExames(ArrayList<Exame> exames) {
+	public void setExames(ArrayList<MarcarExame> exames) {
 		this.exames = exames;
 	}
 	

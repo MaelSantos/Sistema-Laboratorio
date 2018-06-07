@@ -7,10 +7,9 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
 
-import model.ClassXML;
-import model.ClassXMLFuncionario;
+import model.BancoDados;
 import model.Endereco;
-import model.Exame;
+import model.MarcarExame;
 import model.Funcionario;
 import model.Paciente;
 import model.Usuario;
@@ -90,7 +89,7 @@ public class Controle extends MouseAdapter implements ActionListener {
 
 		if (e.getSource() == cadastro.getBtnAdd()) {
 			if ((Verificar.verificarCadastro(cadastro))) {
-				if (ClassXML.addPaciente(new Paciente(cadastro.getTfdNome().getText().trim(),
+				if (BancoDados.getInstance().addDado(new Paciente(cadastro.getTfdNome().getText().trim(),
 						cadastro.getTfdCpf().getText().trim(), cadastro.getTfdNascimento().getText().trim(),
 						cadastro.getCbxSexo().getSelectedItem().toString().trim(),
 						cadastro.getCbxSangue().getSelectedItem().toString().trim(),
@@ -109,10 +108,10 @@ public class Controle extends MouseAdapter implements ActionListener {
 
 		if (e.getSource() == cadastroFuncionario.getBtnAdd()) {
 			if ((Verificar.verificarCadastro(cadastroFuncionario))) {
-				if (detalhesFuncionario.getTfdSenha().getText().equals(detalhesFuncionario.getTfdConfirmar().getText())
-						&& !detalhesFuncionario.getTfdSenha().getText().trim().equals("")) {
-					if (ClassXMLFuncionario
-							.addFuncionario(new Funcionario(cadastroFuncionario.getTfdLogin().getText().trim(),
+				if (cadastroFuncionario.getTfdSenha().getText().equals(cadastroFuncionario.getTfdConfirmar().getText())
+						&& !cadastroFuncionario.getTfdSenha().getText().trim().equals("")) {
+					if (BancoDados.getInstance()
+							.addDado(new Funcionario(cadastroFuncionario.getTfdLogin().getText().trim(),
 									cadastroFuncionario.getTfdSenha().getText().trim(),
 									cadastroFuncionario.getTfdNome().getText().trim(),
 									new Endereco(cadastroFuncionario.getTfdRua().getText().trim(),
@@ -181,10 +180,10 @@ public class Controle extends MouseAdapter implements ActionListener {
 
 		if (e.getSource() == consulta.getConsultaB()) {
 			if (!consulta.getConsultaT().getText().trim().equals("")) {
-				consulta.getTabelaModel().pesquisa(consulta.getConsultaT().getText(), ClassXML.pacientes);
+				consulta.getTabelaModel().pesquisa(consulta.getConsultaT().getText(), BancoDados.getInstance().getPacientes());
 
 			} else {
-				consulta.getTabelaModel().setPaciente(ClassXML.lerArquivo());
+				consulta.getTabelaModel().setPaciente((ArrayList<Paciente>) BancoDados.getInstance().lerArquivo("files/pacientes.xml"));
 				Mensagem.exibirMensagem("Insira o Nome ou Cpf do Paciente");
 			}
 		}
@@ -214,7 +213,7 @@ public class Controle extends MouseAdapter implements ActionListener {
 							detalhesPaciente.getTfdComplemento().getText().trim(),
 							detalhesPaciente.getTfdCep().getText().trim()));
 
-			ClassXML.editarPaciente(paciente);
+			BancoDados.getInstance().editarPaciente(paciente);
 		}
 
 		if (e.getSource() == detalhesFuncionario.getBtnAdd()) {
@@ -333,13 +332,11 @@ public class Controle extends MouseAdapter implements ActionListener {
 					menu.getBtnCadastroFuncionario().setVisible(true);
 					menu.getBtnCadastroFuncionario().setVisible(true);
 					menu.getBtnCadastrarExame().setVisible(true);
-					consultaExames.getTbpExames().getComponent(1).setVisible(true);
 				} else {
 					perfil.atualiarUsuario(usuario, "Cliente");
 					menu.getBtnCadastro().setVisible(false);
 					menu.getBtnCadastroFuncionario().setVisible(false);
 					menu.getBtnCadastrarExame().setVisible(false);
-					consultaExames.getTbpExames().getComponent(1).setVisible(false);
 				}
 				perfil.getBtnEditarDados().addActionListener(this);
 				login.setVisible(false);

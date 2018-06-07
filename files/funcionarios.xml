@@ -1,3 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
 <list>
   <Funcionario>
     <login>filipe</login>
@@ -11,7 +13,7 @@
       <bairro>jkhkjhjk</bairro>
       <cidade>sdijkjksa</cidade>
       <estado>Acre ï¿½ AC</estado>
-      <complemento>dsahf&apos;</complemento>
+      <complemento>dsahf'</complemento>
       <cep>99999-999</cep>
     </endereco>
     <cpf>000.000.000-02</cpf>
@@ -111,5 +113,28 @@
     <email>888</email>
     <telefone>(88)8 8888-8888</telefone>
     <caminho>hhh.jpg</caminho>
+  </Funcionario>
+  <Funcionario>
+    <login>teste novo</login>
+    <senha>123</senha>
+    <nomeCompleto>iuui hhhh</nomeCompleto>
+    <nome>iuui</nome>
+    <sobrenome>hhhh</sobrenome>
+    <endereco>
+      <rua>888</rua>
+      <numero>888</numero>
+      <bairro>88</bairro>
+      <cidade>88</cidade>
+      <estado>Acre – AC</estado>
+      <complemento>88</complemento>
+      <cep>88888-888</cep>
+    </endereco>
+    <cpf>288.888.888-88</cpf>
+    <idade>88/88/8888</idade>
+    <sexo>Masculino</sexo>
+    <tipoSanguineo>O+</tipoSanguineo>
+    <email>88</email>
+    <telefone>(88)8 8888-8888</telefone>
+    <caminho>iuui.jpg</caminho>
   </Funcionario>
 </list>

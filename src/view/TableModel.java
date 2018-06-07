@@ -4,18 +4,17 @@ import java.util.ArrayList;
 
 import javax.swing.table.AbstractTableModel;
 
-import app.App;
-import model.ClassXML;
+import model.BancoDados;
 import model.Paciente;
 
 public class TableModel extends AbstractTableModel {
 	
-	private String [] colunas={"NOME", "CPF", "SEXO"};;	
-	private ArrayList<Paciente> paciente= new ArrayList<Paciente>();
+	private String [] colunas;	
+	private ArrayList<Paciente> paciente;
 	
 	public TableModel() {
 		
-	    paciente=ClassXML.pacientes;		
+	    paciente=BancoDados.getInstance().getPacientes();//.pacientes;		
 		colunas = new String[]{"NOME", "CPF", "SEXO"};		
 	
 	}
@@ -97,7 +96,7 @@ public class TableModel extends AbstractTableModel {
     	System.gc();
     }
     public void voltaTabelaCompleta() {
-    	paciente=ClassXML.pacientes;
+    	paciente=BancoDados.getInstance().getPacientes();//.pacientes;
     	this.fireTableDataChanged();
     }
   

@@ -4,17 +4,17 @@ import java.util.ArrayList;
 
 import javax.swing.table.AbstractTableModel;
 
-import model.ExameValor;
-import model.ExamesValorXML;
+import model.BancoDados;
+import model.ExameGeral;
 
-public class TableModelExameValor extends AbstractTableModel{
+public class TableModelExameGeral extends AbstractTableModel{
 	
-	private String [] colunas={"NOME DO EXAME", "TIPO DE COLETA", "PREÇO"};	
-	private ArrayList<ExameValor> exames= new ArrayList<ExameValor>();
+	private String [] colunas;	
+	private ArrayList<ExameGeral> exames= new ArrayList<ExameGeral>();
 
-	public TableModelExameValor() {
-		exames= ExamesValorXML.getExamesValores();
-		colunas=new String[]{"NOME DO EXAME", "TIPO DE COLETA", "PREÇO"};	
+	public TableModelExameGeral() {
+		exames = BancoDados.getInstance().getExamesGerais();//.getExamesValores();
+		colunas = new String[]{"CODIGO","NOME DO EXAME", "TIPO DE COLETA", "PREÇO"};	
 	}
 
     @Override
@@ -38,10 +38,12 @@ public class TableModelExameValor extends AbstractTableModel{
 		
 		switch(coluna) {
 		case 0:
-			return exames.get(linha).getNome();
+			return exames.get(linha).getCodigo();
 		case 1:
-			return exames.get(linha).getTipoDeColeta();
+			return exames.get(linha).getTipoExame();
 		case 2:
+			return exames.get(linha).getTipoDeColeta();
+		case 3:
 			return exames.get(linha).getValor();
 		}
 		return null;
@@ -49,15 +51,17 @@ public class TableModelExameValor extends AbstractTableModel{
 	
 	@Override  
 	   public void setValueAt(Object aValue, int linha, int coluna) {  
-		ExameValor exame = exames.get(linha);
+		ExameGeral exame = exames.get(linha);
 	 
 	     switch (coluna) 
 	     {
-	     case 0:  
-	    	 exame.setNome(aValue.toString());         
+	     case 0:
+	    	 exame.setCodigo(aValue.toString());
 	     case 1:  
-	    	 exame.setTipoDeColeta(aValue.toString());
+	    	 exame.setTipoExame(aValue.toString());         
 	     case 2:  
+	    	 exame.setTipoDeColeta(aValue.toString());
+	     case 3:  
 	    	 exame.setValor(Double.parseDouble(aValue.toString()));
 
 	     default:  
@@ -68,7 +72,7 @@ public class TableModelExameValor extends AbstractTableModel{
 	    }      
 
 	
-        public void addRow(ExameValor e){
+        public void addRow(ExameGeral e){
 	        this.exames.add(e);
 	        this.fireTableDataChanged();
 	        fireTableStructureChanged();
@@ -87,11 +91,11 @@ public class TableModelExameValor extends AbstractTableModel{
 			this.colunas = colunas;
 		}
 
-		public ArrayList<ExameValor> getExames() {
+		public ArrayList<ExameGeral> getExames() {
 			return exames;
 		}
 
-		public void setExames(ArrayList<ExameValor> exames) {
+		public void setExames(ArrayList<ExameGeral> exames) {
 			this.exames = exames;
 		}
 	    
