@@ -9,9 +9,6 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 
-
-import model.TableModel;
-
 public class Consulta extends PanelGeral {
 	
 	private JTextField consultaT;

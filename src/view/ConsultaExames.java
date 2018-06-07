@@ -33,6 +33,7 @@ public class ConsultaExames extends PanelGeral {
 		model = new TableModel(ClassXML.examesTotais);
 		tblExames = new JTable(model);
 		scpExames = new JScrollPane(tblExames);
+	
 		
 		model.addRow(new Exame("Abimael", "000000", "Ta morto faz tempo", "embalsamento", "corpo todo"));
 		tbpExames = new JTabbedPane();
@@ -42,6 +43,13 @@ public class ConsultaExames extends PanelGeral {
 		total.add(scpExames);
 		tbpExames.add("Exames Disponiveis",disponiveis);
 		tbpExames.add("Todos os Exames", total);
+		JPanel p = new JPanel();
+		JPanel pEV=new JPanel();
+		p.add(scpExames);
+		pEV.add(new JScrollPane(new JTable(new TableModelExameValor())));
+		tbpExames.add("Exames Disponiveis",pEV);
+		tbpExames.add("Todos os Exames", p);
+
 		tbpExames.setPreferredSize(new Dimension(550, getHeight()));
 		add(tbpExames);
 

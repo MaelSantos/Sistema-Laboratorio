@@ -1,10 +1,12 @@
-package model;
+package view;
 
 import java.util.ArrayList;
 
 import javax.swing.table.AbstractTableModel;
 
 import app.App;
+import model.ClassXML;
+import model.Paciente;
 
 public class TableModel extends AbstractTableModel {
 	

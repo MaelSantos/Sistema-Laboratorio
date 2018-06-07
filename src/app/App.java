@@ -52,6 +52,9 @@ public class App {
 		Controle controle = new Controle(login,principal, menu, cadastro,consulta,detalhesPaciente
 				, cadastroFuncionario,  detalhesFuncionario, perfil,cadastroExames,consultaExames);
 		
+		
+		
+		
 	}
 	
 }
