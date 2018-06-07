@@ -331,10 +331,15 @@ public class Controle extends MouseAdapter implements ActionListener {
 					perfil.atualiarUsuario(usuario, "Funcionario");
 					menu.getBtnCadastro().setVisible(true);
 					menu.getBtnCadastroFuncionario().setVisible(true);
+					menu.getBtnCadastroFuncionario().setVisible(true);
+					menu.getBtnCadastrarExame().setVisible(true);
+					consultaExames.getTbpExames().getComponent(1).setVisible(true);
 				} else {
 					perfil.atualiarUsuario(usuario, "Cliente");
 					menu.getBtnCadastro().setVisible(false);
 					menu.getBtnCadastroFuncionario().setVisible(false);
+					menu.getBtnCadastrarExame().setVisible(false);
+					consultaExames.getTbpExames().getComponent(1).setVisible(false);
 				}
 				perfil.getBtnEditarDados().addActionListener(this);
 				login.setVisible(false);

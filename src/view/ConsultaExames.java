@@ -20,6 +20,7 @@ public class ConsultaExames extends PanelGeral {
 	private JScrollPane scpExames;
 	private JTabbedPane tbpExames;
 	
+	private JPanel disponiveis, total;
 	
 	public ConsultaExames() {
 		super();
@@ -33,13 +34,14 @@ public class ConsultaExames extends PanelGeral {
 		tblExames = new JTable(model);
 		scpExames = new JScrollPane(tblExames);
 		
-//		model.addRow(new Exame("Abimael", "000000", "Ta morto faz tempo", "embalsamento", "corpo todo", "morto"));
+		model.addRow(new Exame("Abimael", "000000", "Ta morto faz tempo", "embalsamento", "corpo todo"));
 		tbpExames = new JTabbedPane();
+		total = new JPanel();
+		disponiveis = new JPanel();
 		
-		JPanel p = new JPanel();
-		p.add(scpExames);
-		tbpExames.add("Exames Disponiveis",new JPanel());
-		tbpExames.add("Todos os Exames", p);
+		total.add(scpExames);
+		tbpExames.add("Exames Disponiveis",disponiveis);
+		tbpExames.add("Todos os Exames", total);
 		tbpExames.setPreferredSize(new Dimension(550, getHeight()));
 		add(tbpExames);
 
@@ -182,6 +184,30 @@ public class ConsultaExames extends PanelGeral {
 			this.exames = exames;
 		}
 
+	}
+
+	public JTable getTblExames() {
+		return tblExames;
+	}
+
+	public TableModel getModel() {
+		return model;
+	}
+
+	public JScrollPane getScpExames() {
+		return scpExames;
+	}
+
+	public JTabbedPane getTbpExames() {
+		return tbpExames;
+	}
+
+	public JPanel getDisponiveis() {
+		return disponiveis;
+	}
+
+	public JPanel getTotal() {
+		return total;
 	}
 
 

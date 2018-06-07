@@ -10,8 +10,6 @@ public class Exame {
 		
 	}
 
-	
-
 	public Exame(String nomeMedico, String cpfPaciente, String parecer, String tipoExame, String tipoAmostra
 			) {
 		super();

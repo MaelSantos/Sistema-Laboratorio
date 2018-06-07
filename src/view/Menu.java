@@ -25,7 +25,8 @@ public class Menu extends PanelGeral {
 		btnCadastro = new JButton(new ImageIcon(getClass().getClassLoader().getResource("cadastrarPaciente.png")));
 		btnCadastroFuncionario = new JButton(new ImageIcon(getClass().getClassLoader().getResource("cadastrarFuncionario.png")));
 		btnConsulta = new JButton(new ImageIcon(getClass().getClassLoader().getResource("consulta.png")));		
-		btnCadastrarExame = new JButton(new ImageIcon(getClass().getClassLoader().getResource("cadastrarExame.png")));
+//		btnCadastrarExame = new JButton(new ImageIcon(getClass().getClassLoader().getResource("cadastrarExame.png")));
+		btnCadastrarExame = new JButton("Cadastrar Exame");
 		btnConsultaExames = new JButton(new ImageIcon(getClass().getClassLoader().getResource("consultarExame.png")));
 
 		btnConsulta.setContentAreaFilled(false);
