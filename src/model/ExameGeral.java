@@ -4,13 +4,13 @@ import com.thoughtworks.xstream.annotations.XStreamAlias;
 
 @XStreamAlias(value = "ExameGeral")
 public class ExameGeral {
-	
+
 	private String codigo;
 	private String tipoExame;
 	private String tipoDeColeta;
 	private double valor;
 	
-	public ExameGeral(String codigo, String tipoExame, String tipoDeColeta, double valor) {
+	public ExameGeral(String tipoExame, String tipoDeColeta, double valor, String codigo) {
 		this.codigo = codigo;
 		this.tipoExame = tipoExame;
 		this.tipoDeColeta = tipoDeColeta;

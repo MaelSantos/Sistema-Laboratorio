@@ -9,6 +9,7 @@ import java.util.ArrayList;
 
 import model.BancoDados;
 import model.Endereco;
+import model.ExameGeral;
 import model.MarcarExame;
 import model.Funcionario;
 import model.Paciente;
@@ -180,10 +181,12 @@ public class Controle extends MouseAdapter implements ActionListener {
 
 		if (e.getSource() == consulta.getConsultaB()) {
 			if (!consulta.getConsultaT().getText().trim().equals("")) {
-				consulta.getTabelaModel().pesquisa(consulta.getConsultaT().getText(), BancoDados.getInstance().getPacientes());
+				consulta.getTabelaModel().pesquisa(consulta.getConsultaT().getText(),
+						BancoDados.getInstance().getPacientes());
 
 			} else {
-				consulta.getTabelaModel().setPaciente((ArrayList<Paciente>) BancoDados.getInstance().lerArquivo("files/pacientes.xml"));
+				consulta.getTabelaModel()
+						.setPaciente((ArrayList<Paciente>) BancoDados.getInstance().lerArquivo("files/pacientes.xml"));
 				Mensagem.exibirMensagem("Insira o Nome ou Cpf do Paciente");
 			}
 		}
@@ -273,48 +276,33 @@ public class Controle extends MouseAdapter implements ActionListener {
 				detalhesPaciente.setVisible(true);
 			}
 		}
-	/*	if (e.getSource() == cadastroExames.getBtnSalvar()) {
-			String status = "", tipoAmostra = "";
-						
-			
-			if(cadastroExames.getComboBoxTipoAmostra().getSelectedIndex() == 0) {
-				tipoAmostra = "Outro";
-			}else if(cadastroExames.getComboBoxTipoAmostra().getSelectedIndex() == 1) {
-				tipoAmostra = "Sangue";
-			}else if(cadastroExames.getComboBoxTipoAmostra().getSelectedIndex() == 2) {
-				tipoAmostra = "Urina";
-			}else if(cadastroExames.getComboBoxTipoAmostra().getSelectedIndex() == 3) {
-				tipoAmostra = "Fezes";
-			}else if(cadastroExames.getComboBoxTipoAmostra().getSelectedIndex() == 4) {
-				tipoAmostra = "Esperma";
-			}else if(cadastroExames.getComboBoxTipoAmostra().getSelectedIndex() == 5) {
-				tipoAmostra = "Secreção Pleural";
-			}else if(cadastroExames.getComboBoxTipoAmostra().getSelectedIndex() == 6) {
-				tipoAmostra = "Secreção Vaginal";
+		if (e.getSource() == cadastroExames.getBtnSalvar()) {
+			String  tipoAmostra = (String)cadastroExames.getComboBoxTipoAmostra().getSelectedItem();
+			int codigoAtual = Integer.parseInt(BancoDados.getInstance().getExamesGerais().get(BancoDados.getInstance().getExamesGerais().size() - 1).getCodigo()) + 1;
+			String str = "";
+			if(codigoAtual <= 9) {
+				str = "00";
+			}else if(codigoAtual >= 10) {
+				str = "0";
 			}
-			 
+		
+			
 			try {
-				Exame exame = new Exame(tipoAmostra, tipoAmostra, tipoAmostra, tipoAmostra, tipoAmostra);
-						ArrayList<Paciente> pacientes = ClassXML.lerArquivo();
-						
-						for (Paciente pacienteAtual : pacientes) {
-							if (pacienteAtual.getCpf().equals(cadastroExames.getFieldcpfPaciente().getText())) {
-								pacienteAtual.getExames().add(exame);
-								ClassXML.editarPaciente(pacienteAtual);
-							}
-						}
-			} catch (Exception exception) {
-				Mensagem.exibirMensagem("Certifique-se de que todos os campos estejam preenchidos. Erro:" + exception);
+				ExameGeral exame = new ExameGeral(cadastroExames.getFieldTipoExame().getText(), tipoAmostra,Double.parseDouble(cadastroExames.getFieldvalor().getText()),
+						 str + String.valueOf(codigoAtual));
+				BancoDados.getInstance().addDado(exame);
+				cadastroExames.getFieldTipoExame().setText("");
+				cadastroExames.getFieldvalor().setText("");
+				Mensagem.exibirMensagem("Exame salvo com sucesso.");;
+				
+			} catch (NumberFormatException exception) {
+				Mensagem.exibirMensagem("Certifique-se de que todos os campos estejam preenchidos corretamente. Erro:" + exception);
 			}
-
 			
-			cadastroExames.getFieldcpfPaciente().setText("");
-			cadastroExames.getFieldNomeMedico().setText("");
-			cadastroExames.getTextAreaParecer().setText("");
-			cadastroExames.getFieldTipoExame().setText("");
-		}*/
 
-	} 
+		}
+
+	}
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
