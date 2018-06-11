@@ -45,6 +45,7 @@ public class TableModelExameGeral extends AbstractTableModel{
 			return exames.get(linha).getTipoDeColeta();
 		case 3:
 			return exames.get(linha).getValor();
+		
 		}
 		return null;
 	}

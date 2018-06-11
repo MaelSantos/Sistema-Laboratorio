@@ -19,11 +19,12 @@ public class Principal extends TelaGeral{
 	private Perfil perfil;
 	private CadastroExames cadastroExames;
 	private ConsultaExames consultaExames;
+	private EditarExame editarExame;
 	
 	public Principal(String titulo, Menu menu, Cadastro cadastro,Consulta consulta, 
 			DetalhesPaciente detalhesPaciente, CadastroFuncionario cadastroFuncionario, 
 			DetalhesFuncionario detalhesFuncionario, Perfil perfil, CadastroExames cadastroExames,
-			ConsultaExames consultaExames) {
+			ConsultaExames consultaExames, EditarExame editarExame) {
 		super(titulo);
 		
 		this.cadastro = cadastro;
@@ -35,6 +36,7 @@ public class Principal extends TelaGeral{
 		this.perfil = perfil;
 		this.cadastroExames = cadastroExames;
 		this.consultaExames = consultaExames;
+		this.editarExame=editarExame;
 		inicializar();
 		setVisible(false);
 	}
@@ -85,6 +87,7 @@ public class Principal extends TelaGeral{
 		add(detalhesFuncionario,cons);
 		add(cadastroExames, cons);
 		add(consultaExames, cons);
+		add(editarExame, cons);
 	}
 
 }

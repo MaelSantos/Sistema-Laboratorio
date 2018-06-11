@@ -3,7 +3,8 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="files"/>
-	<classpathentry kind="lib" path="C:/Users/Felipe/Downloads/xstream-distribution-1.4.10-bin/xstream-1.4.10/lib/xstream-1.4.10.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Felipe/Downloads/xstream-distribution-1.4.10-bin/xstream-1.4.10/lib/xstream/dom4j-1.6.1.jar"/>
+	<classpathentry kind="src" path="res"/>
+	<classpathentry kind="lib" path="C:/Users/FIlipe Alves/eclipse-workspace/lib/dom4j-1.6.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/FIlipe Alves/eclipse-workspace/lib/xstream-1.4.10 (1).jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

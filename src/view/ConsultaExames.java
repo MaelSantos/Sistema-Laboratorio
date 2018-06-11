@@ -5,6 +5,7 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.util.ArrayList;
 
+import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
@@ -12,14 +13,16 @@ import javax.swing.JTable;
 import javax.swing.table.AbstractTableModel;
 
 import model.BancoDados;
+import model.ExameGeral;
 import model.MarcarExame;
 
 public class ConsultaExames extends PanelGeral {
 
-	private JTable tblExames;
+	private JTable tblExames, tblDisponiveis;
 	private TableModel model;
 	private JScrollPane scpExames;
 	private JTabbedPane tbpExames;
+	ArrayList<ExameGeral> exames;
 	
 	private JPanel disponiveis, total;
 	
@@ -27,13 +30,14 @@ public class ConsultaExames extends PanelGeral {
 		super();
 		setLayout(new BorderLayout());
 		add(tbpExames,BorderLayout.CENTER);
+		exames = BancoDados.getInstance().getExamesGerais();
 	}
 
 	@Override
 	public void inicializar() {
-		
 		model = new TableModel(BancoDados.getInstance().getExamesMarcados());
 		tblExames = new JTable(model);
+		tblDisponiveis = new JTable(new TableModelExameGeral());
 		scpExames = new JScrollPane(tblExames);
 	
 		tbpExames = new JTabbedPane();
@@ -42,8 +46,9 @@ public class ConsultaExames extends PanelGeral {
 		total.setLayout(new BorderLayout());
 		disponiveis.setLayout(new BorderLayout());
 		
+		
 		total.add(scpExames,BorderLayout.CENTER);
-		disponiveis.add(new JScrollPane(new JTable(new TableModelExameGeral())),BorderLayout.CENTER);
+		disponiveis.add(new JScrollPane(tblDisponiveis),BorderLayout.CENTER);
 		tbpExames.add("Exames Disponiveis",disponiveis);
 		tbpExames.add("Todos os Exames", total);
 
@@ -216,5 +221,21 @@ public class ConsultaExames extends PanelGeral {
 		return total;
 	}
 
+	public JTable getTblDisponiveis() {
+		return tblDisponiveis;
+	}
 
+	public void setTblDisponiveis(JTable tblDisponiveis) {
+		this.tblDisponiveis = tblDisponiveis;
+	}
+
+	public ArrayList<ExameGeral> getExames() {
+		return exames;
+	}
+
+	public void setExames(ArrayList<ExameGeral> exames) {
+		this.exames = exames;
+	}
+	
+	
 }

@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.xml.Dom4JDriver;
 
+import view.Mensagem;
+
 @SuppressWarnings("unchecked")
 public class BancoDados {
 
@@ -98,7 +100,7 @@ public class BancoDados {
 		return false;
 	}
 	
-	public void editarPaciente(Paciente paciente) {
+public void editarPaciente(Paciente paciente) {
 		
 		File file =  new File("files/funcionarios.xml");
 		int indice = 0;
@@ -126,6 +128,55 @@ public class BancoDados {
 		}catch (FileNotFoundException e) {
 
 		}	
+	}
+
+public void editarExame(ExameGeral exame) {
+	
+	File file =  new File("files/examesValor.xml");
+	int indice = 0;
+	for(int i = 0; i < pacientes.size(); i++) {
+		if(exame.getCodigo().equals(examesGerais.get(i).getCodigo())) {
+			indice = i;
+			break;
+		}
+	}
+	
+	examesGerais.remove(indice);
+	examesGerais.add(indice, exame);
+
+	xStream.processAnnotations(ExameGeral.class);
+
+	String text =  xStream.toXML(examesGerais);
+
+	PrintWriter writer;
+
+	try {
+		writer = new PrintWriter(file);
+		writer.write(text);
+		writer.flush();
+		writer.close();
+	}catch (FileNotFoundException e) {
+
+	}	
+}
+	public void excluirExame(ExameGeral exameGeral) {
+		File file =  new File("files/examesValor.xml");
+			this.examesGerais.remove(exameGeral);
+			xStream.processAnnotations(ExameGeral.class);
+
+			String text =  xStream.toXML(examesGerais);
+
+			PrintWriter writer;
+
+			try {
+				writer = new PrintWriter(file);
+				writer.write(text);
+				writer.flush();
+				writer.close();
+			}catch (FileNotFoundException e) {
+			
+			}	
+			
 	}
 	
 	public void gravar(ArrayList<? extends Object> dados, String caminho) {
