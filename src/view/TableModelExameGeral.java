@@ -71,6 +71,11 @@ public class TableModelExameGeral extends AbstractTableModel{
 	     fireTableCellUpdated(linha, coluna);  
 	     fireTableStructureChanged();
 	    }      
+	
+	    public void atualizarTabela() {
+	    	exames = BancoDados.getInstance().getExamesGerais();//.getExamesValores();
+	    	fireTableStructureChanged();
+	    }
 
 	
         public void addRow(ExameGeral e){

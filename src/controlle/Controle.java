@@ -304,6 +304,7 @@ public class Controle extends MouseAdapter implements ActionListener {
 				cadastroExames.getFieldTipoExame().setText("");
 				cadastroExames.getFieldvalor().setText("");
 				Mensagem.exibirMensagem("Exame salvo com sucesso.");;
+				consultaExames.getExamesDisponiveis().atualizarTabela();
 				
 			} catch (NumberFormatException exception) {
 				Mensagem.exibirMensagem("Certifique-se de que todos os campos estejam preenchidos corretamente. Erro:" + exception);
