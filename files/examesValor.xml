@@ -2,38 +2,8 @@
 
 <list>
   <ExameGeral>
-    <codigo>001</codigo>
+    <codigo>000</codigo>
     <tipoExame>Hemograma</tipoExame>
-    <tipoDeColeta>Sangue</tipoDeColeta>
-    <valor>40.0</valor>
-  </ExameGeral>
-  <ExameGeral>
-    <codigo>003</codigo>
-    <tipoExame>Espermograma</tipoExame>
-    <tipoDeColeta>Esperma</tipoDeColeta>
-    <valor>20.0</valor>
-  </ExameGeral>
-  <ExameGeral>
-    <codigo>002</codigo>
-    <tipoExame>Triglic�rides</tipoExame>
-    <tipoDeColeta>Sangue</tipoDeColeta>
-    <valor>40.0</valor>
-  </ExameGeral>
-  <ExameGeral>
-    <codigo>004</codigo>
-    <tipoExame>Exame de Urina</tipoExame>
-    <tipoDeColeta>Urina</tipoDeColeta>
-    <valor>30.0</valor>
-  </ExameGeral>
-  <ExameGeral>
-    <codigo>005</codigo>
-    <tipoExame>Glicose</tipoExame>
-    <tipoDeColeta>Sangue</tipoDeColeta>
-    <valor>30.3</valor>
-  </ExameGeral>
-  <ExameGeral>
-    <codigo>006</codigo>
-    <tipoExame>Colesterol</tipoExame>
     <tipoDeColeta>Sangue</tipoDeColeta>
     <valor>50.0</valor>
   </ExameGeral>

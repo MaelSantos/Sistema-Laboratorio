@@ -7,6 +7,10 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
 
+import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
+import javax.swing.JPopupMenu;
+
 import model.BancoDados;
 import model.Endereco;
 import model.ExameGeral;
@@ -22,6 +26,7 @@ import view.Consulta;
 import view.ConsultaExames;
 import view.DetalhesFuncionario;
 import view.DetalhesPaciente;
+import view.EditarExame;
 import view.Login;
 import view.Mensagem;
 import view.Menu;
@@ -41,11 +46,12 @@ public class Controle extends MouseAdapter implements ActionListener {
 	private Perfil perfil;
 	private CadastroExames cadastroExames;
 	private ConsultaExames consultaExames;
+	private EditarExame editarExame;
 
 	public Controle(Login login, Principal principal, Menu menu, Cadastro cadastro, Consulta consulta,
 			DetalhesPaciente detalhesPaciente, CadastroFuncionario cadastroFuncionario,
 			DetalhesFuncionario detalhesFuncionario, Perfil perfil, CadastroExames cadastroExames,
-			ConsultaExames consultaExames) {
+			ConsultaExames consultaExames, EditarExame editarExame) {
 		this.principal = principal;
 		this.menu = menu;
 		this.cadastro = cadastro;
@@ -57,6 +63,7 @@ public class Controle extends MouseAdapter implements ActionListener {
 		this.perfil = perfil;
 		this.cadastroExames = cadastroExames;
 		this.consultaExames = consultaExames;
+		this.editarExame = editarExame;
 
 		cadastro.getBtnAdd().addActionListener(this);
 		consulta.getConsultaB().addActionListener(this);
@@ -83,6 +90,9 @@ public class Controle extends MouseAdapter implements ActionListener {
 		login.getBntSair().addMouseListener(this);
 
 		// menu.getBtnDetalhesFuncionario().addActionListener(this);
+		
+		consultaExames.getTblDisponiveis().addMouseListener(this);
+		editarExame.getBtnSalvar().addActionListener(this);
 	}
 
 	@Override
@@ -301,6 +311,15 @@ public class Controle extends MouseAdapter implements ActionListener {
 			
 
 		}
+		if(e.getSource()==editarExame.getBtnSalvar()) {
+			ExameGeral exameGeral = new ExameGeral(
+					editarExame.getFieldTipoExame().getText().trim(),
+					(String)editarExame.getComboBoxTipoAmostra().getSelectedItem(),
+					Double.parseDouble(editarExame.getFieldvalor().getText().trim()),
+					editarExame.getExame().getCodigo());
+			
+			BancoDados.getInstance().editarExame(exameGeral);
+		}
 
 	}
 
@@ -338,6 +357,47 @@ public class Controle extends MouseAdapter implements ActionListener {
 
 		}
 
-	}
+		if(e.getSource()==consultaExames.getTblDisponiveis()) {
+			JPopupMenu menu = new JPopupMenu();
+            JMenuItem editar = new JMenuItem("Editar");
+            editar.addActionListener(new ActionListener() {
 
+                public void actionPerformed(ActionEvent e) {
+                    consultaExames.setVisible(false);
+                    editarExame.autoPreencher(consultaExames.getExames(
+                    		).get(consultaExames.getTblDisponiveis().getSelectedRow()));
+                    editarExame.setVisible(true);
+             
+                }
+            });
+            JMenuItem excluir = new JMenuItem("Excluir");
+            excluir.addActionListener(new ActionListener() {
+				
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					BancoDados.getInstance().excluirExame(
+							BancoDados.getInstance().getExamesGerais().get(
+									consultaExames.getTblDisponiveis().getSelectedRow()));
+
+					//Excluir linha da tabela.
+					
+				}
+			});
+            
+            JMenuItem cancelar  = new JMenuItem("Cancelar");
+            cancelar.addActionListener(new ActionListener() {
+				
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					 menu.setVisible(false);					
+				}
+			});
+            menu.add(editar);
+            menu.add(excluir);
+            menu.add(cancelar);
+            menu.show(consultaExames.getTblDisponiveis(), 
+            		e.getX(),e.getY());
+           
+		}
+	}
 }
