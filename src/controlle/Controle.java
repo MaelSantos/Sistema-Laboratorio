@@ -191,7 +191,7 @@ public class Controle extends MouseAdapter implements ActionListener {
 
 			} else {
 				consulta.getTabelaModel()
-						.setPaciente((ArrayList<Paciente>) BancoDados.getInstance().lerArquivo("files/pacientes.xml"));
+						.setPaciente((ArrayList<Paciente>) BancoDados.getInstance().lerArquivo("pacientes.xml"));
 				Mensagem.exibirMensagem("Insira o Nome ou Cpf do Paciente");
 			}
 		}
@@ -285,10 +285,9 @@ public class Controle extends MouseAdapter implements ActionListener {
 			}else if(codigoAtual >= 10) {
 				str = "0";
 			}
-		
-			
+					
 			try {
-				ExameGeral exame = new ExameGeral(cadastroExames.getFieldTipoExame().getText(), tipoAmostra,Double.parseDouble(cadastroExames.getFieldvalor().getText()),
+				ExameGeral exame = new ExameGeral(cadastroExames.getFieldTipoExame().getText().trim(), tipoAmostra,Double.parseDouble(cadastroExames.getFieldvalor().getText()),
 						 str + String.valueOf(codigoAtual));
 				BancoDados.getInstance().addDado(exame);
 				cadastroExames.getFieldTipoExame().setText("");
@@ -299,8 +298,6 @@ public class Controle extends MouseAdapter implements ActionListener {
 			} catch (NumberFormatException exception) {
 				Mensagem.exibirMensagem("Certifique-se de que todos os campos estejam preenchidos corretamente. Erro:" + exception);
 			}
-			
-
 		}
 		if(e.getSource()==editarExame.getBtnSalvar()) {
 			ExameGeral exameGeral = new ExameGeral(
@@ -356,11 +353,13 @@ public class Controle extends MouseAdapter implements ActionListener {
 					menu.getBtnCadastroFuncionario().setVisible(true);
 					menu.getBtnCadastroFuncionario().setVisible(true);
 					menu.getBtnCadastrarExame().setVisible(true);
+					menu.getBtnMarcarExame().setVisible(true);
 				} else {
 					perfil.atualiarUsuario(usuario, "Cliente");
 					menu.getBtnCadastro().setVisible(false);
 					menu.getBtnCadastroFuncionario().setVisible(false);
 					menu.getBtnCadastrarExame().setVisible(false);
+					menu.getBtnMarcarExame().setVisible(false);
 				}
 				perfil.getBtnEditarDados().addActionListener(this);
 				login.setVisible(false);

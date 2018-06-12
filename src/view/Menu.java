@@ -42,8 +42,8 @@ public class Menu extends PanelGeral {
 		btnConsultaExames.setBorderPainted(false);
 		
 		add(btnConsulta);
-		add(btnMarcarExame);
 		add(btnConsultaExames);
+		add(btnMarcarExame);
 		add(btnCadastro);
 		add(btnCadastroFuncionario);
 		add(btnCadastrarExame);
