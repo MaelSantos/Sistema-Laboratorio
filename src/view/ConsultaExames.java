@@ -21,6 +21,7 @@ public class ConsultaExames extends PanelGeral {
 	private JTable tblExames, tblDisponiveis;
 	private TableModel model;
 	private JScrollPane scpExames;
+	private TableModelExameGeral examesDisponiveis;
 	private JTabbedPane tbpExames;
 	ArrayList<ExameGeral> exames;
 	
@@ -37,7 +38,8 @@ public class ConsultaExames extends PanelGeral {
 	public void inicializar() {
 		model = new TableModel(BancoDados.getInstance().getExamesMarcados());
 		tblExames = new JTable(model);
-		tblDisponiveis = new JTable(new TableModelExameGeral());
+		examesDisponiveis=new TableModelExameGeral();
+		tblDisponiveis = new JTable(examesDisponiveis);
 		scpExames = new JScrollPane(tblExames);
 	
 		tbpExames = new JTabbedPane();
@@ -236,6 +238,11 @@ public class ConsultaExames extends PanelGeral {
 	public void setExames(ArrayList<ExameGeral> exames) {
 		this.exames = exames;
 	}
+
+	public TableModelExameGeral getExamesDisponiveis() {
+		return examesDisponiveis;
+	}
+	
 	
 	
 }

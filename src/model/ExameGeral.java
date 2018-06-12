@@ -49,4 +49,27 @@ public class ExameGeral {
 		this.tipoExame = tipoExame;
 	}
 
+	@Override
+	public boolean equals(Object obj) {
+		
+		if (obj instanceof ExameGeral) {
+			ExameGeral geral = (ExameGeral) obj;
+			
+			if(geral.getCodigo().equalsIgnoreCase(codigo) ||
+					geral.getTipoExame().equalsIgnoreCase(tipoExame))
+				return true;
+		}
+		
+		if (obj instanceof String) {
+			String string = (String) obj;
+			
+			if(codigo.equalsIgnoreCase(string) ||
+					tipoExame.equalsIgnoreCase(string) )
+				return true;
+			
+		}
+		
+		return super.equals(obj);
+	}
+	
 }

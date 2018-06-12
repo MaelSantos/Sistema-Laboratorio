@@ -1,14 +1,18 @@
 package controlle;
 
+import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Vector;
 
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
 
 import model.BancoDados;
@@ -28,6 +32,7 @@ import view.DetalhesFuncionario;
 import view.DetalhesPaciente;
 import view.EditarExame;
 import view.Login;
+import view.Marcar;
 import view.Mensagem;
 import view.Menu;
 import view.Perfil;
@@ -47,11 +52,12 @@ public class Controle extends MouseAdapter implements ActionListener {
 	private CadastroExames cadastroExames;
 	private ConsultaExames consultaExames;
 	private EditarExame editarExame;
+	private Marcar marcar;
 
 	public Controle(Login login, Principal principal, Menu menu, Cadastro cadastro, Consulta consulta,
 			DetalhesPaciente detalhesPaciente, CadastroFuncionario cadastroFuncionario,
 			DetalhesFuncionario detalhesFuncionario, Perfil perfil, CadastroExames cadastroExames,
-			ConsultaExames consultaExames, EditarExame editarExame) {
+			ConsultaExames consultaExames, EditarExame editarExame, Marcar marcar) {
 		this.principal = principal;
 		this.menu = menu;
 		this.cadastro = cadastro;
@@ -64,7 +70,8 @@ public class Controle extends MouseAdapter implements ActionListener {
 		this.cadastroExames = cadastroExames;
 		this.consultaExames = consultaExames;
 		this.editarExame = editarExame;
-
+		this.marcar = marcar;
+		
 		cadastro.getBtnAdd().addActionListener(this);
 		consulta.getConsultaB().addActionListener(this);
 		consulta.getDetalhesButton().addActionListener(this);
@@ -74,6 +81,7 @@ public class Controle extends MouseAdapter implements ActionListener {
 		menu.getBtnConsulta().addActionListener(this);
 		menu.getBtnCadastrarExame().addActionListener(this);
 		menu.getBtnConsultaExames().addActionListener(this);
+		menu.getBtnMarcarExame().addActionListener(this);
 		detalhesPaciente.getBtnAdd().addActionListener(this);
 		detalhesPaciente.getBntVoltar().addActionListener(this);
 		detalhesFuncionario.getBtnVoltar().addActionListener(this);
@@ -93,8 +101,11 @@ public class Controle extends MouseAdapter implements ActionListener {
 		
 		consultaExames.getTblDisponiveis().addMouseListener(this);
 		editarExame.getBtnSalvar().addActionListener(this);
+		
+		marcar.getBtnAdd().addActionListener(this);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public void actionPerformed(ActionEvent e) {
 
@@ -150,43 +161,27 @@ public class Controle extends MouseAdapter implements ActionListener {
 		}
 
 		if (e.getSource() == menu.getBtnCadastro()) {
-			consulta.setVisible(false);
-			detalhesPaciente.setVisible(false);
-			cadastroFuncionario.setVisible(false);
-			cadastro.setVisible(true);
-			consultaExames.setVisible(false);
+			mudarTela(cadastro);
 		}
 		if (e.getSource() == menu.getBtnConsulta()) {
-			cadastro.setVisible(false);
-			detalhesPaciente.setVisible(false);
-			cadastroFuncionario.setVisible(false);
-			consulta.setVisible(true);
-			consultaExames.setVisible(false);
+			mudarTela(consulta);
 		}
 
 		if (e.getSource() == menu.getBtnCadastroFuncionario()) {
-			cadastro.setVisible(false);
-			detalhesPaciente.setVisible(false);
-			consulta.setVisible(false);
-			cadastroFuncionario.setVisible(true);
-			consultaExames.setVisible(false);
+			
+			mudarTela(cadastroFuncionario);
 		}
 		if (e.getSource() == menu.getBtnCadastrarExame()) {
-			cadastro.setVisible(false);
-			detalhesPaciente.setVisible(false);
-			consulta.setVisible(false);
-			cadastroFuncionario.setVisible(false);
-			cadastroExames.setVisible(true);
-			consultaExames.setVisible(false);
+			
+			mudarTela(cadastroExames);
 		}
 		if (e.getSource() == menu.getBtnConsultaExames()) {
 
-			cadastro.setVisible(false);
-			detalhesPaciente.setVisible(false);
-			consulta.setVisible(false);
-			cadastroFuncionario.setVisible(false);
-			cadastroExames.setVisible(false);
-			consultaExames.setVisible(true);
+			mudarTela(consultaExames);
+		}
+		if(e.getSource() == menu.getBtnMarcarExame())
+		{
+			mudarTela(marcar);
 		}
 
 		if (e.getSource() == consulta.getConsultaB()) {
@@ -204,8 +199,7 @@ public class Controle extends MouseAdapter implements ActionListener {
 			int select = consulta.getTabela().getSelectedRow();
 			detalhesPaciente.autoPreencher(consulta.getTabelaModel().getPaciente().get(select));
 
-			consulta.setVisible(false);
-			detalhesPaciente.setVisible(true);
+			mudarTela(detalhesPaciente);
 		}
 
 		if (e.getSource() == consulta.getVoltarTabelaCompleta()) {
@@ -256,13 +250,13 @@ public class Controle extends MouseAdapter implements ActionListener {
 		}
 
 		if (e.getSource() == detalhesPaciente.getBntVoltar()) {
-			detalhesPaciente.setVisible(false);
-			consulta.setVisible(true);
+			
+			mudarTela(consulta);
 		}
 
 		if (e.getSource() == detalhesFuncionario.getBtnVoltar()) {
-			detalhesFuncionario.setVisible(false);
-			consulta.setVisible(true);
+
+			mudarTela(consulta);
 		}
 
 		if (e.getSource() == perfil.getBtnSair()) {
@@ -273,18 +267,14 @@ public class Controle extends MouseAdapter implements ActionListener {
 		}
 
 		if (e.getSource() == perfil.getBtnEditarDados()) {
-			cadastro.setVisible(false);
-			cadastroFuncionario.setVisible(false);
-			detalhesPaciente.setVisible(false);
-			consulta.setVisible(false);
 
 			if (login.verificarTipoUsuario(perfil.getUsuario())) {
 				detalhesFuncionario.autoPreencher((Funcionario) perfil.getUsuario());
-				detalhesFuncionario.setVisible(true);
 			} else {
 				detalhesPaciente.autoPreencher((Paciente) perfil.getUsuario());
-				detalhesPaciente.setVisible(true);
 			}
+			
+			mudarTela(detalhesPaciente);
 		}
 		if (e.getSource() == cadastroExames.getBtnSalvar()) {
 			String  tipoAmostra = (String)cadastroExames.getComboBoxTipoAmostra().getSelectedItem();
@@ -304,6 +294,7 @@ public class Controle extends MouseAdapter implements ActionListener {
 				cadastroExames.getFieldTipoExame().setText("");
 				cadastroExames.getFieldvalor().setText("");
 				Mensagem.exibirMensagem("Exame salvo com sucesso.");;
+				consultaExames.getExamesDisponiveis().atualizarTabela();
 				
 			} catch (NumberFormatException exception) {
 				Mensagem.exibirMensagem("Certifique-se de que todos os campos estejam preenchidos corretamente. Erro:" + exception);
@@ -319,6 +310,32 @@ public class Controle extends MouseAdapter implements ActionListener {
 					editarExame.getExame().getCodigo());
 			
 			BancoDados.getInstance().editarExame(exameGeral);
+		}
+		if(e.getSource() == marcar.getBtnAdd())
+		{
+			if(Verificar.verificarMarcar(marcar))
+			{
+				Iterator<ExameGeral> v = BancoDados.getInstance().getExamesGerais().iterator();
+				ExameGeral geral = null;
+				while (v.hasNext()) {
+					if(v.next().equals(marcar.getTfdExame().getText()))
+						geral = v.next();
+					
+				}
+				BancoDados.getInstance().addDado(new MarcarExame(
+						geral, 
+						marcar.getTfdNomeMedico().getText().trim(), 
+						marcar.getTfdCpfPaciente().getText().trim(), 
+						marcar.getTfdParecer().getText().trim()));	
+				
+				Mensagem.exibirMensagem("Exame Marcado Com Sucesso!!!");
+				marcar.getTfdExame().setText("");
+				marcar.getTfdNomeMedico().setText(""); 
+				marcar.getTfdCpfPaciente().setText(""); 
+				marcar.getTfdParecer().setText("");
+			}
+			else
+				Mensagem.exibirMensagem("Preencha Todos os Campos");
 		}
 
 	}
@@ -363,10 +380,9 @@ public class Controle extends MouseAdapter implements ActionListener {
             editar.addActionListener(new ActionListener() {
 
                 public void actionPerformed(ActionEvent e) {
-                    consultaExames.setVisible(false);
                     editarExame.autoPreencher(consultaExames.getExames(
                     		).get(consultaExames.getTblDisponiveis().getSelectedRow()));
-                    editarExame.setVisible(true);
+                    mudarTela(editarExame);
              
                 }
             });
@@ -400,4 +416,15 @@ public class Controle extends MouseAdapter implements ActionListener {
            
 		}
 	}
+	
+	public void mudarTela(JPanel panel)
+	{
+		for(Component c : principal.getContentPane().getComponents())
+			if(c.equals(panel))
+				c.setVisible(true);
+			else if( ! (c.equals(menu) || c.equals(perfil)))
+				c.setVisible(false);
+		
+	}
+	
 }

@@ -1,6 +1,7 @@
 package model;
 
 import view.Cadastro;
+import view.Marcar;
 
 public class Verificar {
 
@@ -15,6 +16,17 @@ public class Verificar {
 				cadastro.getTfdBairro().getText().trim().equals("") || 
 				cadastro.getTfdCep().getText().trim().equals("") ||
 				cadastro.getTfdCidade().getText().trim().equals(""))
+			return false;
+		
+		return true;
+	}
+	
+	public static boolean verificarMarcar(Marcar marcarExame)
+	{
+		if(marcarExame.getTfdCpfPaciente().getText().trim().equals("") ||
+				marcarExame.getTfdNomeMedico().getText().trim().equals("")|| 
+				marcarExame.getTfdExame().getText().trim().equals("") ||
+				marcarExame.getTfdParecer().getText().trim().equals(""))
 			return false;
 		
 		return true;

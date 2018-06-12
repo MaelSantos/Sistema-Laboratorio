@@ -1,11 +1,13 @@
 package view;
 
+import java.awt.Component;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 public class Principal extends TelaGeral{
 	
@@ -20,11 +22,12 @@ public class Principal extends TelaGeral{
 	private CadastroExames cadastroExames;
 	private ConsultaExames consultaExames;
 	private EditarExame editarExame;
+	private Marcar marcar;
 	
 	public Principal(String titulo, Menu menu, Cadastro cadastro,Consulta consulta, 
 			DetalhesPaciente detalhesPaciente, CadastroFuncionario cadastroFuncionario, 
 			DetalhesFuncionario detalhesFuncionario, Perfil perfil, CadastroExames cadastroExames,
-			ConsultaExames consultaExames, EditarExame editarExame) {
+			ConsultaExames consultaExames, EditarExame editarExame, Marcar marcar) {
 		super(titulo);
 		
 		this.cadastro = cadastro;
@@ -37,6 +40,7 @@ public class Principal extends TelaGeral{
 		this.cadastroExames = cadastroExames;
 		this.consultaExames = consultaExames;
 		this.editarExame=editarExame;
+		this.marcar = marcar;
 		inicializar();
 		setVisible(false);
 	}
@@ -88,6 +92,6 @@ public class Principal extends TelaGeral{
 		add(cadastroExames, cons);
 		add(consultaExames, cons);
 		add(editarExame, cons);
-	}
-
+		add(marcar, cons);
+	}	
 }

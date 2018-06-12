@@ -19,7 +19,7 @@ import view.Mensagem;
 public class BancoDados {
 
 	private static BancoDados dados;
-	
+
 	private ArrayList<Paciente> pacientes;
 	private ArrayList<Funcionario> funcionarios;
 	private ArrayList<ExameGeral> examesGerais;
@@ -27,16 +27,16 @@ public class BancoDados {
 	private XStream xStream;
 
 	private BancoDados() {
-		
+
 		xStream= new XStream(new Dom4JDriver());
-		
+
 		xStream.alias("Paciente", Paciente.class);
 		xStream.alias("Funcionario", Funcionario.class);
 		xStream.alias("Administrador", Administrador.class);
 		xStream.alias("Endereco", Endereco.class);
 		xStream.alias("ExameMarcado", MarcarExame.class);
 		xStream.alias("ExameGeral", ExameGeral.class);
-		
+
 		//remover mesnagem de erro 
 		XStream.setupDefaultSecurity(xStream);
 		xStream.allowTypes(new Class[] {
@@ -53,36 +53,36 @@ public class BancoDados {
 		xStream.addPermission(NullPermission.NULL);
 		xStream.addPermission(PrimitiveTypePermission.PRIMITIVES);
 		xStream.allowTypeHierarchy(Object.class);
-				
+
 		pacientes = (ArrayList<Paciente>) lerArquivo("pacientes.xml");
 		examesMarcados = (ArrayList<MarcarExame>) lerArquivo("examesMarcados.xml");
 		funcionarios = (ArrayList<Funcionario>) lerArquivo("funcionarios.xml");
 		examesGerais = (ArrayList<ExameGeral>) lerArquivo("examesValor.xml");
-		
+
 	}
-	
+
 	public static BancoDados getInstance()
 	{
 		if(dados == null)
 			dados = new BancoDados();
 		return dados;
 	}
-	
+
 	public boolean addDado(Object object)
 	{
 		boolean add = true;
 		if (object instanceof Paciente) { //add paciente
-			 Paciente paciente = (Paciente) object;
-			 for(Paciente p : pacientes)
-			 {
-				 if(p.getCpf().equalsIgnoreCase(paciente.getCpf()))
-				 {
-					 return false;
-				 }						
-			 }
-			 pacientes.add(paciente);
-			 gravar(pacientes,"pacientes.xml");
-			 return true;
+			Paciente paciente = (Paciente) object;
+			for(Paciente p : pacientes)
+			{
+				if(p.getCpf().equalsIgnoreCase(paciente.getCpf()))
+				{
+					return false;
+				}						
+			}
+			pacientes.add(paciente);
+			gravar(pacientes,"pacientes.xml");
+			return true;
 		}
 		if (object instanceof Funcionario) { //add funcionario
 			Funcionario funcionario = (Funcionario) object;
@@ -111,12 +111,20 @@ public class BancoDados {
 			gravar(examesGerais,"examesValor.xml");
 			return true;
 		}
+		if (object instanceof MarcarExame) { //add exame
+			MarcarExame marcarExame = (MarcarExame) object;
+
+			examesMarcados.add(marcarExame);
+			gravar(examesMarcados,"examesMarcados.xml");
+			return true;
+		}
 		
+
 		return false;
 	}
-	
-public void editarPaciente(Paciente paciente) {
-		
+
+	public void editarPaciente(Paciente paciente) {
+
 		File file =  new File(getClass().getClassLoader().getResource("funcionarios.xml").getFile());
 		int indice = 0;
 		for(int i = 0; i < pacientes.size(); i++) {
@@ -125,7 +133,7 @@ public void editarPaciente(Paciente paciente) {
 				break;
 			}
 		}
-	
+
 		pacientes.remove(indice);
 		pacientes.add(indice, paciente);
 
@@ -145,55 +153,55 @@ public void editarPaciente(Paciente paciente) {
 		}	
 	}
 
-public void editarExame(ExameGeral exame) {
-	
-	File file =  new File("files/examesValor.xml");
-	int indice = 0;
-	for(int i = 0; i < pacientes.size(); i++) {
-		if(exame.getCodigo().equals(examesGerais.get(i).getCodigo())) {
-			indice = i;
-			break;
+	public void editarExame(ExameGeral exame) {
+
+		File file =  new File("files/examesValor.xml");
+		int indice = 0;
+		for(int i = 0; i < pacientes.size(); i++) {
+			if(exame.getCodigo().equals(examesGerais.get(i).getCodigo())) {
+				indice = i;
+				break;
+			}
 		}
+
+		examesGerais.remove(indice);
+		examesGerais.add(indice, exame);
+
+		xStream.processAnnotations(ExameGeral.class);
+
+		String text =  xStream.toXML(examesGerais);
+
+		PrintWriter writer;
+
+		try {
+			writer = new PrintWriter(file);
+			writer.write(text);
+			writer.flush();
+			writer.close();
+		}catch (FileNotFoundException e) {
+
+		}	
 	}
-	
-	examesGerais.remove(indice);
-	examesGerais.add(indice, exame);
-
-	xStream.processAnnotations(ExameGeral.class);
-
-	String text =  xStream.toXML(examesGerais);
-
-	PrintWriter writer;
-
-	try {
-		writer = new PrintWriter(file);
-		writer.write(text);
-		writer.flush();
-		writer.close();
-	}catch (FileNotFoundException e) {
-
-	}	
-}
 	public void excluirExame(ExameGeral exameGeral) {
 		File file =  new File("files/examesValor.xml");
-			this.examesGerais.remove(exameGeral);
-			xStream.processAnnotations(ExameGeral.class);
+		this.examesGerais.remove(exameGeral);
+		xStream.processAnnotations(ExameGeral.class);
 
-			String text =  xStream.toXML(examesGerais);
+		String text =  xStream.toXML(examesGerais);
 
-			PrintWriter writer;
+		PrintWriter writer;
 
-			try {
-				writer = new PrintWriter(file);
-				writer.write(text);
-				writer.flush();
-				writer.close();
-			}catch (FileNotFoundException e) {
-			
-			}	
-			
+		try {
+			writer = new PrintWriter(file);
+			writer.write(text);
+			writer.flush();
+			writer.close();
+		}catch (FileNotFoundException e) {
+
+		}	
+
 	}
-	
+
 	public void gravar(ArrayList<? extends Object> dados, String caminho) {
 
 		String xml = xStream.toXML(dados);
@@ -215,19 +223,19 @@ public void editarExame(ExameGeral exame) {
 	public ArrayList<? extends Object> lerArquivo(String caminho) { 
 
 		FileReader ler=null;
+		ArrayList<? extends Object> temp = null;
 		File file = new File(caminho);
 		try {
 			ler = new FileReader(new File(getClass().getClassLoader().getResource(caminho).getFile()));
-			
+
 			if(!(file.exists()))
 				file.createNewFile();
-	
+
+			temp =  (ArrayList<? extends Object>) xStream.fromXML(ler);
 		} catch (Exception e) {
 			System.err.println("Erro ao Ler: "+e.getMessage()+"Local: "+e.getLocalizedMessage());
 		}
-		
-		ArrayList<? extends Object> temp =  (ArrayList<? extends Object>) xStream.fromXML(ler);
-			
+
 		return temp;
 	}
 
