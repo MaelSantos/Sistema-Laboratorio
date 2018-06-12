@@ -26,7 +26,7 @@ public class Marcar extends PanelGeral {
 		lblNomeMedico = new JLabel("Medico");
 		lblCpfPaciente = new JLabel("CPF Paciente");
 		lblParecer = new JLabel("Parecer"); 
-		lblExame = new JLabel("Eames");
+		lblExame = new JLabel("Exames");
 		
 		btnAdd = new JButton("Marcar Exame");
 		
