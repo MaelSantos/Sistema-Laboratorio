@@ -1,19 +1,25 @@
 package view;
 
 import java.awt.GridLayout;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
+import model.BancoDados;
+import model.ExameGeral;
+
 public class Marcar extends PanelGeral {
 
-	private JTextField tfdNomeMedico, tfdCpfPaciente, tfdParecer, tfdExame;
+	private JTextField tfdNomeMedico, tfdCpfPaciente, tfdParecer;
 	private JLabel lblNomeMedico, lblCpfPaciente, lblParecer, lblExame;
 	private JButton btnAdd;
+	private JComboBox<String> comboBoxExamesGerais;
 	
 	public Marcar() {
-		setLayout(new GridLayout(10, 2));
+		setLayout(new GridLayout(16, 2));
 	}
 
 	@Override
@@ -21,7 +27,7 @@ public class Marcar extends PanelGeral {
 		tfdNomeMedico = new JTextField(10); 
 		tfdCpfPaciente = new JTextField(10);
 		tfdParecer = new JTextField(10); 
-		tfdExame = new JTextField(10);
+	
 		
 		lblNomeMedico = new JLabel("Medico");
 		lblCpfPaciente = new JLabel("CPF Paciente");
@@ -29,6 +35,10 @@ public class Marcar extends PanelGeral {
 		lblExame = new JLabel("Exames");
 		
 		btnAdd = new JButton("Marcar Exame");
+		
+		comboBoxExamesGerais= new JComboBox<>();
+		atualizarComboBoxExamesGerais();
+		
 		
 		add(lblCpfPaciente);
 		add(tfdCpfPaciente);
@@ -39,12 +49,20 @@ public class Marcar extends PanelGeral {
 		add(lblParecer);
 		add(tfdParecer);
 		
-		add(lblExame);
-		add(tfdExame);
 		
+		
+		add(lblExame);
+		add(comboBoxExamesGerais);
+		add(new JLabel(""));
 		add(btnAdd);
 	}
 
+	public void atualizarComboBoxExamesGerais() {
+		
+		for(ExameGeral exame : BancoDados.getInstance().getExamesGerais()) {
+			comboBoxExamesGerais.addItem(exame.getTipoExame());
+		}
+	}
 	public JTextField getTfdNomeMedico() {
 		return tfdNomeMedico;
 	}
@@ -57,12 +75,13 @@ public class Marcar extends PanelGeral {
 		return tfdParecer;
 	}
 
-	public JTextField getTfdExame() {
-		return tfdExame;
-	}
-
 	public JButton getBtnAdd() {
 		return btnAdd;
 	}
+
+	public JComboBox<String> getComboBoxExamesGerais() {
+		return comboBoxExamesGerais;
+	}
+	
 
 }

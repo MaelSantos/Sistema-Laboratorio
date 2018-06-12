@@ -7,16 +7,4 @@
     <tipoDeColeta>Sangue</tipoDeColeta>
     <valor>40.0</valor>
   </ExameGeral>
-  <ExameGeral>
-    <codigo>001</codigo>
-    <tipoExame>teste</tipoExame>
-    <tipoDeColeta>Urina</tipoDeColeta>
-    <valor>1000.0</valor>
-  </ExameGeral>
-  <ExameGeral>
-    <codigo>002</codigo>
-    <tipoExame>teste2</tipoExame>
-    <tipoDeColeta>Fezes</tipoDeColeta>
-    <valor>900000.0</valor>
-  </ExameGeral>
 </list>

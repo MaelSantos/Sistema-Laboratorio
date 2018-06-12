@@ -25,7 +25,6 @@ public class Verificar {
 	{
 		if(marcarExame.getTfdCpfPaciente().getText().trim().equals("") ||
 				marcarExame.getTfdNomeMedico().getText().trim().equals("")|| 
-				marcarExame.getTfdExame().getText().trim().equals("") ||
 				marcarExame.getTfdParecer().getText().trim().equals(""))
 			return false;
 		

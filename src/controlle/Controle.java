@@ -308,14 +308,16 @@ public class Controle extends MouseAdapter implements ActionListener {
 			
 			BancoDados.getInstance().editarExame(exameGeral);
 		}
+		
 		if(e.getSource() == marcar.getBtnAdd())
 		{
 			if(Verificar.verificarMarcar(marcar))
 			{
 				Iterator<ExameGeral> v = BancoDados.getInstance().getExamesGerais().iterator();
 				ExameGeral geral = null;
+				String exameGeral=(String)marcar.getComboBoxExamesGerais().getSelectedItem();
 				while (v.hasNext()) {
-					if(v.next().equals(marcar.getTfdExame().getText()))
+					if(v.next().equals(exameGeral))
 						geral = v.next();
 					
 				}
@@ -326,7 +328,6 @@ public class Controle extends MouseAdapter implements ActionListener {
 						marcar.getTfdParecer().getText().trim()));	
 				
 				Mensagem.exibirMensagem("Exame Marcado Com Sucesso!!!");
-				marcar.getTfdExame().setText("");
 				marcar.getTfdNomeMedico().setText(""); 
 				marcar.getTfdCpfPaciente().setText(""); 
 				marcar.getTfdParecer().setText("");
