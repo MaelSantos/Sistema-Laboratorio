@@ -3,14 +3,17 @@ package view;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.GridBagConstraints;
 import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.table.AbstractTableModel;
 
 import model.BancoDados;
@@ -25,14 +28,21 @@ public class ConsultaExames extends PanelGeral {
 	private TableModelExameGeral examesDisponiveis;
 	private JTabbedPane tbpExames;
 	ArrayList<ExameGeral> exames;
-	
+	private JTextField campoPesquisa;
+	private JButton pesquisaB;
+	private JComboBox<String> opcaoDePesquisa;	
 	private JPanel disponiveis, total;
 	
 	public ConsultaExames() {
 		super();
-		setLayout(new BorderLayout());
+		setLayout(new FlowLayout());
 		setBorder(BorderFactory.createTitledBorder("Consulta Exames"));
-		add(tbpExames,BorderLayout.CENTER);
+	
+		add(campoPesquisa);	
+		add(opcaoDePesquisa);
+		add(pesquisaB);
+
+		add(tbpExames);
 		exames = BancoDados.getInstance().getExamesGerais();
 	}
 
@@ -56,6 +66,13 @@ public class ConsultaExames extends PanelGeral {
 		tbpExames.add("Todos os Exames", total);
 
 		tbpExames.setPreferredSize(new Dimension(550, getHeight()));
+		pesquisaB=new JButton("Pesquisar");
+		opcaoDePesquisa= new JComboBox<>();
+		opcaoDePesquisa.addItem("Todos os Exames");
+		opcaoDePesquisa.addItem("Não Realizados");
+		opcaoDePesquisa.addItem("Em Andamento");
+		opcaoDePesquisa.addItem("Concluidos");
+		campoPesquisa=new JTextField(45);
 
 		for(int i = 0; i < model.getColumnCount(); i++)
 			tblExames.getColumnModel().getColumn(i).setPreferredWidth(model.colunas[i].length());
