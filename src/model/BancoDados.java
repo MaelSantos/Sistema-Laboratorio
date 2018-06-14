@@ -118,6 +118,7 @@ public class BancoDados {
 
 			examesMarcados.add(marcarExame);
 			gravar(examesMarcados,"examesMarcados.xml");
+			gravar(pacientes,"pacientes.xml");
 			return true;
 		}
 		
