@@ -23,10 +23,10 @@ import model.Funcionario;
 import model.Paciente;
 import model.Usuario;
 import model.Verificar;
-import view.Cadastro;
+import view.CadastroPacientes;
 import view.CadastroExames;
 import view.CadastroFuncionario;
-import view.Consulta;
+import view.ConsultaPacientes;
 import view.ConsultaExames;
 import view.DetalhesFuncionario;
 import view.DetalhesPaciente;
@@ -42,8 +42,8 @@ public class Controle extends MouseAdapter implements ActionListener {
 
 	private Principal principal;// jframe
 	private Menu menu;// jpanel
-	private Cadastro cadastro;// jpanel
-	private Consulta consulta;// jpanel
+	private CadastroPacientes cadastro;// jpanel
+	private ConsultaPacientes consulta;// jpanel
 	private DetalhesPaciente detalhesPaciente;// jpanel
 	private CadastroFuncionario cadastroFuncionario;// jpanel
 	private DetalhesFuncionario detalhesFuncionario;// jpanel
@@ -54,7 +54,7 @@ public class Controle extends MouseAdapter implements ActionListener {
 	private EditarExame editarExame;
 	private Marcar marcar;
 
-	public Controle(Login login, Principal principal, Menu menu, Cadastro cadastro, Consulta consulta,
+	public Controle(Login login, Principal principal, Menu menu, CadastroPacientes cadastro, ConsultaPacientes consulta,
 			DetalhesPaciente detalhesPaciente, CadastroFuncionario cadastroFuncionario,
 			DetalhesFuncionario detalhesFuncionario, Perfil perfil, CadastroExames cadastroExames,
 			ConsultaExames consultaExames, EditarExame editarExame, Marcar marcar) {

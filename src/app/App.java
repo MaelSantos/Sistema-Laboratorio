@@ -4,10 +4,10 @@ import javax.swing.UIManager;
 
 import controlle.Controle;
 import model.Usuario;
-import view.Cadastro;
+import view.CadastroPacientes;
 import view.CadastroExames;
 import view.CadastroFuncionario;
-import view.Consulta;
+import view.ConsultaPacientes;
 import view.ConsultaExames;
 import view.DetalhesFuncionario;
 import view.DetalhesPaciente;
@@ -24,15 +24,15 @@ public class App {
 		
 		String tema_padrao = "com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel";
         try {  
-              UIManager.setLookAndFeel(tema_padrao);  
+              UIManager.setLookAndFeel(tema_padrao);
             } catch (Exception e) {  
         }
 		
 		Login login = new Login("Login");
 		
-		Cadastro cadastro = new Cadastro();
+		CadastroPacientes cadastro = new CadastroPacientes();
 		
-		Consulta consulta = new Consulta();
+		ConsultaPacientes consulta = new ConsultaPacientes();
 		
 		DetalhesPaciente detalhesPaciente =new DetalhesPaciente();
 		

@@ -25,7 +25,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JSeparator;
 import javax.swing.JTextField;
 
-public class CadastroFuncionario extends Cadastro {
+public class CadastroFuncionario extends CadastroPacientes {
 
 	private JTextField tfdCargo;
 	private JLabel lblCargo;

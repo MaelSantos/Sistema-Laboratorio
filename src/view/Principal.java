@@ -12,9 +12,9 @@ import javax.swing.JPanel;
 public class Principal extends TelaGeral{
 	
 	private JLabel titulo;
-	private Cadastro cadastro;
+	private CadastroPacientes cadastro;
 	private Menu menu;
-	private Consulta consulta;
+	private ConsultaPacientes consulta;
 	private DetalhesPaciente detalhesPaciente;
 	private CadastroFuncionario cadastroFuncionario;
 	private DetalhesFuncionario detalhesFuncionario;
@@ -24,7 +24,7 @@ public class Principal extends TelaGeral{
 	private EditarExame editarExame;
 	private Marcar marcar;
 	
-	public Principal(String titulo, Menu menu, Cadastro cadastro,Consulta consulta, 
+	public Principal(String titulo, Menu menu, CadastroPacientes cadastro,ConsultaPacientes consulta, 
 			DetalhesPaciente detalhesPaciente, CadastroFuncionario cadastroFuncionario, 
 			DetalhesFuncionario detalhesFuncionario, Perfil perfil, CadastroExames cadastroExames,
 			ConsultaExames consultaExames, EditarExame editarExame, Marcar marcar) {

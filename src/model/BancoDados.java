@@ -36,7 +36,8 @@ public class BancoDados {
 		xStream.alias("Endereco", Endereco.class);
 		xStream.alias("ExameMarcado", MarcarExame.class);
 		xStream.alias("ExameGeral", ExameGeral.class);
-
+		xStream.alias("Andamento", Andamento.class);
+		
 		//remover mesnagem de erro 
 		XStream.setupDefaultSecurity(xStream);
 		xStream.allowTypes(new Class[] {
@@ -45,7 +46,8 @@ public class BancoDados {
 				Administrador.class, 
 				Endereco.class, 
 				MarcarExame.class, 
-				ExameGeral.class
+				ExameGeral.class,
+				Andamento.class
 		});		
 		// clear out existing permissions and set own ones
 		xStream.addPermission(NoTypePermission.NONE);
@@ -119,7 +121,6 @@ public class BancoDados {
 			return true;
 		}
 		
-
 		return false;
 	}
 
@@ -212,11 +213,13 @@ public class BancoDados {
 			print = new PrintWriter(file);
 			print.write(xml);
 			print.flush();
-			print.close();
 
 		} catch (FileNotFoundException e) {
 			System.err.println("Erro ao gravar: "+e.getMessage()+"Local: "+e.getLocalizedMessage());
 			e.printStackTrace();
+		}
+		finally {
+			print.close();			
 		}
 	}
 
@@ -224,12 +227,8 @@ public class BancoDados {
 
 		FileReader ler=null;
 		ArrayList<? extends Object> temp = null;
-		File file = new File(caminho);
 		try {
 			ler = new FileReader(new File(getClass().getClassLoader().getResource(caminho).getFile()));
-
-			if(!(file.exists()))
-				file.createNewFile();
 
 			temp =  (ArrayList<? extends Object>) xStream.fromXML(ler);
 		} catch (Exception e) {

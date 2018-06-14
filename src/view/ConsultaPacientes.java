@@ -9,7 +9,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 
-public class Consulta extends PanelGeral {
+public class ConsultaPacientes extends PanelGeral {
 	
 	private JTextField consultaT;
 	private JButton consultaB,voltarTabelaCompleta;
@@ -19,9 +19,9 @@ public class Consulta extends PanelGeral {
 	private JButton detalhesButton;
 	
 	
-	public Consulta() {
+	public ConsultaPacientes() {
 		super();
-		setBorder(BorderFactory.createTitledBorder("Consulta"));
+		setBorder(BorderFactory.createTitledBorder("Consulta Pacientes"));
 		setLayout(new FlowLayout(0, 10, 10));	    
 	}
 
@@ -46,11 +46,7 @@ public class Consulta extends PanelGeral {
 		add(voltarTabelaCompleta);
 		add(scrollpane);
 		
-		
-		
 	}
-	
-	
 
 	public JButton getDetalhesButton() {
 		return detalhesButton;
@@ -109,11 +105,4 @@ public class Consulta extends PanelGeral {
 		this.voltarTabelaCompleta = voltarTabelaCompleta;
 	}
 	
-	
-
-	
-	
-	
-	
-
 }

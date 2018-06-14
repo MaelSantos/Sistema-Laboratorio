@@ -14,7 +14,7 @@ public class MarcarExame{
 		this.nomeMedico = nomeMedico;
 		this.cpfPaciente = cpfPaciente;
 		this.parecer = parecer;
-		this.status = Andamento.solicitado;
+		this.status = Andamento.nao_realizado;
 	}
 
 	public ExameGeral getExame() {
@@ -56,7 +56,4 @@ public class MarcarExame{
 	public void setStatus(Andamento status) {
 		this.status = status;
 	}
-	
-	
-	
 }

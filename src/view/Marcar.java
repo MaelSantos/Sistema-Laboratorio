@@ -3,6 +3,7 @@ package view;
 import java.awt.GridLayout;
 import java.util.ArrayList;
 
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -20,6 +21,7 @@ public class Marcar extends PanelGeral {
 	
 	public Marcar() {
 		setLayout(new GridLayout(16, 2));
+		setBorder(BorderFactory.createTitledBorder("Marca Exame"));
 	}
 
 	@Override

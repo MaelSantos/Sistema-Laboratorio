@@ -5,6 +5,7 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.util.ArrayList;
 
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -30,6 +31,7 @@ public class ConsultaExames extends PanelGeral {
 	public ConsultaExames() {
 		super();
 		setLayout(new BorderLayout());
+		setBorder(BorderFactory.createTitledBorder("Consulta Exames"));
 		add(tbpExames,BorderLayout.CENTER);
 		exames = BancoDados.getInstance().getExamesGerais();
 	}
@@ -47,7 +49,6 @@ public class ConsultaExames extends PanelGeral {
 		disponiveis = new JPanel();
 		total.setLayout(new BorderLayout());
 		disponiveis.setLayout(new BorderLayout());
-		
 		
 		total.add(scpExames,BorderLayout.CENTER);
 		disponiveis.add(new JScrollPane(tblDisponiveis),BorderLayout.CENTER);
@@ -179,7 +180,6 @@ public class ConsultaExames extends PanelGeral {
 //			exames=ClassXML.pacientes;
 			this.fireTableDataChanged();
 		}
-
 
 		public String[] getColunas() {
 			return colunas;

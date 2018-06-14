@@ -1,11 +1,11 @@
 package model;
 
-import view.Cadastro;
+import view.CadastroPacientes;
 import view.Marcar;
 
 public class Verificar {
 
-	public static boolean verificarCadastro(Cadastro cadastro)
+	public static boolean verificarCadastro(CadastroPacientes cadastro)
 	{
 		if(cadastro.getTfdNome().getText().trim().equals("") || 
 				cadastro.getTfdCpf().getText().trim().length() != 14 ||

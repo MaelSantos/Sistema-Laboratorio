@@ -6,7 +6,7 @@ import javax.swing.JButton;
 import model.Paciente;
 
 @SuppressWarnings("serial")
-public class DetalhesPaciente extends Cadastro{
+public class DetalhesPaciente extends CadastroPacientes{
 	
 	private Paciente paciente;
 	private JButton bntVoltar;

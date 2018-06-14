@@ -14,7 +14,7 @@ import javax.swing.JTextField;
 import javax.swing.text.DefaultFormatterFactory;
 import javax.swing.text.MaskFormatter;
 
-public class Cadastro extends PanelGeral {
+public class CadastroPacientes extends PanelGeral {
 
 	//dados do paciente
 	protected JFormattedTextField tfdNome, tfdCpf, tfdNascimento, tfdEmail, tfdTelefone, tfdCep;
@@ -26,7 +26,7 @@ public class Cadastro extends PanelGeral {
 	protected JComboBox<String> cbxSangue, cbxSexo, cbxEstado;
 	protected JButton btnAdd;
 	
-	public Cadastro() {
+	public CadastroPacientes() {
 		super();
 		setBorder(BorderFactory.createTitledBorder("Cadastro de Pacientes"));
 	}
