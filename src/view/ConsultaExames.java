@@ -37,12 +37,17 @@ public class ConsultaExames extends PanelGeral {
 		super();
 		setLayout(new FlowLayout());
 		setBorder(BorderFactory.createTitledBorder("Consulta Exames"));
+<<<<<<< HEAD
 	
 		add(campoPesquisa);	
 		add(opcaoDePesquisa);
 		add(pesquisaB);
 
 		add(tbpExames);
+=======
+		add(tbpExames,BorderLayout.CENTER);
+		
+>>>>>>> a73a61f0d6bf3044cb39d1951ec4b1677f6f3eed
 		exames = BancoDados.getInstance().getExamesGerais();
 	}
 
@@ -86,12 +91,12 @@ public class ConsultaExames extends PanelGeral {
 
 		public TableModel() {
 			exames = new ArrayList<>();	
-			colunas = new String[]{"Codigo", "Paciente", "Medico", "Exame", "Parecer", "Tipo De Amostra", "Estado"};		
+			colunas = new String[]{"Codigo", "CPF","Paciente", "Medico", "Exame", "Parecer", "Tipo De Amostra", "Estado"};		
 		}
 		
 		public TableModel(ArrayList<MarcarExame> exames) {
 			this.exames = exames;		
-			colunas = new String[]{"Codigo", "Paciente", "Medico", "Exame", "Parecer", "Tipo De Amostra", "Estado"};
+			colunas = new String[]{"Codigo", "CPF", "Paciente", "Medico", "Exame", "Parecer", "Tipo De Amostra", "Estado"};
 		}
 
 	    @Override
@@ -121,14 +126,16 @@ public class ConsultaExames extends PanelGeral {
 			case 1:
 				return exame.getCpfPaciente();
 			case 2:
-				return exame.getNomeMedico();
+				return exame.getNomePaciente();
 			case 3:
-				return exame.getExame().getTipoExame();
+				return exame.getNomeMedico();
 			case 4:
-				return exame.getParecer();
+				return exame.getExame().getTipoExame();
 			case 5:
-				return exame.getExame().getTipoDeColeta();
+				return exame.getParecer();
 			case 6:
+				return exame.getExame().getTipoDeColeta();
+			case 7:
 				return exame.getStatus();
 			}
 			return null;
@@ -151,14 +158,16 @@ public class ConsultaExames extends PanelGeral {
 			case 1:  
 				exame.setCpfPaciente(e.getCpfPaciente());
 			case 2:  
+				exame.setNomePaciente(e.getNomePaciente());
+			case 3:  
 				exame.setNomeMedico(e.getNomeMedico());
-			case 3:
+			case 4:
 				exame.getExame().setTipoExame(e.getExame().getTipoExame());
-			case 4:  
+			case 5:  
 				exame.setParecer(e.getParecer());
-			case 5:
-				exame.getExame().setTipoDeColeta(e.getExame().getTipoDeColeta());
 			case 6:
+				exame.getExame().setTipoDeColeta(e.getExame().getTipoDeColeta());
+			case 7:
 				exame.setStatus(e.getStatus());
 			default:  
 				System.err.println("Índice da coluna inválido");

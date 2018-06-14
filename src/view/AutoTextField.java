@@ -1,10 +1,11 @@
 package view;
 
 import java.util.List;
-import javax.swing.JTextField;
+
+import javax.swing.JFormattedTextField;
 import javax.swing.text.*;
 
-public class AutoTextField extends JTextField {
+public class AutoTextField extends JFormattedTextField {
 
 	private List dataList;
 

@@ -315,11 +315,10 @@ public class Controle extends MouseAdapter implements ActionListener {
 			{
 				Iterator<ExameGeral> v = BancoDados.getInstance().getExamesGerais().iterator();
 				ExameGeral geral = null;
-				String exameGeral=(String)marcar.getComboBoxExamesGerais().getSelectedItem();
+				String exameGeral=(String)marcar.getComboBoxExamesGerais().getSelectedItem().toString();
 				while (v.hasNext()) {
 					if(v.next().equals(exameGeral))
 						geral = v.next();
-					
 				}
 				BancoDados.getInstance().addDado(new MarcarExame(
 						geral, 
@@ -331,6 +330,7 @@ public class Controle extends MouseAdapter implements ActionListener {
 				marcar.getTfdNomeMedico().setText(""); 
 				marcar.getTfdCpfPaciente().setText(""); 
 				marcar.getTfdParecer().setText("");
+				
 			}
 			else
 				Mensagem.exibirMensagem("Preencha Todos os Campos");

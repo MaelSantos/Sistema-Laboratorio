@@ -6,10 +6,19 @@ import com.thoughtworks.xstream.annotations.XStreamAlias;
 public class MarcarExame{
 	
 	private ExameGeral exame;
-	private String nomeMedico, cpfPaciente, parecer;
+	private String nomeMedico, cpfPaciente, nomePaciente, parecer;
 	private Andamento status;
 	
 	public MarcarExame(ExameGeral exame, String nomeMedico, String cpfPaciente, String parecer) {
+		
+		for(Paciente p : BancoDados.getInstance().getPacientes())
+			if(p.getCpf().equalsIgnoreCase(cpfPaciente))
+			{
+				p.getExames().add(this);
+				nomePaciente = p.getNomeCompleto();
+				break;
+			}
+		
 		this.exame = exame;
 		this.nomeMedico = nomeMedico;
 		this.cpfPaciente = cpfPaciente;
@@ -55,5 +64,13 @@ public class MarcarExame{
 
 	public void setStatus(Andamento status) {
 		this.status = status;
+	}
+
+	public String getNomePaciente() {
+		return nomePaciente;
+	}
+
+	public void setNomePaciente(String nomePaciente) {
+		this.nomePaciente = nomePaciente;
 	}
 }

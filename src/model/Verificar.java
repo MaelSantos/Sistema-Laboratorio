@@ -25,10 +25,14 @@ public class Verificar {
 	{
 		if(marcarExame.getTfdCpfPaciente().getText().trim().equals("") ||
 				marcarExame.getTfdNomeMedico().getText().trim().equals("")|| 
-				marcarExame.getTfdParecer().getText().trim().equals(""))
+				marcarExame.getTfdParecer().getText().trim().equals("")) 
 			return false;
 		
-		return true;
+		for(Paciente p : BancoDados.getInstance().getPacientes())
+			if(p.getCpf().equalsIgnoreCase(marcarExame.getTfdCpfPaciente().getText().trim()))
+				return true;
+		
+		return false;
 	}
 	
 }

@@ -1,6 +1,7 @@
 package view;
 
 import java.awt.GridLayout;
+import java.text.ParseException;
 import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
@@ -8,6 +9,9 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+import javax.swing.text.MaskFormatter;
+
+import com.thoughtworks.xstream.mapper.CGLIBMapper.Marker;
 
 import model.BancoDados;
 import model.ExameGeral;
@@ -30,7 +34,7 @@ public class Marcar extends PanelGeral {
 		tfdNomeMedico = new JTextField(10); 
 		tfdCpfPaciente = new AutoTextField(BancoDados.getInstance().getPacientes()
 				,new AutoComboBox(BancoDados.getInstance().getPacientes()));
-//		tfdCpfPaciente = new JTextField(10);
+		
 		tfdParecer = new JTextField(10); 
 	
 		
@@ -53,8 +57,6 @@ public class Marcar extends PanelGeral {
 		
 		add(lblParecer);
 		add(tfdParecer);
-		
-		
 		
 		add(lblExame);
 		add(comboBoxExamesGerais);
