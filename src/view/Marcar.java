@@ -14,7 +14,8 @@ import model.ExameGeral;
 
 public class Marcar extends PanelGeral {
 
-	private JTextField tfdNomeMedico, tfdCpfPaciente, tfdParecer;
+	private JTextField tfdNomeMedico, tfdParecer;
+	private AutoTextField tfdCpfPaciente;
 	private JLabel lblNomeMedico, lblCpfPaciente, lblParecer, lblExame;
 	private JButton btnAdd;
 	private JComboBox<String> comboBoxExamesGerais;
@@ -27,7 +28,9 @@ public class Marcar extends PanelGeral {
 	@Override
 	public void inicializar() {
 		tfdNomeMedico = new JTextField(10); 
-		tfdCpfPaciente = new JTextField(10);
+		tfdCpfPaciente = new AutoTextField(BancoDados.getInstance().getPacientes()
+				,new AutoComboBox(BancoDados.getInstance().getPacientes()));
+//		tfdCpfPaciente = new JTextField(10);
 		tfdParecer = new JTextField(10); 
 	
 		

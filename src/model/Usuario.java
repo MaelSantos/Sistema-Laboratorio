@@ -208,4 +208,9 @@ public abstract class Usuario {
 		this.caminho = caminho;
 	}
 	
+	@Override
+	public String toString() {
+		return getCpf();
+	}
+	
 }
