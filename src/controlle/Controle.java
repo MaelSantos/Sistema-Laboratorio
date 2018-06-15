@@ -88,6 +88,7 @@ public class Controle extends MouseAdapter implements ActionListener {
 		detalhesFuncionario.getBtnAdd().addActionListener(this);
 		cadastroFuncionario.getBtnAdd().addActionListener(this);
 		cadastroExames.getBtnSalvar().addActionListener(this);
+		consultaExames.getPesquisaB().addActionListener(this);
 		// login.getBntEntrar().addActionListener(this);
 		// login.getBntSair().addActionListener(this);
 
@@ -334,6 +335,10 @@ public class Controle extends MouseAdapter implements ActionListener {
 			}
 			else
 				Mensagem.exibirMensagem("Preencha Todos os Campos");
+		}
+		if(e.getSource()==consultaExames.getPesquisaB()) {
+			consultaExames.getModel().pesquisa(consultaExames.getCampoPesquisa().getText(),
+					consultaExames.getOpcaoDePesquisa().getSelectedItem().toString() , BancoDados.getInstance().getExamesMarcados());
 		}
 
 	}

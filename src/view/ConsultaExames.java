@@ -37,17 +37,15 @@ public class ConsultaExames extends PanelGeral {
 		super();
 		setLayout(new FlowLayout());
 		setBorder(BorderFactory.createTitledBorder("Consulta Exames"));
-<<<<<<< HEAD
+
 	
 		add(campoPesquisa);	
 		add(opcaoDePesquisa);
 		add(pesquisaB);
 
-		add(tbpExames);
-=======
+
 		add(tbpExames,BorderLayout.CENTER);
-		
->>>>>>> a73a61f0d6bf3044cb39d1951ec4b1677f6f3eed
+
 		exames = BancoDados.getInstance().getExamesGerais();
 	}
 
@@ -71,6 +69,7 @@ public class ConsultaExames extends PanelGeral {
 		tbpExames.add("Todos os Exames", total);
 
 		tbpExames.setPreferredSize(new Dimension(550, getHeight()));
+		
 		pesquisaB=new JButton("Pesquisar");
 		opcaoDePesquisa= new JComboBox<>();
 		opcaoDePesquisa.addItem("Todos os Exames");
@@ -186,22 +185,35 @@ public class ConsultaExames extends PanelGeral {
 			this.exames.remove(linha);
 			this.fireTableRowsDeleted(linha, linha);
 		}
-//		public void pesquisa(String nomeCpf,ArrayList<Exame> exames) {
-//
-//			exames=new ArrayList<>();
-//
-//			exames = new ArrayList<>();
-//
-//			for(Exame e : exames) {
-//				if(e.getCodigo().toLowerCase().contains(nomeCpf.toLowerCase())) {
-//					addRow(e);
-//				}
-//			}
-//			this.fireTableDataChanged();
-//
-//			fireTableStructureChanged();
-//			System.gc();
-//		}
+		
+		public void pesquisa(String nomeCpfExame,String status, ArrayList<MarcarExame> examesEntrada) {
+
+			exames=new ArrayList<>();
+
+            if(status.equals("Todos os Exames")&&getCampoPesquisa().getText().equals("")) {
+            	exames= examesEntrada;
+            }else if(status.equals("Todos os Exames")&&!getCampoPesquisa().getText().equals("")) {
+				for(MarcarExame e : examesEntrada) {
+					if(e.getCpfPaciente().toLowerCase().contains(nomeCpfExame.toLowerCase())||e.getNomePaciente().toLowerCase().contains(nomeCpfExame.toLowerCase())
+							||e.getExame().getTipoExame().toLowerCase().contains(nomeCpfExame.toLowerCase())) {
+						addRow(e);
+					}
+				}
+			}else {
+				for(MarcarExame e : examesEntrada) {
+					if(e.getCpfPaciente().toLowerCase().contains(nomeCpfExame.toLowerCase())||e.getNomePaciente().toLowerCase().contains(nomeCpfExame.toLowerCase())
+							||e.getExame().getTipoExame().toLowerCase().contains(nomeCpfExame.toLowerCase())&& e.getStatus().equals(status)) {
+						addRow(e);
+					}
+				}
+			}
+
+			
+			this.fireTableDataChanged();
+
+			fireTableStructureChanged();
+			System.gc();
+		}
 		public void voltaTabelaCompleta() {
 //			exames=ClassXML.pacientes;
 			this.fireTableDataChanged();
@@ -267,6 +279,18 @@ public class ConsultaExames extends PanelGeral {
 
 	public TableModelExameGeral getExamesDisponiveis() {
 		return examesDisponiveis;
+	}
+
+	public JTextField getCampoPesquisa() {
+		return campoPesquisa;
+	}
+
+	public JButton getPesquisaB() {
+		return pesquisaB;
+	}
+
+	public JComboBox<String> getOpcaoDePesquisa() {
+		return opcaoDePesquisa;
 	}
 	
 	
