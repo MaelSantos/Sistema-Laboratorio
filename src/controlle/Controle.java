@@ -314,23 +314,34 @@ public class Controle extends MouseAdapter implements ActionListener {
 		{
 			if(Verificar.verificarMarcar(marcar))
 			{
-				Iterator<ExameGeral> v = BancoDados.getInstance().getExamesGerais().iterator();
 				ExameGeral geral = null;
-				String exameGeral=(String)marcar.getComboBoxExamesGerais().getSelectedItem().toString();
-				while (v.hasNext()) {
-					if(v.next().equals(exameGeral))
-						geral = v.next();
+				String exameGeral= marcar.getComboBoxExamesGerais().getSelectedItem().toString();
+				for(ExameGeral g : BancoDados.getInstance().getExamesGerais()) {
+					if(g.equals(exameGeral))
+					{
+						geral = g;
+						break;
+					}
+					
 				}
-				BancoDados.getInstance().addDado(new MarcarExame(
-						geral, 
-						marcar.getTfdNomeMedico().getText().trim(), 
-						marcar.getTfdCpfPaciente().getText().trim(), 
-						marcar.getTfdParecer().getText().trim()));	
-				
-				Mensagem.exibirMensagem("Exame Marcado Com Sucesso!!!");
-				marcar.getTfdNomeMedico().setText(""); 
-				marcar.getTfdCpfPaciente().setText(""); 
-				marcar.getTfdParecer().setText("");
+				if(geral != null)
+				{
+					BancoDados.getInstance().addDado(new MarcarExame(
+							geral, 
+							marcar.getTfdNomeMedico().getText().trim(), 
+							marcar.getTfdCpfPaciente().getText().trim(), 
+							marcar.getTfdParecer().getText().trim()));	
+					
+					Mensagem.exibirMensagem("Exame Marcado Com Sucesso!!!");
+					marcar.getTfdNomeMedico().setText(""); 
+					marcar.getTfdCpfPaciente().setText(""); 
+					marcar.getTfdParecer().setText("");		
+					
+					consultaExames.getModel().fireTableDataChanged();
+				}
+				else {
+					Mensagem.exibirMensagem("Erro Ao Marcar Exame");
+				}
 				
 			}
 			else

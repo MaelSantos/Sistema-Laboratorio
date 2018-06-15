@@ -22,6 +22,7 @@
     <tipoSanguineo>O+</tipoSanguineo>
     <email>mmamammam</email>
     <telefone>(88)9 9889-8989</telefone>
+   	<exames> </exames>
   </Paciente>
   <Paciente>
     <login>Felipe Douglas</login>
@@ -45,7 +46,7 @@
     <email>fd@gmaill.com</email>
     <telefone>(88)8 8888-8888</telefone>
     <caminho>Felipe.jpg</caminho>
-    <exames/>
+    <exames> </exames>
   </Paciente>
   <Paciente>
     <login>teste banco</login>
@@ -69,6 +70,6 @@
     <email>0</email>
     <telefone>(00)0 0000-0000</telefone>
     <caminho>teste.jpg</caminho>
-    <exames/>
+    <exames> </exames>
   </Paciente>
 </list>

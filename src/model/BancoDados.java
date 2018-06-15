@@ -210,7 +210,7 @@ public class BancoDados {
 
 		PrintWriter print = null;
 		try {
-			File file = new File(getClass().getClassLoader().getResource(caminho).getFile());
+			File file = new File(getClass().getClassLoader().getResource((caminho)).getPath());
 			print = new PrintWriter(file);
 			print.write(xml);
 			print.flush();
