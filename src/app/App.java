@@ -3,6 +3,8 @@ package app;
 import javax.swing.UIManager;
 
 import controlle.Controle;
+import model.BancoDados;
+import model.ExameGeral;
 import model.Usuario;
 import view.CadastroPacientes;
 import view.CadastroExames;

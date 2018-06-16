@@ -22,11 +22,10 @@ import javax.swing.text.MaskFormatter;
 
 public class CadastroExames extends PanelGeral {
 
-	private JLabel  labelTipoExame, labelTipoAmostra,labelValor;
-
+	private JLabel  labelTipoExame, labelTipoAmostra,labelValor, labelCpfPaciente;
 	private JButton btnSalvar;
 	private JComboBox<String> comboBoxTipoAmostra;
-	
+	private JFormattedTextField fieldCpfPaciente;
 	private JTextField fieldTipoExame, fieldvalor;
 	
 
@@ -46,11 +45,20 @@ public class CadastroExames extends PanelGeral {
 		labelTipoAmostra = new JLabel("Tipo de amostra:");
 		labelTipoExame = new JLabel("Tipo de exame:");
 		labelValor = new JLabel("Valor");
+		labelCpfPaciente = new JLabel("CPF Paciente");
 
 		// TextField
 	
 		fieldvalor = new JTextField();
 		fieldTipoExame = new JTextField();
+		fieldCpfPaciente = new JFormattedTextField();
+		try {
+			fieldCpfPaciente.setFormatterFactory(new DefaultFormatterFactory(new MaskFormatter("###.###.###-##")));
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		
 		
 		// tbn
@@ -72,7 +80,8 @@ public class CadastroExames extends PanelGeral {
 		
 		
 
-		
+		add(labelCpfPaciente);
+		add(fieldCpfPaciente);
 		add(labelTipoExame);
 		add(fieldTipoExame);
 		add(labelTipoAmostra);
@@ -115,6 +124,15 @@ public class CadastroExames extends PanelGeral {
 	public JTextField getFieldvalor() {
 		return fieldvalor;
 	}
+
+	public JLabel getLabelCpfPaciente() {
+		return labelCpfPaciente;
+	}
+
+	public JFormattedTextField getFieldCpfPaciente() {
+		return fieldCpfPaciente;
+	}
+	
 
 	
 	
