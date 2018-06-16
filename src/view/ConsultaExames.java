@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
+import java.awt.GridLayout;
 import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
@@ -39,9 +40,9 @@ public class ConsultaExames extends PanelGeral {
 		setBorder(BorderFactory.createTitledBorder("Consulta Exames"));
 
 		JPanel p = new JPanel();
-		p.setLayout(new FlowLayout());
+		p.setLayout(new FlowLayout(10,10,10));
 		
-		p.add(campoPesquisa);	
+		p.add(campoPesquisa);
 		p.add(opcaoDePesquisa);
 		p.add(pesquisaB);
 
@@ -77,7 +78,7 @@ public class ConsultaExames extends PanelGeral {
 		opcaoDePesquisa.addItem("Não Realizados");
 		opcaoDePesquisa.addItem("Em Andamento");
 		opcaoDePesquisa.addItem("Concluidos");
-		campoPesquisa=new JTextField(45);
+		campoPesquisa=new JTextField(20);
 
 		for(int i = 0; i < model.getColumnCount(); i++)
 			tblExames.getColumnModel().getColumn(i).setPreferredWidth(model.colunas[i].length());

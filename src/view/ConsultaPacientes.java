@@ -3,6 +3,9 @@ package view;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.GridLayout;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -25,22 +28,23 @@ public class ConsultaPacientes extends PanelGeral {
 		super();
 		setBorder(BorderFactory.createTitledBorder("Consulta Pacientes"));
 		setLayout(new BorderLayout());
-//		setLayout(new FlowLayout(0, 10, 10));	
+
 		JPanel p = new JPanel();
-		p.setLayout(new FlowLayout(0,10,10));
+		p.setLayout(new FlowLayout(10,10,10));
 		
 		p.add(consultaT);
 		p.add(consultaB);
 		p.add(detalhesButton);
 		p.add(voltarTabelaCompleta);
+		
 		add(p,BorderLayout.NORTH);
-		add(scrollpane,BorderLayout.CENTER);
+		add(scrollpane, BorderLayout.CENTER);
 	}
 
 	@Override
 	public void inicializar() {
 	
-		consultaT=new JTextField(40);		
+		consultaT=new JTextField(20);		
 		consultaB= new JButton("Pesquisa");	
 		tabelaModel= new TableModel();	
 		voltarTabelaCompleta=new JButton("Tabela Completa");
