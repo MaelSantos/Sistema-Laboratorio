@@ -54,7 +54,9 @@ public class Controle extends MouseAdapter implements ActionListener {
 	private ConsultaExames consultaExames;
 	private EditarExame editarExame;
 	private Marcar marcar;
+
 	private Financeiro financeiro;
+	public static String cpfPacientde;
 
 	public Controle(Login login, Principal principal, Menu menu, CadastroPacientes cadastro, ConsultaPacientes consulta,
 			DetalhesPaciente detalhesPaciente, CadastroFuncionario cadastroFuncionario,
@@ -103,10 +105,10 @@ public class Controle extends MouseAdapter implements ActionListener {
 		login.getBntSair().addMouseListener(this);
 
 		// menu.getBtnDetalhesFuncionario().addActionListener(this);
-		
+
 		consultaExames.getTblDisponiveis().addMouseListener(this);
 		editarExame.getBtnSalvar().addActionListener(this);
-		
+
 		marcar.getBtnAdd().addActionListener(this);
 	}
 
@@ -173,19 +175,18 @@ public class Controle extends MouseAdapter implements ActionListener {
 		}
 
 		if (e.getSource() == menu.getBtnCadastroFuncionario()) {
-			
+
 			mudarTela(cadastroFuncionario);
 		}
 		if (e.getSource() == menu.getBtnCadastrarExame()) {
-			
+
 			mudarTela(cadastroExames);
 		}
 		if (e.getSource() == menu.getBtnConsultaExames()) {
 
 			mudarTela(consultaExames);
 		}
-		if(e.getSource() == menu.getBtnMarcarExame())
-		{
+		if (e.getSource() == menu.getBtnMarcarExame()) {
 			mudarTela(marcar);
 		}
 		if(e.getSource() == menu.getBtnFinanceiro())
@@ -258,7 +259,7 @@ public class Controle extends MouseAdapter implements ActionListener {
 		}
 
 		if (e.getSource() == detalhesPaciente.getBntVoltar()) {
-			
+
 			mudarTela(consulta);
 		}
 
@@ -281,82 +282,77 @@ public class Controle extends MouseAdapter implements ActionListener {
 			} else {
 				detalhesPaciente.autoPreencher((Paciente) perfil.getUsuario());
 			}
-			
+
 			mudarTela(detalhesPaciente);
 		}
 		if (e.getSource() == cadastroExames.getBtnSalvar()) {
-			String  tipoAmostra = (String)cadastroExames.getComboBoxTipoAmostra().getSelectedItem();
-			int codigoAtual = Integer.parseInt(BancoDados.getInstance().getExamesGerais().get(BancoDados.getInstance().getExamesGerais().size() - 1).getCodigo()) + 1;
+			String tipoAmostra = (String) cadastroExames.getComboBoxTipoAmostra().getSelectedItem();
+			int codigoAtual = Integer.parseInt(BancoDados.getInstance().getExamesGerais()
+					.get(BancoDados.getInstance().getExamesGerais().size() - 1).getCodigo()) + 1;
 			String str = "";
-			if(codigoAtual <= 9) {
+			if (codigoAtual <= 9) {
 				str = "00";
-			}else if(codigoAtual >= 10) {
+			} else if (codigoAtual >= 10) {
 				str = "0";
 			}
-					
+
 			try {
-				ExameGeral exame = new ExameGeral(cadastroExames.getFieldTipoExame().getText().trim(), tipoAmostra,Double.parseDouble(cadastroExames.getFieldvalor().getText()),
-						 str + String.valueOf(codigoAtual));
-				BancoDados.getInstance().addDado(exame);
+				ExameGeral exame = new ExameGeral(cadastroExames.getFieldTipoExame().getText().trim(), tipoAmostra,
+						Double.parseDouble(cadastroExames.getFieldvalor().getText()), str + String.valueOf(codigoAtual),
+						cadastroExames.getFieldCpfPaciente().getText());
+				System.out.println(BancoDados.getInstance().addDado(exame));
 				cadastroExames.getFieldTipoExame().setText("");
 				cadastroExames.getFieldvalor().setText("");
-				Mensagem.exibirMensagem("Exame salvo com sucesso.");;
+				cadastroExames.getFieldCpfPaciente().setText("");
+				Mensagem.exibirMensagem("Exame salvo com sucesso.");
 				consultaExames.getExamesDisponiveis().atualizarTabela();
-				
+
 			} catch (NumberFormatException exception) {
-				Mensagem.exibirMensagem("Certifique-se de que todos os campos estejam preenchidos corretamente. Erro:" + exception);
+				Mensagem.exibirMensagem(
+						"Certifique-se de que todos os campos estejam preenchidos corretamente. Erro:" + exception);
 			}
 		}
-		if(e.getSource()==editarExame.getBtnSalvar()) {
-			ExameGeral exameGeral = new ExameGeral(
-					editarExame.getFieldTipoExame().getText().trim(),
-					(String)editarExame.getComboBoxTipoAmostra().getSelectedItem(),
+		if (e.getSource() == editarExame.getBtnSalvar()) {
+			ExameGeral exameGeral = new ExameGeral(editarExame.getFieldTipoExame().getText().trim(),
+					(String) editarExame.getComboBoxTipoAmostra().getSelectedItem(),
 					Double.parseDouble(editarExame.getFieldvalor().getText().trim()),
-					editarExame.getExame().getCodigo());
-			
+					editarExame.getExame().getCodigo(), editarExame.getExame().getCpfPaciente());
+
 			BancoDados.getInstance().editarExame(exameGeral);
 		}
-		
-		if(e.getSource() == marcar.getBtnAdd())
-		{
-			if(Verificar.verificarMarcar(marcar))
-			{
+
+		if (e.getSource() == marcar.getBtnAdd()) {
+			if (Verificar.verificarMarcar(marcar)) {
 				ExameGeral geral = null;
-				String exameGeral= marcar.getComboBoxExamesGerais().getSelectedItem().toString();
-				for(ExameGeral g : BancoDados.getInstance().getExamesGerais()) {
-					if(g.equals(exameGeral))
-					{
+				String exameGeral = marcar.getComboBoxExamesGerais().getSelectedItem().toString();
+				for (ExameGeral g : BancoDados.getInstance().getExamesGerais()) {
+					if (g.equals(exameGeral)) {
 						geral = g;
 						break;
 					}
-					
+
 				}
-				if(geral != null)
-				{
-					BancoDados.getInstance().addDado(new MarcarExame(
-							geral, 
-							marcar.getTfdNomeMedico().getText().trim(), 
-							marcar.getTfdCpfPaciente().getText().trim(), 
-							marcar.getTfdParecer().getText().trim()));	
-					
+				if (geral != null) {
+					BancoDados.getInstance().addDado(new MarcarExame(geral, marcar.getTfdNomeMedico().getText().trim(),
+							marcar.getTfdCpfPaciente().getText().trim(), marcar.getTfdParecer().getText().trim()));
+
 					Mensagem.exibirMensagem("Exame Marcado Com Sucesso!!!");
-					marcar.getTfdNomeMedico().setText(""); 
-					marcar.getTfdCpfPaciente().setText(""); 
-					marcar.getTfdParecer().setText("");		
-					
+					marcar.getTfdNomeMedico().setText("");
+					marcar.getTfdCpfPaciente().setText("");
+					marcar.getTfdParecer().setText("");
+
 					consultaExames.getModel().fireTableDataChanged();
-				}
-				else {
+				} else {
 					Mensagem.exibirMensagem("Erro Ao Marcar Exame");
 				}
-				
-			}
-			else
+
+			} else
 				Mensagem.exibirMensagem("Preencha Todos os Campos");
 		}
-		if(e.getSource()==consultaExames.getPesquisaB()) {
+		if (e.getSource() == consultaExames.getPesquisaB()) {
 			consultaExames.getModel().pesquisa(consultaExames.getCampoPesquisa().getText(),
-					consultaExames.getOpcaoDePesquisa().getSelectedItem().toString() , BancoDados.getInstance().getExamesMarcados());
+					consultaExames.getOpcaoDePesquisa().getSelectedItem().toString(),
+					BancoDados.getInstance().getExamesMarcados());
 		}
 
 	}
@@ -368,6 +364,9 @@ public class Controle extends MouseAdapter implements ActionListener {
 
 			Usuario usuario = login.verificarLogin(login.getLoginField().getText(),
 					login.getSenhaField().getPassword());
+			if (usuario instanceof Paciente) {
+				cpfPacientde = usuario.getCpf();
+			}
 			if (usuario != null) {
 
 				if (login.verificarTipoUsuario(usuario)) {
@@ -384,6 +383,8 @@ public class Controle extends MouseAdapter implements ActionListener {
 					menu.getBtnCadastroFuncionario().setVisible(false);
 					menu.getBtnCadastrarExame().setVisible(false);
 					menu.getBtnMarcarExame().setVisible(false);
+					consultaExames.getExamesDisponiveis().atualizarTabelaPaciente(cpfPacientde);
+					
 				}
 				perfil.getBtnEditarDados().addActionListener(this);
 				login.setVisible(false);
@@ -397,57 +398,54 @@ public class Controle extends MouseAdapter implements ActionListener {
 
 		}
 
-		if(e.getSource()==consultaExames.getTblDisponiveis()) {
+		if (e.getSource() == consultaExames.getTblDisponiveis()) {
 			JPopupMenu menu = new JPopupMenu();
-            JMenuItem editar = new JMenuItem("Editar");
-            editar.addActionListener(new ActionListener() {
+			JMenuItem editar = new JMenuItem("Editar");
+			editar.addActionListener(new ActionListener() {
 
-                public void actionPerformed(ActionEvent e) {
-                    editarExame.autoPreencher(consultaExames.getExames(
-                    		).get(consultaExames.getTblDisponiveis().getSelectedRow()));
-                    mudarTela(editarExame);
-             
-                }
-            });
-            JMenuItem excluir = new JMenuItem("Excluir");
-            excluir.addActionListener(new ActionListener() {
-				
-				@Override
 				public void actionPerformed(ActionEvent e) {
-					BancoDados.getInstance().excluirExame(
-							BancoDados.getInstance().getExamesGerais().get(
-									consultaExames.getTblDisponiveis().getSelectedRow()));
+					editarExame.autoPreencher(
+							consultaExames.getExames().get(consultaExames.getTblDisponiveis().getSelectedRow()));
+					mudarTela(editarExame);
 
-					//Excluir linha da tabela.
-					
 				}
 			});
-            
-            JMenuItem cancelar  = new JMenuItem("Cancelar");
-            cancelar.addActionListener(new ActionListener() {
-				
+			JMenuItem excluir = new JMenuItem("Excluir");
+			excluir.addActionListener(new ActionListener() {
+
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					 menu.setVisible(false);					
+					BancoDados.getInstance().excluirExame(BancoDados.getInstance().getExamesGerais()
+							.get(consultaExames.getTblDisponiveis().getSelectedRow()));
+
+					// Excluir linha da tabela.
+
 				}
 			});
-            menu.add(editar);
-            menu.add(excluir);
-            menu.add(cancelar);
-            menu.show(consultaExames.getTblDisponiveis(), 
-            		e.getX(),e.getY());
-           
+
+			JMenuItem cancelar = new JMenuItem("Cancelar");
+			cancelar.addActionListener(new ActionListener() {
+
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					menu.setVisible(false);
+				}
+			});
+			menu.add(editar);
+			menu.add(excluir);
+			menu.add(cancelar);
+			menu.show(consultaExames.getTblDisponiveis(), e.getX(), e.getY());
+
 		}
 	}
-	
-	public void mudarTela(JPanel panel)
-	{
-		for(Component c : principal.getContentPane().getComponents())
-			if(c.equals(panel))
+
+	public void mudarTela(JPanel panel) {
+		for (Component c : principal.getContentPane().getComponents())
+			if (c.equals(panel))
 				c.setVisible(true);
-			else if( ! (c.equals(menu) || c.equals(perfil)))
+			else if (!(c.equals(menu) || c.equals(perfil)))
 				c.setVisible(false);
-		
+
 	}
-	
+
 }

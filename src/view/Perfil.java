@@ -120,8 +120,8 @@ public class Perfil extends JPanel {
 		if(usuario.getCaminho() != null)
 		{
 			try {
-				imagem = ImageIO.read(getClass().getClassLoader().getResourceAsStream(usuario.getCaminho()));
-				labelft.setIcon(new ImageIcon(imagem.getScaledInstance(90, 90, BufferedImage.SCALE_DEFAULT)));
+//				imagem = ImageIO.read(getClass().getClassLoader().getResourceAsStream(usuario.getCaminho()));
+//				labelft.setIcon(new ImageIcon(imagem.getScaledInstance(90, 90, BufferedImage.SCALE_DEFAULT)));
 
 			}
 			catch (Exception e) {
