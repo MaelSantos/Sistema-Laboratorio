@@ -10,7 +10,7 @@ import javax.swing.JButton;
 public class Menu extends PanelGeral {
 
 	private JButton btnCadastro, btnConsulta, btnCadastroFuncionario, btnCadastrarExame,
-	btnConsultaExames, btnMarcarExame;
+	btnConsultaExames, btnMarcarExame, btnFinanceiro;
 	
 	public Menu() {
 		super();
@@ -28,6 +28,7 @@ public class Menu extends PanelGeral {
 		btnCadastrarExame = new JButton(new ImageIcon(getClass().getClassLoader().getResource("cadastrarExame.png")));
 		btnConsultaExames = new JButton(new ImageIcon(getClass().getClassLoader().getResource("consultarExame.png")));
 		btnMarcarExame = new JButton(new ImageIcon(getClass().getClassLoader().getResource("marcarExame.png")));
+		btnFinanceiro = new JButton("Financeiro");
 		
 		btnConsulta.setContentAreaFilled(false);
 		btnConsulta.setBorderPainted(false);
@@ -45,10 +46,10 @@ public class Menu extends PanelGeral {
 		add(btnConsulta);
 		add(btnConsultaExames);
 		add(btnMarcarExame);
+		add(btnFinanceiro);
 		add(btnCadastro);
 		add(btnCadastroFuncionario);
 		add(btnCadastrarExame);
-		
 	}
 
 	//metodos de acesso
@@ -74,6 +75,10 @@ public class Menu extends PanelGeral {
 
 	public JButton getBtnMarcarExame() {
 		return btnMarcarExame;
+	}
+
+	public JButton getBtnFinanceiro() {
+		return btnFinanceiro;
 	}
 	
 

@@ -31,6 +31,7 @@ import view.ConsultaExames;
 import view.DetalhesFuncionario;
 import view.DetalhesPaciente;
 import view.EditarExame;
+import view.Financeiro;
 import view.Login;
 import view.Marcar;
 import view.Mensagem;
@@ -53,11 +54,12 @@ public class Controle extends MouseAdapter implements ActionListener {
 	private ConsultaExames consultaExames;
 	private EditarExame editarExame;
 	private Marcar marcar;
+	private Financeiro financeiro;
 
 	public Controle(Login login, Principal principal, Menu menu, CadastroPacientes cadastro, ConsultaPacientes consulta,
 			DetalhesPaciente detalhesPaciente, CadastroFuncionario cadastroFuncionario,
 			DetalhesFuncionario detalhesFuncionario, Perfil perfil, CadastroExames cadastroExames,
-			ConsultaExames consultaExames, EditarExame editarExame, Marcar marcar) {
+			ConsultaExames consultaExames, EditarExame editarExame, Marcar marcar,Financeiro financeiro) {
 		this.principal = principal;
 		this.menu = menu;
 		this.cadastro = cadastro;
@@ -71,6 +73,7 @@ public class Controle extends MouseAdapter implements ActionListener {
 		this.consultaExames = consultaExames;
 		this.editarExame = editarExame;
 		this.marcar = marcar;
+		this.financeiro = financeiro;
 		
 		cadastro.getBtnAdd().addActionListener(this);
 		consulta.getConsultaB().addActionListener(this);
@@ -82,6 +85,7 @@ public class Controle extends MouseAdapter implements ActionListener {
 		menu.getBtnCadastrarExame().addActionListener(this);
 		menu.getBtnConsultaExames().addActionListener(this);
 		menu.getBtnMarcarExame().addActionListener(this);
+		menu.getBtnFinanceiro().addActionListener(this);
 		detalhesPaciente.getBtnAdd().addActionListener(this);
 		detalhesPaciente.getBntVoltar().addActionListener(this);
 		detalhesFuncionario.getBtnVoltar().addActionListener(this);
@@ -184,7 +188,10 @@ public class Controle extends MouseAdapter implements ActionListener {
 		{
 			mudarTela(marcar);
 		}
-
+		if(e.getSource() == menu.getBtnFinanceiro())
+		{
+			mudarTela(financeiro);
+		}
 		if (e.getSource() == consulta.getConsultaB()) {
 			if (!consulta.getConsultaT().getText().trim().equals("")) {
 				consulta.getTabelaModel().pesquisa(consulta.getConsultaT().getText(),

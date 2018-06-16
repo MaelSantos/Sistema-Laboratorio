@@ -1,10 +1,12 @@
 package view;
 
+import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -22,7 +24,17 @@ public class ConsultaPacientes extends PanelGeral {
 	public ConsultaPacientes() {
 		super();
 		setBorder(BorderFactory.createTitledBorder("Consulta Pacientes"));
-		setLayout(new FlowLayout(0, 10, 10));	    
+		setLayout(new BorderLayout());
+//		setLayout(new FlowLayout(0, 10, 10));	
+		JPanel p = new JPanel();
+		p.setLayout(new FlowLayout(0,10,10));
+		
+		p.add(consultaT);
+		p.add(consultaB);
+		p.add(detalhesButton);
+		p.add(voltarTabelaCompleta);
+		add(p,BorderLayout.NORTH);
+		add(scrollpane,BorderLayout.CENTER);
 	}
 
 	@Override
@@ -39,12 +51,6 @@ public class ConsultaPacientes extends PanelGeral {
 		scrollpane=new JScrollPane(tabela);
 		
 		detalhesButton=new JButton("Detalhes");
-		
-		add(consultaT);
-		add(consultaB);
-		add(detalhesButton);
-		add(voltarTabelaCompleta);
-		add(scrollpane);
 		
 	}
 

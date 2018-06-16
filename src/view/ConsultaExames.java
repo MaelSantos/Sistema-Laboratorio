@@ -35,17 +35,18 @@ public class ConsultaExames extends PanelGeral {
 	
 	public ConsultaExames() {
 		super();
-		setLayout(new FlowLayout());
+		setLayout(new BorderLayout());
 		setBorder(BorderFactory.createTitledBorder("Consulta Exames"));
 
-	
-		add(campoPesquisa);	
-		add(opcaoDePesquisa);
-		add(pesquisaB);
+		JPanel p = new JPanel();
+		p.setLayout(new FlowLayout());
+		
+		p.add(campoPesquisa);	
+		p.add(opcaoDePesquisa);
+		p.add(pesquisaB);
 
-
+		add(p,BorderLayout.NORTH);
 		add(tbpExames,BorderLayout.CENTER);
-
 		exames = BancoDados.getInstance().getExamesGerais();
 	}
 
