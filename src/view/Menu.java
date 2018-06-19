@@ -28,7 +28,7 @@ public class Menu extends PanelGeral {
 		btnCadastrarExame = new JButton(new ImageIcon(getClass().getClassLoader().getResource("cadastrarExame.png")));
 		btnConsultaExames = new JButton(new ImageIcon(getClass().getClassLoader().getResource("consultarExame.png")));
 		btnMarcarExame = new JButton(new ImageIcon(getClass().getClassLoader().getResource("marcarExame.png")));
-		btnFinanceiro = new JButton("Financeiro");
+		btnFinanceiro = new JButton(new ImageIcon(getClass().getClassLoader().getResource("financeiro.png")));
 		
 		btnConsulta.setContentAreaFilled(false);
 		btnConsulta.setBorderPainted(false);
@@ -42,6 +42,8 @@ public class Menu extends PanelGeral {
 		btnConsultaExames.setBorderPainted(false);
 		btnMarcarExame.setBorderPainted(false);
 		btnMarcarExame.setContentAreaFilled(false);
+		btnFinanceiro.setBorderPainted(false);
+		btnFinanceiro.setContentAreaFilled(false);
 		
 		add(btnConsulta);
 		add(btnConsultaExames);

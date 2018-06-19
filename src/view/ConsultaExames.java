@@ -75,9 +75,9 @@ public class ConsultaExames extends PanelGeral {
 		pesquisaB=new JButton("Pesquisar");
 		opcaoDePesquisa= new JComboBox<>();
 		opcaoDePesquisa.addItem("Todos os Exames");
-		opcaoDePesquisa.addItem("Não Realizados");
+		opcaoDePesquisa.addItem("Não Realizado");
 		opcaoDePesquisa.addItem("Em Andamento");
-		opcaoDePesquisa.addItem("Concluidos");
+		opcaoDePesquisa.addItem("Concluido");
 		campoPesquisa=new JTextField(20);
 
 		for(int i = 0; i < model.getColumnCount(); i++)
@@ -201,13 +201,15 @@ public class ConsultaExames extends PanelGeral {
 						addRow(e);
 					}
 				}
+				
 			}else {
 				for(MarcarExame e : examesEntrada) {
-					if(e.getCpfPaciente().toLowerCase().contains(nomeCpfExame.toLowerCase())||e.getNomePaciente().toLowerCase().contains(nomeCpfExame.toLowerCase())
-							||e.getExame().getTipoExame().toLowerCase().contains(nomeCpfExame.toLowerCase())&& e.getStatus().equals(status)) {
+					if(e.getCpfPaciente().toLowerCase().contains(nomeCpfExame.toLowerCase())&& e.getStatus().toString().equals(status)||e.getNomePaciente().toLowerCase().contains(nomeCpfExame.toLowerCase())
+							&& e.getStatus().toString().equals(status)||e.getExame().getTipoExame().toLowerCase().contains(nomeCpfExame.toLowerCase())&& e.getStatus().toString().equals(status)) {
 						addRow(e);
 					}
 				}
+				
 			}
 
 			

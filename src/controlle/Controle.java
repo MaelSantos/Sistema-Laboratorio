@@ -350,6 +350,7 @@ public class Controle extends MouseAdapter implements ActionListener {
 				Mensagem.exibirMensagem("Preencha Todos os Campos");
 		}
 		if (e.getSource() == consultaExames.getPesquisaB()) {
+			
 			consultaExames.getModel().pesquisa(consultaExames.getCampoPesquisa().getText(),
 					consultaExames.getOpcaoDePesquisa().getSelectedItem().toString(),
 					BancoDados.getInstance().getExamesMarcados());
