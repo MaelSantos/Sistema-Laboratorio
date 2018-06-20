@@ -6,13 +6,11 @@
     <tipoExame>Hemograma</tipoExame>
     <tipoDeColeta>Sangue</tipoDeColeta>
     <valor>40.0</valor>
-    <cpfPaciente>000.000.000-00</cpfPaciente>
   </ExameGeral>
   <ExameGeral>
     <codigo>001</codigo>
     <tipoExame>Hemograma</tipoExame>
     <tipoDeColeta>Sangue</tipoDeColeta>
     <valor>40.0</valor>
-    <cpfPaciente>108.590.464-43</cpfPaciente>
   </ExameGeral>
 </list>

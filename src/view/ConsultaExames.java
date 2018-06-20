@@ -17,6 +17,7 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.AbstractTableModel;
 
+import controlle.Controle;
 import model.BancoDados;
 import model.ExameGeral;
 import model.MarcarExame;
@@ -31,23 +32,23 @@ public class ConsultaExames extends PanelGeral {
 	ArrayList<ExameGeral> exames;
 	private JTextField campoPesquisa;
 	private JButton pesquisaB;
-	private JComboBox<String> opcaoDePesquisa;	
+	private JComboBox<String> opcaoDePesquisa;
 	private JPanel disponiveis, total;
-	
+
 	public ConsultaExames() {
 		super();
 		setLayout(new BorderLayout());
 		setBorder(BorderFactory.createTitledBorder("Consulta Exames"));
 
 		JPanel p = new JPanel();
-		p.setLayout(new FlowLayout(10,10,10));
-		
+		p.setLayout(new FlowLayout(10, 10, 10));
+
 		p.add(campoPesquisa);
 		p.add(opcaoDePesquisa);
 		p.add(pesquisaB);
 
-		add(p,BorderLayout.NORTH);
-		add(tbpExames,BorderLayout.CENTER);
+		add(p, BorderLayout.NORTH);
+		add(tbpExames, BorderLayout.CENTER);
 		exames = BancoDados.getInstance().getExamesGerais();
 	}
 
@@ -55,61 +56,65 @@ public class ConsultaExames extends PanelGeral {
 	public void inicializar() {
 		model = new TableModel(BancoDados.getInstance().getExamesMarcados());
 		tblExames = new JTable(model);
-		examesDisponiveis=new TableModelExameGeral();
+		examesDisponiveis = new TableModelExameGeral();
 		tblDisponiveis = new JTable(examesDisponiveis);
 		scpExames = new JScrollPane(tblExames);
-	
+
 		tbpExames = new JTabbedPane();
 		total = new JPanel();
 		disponiveis = new JPanel();
 		total.setLayout(new BorderLayout());
 		disponiveis.setLayout(new BorderLayout());
-		
-		total.add(scpExames,BorderLayout.CENTER);
-		disponiveis.add(new JScrollPane(tblDisponiveis),BorderLayout.CENTER);
-		tbpExames.add("Exames Disponiveis",disponiveis);
+
+		total.add(scpExames, BorderLayout.CENTER);
+		disponiveis.add(new JScrollPane(tblDisponiveis), BorderLayout.CENTER);
+		tbpExames.add("Exames Disponiveis", disponiveis);
 		tbpExames.add("Todos os Exames", total);
 
 		tbpExames.setPreferredSize(new Dimension(550, getHeight()));
-		
-		pesquisaB=new JButton("Pesquisar");
-		opcaoDePesquisa= new JComboBox<>();
+
+		pesquisaB = new JButton("Pesquisar");
+		opcaoDePesquisa = new JComboBox<>();
 		opcaoDePesquisa.addItem("Todos os Exames");
 		opcaoDePesquisa.addItem("Não Realizado");
 		opcaoDePesquisa.addItem("Em Andamento");
 		opcaoDePesquisa.addItem("Concluido");
-		campoPesquisa=new JTextField(20);
+		campoPesquisa = new JTextField(20);
 
-		for(int i = 0; i < model.getColumnCount(); i++)
+		for (int i = 0; i < model.getColumnCount(); i++)
 			tblExames.getColumnModel().getColumn(i).setPreferredWidth(model.colunas[i].length());
 		model.fireTableDataChanged();
 	}
 
 	public class TableModel extends AbstractTableModel {
-		
-		private String [] colunas;	
+
+		private String[] colunas;
 		private ArrayList<MarcarExame> exames;
 
 		public TableModel() {
-			exames = new ArrayList<>();	
-			colunas = new String[]{"Codigo", "CPF","Paciente", "Medico", "Exame", "Parecer", "Tipo De Amostra", "Estado"};		
-		}
-		
-		public TableModel(ArrayList<MarcarExame> exames) {
-			this.exames = exames;		
-			colunas = new String[]{"Codigo", "CPF", "Paciente", "Medico", "Exame", "Parecer", "Tipo De Amostra", "Estado"};
+			exames = new ArrayList<>();
+			colunas = new String[] { "Codigo", "CPF", "Paciente", "Medico", "Exame", "Parecer", "Tipo De Amostra",
+					"Estado" };
 		}
 
-	    @Override
-	    public String getColumnName(int column) {
-	    	// TODO Auto-generated method stub
-	    	return colunas[column];
-	    }
+		public TableModel(ArrayList<MarcarExame> exames) {
+			this.exames = exames;
+			colunas = new String[] { "Codigo", "CPF", "Paciente", "Medico", "Exame", "Parecer", "Tipo De Amostra",
+					"Estado" };
+		}
+
+		@Override
+		public String getColumnName(int column) {
+			// TODO Auto-generated method stub
+			return colunas[column];
+		}
+
 		@Override
 		public int getColumnCount() {
-			
+
 			return colunas.length;
 		}
+
 		@Override
 		public int getRowCount() {
 			// TODO Auto-generated method stub
@@ -119,9 +124,10 @@ public class ConsultaExames extends PanelGeral {
 		@Override
 		public Object getValueAt(int linha, int coluna) {
 			MarcarExame exame = exames.get(linha);
-			
-//			"Codigo", "Paciente", "Medico", "Exame", "Parecer", "Tipo De Coleta", "Estado"};
-			switch(coluna) {
+
+			// "Codigo", "Paciente", "Medico", "Exame", "Parecer", "Tipo De Coleta",
+			// "Estado"};
+			switch (coluna) {
 			case 0:
 				return exame.getExame().getCodigo();
 			case 1:
@@ -142,84 +148,102 @@ public class ConsultaExames extends PanelGeral {
 			return null;
 		}
 		
-		@Override  
-		public void setValueAt(Object aValue, int linha, int coluna) {  
+		public void atualizarTabelaPaciente(String cpf) {
+			ArrayList<MarcarExame> marcarExames = new ArrayList<>();
+
+			for (MarcarExame marcarExame : BancoDados.getInstance().getExamesMarcados()) {
+				if (marcarExame.getCpfPaciente().equals(cpf)) {
+					System.out.println("Entrou");
+					marcarExames.add(marcarExame);
+				}
+			}
+
+			exames = marcarExames;
+			fireTableStructureChanged();
+		}
+		
+		@Override
+		public void setValueAt(Object aValue, int linha, int coluna) {
 			MarcarExame exame = exames.get(linha);
 
 			MarcarExame e = null;
 			if (aValue instanceof MarcarExame) {
 				e = (MarcarExame) aValue;
 			}
-			
-//			"Codigo", "Paciente", "Medico", "Exame", "Parecer", "Tipo De Coleta", "Estado"};
-			switch (coluna) 
-			{
-			case 0:  
+
+			// "Codigo", "Paciente", "Medico", "Exame", "Parecer", "Tipo De Coleta",
+			// "Estado"};
+			switch (coluna) {
+			case 0:
 				exame.getExame().setCodigo((e.getExame().getCodigo()));
-			case 1:  
+			case 1:
 				exame.setCpfPaciente(e.getCpfPaciente());
-			case 2:  
+			case 2:
 				exame.setNomePaciente(e.getNomePaciente());
-			case 3:  
+			case 3:
 				exame.setNomeMedico(e.getNomeMedico());
 			case 4:
 				exame.getExame().setTipoExame(e.getExame().getTipoExame());
-			case 5:  
+			case 5:
 				exame.setParecer(e.getParecer());
 			case 6:
 				exame.getExame().setTipoDeColeta(e.getExame().getTipoDeColeta());
 			case 7:
 				exame.setStatus(e.getStatus());
-			default:  
+			default:
 				System.err.println("Índice da coluna inválido");
-			}  
-			fireTableCellUpdated(linha, coluna);  
-		}      
+			}
+			fireTableCellUpdated(linha, coluna);
+		}
 
-
-		public void addRow(MarcarExame e){
+		public void addRow(MarcarExame e) {
 			this.exames.add(e);
 			this.fireTableDataChanged();
 			fireTableStructureChanged();
 		}
 
-		public void removeRow(int linha){
+		public void removeRow(int linha) {
 			this.exames.remove(linha);
 			this.fireTableRowsDeleted(linha, linha);
 		}
-		
-		public void pesquisa(String nomeCpfExame,String status, ArrayList<MarcarExame> examesEntrada) {
 
-			exames=new ArrayList<>();
+		public void pesquisa(String nomeCpfExame, String status, ArrayList<MarcarExame> examesEntrada) {
 
-            if(status.equals("Todos os Exames")&&getCampoPesquisa().getText().equals("")) {
-            	exames= examesEntrada;
-            }else if(status.equals("Todos os Exames")&&!getCampoPesquisa().getText().equals("")) {
-				for(MarcarExame e : examesEntrada) {
-					if(e.getCpfPaciente().toLowerCase().contains(nomeCpfExame.toLowerCase())||e.getNomePaciente().toLowerCase().contains(nomeCpfExame.toLowerCase())
-							||e.getExame().getTipoExame().toLowerCase().contains(nomeCpfExame.toLowerCase())) {
+			exames = new ArrayList<>();
+
+			if (status.equals("Todos os Exames") && getCampoPesquisa().getText().equals("")) {
+				exames = examesEntrada;
+			} else if (status.equals("Todos os Exames") && !getCampoPesquisa().getText().equals("")) {
+				for (MarcarExame e : examesEntrada) {
+					if (e.getCpfPaciente().toLowerCase().contains(nomeCpfExame.toLowerCase())
+							|| e.getNomePaciente().toLowerCase().contains(nomeCpfExame.toLowerCase())
+							|| e.getExame().getTipoExame().toLowerCase().contains(nomeCpfExame.toLowerCase())) {
 						addRow(e);
 					}
 				}
-				
-			}else {
-				for(MarcarExame e : examesEntrada) {
-					if(e.getCpfPaciente().toLowerCase().contains(nomeCpfExame.toLowerCase())&& e.getStatus().toString().equals(status)||e.getNomePaciente().toLowerCase().contains(nomeCpfExame.toLowerCase())
-							&& e.getStatus().toString().equals(status)||e.getExame().getTipoExame().toLowerCase().contains(nomeCpfExame.toLowerCase())&& e.getStatus().toString().equals(status)) {
+
+			} else {
+				for (MarcarExame e : examesEntrada) {
+					if (e.getCpfPaciente().toLowerCase().contains(nomeCpfExame.toLowerCase())
+							&& e.getStatus().toString().equals(status)
+							|| e.getNomePaciente().toLowerCase().contains(nomeCpfExame.toLowerCase())
+									&& e.getStatus().toString().equals(status)
+							|| e.getExame().getTipoExame().toLowerCase().contains(nomeCpfExame.toLowerCase())
+									&& e.getStatus().toString().equals(status)) {
 						addRow(e);
 					}
 				}
-				
+
 			}
 
-			
 			this.fireTableDataChanged();
 
 			fireTableStructureChanged();
 			System.gc();
 		}
+
 		public void voltaTabelaCompleta() {
-//			exames=ClassXML.pacientes;
+			// exames=ClassXML.pacientes;
 			this.fireTableDataChanged();
 		}
 
@@ -296,7 +320,7 @@ public class ConsultaExames extends PanelGeral {
 	public JComboBox<String> getOpcaoDePesquisa() {
 		return opcaoDePesquisa;
 	}
+
 	
-	
-	
+
 }

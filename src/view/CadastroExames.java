@@ -1,4 +1,4 @@
-	package view;
+package view;
 
 import java.awt.Color;
 import java.awt.Container;
@@ -22,12 +22,10 @@ import javax.swing.text.MaskFormatter;
 
 public class CadastroExames extends PanelGeral {
 
-	private JLabel  labelTipoExame, labelTipoAmostra,labelValor, labelCpfPaciente;
+	private JLabel labelTipoExame, labelTipoAmostra, labelValor;
 	private JButton btnSalvar;
 	private JComboBox<String> comboBoxTipoAmostra;
-	private JFormattedTextField fieldCpfPaciente;
 	private JTextField fieldTipoExame, fieldvalor;
-	
 
 	public CadastroExames() {
 
@@ -41,26 +39,15 @@ public class CadastroExames extends PanelGeral {
 		setLayout(new GridLayout(15, 1));
 		// Label's
 
-		
 		labelTipoAmostra = new JLabel("Tipo de amostra:");
 		labelTipoExame = new JLabel("Tipo de exame:");
 		labelValor = new JLabel("Valor");
-		labelCpfPaciente = new JLabel("CPF Paciente");
 
 		// TextField
-	
+
 		fieldvalor = new JTextField();
 		fieldTipoExame = new JTextField();
-		fieldCpfPaciente = new JFormattedTextField();
-		try {
-			fieldCpfPaciente.setFormatterFactory(new DefaultFormatterFactory(new MaskFormatter("###.###.###-##")));
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		
-		
+
 		// tbn
 		btnSalvar = new JButton("Salvar Exame");
 		btnSalvar.setBackground(Color.GREEN);
@@ -75,27 +62,18 @@ public class CadastroExames extends PanelGeral {
 		comboBoxTipoAmostra.addItem("Esperma");
 		comboBoxTipoAmostra.addItem("Secreção Pleural");
 		comboBoxTipoAmostra.addItem("Secreção Vaginal");
-		
-		
-		
-		
 
-		add(labelCpfPaciente);
-		add(fieldCpfPaciente);
 		add(labelTipoExame);
 		add(fieldTipoExame);
 		add(labelTipoAmostra);
 		add(comboBoxTipoAmostra);
 		add(labelValor);
 		add(fieldvalor);
-		
-		
+
 		add(new JSeparator());
 		add(btnSalvar);
 
 	}
-
-	
 
 	public JButton getBtnSalvar() {
 		return btnSalvar;
@@ -125,16 +103,4 @@ public class CadastroExames extends PanelGeral {
 		return fieldvalor;
 	}
 
-	public JLabel getLabelCpfPaciente() {
-		return labelCpfPaciente;
-	}
-
-	public JFormattedTextField getFieldCpfPaciente() {
-		return fieldCpfPaciente;
-	}
-	
-
-	
-	
-	
 }

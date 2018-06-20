@@ -4,8 +4,10 @@ import java.util.ArrayList;
 
 import javax.swing.table.AbstractTableModel;
 
+import controlle.Controle;
 import model.BancoDados;
 import model.ExameGeral;
+import model.MarcarExame;
 
 public class TableModelExameGeral extends AbstractTableModel {
 
@@ -77,21 +79,6 @@ public class TableModelExameGeral extends AbstractTableModel {
 		exames = BancoDados.getInstance().getExamesGerais();// .getExamesValores();
 		fireTableStructureChanged();
 	}
-
-	public void atualizarTabelaPaciente(String cpf) {
-		ArrayList<ExameGeral> exameGerals = new ArrayList<>();
-		
-		for (ExameGeral exameGeral : exames) {
-			if(exameGeral.getCpfPaciente().equals(cpf)) {
-				System.out.println("Entrou");
-				exameGerals.add(exameGeral);
-			}
-		}
-		
-		exames = exameGerals;
-		fireTableStructureChanged();
-	}
-
 	public void addRow(ExameGeral e) {
 		this.exames.add(e);
 		this.fireTableDataChanged();

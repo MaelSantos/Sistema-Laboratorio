@@ -9,7 +9,7 @@
 	<classpathentry kind="src" path="files"/>
 	<classpathentry kind="src" path="res"/>
 	<classpathentry kind="src" path="lib"/>
-	<classpathentry kind="lib" path="lib/dom4j-1.6.1.jar"/>
-	<classpathentry kind="lib" path="lib/xstream-1.4.10.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Felipe/Downloads/xstream-distribution-1.4.10-bin/xstream-1.4.10/lib/xstream/dom4j-1.6.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Felipe/Downloads/xstream-distribution-1.4.10-bin/xstream-1.4.10/lib/xstream-1.4.10.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

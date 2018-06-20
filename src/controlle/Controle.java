@@ -285,25 +285,18 @@ public class Controle extends MouseAdapter implements ActionListener {
 
 			mudarTela(detalhesPaciente);
 		}
+		
+		
 		if (e.getSource() == cadastroExames.getBtnSalvar()) {
 			String tipoAmostra = (String) cadastroExames.getComboBoxTipoAmostra().getSelectedItem();
-			int codigoAtual = Integer.parseInt(BancoDados.getInstance().getExamesGerais()
-					.get(BancoDados.getInstance().getExamesGerais().size() - 1).getCodigo()) + 1;
-			String str = "";
-			if (codigoAtual <= 9) {
-				str = "00";
-			} else if (codigoAtual >= 10) {
-				str = "0";
-			}
-
+			String codigoAtual = contarCodigo(Integer.parseInt(BancoDados.getInstance().getExamesGerais()
+					.get(BancoDados.getInstance().getExamesGerais().size() - 1).getCodigo()) + 1);
 			try {
 				ExameGeral exame = new ExameGeral(cadastroExames.getFieldTipoExame().getText().trim(), tipoAmostra,
-						Double.parseDouble(cadastroExames.getFieldvalor().getText()), str + String.valueOf(codigoAtual),
-						cadastroExames.getFieldCpfPaciente().getText());
+						Double.parseDouble(cadastroExames.getFieldvalor().getText()), codigoAtual);
 				System.out.println(BancoDados.getInstance().addDado(exame));
 				cadastroExames.getFieldTipoExame().setText("");
 				cadastroExames.getFieldvalor().setText("");
-				cadastroExames.getFieldCpfPaciente().setText("");
 				Mensagem.exibirMensagem("Exame salvo com sucesso.");
 				consultaExames.getExamesDisponiveis().atualizarTabela();
 
@@ -316,7 +309,7 @@ public class Controle extends MouseAdapter implements ActionListener {
 			ExameGeral exameGeral = new ExameGeral(editarExame.getFieldTipoExame().getText().trim(),
 					(String) editarExame.getComboBoxTipoAmostra().getSelectedItem(),
 					Double.parseDouble(editarExame.getFieldvalor().getText().trim()),
-					editarExame.getExame().getCodigo(), editarExame.getExame().getCpfPaciente());
+					editarExame.getExame().getCodigo());
 
 			BancoDados.getInstance().editarExame(exameGeral);
 		}
@@ -367,6 +360,7 @@ public class Controle extends MouseAdapter implements ActionListener {
 					login.getSenhaField().getPassword());
 			if (usuario instanceof Paciente) {
 				cpfPacientde = usuario.getCpf();
+				consultaExames.getModel().atualizarTabelaPaciente(cpfPacientde);
 			}
 			if (usuario != null) {
 
@@ -384,7 +378,7 @@ public class Controle extends MouseAdapter implements ActionListener {
 					menu.getBtnCadastroFuncionario().setVisible(false);
 					menu.getBtnCadastrarExame().setVisible(false);
 					menu.getBtnMarcarExame().setVisible(false);
-					consultaExames.getExamesDisponiveis().atualizarTabelaPaciente(cpfPacientde);
+					
 					
 				}
 				perfil.getBtnEditarDados().addActionListener(this);
@@ -408,6 +402,7 @@ public class Controle extends MouseAdapter implements ActionListener {
 					editarExame.autoPreencher(
 							consultaExames.getExames().get(consultaExames.getTblDisponiveis().getSelectedRow()));
 					mudarTela(editarExame);
+					
 
 				}
 			});
@@ -448,5 +443,13 @@ public class Controle extends MouseAdapter implements ActionListener {
 				c.setVisible(false);
 
 	}
-
+	public String contarCodigo(int codigoAtual) {
+		String str = "";
+		if (codigoAtual <= 9) {
+			str = "00";
+		} else if (codigoAtual >= 10) {
+			str = "0";
+		}
+		return str + String.valueOf(codigoAtual);
+	}
 }

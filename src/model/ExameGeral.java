@@ -9,13 +9,13 @@ public class ExameGeral {
 	private String tipoExame;
 	private String tipoDeColeta;
 	private double valor;
-	private String cpfPaciente;
-	public ExameGeral(String tipoExame, String tipoDeColeta, double valor, String codigo, String cpf) {
+	
+	public ExameGeral(String tipoExame, String tipoDeColeta, double valor, String codigo) {
 		this.codigo = codigo;
 		this.tipoExame = tipoExame;
 		this.tipoDeColeta = tipoDeColeta;
 		this.valor = valor;
-		this.cpfPaciente = cpf;
+		
 	}
 
 	public String getTipoDeColeta() {
@@ -48,15 +48,6 @@ public class ExameGeral {
 
 	public void setTipoExame(String tipoExame) {
 		this.tipoExame = tipoExame;
-	}
-	
-
-	public String getCpfPaciente() {
-		return cpfPaciente;
-	}
-
-	public void setCpfPaciente(String cpfPaciente) {
-		this.cpfPaciente = cpfPaciente;
 	}
 
 	@Override
