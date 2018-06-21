@@ -10,7 +10,7 @@ import javax.swing.JButton;
 public class Menu extends PanelGeral {
 
 	private JButton btnCadastro, btnConsulta, btnCadastroFuncionario, btnCadastrarExame,
-	btnConsultaExames, btnMarcarExame, btnFinanceiro;
+	btnConsultaExames, btnMarcarExame, btnFinanceiro,btnContasPagar;
 	
 	public Menu() {
 		super();
@@ -29,6 +29,7 @@ public class Menu extends PanelGeral {
 		btnConsultaExames = new JButton(new ImageIcon(getClass().getClassLoader().getResource("consultarExame.png")));
 		btnMarcarExame = new JButton(new ImageIcon(getClass().getClassLoader().getResource("marcarExame.png")));
 		btnFinanceiro = new JButton(new ImageIcon(getClass().getClassLoader().getResource("financeiro.png")));
+		btnContasPagar =  new JButton(new ImageIcon(getClass().getClassLoader().getResource("contaspagar.png")));
 		
 		btnConsulta.setContentAreaFilled(false);
 		btnConsulta.setBorderPainted(false);
@@ -44,6 +45,8 @@ public class Menu extends PanelGeral {
 		btnMarcarExame.setContentAreaFilled(false);
 		btnFinanceiro.setBorderPainted(false);
 		btnFinanceiro.setContentAreaFilled(false);
+		btnContasPagar.setBorderPainted(false);
+		btnContasPagar.setContentAreaFilled(false);
 		
 		add(btnConsulta);
 		add(btnConsultaExames);
@@ -52,6 +55,7 @@ public class Menu extends PanelGeral {
 		add(btnCadastro);
 		add(btnCadastroFuncionario);
 		add(btnCadastrarExame);
+		add(btnContasPagar);
 	}
 
 	//metodos de acesso
@@ -81,6 +85,10 @@ public class Menu extends PanelGeral {
 
 	public JButton getBtnFinanceiro() {
 		return btnFinanceiro;
+	}
+
+	public JButton getBtnContasPagar() {
+		return btnContasPagar;
 	}
 	
 

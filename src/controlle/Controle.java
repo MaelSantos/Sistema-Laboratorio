@@ -27,6 +27,7 @@ import view.CadastroPacientes;
 import view.CadastroExames;
 import view.CadastroFuncionario;
 import view.ConsultaPacientes;
+import view.ContasPagar;
 import view.ConsultaExames;
 import view.DetalhesFuncionario;
 import view.DetalhesPaciente;
@@ -54,6 +55,7 @@ public class Controle extends MouseAdapter implements ActionListener {
 	private ConsultaExames consultaExames;
 	private EditarExame editarExame;
 	private Marcar marcar;
+	private ContasPagar contasPagar;
 
 	private Financeiro financeiro;
 	public static String cpfPacientde;
@@ -61,7 +63,8 @@ public class Controle extends MouseAdapter implements ActionListener {
 	public Controle(Login login, Principal principal, Menu menu, CadastroPacientes cadastro, ConsultaPacientes consulta,
 			DetalhesPaciente detalhesPaciente, CadastroFuncionario cadastroFuncionario,
 			DetalhesFuncionario detalhesFuncionario, Perfil perfil, CadastroExames cadastroExames,
-			ConsultaExames consultaExames, EditarExame editarExame, Marcar marcar,Financeiro financeiro) {
+			ConsultaExames consultaExames, EditarExame editarExame, Marcar marcar,Financeiro financeiro,ContasPagar contasPagar) {
+		
 		this.principal = principal;
 		this.menu = menu;
 		this.cadastro = cadastro;
@@ -76,6 +79,7 @@ public class Controle extends MouseAdapter implements ActionListener {
 		this.editarExame = editarExame;
 		this.marcar = marcar;
 		this.financeiro = financeiro;
+		this.contasPagar = contasPagar;
 		
 		cadastro.getBtnAdd().addActionListener(this);
 		consulta.getConsultaB().addActionListener(this);
@@ -88,6 +92,7 @@ public class Controle extends MouseAdapter implements ActionListener {
 		menu.getBtnConsultaExames().addActionListener(this);
 		menu.getBtnMarcarExame().addActionListener(this);
 		menu.getBtnFinanceiro().addActionListener(this);
+		menu.getBtnContasPagar().addActionListener(this);
 		detalhesPaciente.getBtnAdd().addActionListener(this);
 		detalhesPaciente.getBntVoltar().addActionListener(this);
 		detalhesFuncionario.getBtnVoltar().addActionListener(this);
@@ -192,6 +197,9 @@ public class Controle extends MouseAdapter implements ActionListener {
 		if(e.getSource() == menu.getBtnFinanceiro())
 		{
 			mudarTela(financeiro);
+		}
+		if(e.getSource() == menu.getBtnContasPagar()) {
+			mudarTela(contasPagar);
 		}
 		if (e.getSource() == consulta.getConsultaB()) {
 			if (!consulta.getConsultaT().getText().trim().equals("")) {

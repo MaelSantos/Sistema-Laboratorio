@@ -1,5 +1,6 @@
 package view;
 
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFormattedTextField;
@@ -7,11 +8,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class Caixa extends PanelGeral {
-	
-	private JButton contas_a_pagarB,contas_a_receberB;
-	private JPanel contas_a_pagar,contas_a_receber;
-	
+public class ContasPagar extends PanelGeral {
+		
 	// componentes do Panel de Contas á pagar
     private JLabel descricao,fornecedor,planoDeConta,dataVencimento,centroLucro,gerarparcelaP,
     valorTotal,numParcelas,intervaloParcela;
@@ -19,6 +17,10 @@ public class Caixa extends PanelGeral {
     private JFormattedTextField dataVencimentoFT, valorTotalFT,numParcelasFT,intervaloParcelaFT;
     private JComboBox<String> planoDeContaC,centroLucroC,gerarparcelaC;
     
+    public ContasPagar() {
+    	
+    	setBorder(BorderFactory.createTitledBorder("Contas á Pagar"));
+    }
 	@Override
 	public void inicializar() {
 		
@@ -32,10 +34,44 @@ public class Caixa extends PanelGeral {
 		    numParcelas= new JLabel("Numero de Parcelas: ");
 		    intervaloParcela= new JLabel("Intervalo entre as Parcelas: ");
 		    
-		    descricaoT,
-		    fornecedorT;
-		    private JFormattedTextField dataVencimentoFT, valorTotalFT,numParcelasFT,intervaloParcelaFT;
-		    private JComboBox<String> planoDeContaC,centroLucroC,gerarparcelaC;
+		    descricaoT= new JFormattedTextField();
+		    fornecedorT= new JFormattedTextField();
+		    dataVencimentoFT= new JFormattedTextField();
+		    valorTotalFT= new JFormattedTextField();
+		    numParcelasFT= new JFormattedTextField();
+		    intervaloParcelaFT= new JFormattedTextField();
+		    
+		    planoDeContaC= new JComboBox<String>();
+		    centroLucroC= new JComboBox<String>();
+		    gerarparcelaC= new JComboBox<String>();
+		    
+		    add(descricao);
+		    add(fornecedor);
+		    
+		    add(descricaoT);
+		    add(fornecedorT);
+		    
+		    add(planoDeConta);
+		    add(centroLucro);
+		    	    
+		    add(planoDeContaC);
+		    add(centroLucroC);
+		    
+		    add(dataVencimento);
+		    add(gerarparcelaP);
+		    
+		    add(dataVencimentoFT);
+		    add(gerarparcelaC);
+		    
+		    add(valorTotal);
+		    add(numParcelas);
+		    
+		    add(valorTotalFT);
+		    add(numParcelasFT);
+		    
+		    add(intervaloParcela);
+		    add(intervaloParcelaFT);
+		    
 		
 	}
 

@@ -10,6 +10,7 @@ import view.CadastroPacientes;
 import view.CadastroExames;
 import view.CadastroFuncionario;
 import view.ConsultaPacientes;
+import view.ContasPagar;
 import view.ConsultaExames;
 import view.DetalhesFuncionario;
 import view.DetalhesPaciente;
@@ -55,14 +56,16 @@ public class App {
 		
 		Menu menu = new Menu();
 		
+		ContasPagar contasPagar= new ContasPagar();
+		
 		Perfil perfil = new Perfil(new Usuario("",""){}, "");
 	
 		Principal principal = new Principal("Sistema Laboratorio", menu, cadastro, consulta, detalhesPaciente, cadastroFuncionario,
-				detalhesFuncionario, perfil,cadastroExames,consultaExames, editarExame, marcar, financeiro);
+				detalhesFuncionario, perfil,cadastroExames,consultaExames, editarExame, marcar, financeiro,contasPagar);
 		
 		Controle controle = new Controle(login,principal, menu, cadastro,consulta,detalhesPaciente
 				, cadastroFuncionario,  detalhesFuncionario, perfil,cadastroExames,consultaExames, 
-				editarExame, marcar, financeiro);
+				editarExame, marcar, financeiro,contasPagar);
 	}
 	
 }
