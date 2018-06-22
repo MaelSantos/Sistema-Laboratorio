@@ -3,12 +3,12 @@ package model;
 public class DespesasVo {
 
 	private String discricao, fornecedor, plano, centro_custo, data;
-	private double valor;
+	private double valor,valorPacerla;
 	private int numeros_parcela;
 	private int intervalo_parcelas;
 	
 	public DespesasVo(String discricao, String fornecedor, String plano, String centro_custo, String data, double valor,
-			int numeros_parcela, int intervalo_parcelas) {
+			int numeros_parcela, int intervalo_parcelas, double valorPacerla) {
 		this.discricao = discricao;
 		this.fornecedor = fornecedor;
 		this.plano = plano;
@@ -17,6 +17,7 @@ public class DespesasVo {
 		this.valor = valor;
 		this.numeros_parcela = numeros_parcela;
 		this.intervalo_parcelas = intervalo_parcelas;
+		this.valorPacerla = valorPacerla;
 	}
 
 	public String getDiscricao() {
@@ -82,6 +83,15 @@ public class DespesasVo {
 	public void setIntervalo_parcelas(int intervalo_parcelas) {
 		this.intervalo_parcelas = intervalo_parcelas;
 	}
+
+	public double getValorPacerla() {
+		return valorPacerla;
+	}
+
+	public void setValorPacerla(double valorPacerla) {
+		this.valorPacerla = valorPacerla;
+	}
+	
 
 	
 }

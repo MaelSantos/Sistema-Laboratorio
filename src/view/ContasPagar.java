@@ -6,6 +6,7 @@ import javax.swing.JComboBox;
 import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JSeparator;
 import javax.swing.JTextField;
 import javax.swing.text.DefaultFormatterFactory;
 import javax.swing.text.MaskFormatter;
@@ -13,11 +14,11 @@ import javax.swing.text.MaskFormatter;
 public class ContasPagar extends PanelGeral {
 		
 	// componentes do Panel de Contas á pagar
-    private JLabel descricao,fornecedor,planoDeConta,dataVencimento,centroLucro,gerarparcelaP,
-    valorTotal,numParcelas,intervaloParcela;
-    private JTextField descricaoT,fornecedorT;
+    private JLabel descricao,fornecedor,planoDeConta,dataVencimento,valorParcela,
+    valorTotal,numParcelas,intervaloParcela,centroLucro;
+    private JTextField descricaoT,fornecedorT,valorParcelaTF;
     private JFormattedTextField dataVencimentoFT, valorTotalFT;
-    private JComboBox<String> planoDeContaC,centroLucroC,gerarparcelaC,numParcelasC,intervaloParcelaC;
+    private JComboBox<String> planoDeContaC,centroLucroC,numParcelasC,intervaloParcelaC;
     private JButton lancar;
     
     public ContasPagar() {
@@ -31,14 +32,15 @@ public class ContasPagar extends PanelGeral {
 		    fornecedor= new JLabel("Fornecedor/Paciente: ");
 		    planoDeConta= new JLabel("Plano de Conta: ");
 		    dataVencimento= new JLabel("Data de Vencimento: ");
+		    valorParcela= new JLabel("Valor da Parcela: ");
 		    centroLucro= new JLabel("Centro de Custo Lucro: ");
-		    gerarparcelaP= new JLabel("Gerar Parcerla por: ");
 		    valorTotal= new JLabel("Valor Total: ");
 		    numParcelas= new JLabel("Numero de Parcelas: ");
 		    intervaloParcela= new JLabel("Intervalo entre as Parcelas: ");
 		    
 		    descricaoT= new JFormattedTextField();
 		    fornecedorT= new JFormattedTextField();
+		    valorParcelaTF=new JFormattedTextField();
 		    dataVencimentoFT= new JFormattedTextField();
 		    valorTotalFT= new JFormattedTextField();
 		    try {
@@ -59,7 +61,7 @@ public class ContasPagar extends PanelGeral {
 		    centroLucroC.addItem("20%");
 		    centroLucroC.addItem("10%");
 	
-		    gerarparcelaC= new JComboBox<String>();
+		   
 		    
 		    numParcelasC= new JComboBox<String>();
 		    numParcelasC.addItem("2");
@@ -93,22 +95,36 @@ public class ContasPagar extends PanelGeral {
 		    add(centroLucroC);
 		    
 		    add(dataVencimento);
-		    add(gerarparcelaP);
+		    add(valorTotal);
 		    
 		    add(dataVencimentoFT);
-		    add(gerarparcelaC);
+		    add(valorTotalFT);
 		    
-		    add(valorTotal);
+		    add(new JSeparator(JSeparator.HORIZONTAL));
+			add(new JSeparator(JSeparator.HORIZONTAL));
+			add(new JLabel("Plano de Conta Parcelado:"));
+			add(new JLabel(""));
+			
+		    add(valorParcela);
 		    add(numParcelas);
 		    
-		    add(valorTotalFT);
+		    add(valorParcelaTF);
 		    add(numParcelasC);
 		    
 		    add(intervaloParcela);
 		    add(new JLabel(""));
 		    add(intervaloParcelaC);
-		   
+		    
+		    
+		    add(new JLabel(""));
+		    add(new JSeparator(JSeparator.HORIZONTAL));
+			add(new JSeparator(JSeparator.HORIZONTAL));
+			add(new JLabel(""));
 		    add(lancar);
 	}
+	public JButton getLancar() {
+		return lancar;
+	}
+	
 
 }

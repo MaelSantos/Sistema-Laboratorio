@@ -23,7 +23,7 @@ public class DespesasView extends PanelGeral{
 
 		model = new ModelGenerico(BancoDados.getInstance().getDespesas(), new String[] {
 				"Discricao", "Fornecedor", "Plano", "Centro Custo", "Data",
-				"Valor", "Nº de Parcelas","Intervalo Parcelas"});
+				"Valor", "Nº de Parcelas","Valor Parcela","Intervalo Parcelas"});
 		tblDespesas = new JTable(model);
 		add(new JScrollPane(tblDespesas));
 	}
