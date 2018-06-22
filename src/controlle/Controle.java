@@ -3,6 +3,8 @@ package controlle;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -27,6 +29,7 @@ import view.CadastroPacientes;
 import view.CadastroExames;
 import view.CadastroFuncionario;
 import view.ConsultaPacientes;
+import view.ContasAReceber;
 import view.ContasPagar;
 import view.ConsultaExames;
 import view.DetalhesFuncionario;
@@ -40,7 +43,7 @@ import view.Menu;
 import view.Perfil;
 import view.Principal;
 
-public class Controle extends MouseAdapter implements ActionListener {
+public class Controle extends MouseAdapter implements ActionListener, ItemListener {
 
 	private Principal principal;// jframe
 	private Menu menu;// jpanel
@@ -56,15 +59,16 @@ public class Controle extends MouseAdapter implements ActionListener {
 	private EditarExame editarExame;
 	private Marcar marcar;
 	private ContasPagar contasPagar;
-
+	private ContasAReceber contasAReceber;
 	private Financeiro financeiro;
 	public static String cpfPacientde;
 
 	public Controle(Login login, Principal principal, Menu menu, CadastroPacientes cadastro, ConsultaPacientes consulta,
 			DetalhesPaciente detalhesPaciente, CadastroFuncionario cadastroFuncionario,
 			DetalhesFuncionario detalhesFuncionario, Perfil perfil, CadastroExames cadastroExames,
-			ConsultaExames consultaExames, EditarExame editarExame, Marcar marcar,Financeiro financeiro,ContasPagar contasPagar) {
-		
+			ConsultaExames consultaExames, EditarExame editarExame, Marcar marcar, Financeiro financeiro,
+			ContasPagar contasPagar, ContasAReceber contasAReceber) {
+
 		this.principal = principal;
 		this.menu = menu;
 		this.cadastro = cadastro;
@@ -80,7 +84,8 @@ public class Controle extends MouseAdapter implements ActionListener {
 		this.marcar = marcar;
 		this.financeiro = financeiro;
 		this.contasPagar = contasPagar;
-		
+		this.contasAReceber = contasAReceber;
+
 		cadastro.getBtnAdd().addActionListener(this);
 		consulta.getConsultaB().addActionListener(this);
 		consulta.getDetalhesButton().addActionListener(this);
@@ -93,6 +98,7 @@ public class Controle extends MouseAdapter implements ActionListener {
 		menu.getBtnMarcarExame().addActionListener(this);
 		menu.getBtnFinanceiro().addActionListener(this);
 		menu.getBtnContasPagar().addActionListener(this);
+		menu.getBtnContasAReceber().addActionListener(this);
 		detalhesPaciente.getBtnAdd().addActionListener(this);
 		detalhesPaciente.getBntVoltar().addActionListener(this);
 		detalhesFuncionario.getBtnVoltar().addActionListener(this);
@@ -115,6 +121,10 @@ public class Controle extends MouseAdapter implements ActionListener {
 		editarExame.getBtnSalvar().addActionListener(this);
 
 		marcar.getBtnAdd().addActionListener(this);
+
+		contasAReceber.getBtnLancar().addActionListener(this);
+		contasAReceber.getBtnLimpar().addActionListener(this);
+		contasAReceber.getComboTipoDePagamento().addItemListener(this);
 	}
 
 	@SuppressWarnings("unchecked")
@@ -194,12 +204,14 @@ public class Controle extends MouseAdapter implements ActionListener {
 		if (e.getSource() == menu.getBtnMarcarExame()) {
 			mudarTela(marcar);
 		}
-		if(e.getSource() == menu.getBtnFinanceiro())
-		{
+		if (e.getSource() == menu.getBtnFinanceiro()) {
 			mudarTela(financeiro);
 		}
-		if(e.getSource() == menu.getBtnContasPagar()) {
+		if (e.getSource() == menu.getBtnContasPagar()) {
 			mudarTela(contasPagar);
+		}
+		if (e.getSource() == menu.getBtnContasAReceber()) {
+			mudarTela(contasAReceber);
 		}
 		if (e.getSource() == consulta.getConsultaB()) {
 			if (!consulta.getConsultaT().getText().trim().equals("")) {
@@ -293,8 +305,7 @@ public class Controle extends MouseAdapter implements ActionListener {
 
 			mudarTela(detalhesPaciente);
 		}
-		
-		
+
 		if (e.getSource() == cadastroExames.getBtnSalvar()) {
 			String tipoAmostra = (String) cadastroExames.getComboBoxTipoAmostra().getSelectedItem();
 			String codigoAtual = contarCodigo(Integer.parseInt(BancoDados.getInstance().getExamesGerais()
@@ -302,7 +313,6 @@ public class Controle extends MouseAdapter implements ActionListener {
 			try {
 				ExameGeral exame = new ExameGeral(cadastroExames.getFieldTipoExame().getText().trim(), tipoAmostra,
 						Double.parseDouble(cadastroExames.getFieldvalor().getText()), codigoAtual);
-				System.out.println(BancoDados.getInstance().addDado(exame));
 				cadastroExames.getFieldTipoExame().setText("");
 				cadastroExames.getFieldvalor().setText("");
 				Mensagem.exibirMensagem("Exame salvo com sucesso.");
@@ -351,10 +361,38 @@ public class Controle extends MouseAdapter implements ActionListener {
 				Mensagem.exibirMensagem("Preencha Todos os Campos");
 		}
 		if (e.getSource() == consultaExames.getPesquisaB()) {
-			
+
 			consultaExames.getModel().pesquisa(consultaExames.getCampoPesquisa().getText(),
 					consultaExames.getOpcaoDePesquisa().getSelectedItem().toString(),
 					BancoDados.getInstance().getExamesMarcados());
+		}
+
+		if (e.getSource() == contasAReceber.getBtnLimpar()) {
+			contasAReceber.getTfReferencia().setText("");
+			contasAReceber.getTfValor().setText("");
+			contasAReceber.getFtfCpfCliente().setText("");
+			contasAReceber.getFtfDataFluxo().setText("");
+			contasAReceber.getFtfDataVencimento().setText("");
+			contasAReceber.getTfNomeCliente().setText("");
+
+		}
+		if (e.getSource() == contasAReceber.getBtnLancar()) {
+			String codigoAtual = contarCodigo(0);
+			model.ContasAReceber contasAReceberModel;
+			if (contasAReceber.getComboParcelas().isVisible()) {
+				contasAReceberModel = new model.ContasAReceber(contasAReceber.getFtfCpfCliente().getText(),
+						contasAReceber.getFtfDataVencimento().getText(), contasAReceber.getFtfDataFluxo().getText(),
+						codigoAtual, contasAReceber.getTfValor().getText(), contasAReceber.getTfReferencia().getText(),
+						(String) contasAReceber.getComboTipoDePagamento().getSelectedItem(),
+						(String) contasAReceber.getComboParcelas().getSelectedItem());
+			} else {
+				contasAReceberModel = new model.ContasAReceber(contasAReceber.getFtfCpfCliente().getText(),
+						contasAReceber.getFtfDataVencimento().getText(), contasAReceber.getFtfDataFluxo().getText(),
+						codigoAtual, contasAReceber.getTfValor().getText(), contasAReceber.getTfReferencia().getText(),
+						(String) contasAReceber.getComboTipoDePagamento().getSelectedItem());
+
+			}
+			System.out.println(contasAReceberModel.getCpfPaciente() + contasAReceberModel.getReferencia() + contasAReceberModel.getQtdParcelas());
 		}
 
 	}
@@ -386,8 +424,7 @@ public class Controle extends MouseAdapter implements ActionListener {
 					menu.getBtnCadastroFuncionario().setVisible(false);
 					menu.getBtnCadastrarExame().setVisible(false);
 					menu.getBtnMarcarExame().setVisible(false);
-					
-					
+
 				}
 				perfil.getBtnEditarDados().addActionListener(this);
 				login.setVisible(false);
@@ -410,7 +447,6 @@ public class Controle extends MouseAdapter implements ActionListener {
 					editarExame.autoPreencher(
 							consultaExames.getExames().get(consultaExames.getTblDisponiveis().getSelectedRow()));
 					mudarTela(editarExame);
-					
 
 				}
 			});
@@ -443,6 +479,21 @@ public class Controle extends MouseAdapter implements ActionListener {
 		}
 	}
 
+	@Override
+	public void itemStateChanged(ItemEvent e) {
+		if (e.getStateChange() == ItemEvent.SELECTED) {
+			if (contasAReceber.getComboTipoDePagamento().getSelectedIndex() == 1) {
+				contasAReceber.getLbParcelas().setVisible(true);
+				contasAReceber.getComboParcelas().setVisible(true);
+			} else if (contasAReceber.getComboTipoDePagamento().getSelectedIndex() == 0) {
+				contasAReceber.getLbParcelas().setVisible(false);
+				contasAReceber.getComboParcelas().setVisible(false);
+			}
+
+		}
+
+	}
+
 	public void mudarTela(JPanel panel) {
 		for (Component c : principal.getContentPane().getComponents())
 			if (c.equals(panel))
@@ -451,6 +502,7 @@ public class Controle extends MouseAdapter implements ActionListener {
 				c.setVisible(false);
 
 	}
+
 	public String contarCodigo(int codigoAtual) {
 		String str = "";
 		if (codigoAtual <= 9) {
@@ -460,4 +512,5 @@ public class Controle extends MouseAdapter implements ActionListener {
 		}
 		return str + String.valueOf(codigoAtual);
 	}
+
 }

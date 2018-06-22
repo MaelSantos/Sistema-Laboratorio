@@ -10,7 +10,7 @@ import javax.swing.JButton;
 public class Menu extends PanelGeral {
 
 	private JButton btnCadastro, btnConsulta, btnCadastroFuncionario, btnCadastrarExame,
-	btnConsultaExames, btnMarcarExame, btnFinanceiro,btnContasPagar;
+	btnConsultaExames, btnMarcarExame, btnFinanceiro,btnContasPagar, btnContasAReceber;
 	
 	public Menu() {
 		super();
@@ -30,6 +30,7 @@ public class Menu extends PanelGeral {
 		btnMarcarExame = new JButton(new ImageIcon(getClass().getClassLoader().getResource("marcarExame.png")));
 		btnFinanceiro = new JButton(new ImageIcon(getClass().getClassLoader().getResource("financeiro.png")));
 		btnContasPagar =  new JButton(new ImageIcon(getClass().getClassLoader().getResource("contaspagar.png")));
+		btnContasAReceber = new JButton("Contas á receber");
 		
 		btnConsulta.setContentAreaFilled(false);
 		btnConsulta.setBorderPainted(false);
@@ -56,6 +57,7 @@ public class Menu extends PanelGeral {
 		add(btnCadastroFuncionario);
 		add(btnCadastrarExame);
 		add(btnContasPagar);
+		add(btnContasAReceber);
 	}
 
 	//metodos de acesso
@@ -89,6 +91,10 @@ public class Menu extends PanelGeral {
 
 	public JButton getBtnContasPagar() {
 		return btnContasPagar;
+	}
+
+	public JButton getBtnContasAReceber() {
+		return btnContasAReceber;
 	}
 	
 
