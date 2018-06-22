@@ -116,7 +116,6 @@ public class Controle extends MouseAdapter implements ActionListener {
 
 		marcar.getBtnAdd().addActionListener(this);
 		
-		contasPagar.getLancar().addActionListener(this);
 	}
 
 	@SuppressWarnings("unchecked")
