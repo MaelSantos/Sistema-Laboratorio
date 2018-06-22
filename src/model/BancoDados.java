@@ -5,15 +5,12 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.Collection;
 
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.xml.Dom4JDriver;
 import com.thoughtworks.xstream.security.NoTypePermission;
 import com.thoughtworks.xstream.security.NullPermission;
 import com.thoughtworks.xstream.security.PrimitiveTypePermission;
-
-import view.Mensagem;
 
 @SuppressWarnings("unchecked")
 public class BancoDados {
@@ -24,6 +21,7 @@ public class BancoDados {
 	private ArrayList<Funcionario> funcionarios;
 	private ArrayList<ExameGeral> examesGerais;
 	private ArrayList<MarcarExame> examesMarcados;
+	private ArrayList<DespesasVo> despesas;
 	private XStream xStream;
 
 	private BancoDados() {
@@ -36,6 +34,7 @@ public class BancoDados {
 		xStream.alias("Endereco", Endereco.class);
 		xStream.alias("ExameMarcado", MarcarExame.class);
 		xStream.alias("ExameGeral", ExameGeral.class);
+		xStream.alias("Despesas", DespesasVo.class);
 		xStream.alias("Andamento", Andamento.class);
 		
 		//remover mesnagem de erro 
@@ -47,8 +46,9 @@ public class BancoDados {
 				Endereco.class, 
 				MarcarExame.class, 
 				ExameGeral.class,
+				DespesasVo.class,
 				Andamento.class
-		});		
+		});
 		// clear out existing permissions and set own ones
 		xStream.addPermission(NoTypePermission.NONE);
 		//allow some basics
@@ -56,11 +56,11 @@ public class BancoDados {
 		xStream.addPermission(PrimitiveTypePermission.PRIMITIVES);
 		xStream.allowTypeHierarchy(Object.class);
 
-		pacientes = (ArrayList<Paciente>) lerArquivo("pacientes.xml");
-		examesMarcados = (ArrayList<MarcarExame>) lerArquivo("examesMarcados.xml");
-		funcionarios = (ArrayList<Funcionario>) lerArquivo("funcionarios.xml");
-		examesGerais = (ArrayList<ExameGeral>) lerArquivo("examesValor.xml");
-
+		pacientes = (ArrayList<Paciente>) lerArquivo("files/pacientes.xml");
+		examesMarcados = (ArrayList<MarcarExame>) lerArquivo("files/examesMarcados.xml");
+		funcionarios = (ArrayList<Funcionario>) lerArquivo("files/funcionarios.xml");
+		examesGerais = (ArrayList<ExameGeral>) lerArquivo("files/examesValor.xml");
+		despesas = (ArrayList<DespesasVo>) lerArquivo("files/despesas.xml");
 	}
 
 	public static BancoDados getInstance()
@@ -83,7 +83,7 @@ public class BancoDados {
 				}						
 			}
 			pacientes.add(paciente);
-			gravar(pacientes,"pacientes.xml");
+			gravar(pacientes,"files/pacientes.xml");
 			return true;
 		}
 		if (object instanceof Funcionario) { //add funcionario
@@ -96,7 +96,7 @@ public class BancoDados {
 				}						
 			}
 			funcionarios.add(funcionario);
-			gravar(funcionarios, "funcionarios.xml");
+			gravar(funcionarios, "files/funcionarios.xml");
 			return true;
 
 		}
@@ -110,15 +110,15 @@ public class BancoDados {
 				}						
 			}
 			examesGerais.add(exameGeral);
-			gravar(examesGerais,"examesValor.xml");
+			gravar(examesGerais,"files/examesValor.xml");
 			return true;
 		}
 		if (object instanceof MarcarExame) { //add exame
 			MarcarExame marcarExame = (MarcarExame) object;
 
 			examesMarcados.add(marcarExame);
-			gravar(examesMarcados,"examesMarcados.xml");
-			gravar(pacientes,"pacientes.xml");
+			gravar(examesMarcados,"files/examesMarcados.xml");
+			gravar(pacientes,"files/pacientes.xml");
 			return true;
 		}
 		
@@ -127,7 +127,7 @@ public class BancoDados {
 
 	public void editarPaciente(Paciente paciente) {
 
-		File file =  new File(getClass().getClassLoader().getResource("funcionarios.xml").getFile());
+		File file =  new File(getClass().getClassLoader().getResource("files/funcionarios.xml").getFile());
 		int indice = 0;
 		for(int i = 0; i < pacientes.size(); i++) {
 			if(paciente.getCpf().equals(pacientes.get(i).getCpf())) {
@@ -210,7 +210,7 @@ public class BancoDados {
 
 		PrintWriter print = null;
 		try {
-			File file = new File(getClass().getClassLoader().getResource((caminho)).getPath());
+			File file = new File(caminho);
 			print = new PrintWriter(file);
 			print.write(xml);
 			print.flush();
@@ -229,7 +229,7 @@ public class BancoDados {
 		FileReader ler=null;
 		ArrayList<? extends Object> temp = null;
 		try {
-			ler = new FileReader(new File(getClass().getClassLoader().getResource(caminho).getFile()));
+			ler = new FileReader(new File(caminho));
 
 			temp =  (ArrayList<? extends Object>) xStream.fromXML(ler);
 		} catch (Exception e) {
@@ -253,6 +253,10 @@ public class BancoDados {
 
 	public ArrayList<MarcarExame> getExamesMarcados() {
 		return examesMarcados;
+	}
+
+	public ArrayList<DespesasVo> getDespesas() {
+		return despesas;
 	}
 }
 

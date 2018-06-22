@@ -109,8 +109,6 @@ public class ContasPagar extends PanelGeral {
 		    add(intervaloParcelaC);
 		   
 		    add(lancar);
-		    
-		
 	}
 
 }
