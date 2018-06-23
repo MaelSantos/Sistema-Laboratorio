@@ -403,10 +403,15 @@ public class Controle extends MouseAdapter implements ActionListener, ItemListen
 			}
 
 			BancoDados.getInstance().addDado(contasAReceberModel);
-			for (model.ContasAReceber contasAReceber : BancoDados.getInstance().getContasARecebers()) {
-				System.out.println(contasAReceber.getCodigo());
+			
+			
+			contasAReceber.getTfReferencia().setText("");
+			contasAReceber.getTfValor().setText("");
+			contasAReceber.getFtfCpfCliente().setText("");
+			contasAReceber.getFtfDataFluxo().setText("");
+			contasAReceber.getFtfDataVencimento().setText("");
+			contasAReceber.getTfNomeCliente().setText("");
 
-			}
 			Mensagem.exibirMensagem("Conta inserida com sucesso!");
 
 		}
@@ -545,8 +550,6 @@ public class Controle extends MouseAdapter implements ActionListener, ItemListen
 			if(marcarExame.getCpfPaciente().equals(cpf)) {
 			
 				for(ExameGeral exameGeral: BancoDados.getInstance().getExamesGerais()) {
-					System.out.println(marcarExame.getExame());
-					System.out.println(exameGeral.getTipoExame() + "\n");
 					if(exameGeral.getTipoExame().equals(marcarExame.getExame().getTipoExame())) {
 						System.out.println("Entrou");
 						soma += exameGeral.getValor();

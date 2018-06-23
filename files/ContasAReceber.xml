@@ -10,4 +10,14 @@
     <referencia>asdasd</referencia>
     <tipoPagamento>ï¿½ vista</tipoPagamento>
   </ContasAReceber>
+  <ContasAReceber>
+    <cpfPaciente>108.590.464-43</cpfPaciente>
+    <dataVencimento>99/99/9999</dataVencimento>
+    <dataFluxo>99/99/9999</dataFluxo>
+    <codigo>001</codigo>
+    <valor>340.0</valor>
+    <referencia>Ref</referencia>
+    <tipoPagamento>Á prazo</tipoPagamento>
+    <qtdParcelas>2</qtdParcelas>
+  </ContasAReceber>
 </list>
