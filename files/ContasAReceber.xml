@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<list>
+  <ContasAReceber>
+    <cpfPaciente>999.999.999-99</cpfPaciente>
+    <dataVencimento>99/99/9999</dataVencimento>
+    <dataFluxo>99/99/9999</dataFluxo>
+    <codigo>000</codigo>
+    <valor/>
+    <referencia>asdasd</referencia>
+    <tipoPagamento>� vista</tipoPagamento>
+  </ContasAReceber>
+</list>

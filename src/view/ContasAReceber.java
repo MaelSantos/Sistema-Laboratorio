@@ -9,6 +9,7 @@ import javax.swing.JComboBox;
 import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JSeparator;
 import javax.swing.JTextField;
 import javax.swing.text.DefaultFormatterFactory;
 import javax.swing.text.MaskFormatter;
@@ -82,9 +83,13 @@ public class ContasAReceber extends PanelGeral {
 
 		btnLancar = new JButton("LANCAR");
 		btnLancar.setBackground(Color.GREEN);
+		
 		btnLimpar = new JButton("LIMPAR");
 		btnLimpar.setBackground(Color.red);
-
+		
+		btnBuscar = new JButton("BUSCAR");
+		btnBuscar.setBackground(Color.BLUE);
+		
 		add(lbCpfCliente);
 		add(lbNomeCliente);
 		
@@ -103,12 +108,20 @@ public class ContasAReceber extends PanelGeral {
 		add(tfValor);
 		add(tfReferencia);
 		
-
+		add(btnBuscar);
+		add(new JLabel(""));
+		
+		add(new JSeparator());
+		add(new JSeparator());
+		
 		add(lbTipoPagamento);
 		add(comboTipoDePagamento);
 
 		add(lbParcelas);
 		add(comboParcelas);
+		
+		add(new JSeparator());
+		add(new JSeparator());
 
 		add(btnLancar);
 		add(btnLimpar);
@@ -161,6 +174,10 @@ public class ContasAReceber extends PanelGeral {
 
 	public JTextField getTfNomeCliente() {
 		return tfNomeCliente;
+	}
+
+	public JButton getBtnBuscar() {
+		return btnBuscar;
 	}
 	
 

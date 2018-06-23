@@ -11,7 +11,7 @@ import model.Funcionario;
 public class Financeiro extends PanelGeral{
 
 	private JTabbedPane tbpFinaceiro;
-	private Despesas despesas;
+	private DespesasView despesas;
 	
 	public Financeiro() {
 		super();
@@ -24,7 +24,7 @@ public class Financeiro extends PanelGeral{
 	public void inicializar() {
 		
 		tbpFinaceiro = new JTabbedPane();
-		despesas = new Despesas();
+		despesas = new DespesasView();
 		
 		tbpFinaceiro.add("Despesas", despesas);
 		
@@ -37,7 +37,7 @@ public class Financeiro extends PanelGeral{
 		return tbpFinaceiro;
 	}
 
-	public Despesas getDespesas() {
+	public DespesasView getDespesas() {
 		return despesas;
 	}
 

@@ -124,7 +124,9 @@ public class Controle extends MouseAdapter implements ActionListener, ItemListen
 
 		contasAReceber.getBtnLancar().addActionListener(this);
 		contasAReceber.getBtnLimpar().addActionListener(this);
+		contasAReceber.getBtnBuscar().addActionListener(this);
 		contasAReceber.getComboTipoDePagamento().addItemListener(this);
+
 	}
 
 	@SuppressWarnings("unchecked")
@@ -315,6 +317,9 @@ public class Controle extends MouseAdapter implements ActionListener, ItemListen
 						Double.parseDouble(cadastroExames.getFieldvalor().getText()), codigoAtual);
 				cadastroExames.getFieldTipoExame().setText("");
 				cadastroExames.getFieldvalor().setText("");
+				
+				BancoDados.getInstance().addDado(exame);
+				
 				Mensagem.exibirMensagem("Exame salvo com sucesso.");
 				consultaExames.getExamesDisponiveis().atualizarTabela();
 
@@ -377,8 +382,12 @@ public class Controle extends MouseAdapter implements ActionListener, ItemListen
 
 		}
 		if (e.getSource() == contasAReceber.getBtnLancar()) {
-			String codigoAtual = contarCodigo(0);
+
+			String codigoAtual = contarCodigo(Integer.parseInt(BancoDados.getInstance().getContasARecebers()
+					.get(BancoDados.getInstance().getContasARecebers().size() - 1).getCodigo()) + 1);
+
 			model.ContasAReceber contasAReceberModel;
+
 			if (contasAReceber.getComboParcelas().isVisible()) {
 				contasAReceberModel = new model.ContasAReceber(contasAReceber.getFtfCpfCliente().getText(),
 						contasAReceber.getFtfDataVencimento().getText(), contasAReceber.getFtfDataFluxo().getText(),
@@ -392,7 +401,23 @@ public class Controle extends MouseAdapter implements ActionListener, ItemListen
 						(String) contasAReceber.getComboTipoDePagamento().getSelectedItem());
 
 			}
-			System.out.println(contasAReceberModel.getCpfPaciente() + contasAReceberModel.getReferencia() + contasAReceberModel.getQtdParcelas());
+
+			BancoDados.getInstance().addDado(contasAReceberModel);
+			for (model.ContasAReceber contasAReceber : BancoDados.getInstance().getContasARecebers()) {
+				System.out.println(contasAReceber.getCodigo());
+
+			}
+			Mensagem.exibirMensagem("Conta inserida com sucesso!");
+
+		}
+		if(e.getSource() == contasAReceber.getBtnBuscar()) {
+			double valor = buscarDebito(contasAReceber.getFtfCpfCliente().getText());
+			String nome = buscarPaciente(contasAReceber.getFtfCpfCliente().getText()).getNome();
+			
+			contasAReceber.getTfValor().setText(String.valueOf(valor));
+			contasAReceber.getTfNomeCliente().setText(nome);
+			
+			
 		}
 
 	}
@@ -502,7 +527,40 @@ public class Controle extends MouseAdapter implements ActionListener, ItemListen
 				c.setVisible(false);
 
 	}
+	public Paciente buscarPaciente(String cpf) {
+		
+		for(Paciente paciente: BancoDados.getInstance().getPacientes()) {
+			if(paciente.getCpf().equals(cpf)) {
+				return paciente;
+			}
+		}
+		return null;
+	}
+	public double buscarDebito(String cpf) {
+		double  soma = 0;
+		
+		
+		for(int i = 0; i < BancoDados.getInstance().getExamesMarcados().size(); i++) {
+			MarcarExame marcarExame = (MarcarExame)BancoDados.getInstance().getExamesMarcados().get(i);	
+			if(marcarExame.getCpfPaciente().equals(cpf)) {
+			
+				for(ExameGeral exameGeral: BancoDados.getInstance().getExamesGerais()) {
+					System.out.println(marcarExame.getExame());
+					System.out.println(exameGeral.getTipoExame() + "\n");
+					if(exameGeral.getTipoExame().equals(marcarExame.getExame().getTipoExame())) {
+						System.out.println("Entrou");
+						soma += exameGeral.getValor();
+					}
+				}
+			}
+			
+		}
+		
 
+		
+		
+		return soma;
+	}
 	public String contarCodigo(int codigoAtual) {
 		String str = "";
 		if (codigoAtual <= 9) {

@@ -1,3 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <list>
+  <ExameMarcado>
+    <exame>
+      <codigo>000</codigo>
+      <tipoExame>Hemograma</tipoExame>
+      <tipoDeColeta>Sangue</tipoDeColeta>
+      <valor>40.0</valor>
+    </exame>
+    <nomeMedico>Sr. Felipe Alencar</nomeMedico>
+    <cpfPaciente>108.590.464-43</cpfPaciente>
+    <nomePaciente>Felipe Douglas</nomePaciente>
+    <parecer>tal tal</parecer>
+    <status>nao_realizado</status>
+  </ExameMarcado>
+  <ExameMarcado>
+    <exame>
+      <codigo>002</codigo>
+      <tipoExame>PSA</tipoExame>
+      <tipoDeColeta>Fezes</tipoDeColeta>
+      <valor>300.0</valor>
+    </exame>
+    <nomeMedico>Sr. Fernado</nomeMedico>
+    <cpfPaciente>108.590.464-43</cpfPaciente>
+    <nomePaciente>Felipe Douglas</nomePaciente>
+    <parecer>tal tal</parecer>
+    <status>nao_realizado</status>
+  </ExameMarcado>
 </list>

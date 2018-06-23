@@ -2,15 +2,15 @@
 
 <list>
   <ExameGeral>
-    <codigo>000</codigo>
+    <codigo>001</codigo>
     <tipoExame>Hemograma</tipoExame>
     <tipoDeColeta>Sangue</tipoDeColeta>
     <valor>40.0</valor>
   </ExameGeral>
   <ExameGeral>
-    <codigo>001</codigo>
-    <tipoExame>Hemograma</tipoExame>
-    <tipoDeColeta>Sangue</tipoDeColeta>
-    <valor>40.0</valor>
+    <codigo>002</codigo>
+    <tipoExame>PSA</tipoExame>
+    <tipoDeColeta>Fezes</tipoDeColeta>
+    <valor>300.0</valor>
   </ExameGeral>
 </list>

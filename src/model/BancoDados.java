@@ -5,15 +5,12 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.Collection;
 
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.xml.Dom4JDriver;
 import com.thoughtworks.xstream.security.NoTypePermission;
 import com.thoughtworks.xstream.security.NullPermission;
 import com.thoughtworks.xstream.security.PrimitiveTypePermission;
-
-import view.Mensagem;
 
 @SuppressWarnings("unchecked")
 public class BancoDados {
@@ -24,11 +21,13 @@ public class BancoDados {
 	private ArrayList<Funcionario> funcionarios;
 	private ArrayList<ExameGeral> examesGerais;
 	private ArrayList<MarcarExame> examesMarcados;
+	private ArrayList<DespesasVo> despesas;
+	private ArrayList<ContasAReceber> contasARecebers;
 	private XStream xStream;
 
 	private BancoDados() {
 
-		xStream= new XStream(new Dom4JDriver());
+		xStream = new XStream(new Dom4JDriver());
 
 		xStream.alias("Paciente", Paciente.class);
 		xStream.alias("Funcionario", Funcionario.class);
@@ -36,101 +35,99 @@ public class BancoDados {
 		xStream.alias("Endereco", Endereco.class);
 		xStream.alias("ExameMarcado", MarcarExame.class);
 		xStream.alias("ExameGeral", ExameGeral.class);
+		xStream.alias("Despesas", DespesasVo.class);
 		xStream.alias("Andamento", Andamento.class);
-		
-		//remover mesnagem de erro 
+		xStream.alias("ContasAReceber", ContasAReceber.class);
+
+		// remover mesnagem de erro
 		XStream.setupDefaultSecurity(xStream);
-		xStream.allowTypes(new Class[] {
-				Paciente.class, 
-				Funcionario.class, 
-				Administrador.class, 
-				Endereco.class, 
-				MarcarExame.class, 
-				ExameGeral.class,
-				Andamento.class
-		});		
+		xStream.allowTypes(new Class[] { Paciente.class, Funcionario.class, Administrador.class, Endereco.class,
+				MarcarExame.class, ExameGeral.class, DespesasVo.class, Andamento.class, ContasAReceber.class });
 		// clear out existing permissions and set own ones
 		xStream.addPermission(NoTypePermission.NONE);
-		//allow some basics
+		// allow some basics
 		xStream.addPermission(NullPermission.NULL);
 		xStream.addPermission(PrimitiveTypePermission.PRIMITIVES);
 		xStream.allowTypeHierarchy(Object.class);
 
-		pacientes = (ArrayList<Paciente>) lerArquivo("pacientes.xml");
-		examesMarcados = (ArrayList<MarcarExame>) lerArquivo("examesMarcados.xml");
-		funcionarios = (ArrayList<Funcionario>) lerArquivo("funcionarios.xml");
-		examesGerais = (ArrayList<ExameGeral>) lerArquivo("examesValor.xml");
-
+		pacientes = (ArrayList<Paciente>) lerArquivo("files/pacientes.xml");
+		examesMarcados = (ArrayList<MarcarExame>) lerArquivo("files/examesMarcados.xml");
+		funcionarios = (ArrayList<Funcionario>) lerArquivo("files/funcionarios.xml");
+		examesGerais = (ArrayList<ExameGeral>) lerArquivo("files/examesValor.xml");
+		despesas = (ArrayList<DespesasVo>) lerArquivo("files/despesas.xml");
+		contasARecebers = (ArrayList<ContasAReceber>) lerArquivo("files/ContasAReceber.xml");
+		
 	}
 
-	public static BancoDados getInstance()
-	{
-		if(dados == null)
+	public static BancoDados getInstance() {
+		if (dados == null)
 			dados = new BancoDados();
 		return dados;
 	}
 
-	public boolean addDado(Object object)
-	{
+	public boolean addDado(Object object) {
 		boolean add = true;
-		if (object instanceof Paciente) { //add paciente
+		if (object instanceof Paciente) { // add paciente
 			Paciente paciente = (Paciente) object;
-			for(Paciente p : pacientes)
-			{
-				if(p.getCpf().equalsIgnoreCase(paciente.getCpf()))
-				{
+			for (Paciente p : pacientes) {
+				if (p.getCpf().equalsIgnoreCase(paciente.getCpf())) {
 					return false;
-				}						
+				}
 			}
 			pacientes.add(paciente);
-			gravar(pacientes,"pacientes.xml");
+			gravar(pacientes, "files/pacientes.xml");
 			return true;
 		}
-		if (object instanceof Funcionario) { //add funcionario
+		if (object instanceof Funcionario) { // add funcionario
 			Funcionario funcionario = (Funcionario) object;
-			for(Funcionario f : funcionarios)
-			{
-				if(f.getCpf().equalsIgnoreCase(funcionario.getCpf()))
-				{
+			for (Funcionario f : funcionarios) {
+				if (f.getCpf().equalsIgnoreCase(funcionario.getCpf())) {
 					return false;
-				}						
+				}
 			}
 			funcionarios.add(funcionario);
-			gravar(funcionarios, "funcionarios.xml");
+			gravar(funcionarios, "files/funcionarios.xml");
 			return true;
 
 		}
-		if (object instanceof ExameGeral) { //add exame
+		if (object instanceof ExameGeral) { // add exame
 			ExameGeral exameGeral = (ExameGeral) object;
-			for(ExameGeral eV : examesGerais)
-			{
-				if(eV.getTipoExame().equalsIgnoreCase(exameGeral.getTipoExame()))
-				{
+			for (ExameGeral eV : examesGerais) {
+				if (eV.getTipoExame().equalsIgnoreCase(exameGeral.getTipoExame())) {
 					return false;
-				}						
+				}
 			}
 			examesGerais.add(exameGeral);
-			gravar(examesGerais,"examesValor.xml");
+			gravar(examesGerais, "files/examesValor.xml");
 			return true;
 		}
-		if (object instanceof MarcarExame) { //add exame
+		if (object instanceof MarcarExame) { // add exame
 			MarcarExame marcarExame = (MarcarExame) object;
 
 			examesMarcados.add(marcarExame);
-			gravar(examesMarcados,"examesMarcados.xml");
-			gravar(pacientes,"pacientes.xml");
+			gravar(examesMarcados, "files/examesMarcados.xml");
+			gravar(pacientes, "files/pacientes.xml");
 			return true;
 		}
-		
+		if (object instanceof ContasAReceber) {
+			ContasAReceber contasAReceber = (ContasAReceber) object;
+
+			contasARecebers.add(contasAReceber);
+			gravar(contasARecebers, "files/ContasAReceber.xml");
+
+			return true;
+
+		}
+
 		return false;
 	}
 
 	public void editarPaciente(Paciente paciente) {
 
-		File file =  new File(getClass().getClassLoader().getResource("funcionarios.xml").getFile());
+		File file = new File(getClass().getClassLoader().getResource("files/funcionarios.xml").getFile());
 		int indice = 0;
-		for(int i = 0; i < pacientes.size(); i++) {
-			if(paciente.getCpf().equals(pacientes.get(i).getCpf())) {
+		for (int i = 0; i < pacientes.size(); i++) {
+			if (paciente.getCpf().equals(pacientes.get(i).getCpf())) {
 				indice = i;
 				break;
 			}
@@ -141,7 +138,7 @@ public class BancoDados {
 
 		xStream.processAnnotations(Paciente.class);
 
-		String text =  xStream.toXML(pacientes);
+		String text = xStream.toXML(pacientes);
 
 		PrintWriter writer;
 
@@ -150,17 +147,17 @@ public class BancoDados {
 			writer.write(text);
 			writer.flush();
 			writer.close();
-		}catch (FileNotFoundException e) {
+		} catch (FileNotFoundException e) {
 
-		}	
+		}
 	}
 
 	public void editarExame(ExameGeral exame) {
 
-		File file =  new File("files/examesValor.xml");
+		File file = new File("files/examesValor.xml");
 		int indice = 0;
-		for(int i = 0; i < pacientes.size(); i++) {
-			if(exame.getCodigo().equals(examesGerais.get(i).getCodigo())) {
+		for (int i = 0; i < pacientes.size(); i++) {
+			if (exame.getCodigo().equals(examesGerais.get(i).getCodigo())) {
 				indice = i;
 				break;
 			}
@@ -171,7 +168,7 @@ public class BancoDados {
 
 		xStream.processAnnotations(ExameGeral.class);
 
-		String text =  xStream.toXML(examesGerais);
+		String text = xStream.toXML(examesGerais);
 
 		PrintWriter writer;
 
@@ -180,16 +177,17 @@ public class BancoDados {
 			writer.write(text);
 			writer.flush();
 			writer.close();
-		}catch (FileNotFoundException e) {
+		} catch (FileNotFoundException e) {
 
-		}	
+		}
 	}
+
 	public void excluirExame(ExameGeral exameGeral) {
-		File file =  new File("files/examesValor.xml");
+		File file = new File("files/examesValor.xml");
 		this.examesGerais.remove(exameGeral);
 		xStream.processAnnotations(ExameGeral.class);
 
-		String text =  xStream.toXML(examesGerais);
+		String text = xStream.toXML(examesGerais);
 
 		PrintWriter writer;
 
@@ -198,9 +196,9 @@ public class BancoDados {
 			writer.write(text);
 			writer.flush();
 			writer.close();
-		}catch (FileNotFoundException e) {
+		} catch (FileNotFoundException e) {
 
-		}	
+		}
 
 	}
 
@@ -210,30 +208,29 @@ public class BancoDados {
 
 		PrintWriter print = null;
 		try {
-			File file = new File(getClass().getClassLoader().getResource((caminho)).getPath());
+			File file = new File(caminho);
 			print = new PrintWriter(file);
 			print.write(xml);
 			print.flush();
 
 		} catch (FileNotFoundException e) {
-			System.err.println("Erro ao gravar: "+e.getMessage()+"Local: "+e.getLocalizedMessage());
+			System.err.println("Erro ao gravar: " + e.getMessage() + "Local: " + e.getLocalizedMessage());
 			e.printStackTrace();
-		}
-		finally {
-			print.close();			
+		} finally {
+			print.close();
 		}
 	}
 
-	public ArrayList<? extends Object> lerArquivo(String caminho) { 
+	public ArrayList<? extends Object> lerArquivo(String caminho) {
 
-		FileReader ler=null;
+		FileReader ler = null;
 		ArrayList<? extends Object> temp = null;
 		try {
-			ler = new FileReader(new File(getClass().getClassLoader().getResource(caminho).getFile()));
+			ler = new FileReader(new File(caminho));
 
-			temp =  (ArrayList<? extends Object>) xStream.fromXML(ler);
+			temp = (ArrayList<? extends Object>) xStream.fromXML(ler);
 		} catch (Exception e) {
-			System.err.println("Erro ao Ler: "+e.getMessage()+"Local: "+e.getLocalizedMessage());
+			System.err.println("Erro ao Ler: " + e.getMessage() + "Local: " + e.getLocalizedMessage());
 		}
 
 		return temp;
@@ -254,5 +251,13 @@ public class BancoDados {
 	public ArrayList<MarcarExame> getExamesMarcados() {
 		return examesMarcados;
 	}
-}
 
+	public ArrayList<DespesasVo> getDespesas() {
+		return despesas;
+	}
+
+	public ArrayList<ContasAReceber> getContasARecebers() {
+		return contasARecebers;
+	}
+	
+}

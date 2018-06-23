@@ -22,7 +22,7 @@
     <tipoSanguineo>O+</tipoSanguineo>
     <email>mmamammam</email>
     <telefone>(88)9 9889-8989</telefone>
-   	<exames> </exames>
+    <exames/>
   </Paciente>
   <Paciente>
     <login>Felipe Douglas</login>
@@ -46,7 +46,34 @@
     <email>fd@gmaill.com</email>
     <telefone>(88)8 8888-8888</telefone>
     <caminho>Felipe.jpg</caminho>
-    <exames> </exames>
+    <exames>
+      <ExameMarcado>
+        <exame>
+          <codigo>000</codigo>
+          <tipoExame>Hemograma</tipoExame>
+          <tipoDeColeta>Sangue</tipoDeColeta>
+          <valor>40.0</valor>
+        </exame>
+        <nomeMedico>Sr. Felipe Alencar</nomeMedico>
+        <cpfPaciente>108.590.464-43</cpfPaciente>
+        <nomePaciente>Felipe Douglas</nomePaciente>
+        <parecer>tal tal</parecer>
+        <status>nao_realizado</status>
+      </ExameMarcado>
+      <ExameMarcado>
+        <exame>
+          <codigo>002</codigo>
+          <tipoExame>PSA</tipoExame>
+          <tipoDeColeta>Fezes</tipoDeColeta>
+          <valor>300.0</valor>
+        </exame>
+        <nomeMedico>Sr. Fernado</nomeMedico>
+        <cpfPaciente>108.590.464-43</cpfPaciente>
+        <nomePaciente>Felipe Douglas</nomePaciente>
+        <parecer>tal tal</parecer>
+        <status>nao_realizado</status>
+      </ExameMarcado>
+    </exames>
   </Paciente>
   <Paciente>
     <login>teste banco</login>
@@ -70,6 +97,30 @@
     <email>0</email>
     <telefone>(00)0 0000-0000</telefone>
     <caminho>teste.jpg</caminho>
-    <exames> </exames>
+    <exames/>
+  </Paciente>
+  <Paciente>
+    <login>Lucas Souza</login>
+    <senha>999.999.999-99</senha>
+    <nomeCompleto>Lucas Souza</nomeCompleto>
+    <nome>Lucas</nome>
+    <sobrenome>Souza</sobrenome>
+    <endereco>
+      <rua>aaaaaaaa</rua>
+      <numero>54</numero>
+      <bairro>aaaa</bairro>
+      <cidade>aaaa</cidade>
+      <estado>Acre – AC</estado>
+      <complemento>asa</complemento>
+      <cep>88888-888</cep>
+    </endereco>
+    <cpf>999.999.999-99</cpf>
+    <idade>99/99/9999</idade>
+    <sexo>Masculino</sexo>
+    <tipoSanguineo>O+</tipoSanguineo>
+    <email>fd@gmail.com</email>
+    <telefone>(88)8 8888-8888</telefone>
+    <caminho>Lucas.jpg</caminho>
+    <exames/>
   </Paciente>
 </list>
