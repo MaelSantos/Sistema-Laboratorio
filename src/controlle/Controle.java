@@ -318,9 +318,9 @@ public class Controle extends MouseAdapter implements ActionListener, ItemListen
 						Double.parseDouble(cadastroExames.getFieldvalor().getText()), codigoAtual);
 				cadastroExames.getFieldTipoExame().setText("");
 				cadastroExames.getFieldvalor().setText("");
-				
+
 				BancoDados.getInstance().addDado(exame);
-				
+
 				Mensagem.exibirMensagem("Exame salvo com sucesso.");
 				consultaExames.getExamesDisponiveis().atualizarTabela();
 
@@ -382,48 +382,52 @@ public class Controle extends MouseAdapter implements ActionListener, ItemListen
 			contasAReceber.getTfNomeCliente().setText("");
 
 		}
+
 		if (e.getSource() == contasAReceber.getBtnLancar()) {
+			try {
+				String codigoAtual = contarCodigo(Integer.parseInt(BancoDados.getInstance().getContasARecebers()
+						.get(BancoDados.getInstance().getContasARecebers().size() - 1).getCodigo()) + 1);
 
-			String codigoAtual = contarCodigo(Integer.parseInt(BancoDados.getInstance().getContasARecebers()
-					.get(BancoDados.getInstance().getContasARecebers().size() - 1).getCodigo()) + 1);
+				model.ContasAReceber contasAReceberModel;
 
-			model.ContasAReceber contasAReceberModel;
+				if (contasAReceber.getComboParcelas().isVisible()) {
+					contasAReceberModel = new model.ContasAReceber(contasAReceber.getFtfCpfCliente().getText(),
+							contasAReceber.getFtfDataVencimento().getText(), contasAReceber.getFtfDataFluxo().getText(),
+							codigoAtual, contasAReceber.getTfValor().getText(),
+							contasAReceber.getTfReferencia().getText(),
+							(String) contasAReceber.getComboTipoDePagamento().getSelectedItem(),
+							(String) contasAReceber.getComboParcelas().getSelectedItem());
+				} else {
+					contasAReceberModel = new model.ContasAReceber(contasAReceber.getFtfCpfCliente().getText(),
+							contasAReceber.getFtfDataVencimento().getText(), contasAReceber.getFtfDataFluxo().getText(),
+							codigoAtual, contasAReceber.getTfValor().getText(),
+							contasAReceber.getTfReferencia().getText(),
+							(String) contasAReceber.getComboTipoDePagamento().getSelectedItem());
 
-			if (contasAReceber.getComboParcelas().isVisible()) {
-				contasAReceberModel = new model.ContasAReceber(contasAReceber.getFtfCpfCliente().getText(),
-						contasAReceber.getFtfDataVencimento().getText(), contasAReceber.getFtfDataFluxo().getText(),
-						codigoAtual, contasAReceber.getTfValor().getText(), contasAReceber.getTfReferencia().getText(),
-						(String) contasAReceber.getComboTipoDePagamento().getSelectedItem(),
-						(String) contasAReceber.getComboParcelas().getSelectedItem());
-			} else {
-				contasAReceberModel = new model.ContasAReceber(contasAReceber.getFtfCpfCliente().getText(),
-						contasAReceber.getFtfDataVencimento().getText(), contasAReceber.getFtfDataFluxo().getText(),
-						codigoAtual, contasAReceber.getTfValor().getText(), contasAReceber.getTfReferencia().getText(),
-						(String) contasAReceber.getComboTipoDePagamento().getSelectedItem());
+				}
 
+				BancoDados.getInstance().addDado(contasAReceberModel);
+
+				contasAReceber.getTfReferencia().setText("");
+				contasAReceber.getTfValor().setText("");
+				contasAReceber.getFtfCpfCliente().setText("");
+				contasAReceber.getFtfDataFluxo().setText("");
+				contasAReceber.getFtfDataVencimento().setText("");
+				contasAReceber.getTfNomeCliente().setText("");
+
+				Mensagem.exibirMensagem("Conta inserida com sucesso!");
+			} catch (Exception ex) {
+				Mensagem.exibirMensagem("Conta não pode ser inserida. Certifique-se de que tudo esteja preenchido corretamente.");
 			}
 
-			BancoDados.getInstance().addDado(contasAReceberModel);
-			
-			
-			contasAReceber.getTfReferencia().setText("");
-			contasAReceber.getTfValor().setText("");
-			contasAReceber.getFtfCpfCliente().setText("");
-			contasAReceber.getFtfDataFluxo().setText("");
-			contasAReceber.getFtfDataVencimento().setText("");
-			contasAReceber.getTfNomeCliente().setText("");
-
-			Mensagem.exibirMensagem("Conta inserida com sucesso!");
-
 		}
-		if(e.getSource() == contasAReceber.getBtnBuscar()) {
+		if (e.getSource() == contasAReceber.getBtnBuscar()) {
 			double valor = buscarDebito(contasAReceber.getFtfCpfCliente().getText());
 			String nome = buscarPaciente(contasAReceber.getFtfCpfCliente().getText()).getNome();
-			
+
 			contasAReceber.getTfValor().setText(String.valueOf(valor));
 			contasAReceber.getTfNomeCliente().setText(nome);
-			
-			
+
 		}
 		
 		if(e.getSource() == contasPagar.getLancar())
@@ -557,38 +561,37 @@ public class Controle extends MouseAdapter implements ActionListener, ItemListen
 				c.setVisible(false);
 
 	}
+
 	public Paciente buscarPaciente(String cpf) {
-		
-		for(Paciente paciente: BancoDados.getInstance().getPacientes()) {
-			if(paciente.getCpf().equals(cpf)) {
+
+		for (Paciente paciente : BancoDados.getInstance().getPacientes()) {
+			if (paciente.getCpf().equals(cpf)) {
 				return paciente;
 			}
 		}
 		return null;
 	}
+
 	public double buscarDebito(String cpf) {
-		double  soma = 0;
-		
-		
-		for(int i = 0; i < BancoDados.getInstance().getExamesMarcados().size(); i++) {
-			MarcarExame marcarExame = (MarcarExame)BancoDados.getInstance().getExamesMarcados().get(i);	
-			if(marcarExame.getCpfPaciente().equals(cpf)) {
-			
-				for(ExameGeral exameGeral: BancoDados.getInstance().getExamesGerais()) {
-					if(exameGeral.getTipoExame().equals(marcarExame.getExame().getTipoExame())) {
+		double soma = 0;
+
+		for (int i = 0; i < BancoDados.getInstance().getExamesMarcados().size(); i++) {
+			MarcarExame marcarExame = (MarcarExame) BancoDados.getInstance().getExamesMarcados().get(i);
+			if (marcarExame.getCpfPaciente().equals(cpf)) {
+
+				for (ExameGeral exameGeral : BancoDados.getInstance().getExamesGerais()) {
+					if (exameGeral.getTipoExame().equals(marcarExame.getExame().getTipoExame())) {
 						System.out.println("Entrou");
 						soma += exameGeral.getValor();
 					}
 				}
 			}
-			
-		}
-		
 
-		
-		
+		}
+
 		return soma;
 	}
+
 	public String contarCodigo(int codigoAtual) {
 		String str = "";
 		if (codigoAtual <= 9) {
