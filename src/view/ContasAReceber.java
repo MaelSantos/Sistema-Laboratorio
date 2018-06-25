@@ -14,11 +14,14 @@ import javax.swing.JTextField;
 import javax.swing.text.DefaultFormatterFactory;
 import javax.swing.text.MaskFormatter;
 
+import model.BancoDados;
+
 public class ContasAReceber extends PanelGeral {
 
 	private JLabel lbDataFluxo, lbValor, lbCpfCliente, lbReferencia, lbDataVencimento, lbTipoPagamento, lbParcelas,
 			lbNomeCliente;
-	private JFormattedTextField ftfDataVencimento, ftfDataFluxo, ftfCpfCliente;
+	private JFormattedTextField ftfDataVencimento, ftfDataFluxo;
+	private AutoTextField ftfCpfCliente;
 	private JTextField tfValor, tfReferencia, tfNomeCliente;
 	private JComboBox<String> comboTipoDePagamento, comboParcelas;
 	private JButton btnLancar, btnLimpar, btnBuscar;
@@ -43,12 +46,12 @@ public class ContasAReceber extends PanelGeral {
 		lbParcelas.setVisible(false);
 
 		// JFORMATED
-		ftfCpfCliente = new JFormattedTextField();
+		ftfCpfCliente = new AutoTextField(BancoDados.getInstance().getContasARecebers());
 		ftfDataFluxo = new JFormattedTextField();
 		ftfDataVencimento = new JFormattedTextField();
 
 		try {
-			ftfCpfCliente.setFormatterFactory(new DefaultFormatterFactory(new MaskFormatter("###.###.###-##")));
+//			ftfCpfCliente.setFormatterFactory(new DefaultFormatterFactory(new MaskFormatter("###.###.###-##")));
 			ftfDataFluxo.setFormatterFactory(new DefaultFormatterFactory(new MaskFormatter("##/##/####")));
 			ftfDataVencimento.setFormatterFactory(new DefaultFormatterFactory(new MaskFormatter("##/##/####")));
 
@@ -136,7 +139,7 @@ public class ContasAReceber extends PanelGeral {
 		return ftfDataFluxo;
 	}
 
-	public JFormattedTextField getFtfCpfCliente() {
+	public AutoTextField getFtfCpfCliente() {
 		return ftfCpfCliente;
 	}
 
