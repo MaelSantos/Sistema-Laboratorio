@@ -92,5 +92,10 @@ public class ContasAReceber {
 	public void setQtdParcelas(String qtdParcelas) {
 		this.qtdParcelas = qtdParcelas;
 	}
+	
+	@Override
+	public String toString() {
+		return cpfPaciente;
+	}
 
 }

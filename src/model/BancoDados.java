@@ -41,8 +41,16 @@ public class BancoDados {
 
 		// remover mesnagem de erro
 		XStream.setupDefaultSecurity(xStream);
-		xStream.allowTypes(new Class[] { Paciente.class, Funcionario.class, Administrador.class, Endereco.class,
-				MarcarExame.class, ExameGeral.class, DespesasVo.class, Andamento.class, ContasAReceber.class });
+		xStream.allowTypes(new Class[] { 
+				Paciente.class, 
+				Funcionario.class, 
+				Administrador.class, 
+				Endereco.class,
+				MarcarExame.class, 
+				ExameGeral.class, 
+				DespesasVo.class, 
+				Andamento.class, 
+				ContasAReceber.class });
 		// clear out existing permissions and set own ones
 		xStream.addPermission(NoTypePermission.NONE);
 		// allow some basics
@@ -116,9 +124,15 @@ public class BancoDados {
 			gravar(contasARecebers, "files/ContasAReceber.xml");
 
 			return true;
-
 		}
+		if (object instanceof ContasAReceber) {
+			ContasAReceber contasAReceber = (ContasAReceber) object;
 
+			contasARecebers.add(contasAReceber);
+			gravar(contasARecebers, "files/ContasAReceber.xml");
+
+			return true;
+		}
 		return false;
 	}
 
