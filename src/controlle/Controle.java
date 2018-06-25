@@ -36,6 +36,7 @@ import view.ConsultaExames;
 import view.DetalhesFuncionario;
 import view.DetalhesPaciente;
 import view.EditarExame;
+import view.EditarExameMarcado;
 import view.Financeiro;
 import view.Login;
 import view.Marcar;
@@ -58,17 +59,19 @@ public class Controle extends MouseAdapter implements ActionListener, ItemListen
 	private CadastroExames cadastroExames;
 	private ConsultaExames consultaExames;
 	private EditarExame editarExame;
+	private EditarExameMarcado editarExameMarcado;
 	private Marcar marcar;
 	private ContasPagar contasPagar;
 	private ContasAReceber contasAReceber;
 	private Financeiro financeiro;
+	
 	public static String cpfPacientde;
 
 	public Controle(Login login, Principal principal, Menu menu, CadastroPacientes cadastro, ConsultaPacientes consulta,
 			DetalhesPaciente detalhesPaciente, CadastroFuncionario cadastroFuncionario,
 			DetalhesFuncionario detalhesFuncionario, Perfil perfil, CadastroExames cadastroExames,
 			ConsultaExames consultaExames, EditarExame editarExame, Marcar marcar, Financeiro financeiro,
-			ContasPagar contasPagar, ContasAReceber contasAReceber) {
+			ContasPagar contasPagar, ContasAReceber contasAReceber, EditarExameMarcado editarExameMarcado) {
 
 		this.principal = principal;
 		this.menu = menu;
@@ -82,6 +85,7 @@ public class Controle extends MouseAdapter implements ActionListener, ItemListen
 		this.cadastroExames = cadastroExames;
 		this.consultaExames = consultaExames;
 		this.editarExame = editarExame;
+		this.editarExameMarcado=editarExameMarcado;
 		this.marcar = marcar;
 		this.financeiro = financeiro;
 		this.contasPagar = contasPagar;
@@ -119,8 +123,8 @@ public class Controle extends MouseAdapter implements ActionListener, ItemListen
 		// menu.getBtnDetalhesFuncionario().addActionListener(this);
 
 		consultaExames.getTblDisponiveis().addMouseListener(this);
+		consultaExames.getTblExames().addMouseListener(this);
 		editarExame.getBtnSalvar().addActionListener(this);
-
 		marcar.getBtnAdd().addActionListener(this);
 
 		contasAReceber.getBtnLancar().addActionListener(this);
@@ -534,6 +538,46 @@ public class Controle extends MouseAdapter implements ActionListener, ItemListen
 			menu.add(excluir);
 			menu.add(cancelar);
 			menu.show(consultaExames.getTblDisponiveis(), e.getX(), e.getY());
+
+		}
+		
+		if (e.getSource() == consultaExames.getTblExames()) {
+			JPopupMenu menu = new JPopupMenu();
+			JMenuItem editar = new JMenuItem("Editar");
+			editar.addActionListener(new ActionListener() {
+
+				public void actionPerformed(ActionEvent e) {
+					editarExameMarcado.autoPreencher(
+							BancoDados.getInstance().getExamesMarcados().get(consultaExames.getTblExames().getSelectedRow()));
+					mudarTela(editarExameMarcado);
+
+				}
+			});
+			JMenuItem excluir = new JMenuItem("Excluir");
+			excluir.addActionListener(new ActionListener() {
+
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					BancoDados.getInstance().excluirExame(BancoDados.getInstance().getExamesGerais()
+							.get(consultaExames.getTblExames().getSelectedRow()));
+
+					// Excluir linha da tabela.
+
+				}
+			});
+
+			JMenuItem cancelar = new JMenuItem("Cancelar");
+			cancelar.addActionListener(new ActionListener() {
+
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					menu.setVisible(false);
+				}
+			});
+			menu.add(editar);
+			menu.add(excluir);
+			menu.add(cancelar);
+			menu.show(consultaExames.getTblExames(), e.getX(), e.getY());
 
 		}
 	}

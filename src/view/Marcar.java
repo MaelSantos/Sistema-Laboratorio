@@ -26,7 +26,7 @@ public class Marcar extends PanelGeral {
 	
 	public Marcar() {
 		setLayout(new GridLayout(16, 2));
-		setBorder(BorderFactory.createTitledBorder("Marca Exame"));
+		setBorder(BorderFactory.createTitledBorder("Marcar Exame"));
 	}
 
 	@Override
@@ -89,6 +89,8 @@ public class Marcar extends PanelGeral {
 	public JComboBox<String> getComboBoxExamesGerais() {
 		return comboBoxExamesGerais;
 	}
+	
+	
 	
 
 }

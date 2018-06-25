@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.xml.Dom4JDriver;
+import com.thoughtworks.xstream.io.xml.DomDriver;
 import com.thoughtworks.xstream.security.NoTypePermission;
 import com.thoughtworks.xstream.security.NullPermission;
 import com.thoughtworks.xstream.security.PrimitiveTypePermission;
@@ -27,7 +28,7 @@ public class BancoDados {
 
 	private BancoDados() {
 
-		xStream = new XStream(new Dom4JDriver());
+		xStream = new XStream(new DomDriver());
 
 		xStream.alias("Paciente", Paciente.class);
 		xStream.alias("Funcionario", Funcionario.class);

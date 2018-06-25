@@ -1,5 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
 <list>
   <ExameMarcado>
     <exame>
@@ -25,6 +23,19 @@
     <cpfPaciente>108.590.464-43</cpfPaciente>
     <nomePaciente>Felipe Douglas</nomePaciente>
     <parecer>tal tal</parecer>
+    <status>nao_realizado</status>
+  </ExameMarcado>
+  <ExameMarcado>
+    <exame>
+      <codigo>002</codigo>
+      <tipoExame>PSA</tipoExame>
+      <tipoDeColeta>Fezes</tipoDeColeta>
+      <valor>300.0</valor>
+    </exame>
+    <nomeMedico>gfhg</nomeMedico>
+    <cpfPaciente>198.218.921-89</cpfPaciente>
+    <nomePaciente>abimael jonas furtuoso dos santos</nomePaciente>
+    <parecer>uio</parecer>
     <status>nao_realizado</status>
   </ExameMarcado>
 </list>

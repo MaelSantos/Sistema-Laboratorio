@@ -24,12 +24,13 @@ public class Principal extends TelaGeral{
 	private Financeiro financeiro;
 	private ContasPagar contasPagar;
 	private ContasAReceber contasAReceber;
+	private EditarExameMarcado editarExameMarcado;
 	
 	public Principal(String titulo, Menu menu, CadastroPacientes cadastro,ConsultaPacientes consulta, 
 			DetalhesPaciente detalhesPaciente, CadastroFuncionario cadastroFuncionario, 
 			DetalhesFuncionario detalhesFuncionario, Perfil perfil, CadastroExames cadastroExames,
 			ConsultaExames consultaExames, EditarExame editarExame, Marcar marcar, Financeiro financeiro,
-			ContasPagar contasPaga, ContasAReceber contasAReceber) {
+			ContasPagar contasPaga, ContasAReceber contasAReceber, EditarExameMarcado editarExameMarcado) {
 		super(titulo);
 		
 		this.cadastro = cadastro;
@@ -42,6 +43,7 @@ public class Principal extends TelaGeral{
 		this.cadastroExames = cadastroExames;
 		this.consultaExames = consultaExames;
 		this.editarExame=editarExame;
+		this.editarExameMarcado = editarExameMarcado;
 		this.marcar = marcar;
 		this.financeiro = financeiro;
 		this.contasPagar = contasPaga;
@@ -102,5 +104,6 @@ public class Principal extends TelaGeral{
 		add(financeiro, cons);
 		add(contasPagar,cons);
 		add(contasAReceber,cons);
+		add(editarExameMarcado,cons);
 	}	
 }

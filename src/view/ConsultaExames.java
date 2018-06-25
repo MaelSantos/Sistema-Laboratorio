@@ -34,6 +34,8 @@ public class ConsultaExames extends PanelGeral {
 	private JButton pesquisaB;
 	private JComboBox<String> opcaoDePesquisa;
 	private JPanel disponiveis, total;
+	ArrayList<MarcarExame> marcarExames;
+	
 
 	public ConsultaExames() {
 		super();
@@ -149,7 +151,7 @@ public class ConsultaExames extends PanelGeral {
 		}
 		
 		public void atualizarTabelaPaciente(String cpf) {
-			ArrayList<MarcarExame> marcarExames = new ArrayList<>();
+			marcarExames = new ArrayList<>();
 
 			for (MarcarExame marcarExame : BancoDados.getInstance().getExamesMarcados()) {
 				if (marcarExame.getCpfPaciente().equals(cpf)) {
@@ -319,6 +321,10 @@ public class ConsultaExames extends PanelGeral {
 
 	public JComboBox<String> getOpcaoDePesquisa() {
 		return opcaoDePesquisa;
+	}
+
+	public ArrayList<MarcarExame> getMarcarExames() {
+		return marcarExames;
 	}
 
 	
