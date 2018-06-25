@@ -16,8 +16,8 @@ public class ContasPagar extends PanelGeral {
 	// componentes do Panel de Contas á pagar
     private JLabel descricao,fornecedor,planoDeConta,dataVencimento,valorParcela,
     valorTotal,numParcelas,intervaloParcela,centroLucro;
-    private JTextField descricaoT,fornecedorT,valorParcelaTF;
-    private JFormattedTextField dataVencimentoFT, valorTotalFT;
+    private JTextField tfdDescricao,tfdFornecedor,tfdValorParcela;
+    private JFormattedTextField tfdDataVencimento, tfdValorTotal;
     private JComboBox<String> planoDeContaC,centroLucroC,numParcelasC,intervaloParcelaC;
     private JButton lancar;
     
@@ -38,13 +38,13 @@ public class ContasPagar extends PanelGeral {
 		    numParcelas= new JLabel("Numero de Parcelas: ");
 		    intervaloParcela= new JLabel("Intervalo entre as Parcelas: ");
 		    
-		    descricaoT= new JFormattedTextField();
-		    fornecedorT= new JFormattedTextField();
-		    valorParcelaTF=new JFormattedTextField();
-		    dataVencimentoFT= new JFormattedTextField();
-		    valorTotalFT= new JFormattedTextField();
+		    tfdDescricao= new JFormattedTextField();
+		    tfdFornecedor= new JFormattedTextField();
+		    tfdValorParcela=new JFormattedTextField();
+		    tfdDataVencimento= new JFormattedTextField();
+		    tfdValorTotal= new JFormattedTextField();
 		    try {
-			    dataVencimentoFT.setFormatterFactory(new DefaultFormatterFactory(new MaskFormatter("##/##/####")));
+			    tfdDataVencimento.setFormatterFactory(new DefaultFormatterFactory(new MaskFormatter("##/##/####")));
 			  
 			} catch (Exception e) {
 				// TODO: handle exception
@@ -85,8 +85,8 @@ public class ContasPagar extends PanelGeral {
 		    add(descricao);
 		    add(fornecedor);
 		    
-		    add(descricaoT);
-		    add(fornecedorT);
+		    add(tfdDescricao);
+		    add(tfdFornecedor);
 		    
 		    add(planoDeConta);
 		    add(centroLucro);
@@ -97,8 +97,8 @@ public class ContasPagar extends PanelGeral {
 		    add(dataVencimento);
 		    add(valorTotal);
 		    
-		    add(dataVencimentoFT);
-		    add(valorTotalFT);
+		    add(tfdDataVencimento);
+		    add(tfdValorTotal);
 		    
 		    add(new JSeparator(JSeparator.HORIZONTAL));
 			add(new JSeparator(JSeparator.HORIZONTAL));
@@ -108,7 +108,7 @@ public class ContasPagar extends PanelGeral {
 		    add(valorParcela);
 		    add(numParcelas);
 		    
-		    add(valorParcelaTF);
+		    add(tfdValorParcela);
 		    add(numParcelasC);
 		    
 		    add(intervaloParcela);
@@ -124,6 +124,63 @@ public class ContasPagar extends PanelGeral {
 	}
 	public JButton getLancar() {
 		return lancar;
+	}
+	public JTextField getTfdFornecedor() {
+		return tfdFornecedor;
+	}
+	public void setTfdFornecedor(JTextField tfdFornecedor) {
+		this.tfdFornecedor = tfdFornecedor;
+	}
+	public JTextField getTfdDescricao() {
+		return tfdDescricao;
+	}
+	public JTextField getTfdValorParcela() {
+		return tfdValorParcela;
+	}
+	public JFormattedTextField getTfdDataVencimento() {
+		return tfdDataVencimento;
+	}
+	public JFormattedTextField getTfdValorTotal() {
+		return tfdValorTotal;
+	}
+	public JLabel getDescricao() {
+		return descricao;
+	}
+	public JLabel getFornecedor() {
+		return fornecedor;
+	}
+	public JLabel getPlanoDeConta() {
+		return planoDeConta;
+	}
+	public JLabel getDataVencimento() {
+		return dataVencimento;
+	}
+	public JLabel getValorParcela() {
+		return valorParcela;
+	}
+	public JLabel getValorTotal() {
+		return valorTotal;
+	}
+	public JLabel getNumParcelas() {
+		return numParcelas;
+	}
+	public JLabel getIntervaloParcela() {
+		return intervaloParcela;
+	}
+	public JLabel getCentroLucro() {
+		return centroLucro;
+	}
+	public JComboBox<String> getPlanoDeContaC() {
+		return planoDeContaC;
+	}
+	public JComboBox<String> getCentroLucroC() {
+		return centroLucroC;
+	}
+	public JComboBox<String> getNumParcelasC() {
+		return numParcelasC;
+	}
+	public JComboBox<String> getIntervaloParcelaC() {
+		return intervaloParcelaC;
 	}
 	
 

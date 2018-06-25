@@ -125,11 +125,11 @@ public class BancoDados {
 
 			return true;
 		}
-		if (object instanceof ContasAReceber) {
-			ContasAReceber contasAReceber = (ContasAReceber) object;
+		if (object instanceof DespesasVo) {
+			DespesasVo despesa = (DespesasVo) object;
 
-			contasARecebers.add(contasAReceber);
-			gravar(contasARecebers, "files/ContasAReceber.xml");
+			despesas.add(despesa);
+			gravar(despesas, "files/despesas.xml");
 
 			return true;
 		}

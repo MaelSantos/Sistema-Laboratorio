@@ -1,6 +1,7 @@
 package model;
 
 import view.CadastroPacientes;
+import view.ContasPagar;
 import view.Marcar;
 
 public class Verificar {
@@ -33,6 +34,17 @@ public class Verificar {
 				return true;
 		
 		return false;
+	}
+
+	public static boolean verificarContasPagar(ContasPagar pagar)
+	{
+		if(pagar.getTfdDataVencimento().getText().trim().equals("") || 
+				pagar.getTfdDescricao().getText().trim().equals("") ||
+				pagar.getTfdFornecedor().getText().trim().equals("") ||
+				pagar.getTfdValorParcela().getText().trim().equals("") ||
+				pagar.getTfdValorTotal().getText().trim().equals(""))
+			return false;
+		return true;
 	}
 	
 }

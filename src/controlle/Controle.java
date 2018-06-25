@@ -18,6 +18,7 @@ import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
 
 import model.BancoDados;
+import model.DespesasVo;
 import model.Endereco;
 import model.ExameGeral;
 import model.MarcarExame;
@@ -422,6 +423,30 @@ public class Controle extends MouseAdapter implements ActionListener, ItemListen
 			contasAReceber.getTfValor().setText(String.valueOf(valor));
 			contasAReceber.getTfNomeCliente().setText(nome);
 			
+			
+		}
+		
+		if(e.getSource() == contasPagar.getLancar())
+		{
+			if(Verificar.verificarContasPagar(contasPagar))
+			{
+				
+				if(BancoDados.getInstance().addDado(new DespesasVo(
+						contasPagar.getTfdDescricao().getText().trim(), //discrição
+						contasPagar.getTfdFornecedor().getText().trim(),//fornecedor, 
+						contasPagar.getPlanoDeContaC().getSelectedItem().toString(),//plano, 
+						contasPagar.getCentroLucroC().getSelectedItem().toString(), //centro de custo 
+						contasPagar.getTfdDataVencimento().getText().trim(),// data, 
+						Double.parseDouble(contasPagar.getTfdValorTotal().getText().trim()),// valor, 
+						Integer.parseInt(contasPagar.getNumParcelasC().getSelectedItem().toString()), //numeros_parcela, 
+						Integer.parseInt(contasPagar.getIntervaloParcela().getText().trim()), //intervalo_parcelas, 
+						Integer.parseInt(contasPagar.getValorParcela().getText().trim())))) // valorPacerla
+					Mensagem.exibirMensagem("Despesa Adicionada Com Sucesso!!!");
+				else
+					Mensagem.exibirMensagem("Falha Ao Adicionar Despesa!!!");
+			}
+			else
+				Mensagem.exibirMensagem("Informe Todos Os Dados!!!");
 			
 		}
 
