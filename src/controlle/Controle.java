@@ -17,6 +17,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
 
+import model.Andamento;
 import model.BancoDados;
 import model.DespesasVo;
 import model.Endereco;
@@ -125,6 +126,7 @@ public class Controle extends MouseAdapter implements ActionListener, ItemListen
 		consultaExames.getTblDisponiveis().addMouseListener(this);
 		consultaExames.getTblExames().addMouseListener(this);
 		editarExame.getBtnSalvar().addActionListener(this);
+		editarExameMarcado.getBtnAdd().addActionListener(this);
 		marcar.getBtnAdd().addActionListener(this);
 
 		contasAReceber.getBtnLancar().addActionListener(this);
@@ -354,8 +356,13 @@ public class Controle extends MouseAdapter implements ActionListener, ItemListen
 
 				}
 				if (geral != null) {
-					BancoDados.getInstance().addDado(new MarcarExame(geral, marcar.getTfdNomeMedico().getText().trim(),
-							marcar.getTfdCpfPaciente().getText().trim(), marcar.getTfdParecer().getText().trim()));
+					String codigoAtual = contarCodigo(Integer.parseInt(BancoDados.getInstance().getExamesMarcados()
+							.get(BancoDados.getInstance().getExamesMarcados().size() - 1).getCodigo()) + 1);
+					
+					BancoDados.getInstance().addDado(new MarcarExame(
+							geral, marcar.getTfdNomeMedico().getText().trim(),
+							marcar.getTfdCpfPaciente().getText().trim(),
+							marcar.getTfdParecer().getText().trim(), codigoAtual));
 
 					Mensagem.exibirMensagem("Exame Marcado Com Sucesso!!!");
 					marcar.getTfdNomeMedico().setText("");
@@ -457,7 +464,18 @@ public class Controle extends MouseAdapter implements ActionListener, ItemListen
 				Mensagem.exibirMensagem("Informe Todos Os Dados!!!");
 			
 		}
+		if (e.getSource() == editarExameMarcado.getBtnAdd()) {
+			MarcarExame exame = new MarcarExame(
+				BancoDados.getInstance().getExamesGerais().get(editarExameMarcado.getComboBoxExamesGerais().getSelectedIndex()),
+				editarExameMarcado.getTfdNomeMedico().getText().trim(),
+				editarExameMarcado.getTfdCpfPaciente().getText().trim(),
+				editarExameMarcado.getTfdParecer().getText().trim(),
+				editarExameMarcado.getExame().getCodigo());
 
+			exame.setStatus((Andamento)editarExameMarcado.getStatus().getSelectedItem());
+			BancoDados.getInstance().editarExameMarcado(exame);
+			mudarTela(consultaExames);
+		}
 	}
 
 	@Override
@@ -558,9 +576,9 @@ public class Controle extends MouseAdapter implements ActionListener, ItemListen
 
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					BancoDados.getInstance().excluirExame(BancoDados.getInstance().getExamesGerais()
+					BancoDados.getInstance().excluirExameMarcado(BancoDados.getInstance().getExamesMarcados()
 							.get(consultaExames.getTblExames().getSelectedRow()));
-
+					
 					// Excluir linha da tabela.
 
 				}

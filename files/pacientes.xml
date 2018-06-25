@@ -34,6 +34,20 @@
         <parecer>uio</parecer>
         <status>nao_realizado</status>
       </ExameMarcado>
+      <ExameMarcado>
+        <exame>
+          <codigo>001</codigo>
+          <tipoExame>Hemograma</tipoExame>
+          <tipoDeColeta>Sangue</tipoDeColeta>
+          <valor>40.0</valor>
+        </exame>
+        <nomeMedico>s</nomeMedico>
+        <cpfPaciente>198.218.921-89</cpfPaciente>
+        <nomePaciente>abimael jonas furtuoso dos santos</nomePaciente>
+        <parecer>s</parecer>
+        <status>nao_realizado</status>
+        <codigo>002</codigo>
+      </ExameMarcado>
     </exames>
   </Paciente>
   <Paciente>

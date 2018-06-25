@@ -196,6 +196,36 @@ public class BancoDados {
 
 		}
 	}
+	
+	public void editarExameMarcado(MarcarExame exame) {
+
+		File file = new File("files/examesMarcados.xml");
+		int indice = 0;
+		for (int i = 0; i < pacientes.size(); i++) {
+			if (exame.getCodigo().equals(examesMarcados.get(i).getCodigo())) {
+				indice = i;
+				break;
+			}
+		}
+
+		examesMarcados.remove(indice);
+		examesMarcados.add(indice, exame);
+
+		xStream.processAnnotations(ExameGeral.class);
+
+		String text = xStream.toXML(examesMarcados);
+
+		PrintWriter writer;
+
+		try {
+			writer = new PrintWriter(file);
+			writer.write(text);
+			writer.flush();
+			writer.close();
+		} catch (FileNotFoundException e) {
+
+		}
+	}
 
 	public void excluirExame(ExameGeral exameGeral) {
 		File file = new File("files/examesValor.xml");
@@ -203,6 +233,26 @@ public class BancoDados {
 		xStream.processAnnotations(ExameGeral.class);
 
 		String text = xStream.toXML(examesGerais);
+
+		PrintWriter writer;
+
+		try {
+			writer = new PrintWriter(file);
+			writer.write(text);
+			writer.flush();
+			writer.close();
+		} catch (FileNotFoundException e) {
+
+		}
+
+	}
+	
+	public void excluirExameMarcado(MarcarExame exame) {
+		File file = new File("files/examesMarcados.xml");
+		this.examesMarcados.remove(exame);
+		xStream.processAnnotations(ExameGeral.class);
+
+		String text = xStream.toXML(examesMarcados);
 
 		PrintWriter writer;
 
@@ -274,5 +324,7 @@ public class BancoDados {
 	public ArrayList<ContasAReceber> getContasARecebers() {
 		return contasARecebers;
 	}
+
+	
 	
 }

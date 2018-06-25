@@ -8,8 +8,9 @@ public class MarcarExame{
 	private ExameGeral exame;
 	private String nomeMedico, cpfPaciente, nomePaciente, parecer;
 	private Andamento status;
+	private String codigo;
 	
-	public MarcarExame(ExameGeral exame, String nomeMedico, String cpfPaciente, String parecer) {
+	public MarcarExame(ExameGeral exame, String nomeMedico, String cpfPaciente, String parecer, String codigo) {
 		
 		for(Paciente p : BancoDados.getInstance().getPacientes())
 			if(p.getCpf().equalsIgnoreCase(cpfPaciente))
@@ -18,7 +19,7 @@ public class MarcarExame{
 				nomePaciente = p.getNomeCompleto();
 				break;
 			}
-		
+		this.codigo=codigo;
 		this.exame = exame;
 		this.nomeMedico = nomeMedico;
 		this.cpfPaciente = cpfPaciente;
@@ -72,5 +73,10 @@ public class MarcarExame{
 
 	public void setNomePaciente(String nomePaciente) {
 		this.nomePaciente = nomePaciente;
+	}
+
+	public String getCodigo() {
+		// TODO Auto-generated method stub
+		return codigo;
 	}
 }

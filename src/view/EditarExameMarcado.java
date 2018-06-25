@@ -12,7 +12,6 @@ import model.MarcarExame;
 public class EditarExameMarcado extends Marcar{
 	private MarcarExame exame;
 	private JComboBox<Andamento> status;
-		
 	public EditarExameMarcado() {
 		status = new JComboBox<>();
 		status.addItem(Andamento.nao_realizado);
@@ -44,6 +43,17 @@ public class EditarExameMarcado extends Marcar{
 	public void setExame(MarcarExame exame) {
 		this.exame = exame;
 	}
+
+	public JComboBox<Andamento> getStatus() {
+		return status;
+	}
+
+	public void setStatus(JComboBox<Andamento> status) {
+		this.status = status;
+	}
+
+
+	
 	
 
 }

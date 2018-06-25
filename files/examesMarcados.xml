@@ -11,19 +11,7 @@
     <nomePaciente>Felipe Douglas</nomePaciente>
     <parecer>tal tal</parecer>
     <status>nao_realizado</status>
-  </ExameMarcado>
-  <ExameMarcado>
-    <exame>
-      <codigo>002</codigo>
-      <tipoExame>PSA</tipoExame>
-      <tipoDeColeta>Fezes</tipoDeColeta>
-      <valor>300.0</valor>
-    </exame>
-    <nomeMedico>Sr. Fernado</nomeMedico>
-    <cpfPaciente>108.590.464-43</cpfPaciente>
-    <nomePaciente>Felipe Douglas</nomePaciente>
-    <parecer>tal tal</parecer>
-    <status>nao_realizado</status>
+    <codigo>000</codigo>
   </ExameMarcado>
   <ExameMarcado>
     <exame>
@@ -36,6 +24,21 @@
     <cpfPaciente>198.218.921-89</cpfPaciente>
     <nomePaciente>abimael jonas furtuoso dos santos</nomePaciente>
     <parecer>uio</parecer>
+    <status>concluido</status>
+    <codigo>001</codigo>
+  </ExameMarcado>
+  <ExameMarcado>
+    <exame>
+      <codigo>001</codigo>
+      <tipoExame>Hemograma</tipoExame>
+      <tipoDeColeta>Sangue</tipoDeColeta>
+      <valor>40.0</valor>
+    </exame>
+    <nomeMedico>s</nomeMedico>
+    <cpfPaciente>198.218.921-89</cpfPaciente>
+    <nomePaciente>abimael jonas furtuoso dos santos</nomePaciente>
+    <parecer>s</parecer>
     <status>nao_realizado</status>
+    <codigo>002</codigo>
   </ExameMarcado>
 </list>
