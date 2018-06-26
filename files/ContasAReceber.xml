@@ -1,12 +1,10 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
 <list>
   <ContasAReceber>
     <cpfPaciente>999.999.999-99</cpfPaciente>
     <dataVencimento>99/99/9999</dataVencimento>
     <dataFluxo>99/99/9999</dataFluxo>
     <codigo>000</codigo>
-    <valor/>
+    <valor></valor>
     <referencia>asdasd</referencia>
     <tipoPagamento>ï¿½ vista</tipoPagamento>
   </ContasAReceber>
@@ -19,5 +17,23 @@
     <referencia>Ref</referencia>
     <tipoPagamento>Á prazo</tipoPagamento>
     <qtdParcelas>2</qtdParcelas>
+  </ContasAReceber>
+  <ContasAReceber>
+    <cpfPaciente>108.590.464-43</cpfPaciente>
+    <dataVencimento>  /  /    </dataVencimento>
+    <dataFluxo>  /  /    </dataFluxo>
+    <codigo>002</codigo>
+    <valor>40.0</valor>
+    <referencia></referencia>
+    <tipoPagamento>Á vista</tipoPagamento>
+  </ContasAReceber>
+  <ContasAReceber>
+    <cpfPaciente>108.590.464-43</cpfPaciente>
+    <dataVencimento>10/88/5900</dataVencimento>
+    <dataFluxo>  /  /    </dataFluxo>
+    <codigo>003</codigo>
+    <valor></valor>
+    <referencia>aaaa</referencia>
+    <tipoPagamento>Á vista</tipoPagamento>
   </ContasAReceber>
 </list>

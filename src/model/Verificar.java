@@ -1,6 +1,7 @@
 package model;
 
 import view.CadastroPacientes;
+import view.ContasAReceber;
 import view.ContasPagar;
 import view.Marcar;
 
@@ -46,5 +47,15 @@ public class Verificar {
 			return false;
 		return true;
 	}
-	
+
+	public static boolean verificarContasAReceber(ContasAReceber contasAReceber) {
+		if(contasAReceber.getFtfCpfCliente().getText().equals("..-") || 
+				contasAReceber.getFtfCpfCliente().getText().equals("999.999.999-99") ||
+				contasAReceber.getFtfDataVencimento().getText().equals("//") || 
+				contasAReceber.getTfReferencia().getText().equals("")) {
+			return false;
+		}
+		return true;
+		
+	}
 }

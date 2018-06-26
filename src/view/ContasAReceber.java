@@ -34,10 +34,10 @@ public class ContasAReceber extends PanelGeral {
 	public void inicializar() {
 
 		// Label's
-		lbCpfCliente = new JLabel("Cliente:");
+		lbCpfCliente = new JLabel("Cliente*:");
 		lbDataFluxo = new JLabel("Data do fluxo:");
-		lbDataVencimento = new JLabel("Data de vencimento:");
-		lbReferencia = new JLabel("Referência:");
+		lbDataVencimento = new JLabel("Data de vencimento*:");
+		lbReferencia = new JLabel("Referência:*");
 		lbValor = new JLabel("Valor");
 		lbTipoPagamento = new JLabel("Tipo de pagamento:");
 		lbNomeCliente =  new JLabel("Nome");
