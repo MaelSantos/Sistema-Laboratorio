@@ -243,6 +243,11 @@ public class ConsultaExames extends PanelGeral {
 			fireTableStructureChanged();
 			System.gc();
 		}
+		public void atualizarTabela() {
+			marcarExames = BancoDados.getInstance().getExamesMarcados();
+			this.fireTableDataChanged();
+			fireTableStructureChanged();
+		}
 
 		public void voltaTabelaCompleta() {
 			// exames=ClassXML.pacientes;
@@ -326,6 +331,8 @@ public class ConsultaExames extends PanelGeral {
 	public ArrayList<MarcarExame> getMarcarExames() {
 		return marcarExames;
 	}
+
+	
 
 	
 

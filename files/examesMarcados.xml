@@ -29,16 +29,39 @@
   </ExameMarcado>
   <ExameMarcado>
     <exame>
+      <codigo>002</codigo>
+      <tipoExame>PSA</tipoExame>
+      <tipoDeColeta>Fezes</tipoDeColeta>
+      <valor>300.0</valor>
+    </exame>
+    <nomeMedico>ds</nomeMedico>
+    <cpfPaciente>198.218.921-89</cpfPaciente>
+    <nomePaciente>abimael jonas furtuoso dos santos</nomePaciente>
+    <parecer>sd</parecer>
+    <status>em_andamento</status>
+    <codigo>002</codigo>
+  </ExameMarcado>
+  <ExameMarcado>
+    <exame>
       <codigo>001</codigo>
       <tipoExame>Hemograma</tipoExame>
       <tipoDeColeta>Sangue</tipoDeColeta>
       <valor>40.0</valor>
     </exame>
-    <nomeMedico>s</nomeMedico>
+    <nomeMedico>hjh</nomeMedico>
     <cpfPaciente>198.218.921-89</cpfPaciente>
     <nomePaciente>abimael jonas furtuoso dos santos</nomePaciente>
-    <parecer>s</parecer>
+    <parecer>hj</parecer>
     <status>nao_realizado</status>
-    <codigo>002</codigo>
+    <codigo>003</codigo>
+  </ExameMarcado>
+  <ExameMarcado>
+    <exame reference="../../ExameMarcado[4]/exame"/>
+    <nomeMedico>jhj</nomeMedico>
+    <cpfPaciente>198.218.921-89</cpfPaciente>
+    <nomePaciente>abimael jonas furtuoso dos santos</nomePaciente>
+    <parecer>hjhj</parecer>
+    <status>nao_realizado</status>
+    <codigo>004</codigo>
   </ExameMarcado>
 </list>

@@ -578,7 +578,7 @@ public class Controle extends MouseAdapter implements ActionListener, ItemListen
 				public void actionPerformed(ActionEvent e) {
 					BancoDados.getInstance().excluirExameMarcado(BancoDados.getInstance().getExamesMarcados()
 							.get(consultaExames.getTblExames().getSelectedRow()));
-
+					consultaExames.getModel().atualizarTabela();
 					// Excluir linha da tabela.
 
 				}

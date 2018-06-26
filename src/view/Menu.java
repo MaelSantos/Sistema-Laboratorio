@@ -30,7 +30,7 @@ public class Menu extends PanelGeral {
 		btnMarcarExame = new JButton(new ImageIcon(getClass().getClassLoader().getResource("marcarExame.png")));
 		btnFinanceiro = new JButton(new ImageIcon(getClass().getClassLoader().getResource("financeiro.png")));
 		btnContasPagar =  new JButton(new ImageIcon(getClass().getClassLoader().getResource("contaspagar.png")));
-		btnContasAReceber = new JButton("Contas á receber");
+		btnContasAReceber = new JButton(new ImageIcon(getClass().getClassLoader().getResource("contasReceber.png")));
 		
 		btnConsulta.setContentAreaFilled(false);
 		btnConsulta.setBorderPainted(false);
@@ -48,6 +48,8 @@ public class Menu extends PanelGeral {
 		btnFinanceiro.setContentAreaFilled(false);
 		btnContasPagar.setBorderPainted(false);
 		btnContasPagar.setContentAreaFilled(false);
+		btnContasAReceber.setBorderPainted(false);
+		btnContasAReceber.setContentAreaFilled(false);
 		
 		add(btnConsulta);
 		add(btnConsultaExames);
