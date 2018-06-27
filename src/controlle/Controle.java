@@ -43,6 +43,7 @@ import view.Login;
 import view.Marcar;
 import view.Mensagem;
 import view.Menu;
+import view.MenuPaneContainer;
 import view.Perfil;
 import view.Principal;
 
@@ -65,17 +66,18 @@ public class Controle extends MouseAdapter implements ActionListener, ItemListen
 	private ContasPagar contasPagar;
 	private ContasAReceber contasAReceber;
 	private Financeiro financeiro;
+	private MenuPaneContainer menuPaneContainer;
 
 	public static String cpfPacientde;
 
-	public Controle(Login login, Principal principal, Menu menu, CadastroPacientes cadastro, ConsultaPacientes consulta,
+	public Controle(Login login, Principal principal, MenuPaneContainer menuPaneContainer, CadastroPacientes cadastro, ConsultaPacientes consulta,
 			DetalhesPaciente detalhesPaciente, CadastroFuncionario cadastroFuncionario,
 			DetalhesFuncionario detalhesFuncionario, Perfil perfil, CadastroExames cadastroExames,
 			ConsultaExames consultaExames, EditarExame editarExame, Marcar marcar, Financeiro financeiro,
 			ContasPagar contasPagar, ContasAReceber contasAReceber, EditarExameMarcado editarExameMarcado) {
 
 		this.principal = principal;
-		this.menu = menu;
+		this.menuPaneContainer=menuPaneContainer;
 		this.cadastro = cadastro;
 		this.consulta = consulta;
 		this.detalhesPaciente = detalhesPaciente;
@@ -96,15 +98,15 @@ public class Controle extends MouseAdapter implements ActionListener, ItemListen
 		consulta.getConsultaB().addActionListener(this);
 		consulta.getDetalhesButton().addActionListener(this);
 		consulta.getVoltarTabelaCompleta().addActionListener(this);
-		menu.getBtnCadastro().addActionListener(this);
-		menu.getBtnCadastroFuncionario().addActionListener(this);
-		menu.getBtnConsulta().addActionListener(this);
-		menu.getBtnCadastrarExame().addActionListener(this);
-		menu.getBtnConsultaExames().addActionListener(this);
-		menu.getBtnMarcarExame().addActionListener(this);
-		menu.getBtnFinanceiro().addActionListener(this);
-		menu.getBtnContasPagar().addActionListener(this);
-		menu.getBtnContasAReceber().addActionListener(this);
+		menuPaneContainer.getBtnCadastro().addActionListener(this);
+		menuPaneContainer.getBtnCadastroFuncionario().addActionListener(this);
+		menuPaneContainer.getBtnConsulta().addActionListener(this);
+		menuPaneContainer.getBtnCadastrarExame().addActionListener(this);
+		menuPaneContainer.getBtnConsultaExames().addActionListener(this);
+		menuPaneContainer.getBtnMarcarExame().addActionListener(this);
+		menuPaneContainer.getBtnFinanceiro().addActionListener(this);
+		menuPaneContainer.getBtnContasPagar().addActionListener(this);
+		menuPaneContainer.getBtnContasAReceber().addActionListener(this);
 		detalhesPaciente.getBtnAdd().addActionListener(this);
 		detalhesPaciente.getBntVoltar().addActionListener(this);
 		detalhesFuncionario.getBtnVoltar().addActionListener(this);
@@ -193,35 +195,35 @@ public class Controle extends MouseAdapter implements ActionListener, ItemListen
 			}
 		}
 
-		if (e.getSource() == menu.getBtnCadastro()) {
+		if (e.getSource() == menuPaneContainer.getBtnCadastro()) {
 			mudarTela(cadastro);
 		}
-		if (e.getSource() == menu.getBtnConsulta()) {
+		if (e.getSource() == menuPaneContainer.getBtnConsulta()) {
 			mudarTela(consulta);
 		}
 
-		if (e.getSource() == menu.getBtnCadastroFuncionario()) {
+		if (e.getSource() == menuPaneContainer.getBtnCadastroFuncionario()) {
 
 			mudarTela(cadastroFuncionario);
 		}
-		if (e.getSource() == menu.getBtnCadastrarExame()) {
+		if (e.getSource() == menuPaneContainer.getBtnCadastrarExame()) {
 
 			mudarTela(cadastroExames);
 		}
-		if (e.getSource() == menu.getBtnConsultaExames()) {
+		if (e.getSource() == menuPaneContainer.getBtnConsultaExames()) {
 
 			mudarTela(consultaExames);
 		}
-		if (e.getSource() == menu.getBtnMarcarExame()) {
+		if (e.getSource() == menuPaneContainer.getBtnMarcarExame()) {
 			mudarTela(marcar);
 		}
-		if (e.getSource() == menu.getBtnFinanceiro()) {
+		if (e.getSource() == menuPaneContainer.getBtnFinanceiro()) {
 			mudarTela(financeiro);
 		}
-		if (e.getSource() == menu.getBtnContasPagar()) {
+		if (e.getSource() == menuPaneContainer.getBtnContasPagar()) {
 			mudarTela(contasPagar);
 		}
-		if (e.getSource() == menu.getBtnContasAReceber()) {
+		if (e.getSource() == menuPaneContainer.getBtnContasAReceber()) {
 			mudarTela(contasAReceber);
 		}
 		if (e.getSource() == consulta.getConsultaB()) {
@@ -496,17 +498,17 @@ public class Controle extends MouseAdapter implements ActionListener, ItemListen
 				if (login.verificarTipoUsuario(usuario)) {
 
 					perfil.atualiarUsuario(usuario, "Funcionario");
-					menu.getBtnCadastro().setVisible(true);
-					menu.getBtnCadastroFuncionario().setVisible(true);
-					menu.getBtnCadastroFuncionario().setVisible(true);
-					menu.getBtnCadastrarExame().setVisible(true);
-					menu.getBtnMarcarExame().setVisible(true);
+					menuPaneContainer.getBtnCadastro().setVisible(true);
+					menuPaneContainer.getBtnCadastroFuncionario().setVisible(true);
+					menuPaneContainer.getBtnCadastroFuncionario().setVisible(true);
+					menuPaneContainer.getBtnCadastrarExame().setVisible(true);
+					menuPaneContainer.getBtnMarcarExame().setVisible(true);
 				} else {
 					perfil.atualiarUsuario(usuario, "Cliente");
-					menu.getBtnCadastro().setVisible(false);
-					menu.getBtnCadastroFuncionario().setVisible(false);
-					menu.getBtnCadastrarExame().setVisible(false);
-					menu.getBtnMarcarExame().setVisible(false);
+					menuPaneContainer.getBtnCadastro().setVisible(false);
+					menuPaneContainer.getBtnCadastroFuncionario().setVisible(false);
+					menuPaneContainer.getBtnCadastrarExame().setVisible(false);
+					menuPaneContainer.getBtnMarcarExame().setVisible(false);
 
 				}
 				perfil.getBtnEditarDados().addActionListener(this);
@@ -621,7 +623,7 @@ public class Controle extends MouseAdapter implements ActionListener, ItemListen
 		for (Component c : principal.getContentPane().getComponents())
 			if (c.equals(panel))
 				c.setVisible(true);
-			else if (!(c.equals(menu) || c.equals(perfil)))
+			else if (!(c.equals(menuPaneContainer) || c.equals(perfil)))
 				c.setVisible(false);
 
 	}

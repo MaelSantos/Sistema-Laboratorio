@@ -19,6 +19,7 @@ import view.Financeiro;
 import view.Login;
 import view.Marcar;
 import view.Menu;
+import view.MenuPaneContainer;
 import view.Perfil;
 import view.Principal;
 
@@ -57,18 +58,19 @@ public class App {
 	
 		Financeiro financeiro = new Financeiro();
 		
-		Menu menu = new Menu();
+//		Menu menu = new Menu();
+		MenuPaneContainer menuPaneContainer = new MenuPaneContainer();
 		
 		ContasPagar contasPagar= new ContasPagar();
 		ContasAReceber contasAReceber = new ContasAReceber();
 		
 		Perfil perfil = new Perfil(new Usuario("",""){}, "");
 	
-		Principal principal = new Principal("Sistema Laboratorio", menu, cadastro, consulta, detalhesPaciente, cadastroFuncionario,
+		Principal principal = new Principal("Sistema Laboratorio", menuPaneContainer, cadastro, consulta, detalhesPaciente, cadastroFuncionario,
 				detalhesFuncionario, perfil,cadastroExames,consultaExames, editarExame, marcar, financeiro,contasPagar, contasAReceber,
 				editarExameMarcado);
 		
-		Controle controle = new Controle(login,principal, menu, cadastro,consulta,detalhesPaciente
+		Controle controle = new Controle(login,principal, menuPaneContainer, cadastro,consulta,detalhesPaciente
 				, cadastroFuncionario,  detalhesFuncionario, perfil,cadastroExames,consultaExames, 
 				editarExame, marcar, financeiro,contasPagar,contasAReceber, editarExameMarcado );
 	}

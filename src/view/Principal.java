@@ -11,7 +11,6 @@ public class Principal extends TelaGeral{
 	
 	private JLabel titulo;
 	private CadastroPacientes cadastro;
-	private Menu menu;
 	private ConsultaPacientes consulta;
 	private DetalhesPaciente detalhesPaciente;
 	private CadastroFuncionario cadastroFuncionario;
@@ -25,8 +24,10 @@ public class Principal extends TelaGeral{
 	private ContasPagar contasPagar;
 	private ContasAReceber contasAReceber;
 	private EditarExameMarcado editarExameMarcado;
+	private MenuPaneContainer menuPaneContainer;
 	
-	public Principal(String titulo, Menu menu, CadastroPacientes cadastro,ConsultaPacientes consulta, 
+//	 Menu menu
+	public Principal(String titulo,MenuPaneContainer menuPaneContainer, CadastroPacientes cadastro,ConsultaPacientes consulta, 
 			DetalhesPaciente detalhesPaciente, CadastroFuncionario cadastroFuncionario, 
 			DetalhesFuncionario detalhesFuncionario, Perfil perfil, CadastroExames cadastroExames,
 			ConsultaExames consultaExames, EditarExame editarExame, Marcar marcar, Financeiro financeiro,
@@ -34,7 +35,7 @@ public class Principal extends TelaGeral{
 		super(titulo);
 		
 		this.cadastro = cadastro;
-		this.menu = menu;
+		this.menuPaneContainer = menuPaneContainer;
 		this.consulta= consulta;
 		this.detalhesPaciente = detalhesPaciente;
 		this.cadastroFuncionario = cadastroFuncionario;
@@ -56,7 +57,7 @@ public class Principal extends TelaGeral{
 	@Override
 	public void inicializar() {
 		
-		menu.setVisible(true);
+		menuPaneContainer.setVisible(true);
 		
 		titulo = new JLabel(new ImageIcon(getClass().getClassLoader().getResource("nomeSistema.jpg")));
 	
@@ -89,7 +90,7 @@ public class Principal extends TelaGeral{
 		cons.gridwidth = GridBagConstraints.RELATIVE;
 		cons.fill = GridBagConstraints.VERTICAL;
 		cons.anchor = GridBagConstraints.WEST;
-		add(menu, cons);
+		add(menuPaneContainer, cons);
 		cons.fill = GridBagConstraints.BOTH;
 		cons.anchor = GridBagConstraints.CENTER;
      	add(cadastro, cons);
