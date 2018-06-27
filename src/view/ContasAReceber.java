@@ -20,8 +20,8 @@ public class ContasAReceber extends PanelGeral {
 
 	private JLabel lbDataFluxo, lbValor, lbCpfCliente, lbReferencia, lbDataVencimento, lbTipoPagamento, lbParcelas,
 			lbNomeCliente;
-	private JFormattedTextField ftfDataVencimento, ftfDataFluxo;
 	private AutoTextField ftfCpfCliente;
+	private JFormattedTextField ftfDataVencimento, ftfDataFluxo;
 	private JTextField tfValor, tfReferencia, tfNomeCliente;
 	private JComboBox<String> comboTipoDePagamento, comboParcelas;
 	private JButton btnLancar, btnLimpar, btnBuscar;
@@ -40,7 +40,7 @@ public class ContasAReceber extends PanelGeral {
 		lbReferencia = new JLabel("Referência:*");
 		lbValor = new JLabel("Valor");
 		lbTipoPagamento = new JLabel("Tipo de pagamento:");
-		lbNomeCliente =  new JLabel("Nome");
+		lbNomeCliente = new JLabel("Nome");
 
 		lbParcelas = new JLabel("Parcelas:");
 		lbParcelas.setVisible(false);
@@ -51,7 +51,8 @@ public class ContasAReceber extends PanelGeral {
 		ftfDataVencimento = new JFormattedTextField();
 
 		try {
-//			ftfCpfCliente.setFormatterFactory(new DefaultFormatterFactory(new MaskFormatter("###.###.###-##")));
+			// ftfCpfCliente.setFormatterFactory(new DefaultFormatterFactory(new
+			// MaskFormatter("###.###.###-##")));
 			ftfDataFluxo.setFormatterFactory(new DefaultFormatterFactory(new MaskFormatter("##/##/####")));
 			ftfDataVencimento.setFormatterFactory(new DefaultFormatterFactory(new MaskFormatter("##/##/####")));
 
@@ -86,16 +87,16 @@ public class ContasAReceber extends PanelGeral {
 
 		btnLancar = new JButton("LANCAR");
 		btnLancar.setBackground(Color.GREEN);
-		
+
 		btnLimpar = new JButton("LIMPAR");
 		btnLimpar.setBackground(Color.red);
-		
+
 		btnBuscar = new JButton("BUSCAR");
 		btnBuscar.setBackground(Color.BLUE);
-		
+
 		add(lbCpfCliente);
 		add(lbNomeCliente);
-		
+
 		add(ftfCpfCliente);
 		add(tfNomeCliente);
 
@@ -110,19 +111,19 @@ public class ContasAReceber extends PanelGeral {
 
 		add(tfValor);
 		add(tfReferencia);
-		
+
 		add(btnBuscar);
 		add(new JLabel(""));
-		
+
 		add(new JSeparator());
 		add(new JSeparator());
-		
+
 		add(lbTipoPagamento);
 		add(comboTipoDePagamento);
 
 		add(lbParcelas);
 		add(comboParcelas);
-		
+
 		add(new JSeparator());
 		add(new JSeparator());
 
@@ -139,7 +140,7 @@ public class ContasAReceber extends PanelGeral {
 		return ftfDataFluxo;
 	}
 
-	public AutoTextField getFtfCpfCliente() {
+	public JFormattedTextField getFtfCpfCliente() {
 		return ftfCpfCliente;
 	}
 
@@ -182,6 +183,5 @@ public class ContasAReceber extends PanelGeral {
 	public JButton getBtnBuscar() {
 		return btnBuscar;
 	}
-	
 
 }

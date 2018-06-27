@@ -15,7 +15,7 @@
     <codigo>001</codigo>
     <valor>340.0</valor>
     <referencia>Ref</referencia>
-    <tipoPagamento>Á prazo</tipoPagamento>
+    <tipoPagamento>ï¿½ prazo</tipoPagamento>
     <qtdParcelas>2</qtdParcelas>
   </ContasAReceber>
   <ContasAReceber>
@@ -25,7 +25,7 @@
     <codigo>002</codigo>
     <valor>40.0</valor>
     <referencia></referencia>
-    <tipoPagamento>Á vista</tipoPagamento>
+    <tipoPagamento>ï¿½ vista</tipoPagamento>
   </ContasAReceber>
   <ContasAReceber>
     <cpfPaciente>108.590.464-43</cpfPaciente>
@@ -34,6 +34,6 @@
     <codigo>003</codigo>
     <valor></valor>
     <referencia>aaaa</referencia>
-    <tipoPagamento>Á vista</tipoPagamento>
+    <tipoPagamento>ï¿½ vista</tipoPagamento>
   </ContasAReceber>
 </list>

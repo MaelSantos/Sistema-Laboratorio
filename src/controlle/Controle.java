@@ -643,7 +643,6 @@ public class Controle extends MouseAdapter implements ActionListener, ItemListen
 
 				for (ExameGeral exameGeral : BancoDados.getInstance().getExamesGerais()) {
 					if (exameGeral.getTipoExame().equals(marcarExame.getExame().getTipoExame())) {
-						System.out.println("Entrou");
 						soma += exameGeral.getValor();
 					}
 				}

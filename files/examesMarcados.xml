@@ -64,4 +64,18 @@
     <status>nao_realizado</status>
     <codigo>004</codigo>
   </ExameMarcado>
+  <ExameMarcado>
+    <exame>
+      <codigo>002</codigo>
+      <tipoExame>PSA</tipoExame>
+      <tipoDeColeta>Fezes</tipoDeColeta>
+      <valor>300.0</valor>
+    </exame>
+    <nomeMedico>Sr. Clécio</nomeMedico>
+    <cpfPaciente>108.590.464-43</cpfPaciente>
+    <nomePaciente>Felipe Douglas</nomePaciente>
+    <parecer>DST</parecer>
+    <status>nao_realizado</status>
+    <codigo>005</codigo>
+  </ExameMarcado>
 </list>
