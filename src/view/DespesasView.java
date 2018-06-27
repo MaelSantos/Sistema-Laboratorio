@@ -1,5 +1,6 @@
 package view;
 
+import java.awt.BorderLayout;
 import java.util.ArrayList;
 
 import javax.swing.JScrollPane;
@@ -13,6 +14,7 @@ public class DespesasView extends PanelGeral{
 
 	private JTable tblDespesas;
 	private ModelGenerico model;
+	private JScrollPane scpDespesas;
 
 	public DespesasView() {
 		super();
@@ -25,7 +27,10 @@ public class DespesasView extends PanelGeral{
 				"Discricao", "Fornecedor", "Plano", "Centro Custo", "Data",
 				"Valor", "Nº de Parcelas","Valor Parcela","Intervalo Parcelas"});
 		tblDespesas = new JTable(model);
-		add(new JScrollPane(tblDespesas));
+		scpDespesas = new JScrollPane(tblDespesas);
+		
+		setLayout(new BorderLayout());
+		add(scpDespesas,BorderLayout.CENTER);
 	}
 
 	@SuppressWarnings("serial")

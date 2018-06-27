@@ -134,6 +134,8 @@ public class Controle extends MouseAdapter implements ActionListener, ItemListen
 		contasAReceber.getBtnBuscar().addActionListener(this);
 		contasAReceber.getComboTipoDePagamento().addItemListener(this);
 
+		contasPagar.getLancar().addActionListener(this);
+		
 	}
 
 	@SuppressWarnings("unchecked")
@@ -455,8 +457,8 @@ public class Controle extends MouseAdapter implements ActionListener, ItemListen
 						contasPagar.getTfdDataVencimento().getText().trim(), // data,
 						Double.parseDouble(contasPagar.getTfdValorTotal().getText().trim()), // valor,
 						Integer.parseInt(contasPagar.getNumParcelasC().getSelectedItem().toString()), // numeros_parcela,
-						Integer.parseInt(contasPagar.getIntervaloParcela().getText().trim()), // intervalo_parcelas,
-						Integer.parseInt(contasPagar.getValorParcela().getText().trim())))) // valorPacerla
+						Integer.parseInt(contasPagar.getIntervaloParcelaC().getSelectedItem().toString().trim()), // intervalo_parcelas,
+						Integer.parseInt(contasPagar.getTfdValorParcela().getText().trim())))) // valorPacerla
 					Mensagem.exibirMensagem("Despesa Adicionada Com Sucesso!!!");
 				else
 					Mensagem.exibirMensagem("Falha Ao Adicionar Despesa!!!");
