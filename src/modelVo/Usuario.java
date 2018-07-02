@@ -1,5 +1,5 @@
 
-package model;
+package modelVo;
 
 import java.awt.image.BufferedImage;
 import java.io.File;

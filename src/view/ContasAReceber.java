@@ -14,7 +14,7 @@ import javax.swing.JTextField;
 import javax.swing.text.DefaultFormatterFactory;
 import javax.swing.text.MaskFormatter;
 
-import model.BancoDados;
+import modelDao.BancoDados;
 
 public class ContasAReceber extends PanelGeral {
 

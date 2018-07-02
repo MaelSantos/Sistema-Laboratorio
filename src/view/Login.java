@@ -7,10 +7,10 @@ import javax.swing.JLabel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-import model.BancoDados;
-import model.Funcionario;
-import model.Paciente;
-import model.Usuario;
+import modelDao.BancoDados;
+import modelVo.Funcionario;
+import modelVo.Paciente;
+import modelVo.Usuario;
 
 public class Login extends TelaGeral{
 	

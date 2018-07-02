@@ -17,16 +17,16 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
 
-import model.Andamento;
-import model.BancoDados;
-import model.DespesasVo;
-import model.Endereco;
-import model.ExameGeral;
-import model.MarcarExame;
-import model.Funcionario;
-import model.Paciente;
-import model.Usuario;
-import model.Verificar;
+import modelBo.Verificar;
+import modelDao.BancoDados;
+import modelVo.Andamento;
+import modelVo.DespesasVo;
+import modelVo.Endereco;
+import modelVo.ExameGeral;
+import modelVo.Funcionario;
+import modelVo.MarcarExame;
+import modelVo.Paciente;
+import modelVo.Usuario;
 import view.CadastroPacientes;
 import view.CadastroExames;
 import view.CadastroFuncionario;
@@ -404,17 +404,17 @@ public class Controle extends MouseAdapter implements ActionListener, ItemListen
 					String codigoAtual = contarCodigo(Integer.parseInt(BancoDados.getInstance().getContasARecebers()
 							.get(BancoDados.getInstance().getContasARecebers().size() - 1).getCodigo()) + 1);
 
-					model.ContasAReceber contasAReceberModel;
+					modelVo.ReceitaVo contasAReceberModel;
 
 					if (contasAReceber.getComboParcelas().isVisible()) {
-						contasAReceberModel = new model.ContasAReceber(contasAReceber.getFtfCpfCliente().getText(),
+						contasAReceberModel = new modelVo.ReceitaVo(contasAReceber.getFtfCpfCliente().getText(),
 								contasAReceber.getFtfDataVencimento().getText(),
 								contasAReceber.getFtfDataFluxo().getText(), codigoAtual,
 								contasAReceber.getTfValor().getText(), contasAReceber.getTfReferencia().getText(),
 								(String) contasAReceber.getComboTipoDePagamento().getSelectedItem(),
 								(String) contasAReceber.getComboParcelas().getSelectedItem());
 					} else {
-						contasAReceberModel = new model.ContasAReceber(contasAReceber.getFtfCpfCliente().getText(),
+						contasAReceberModel = new modelVo.ReceitaVo(contasAReceber.getFtfCpfCliente().getText(),
 								contasAReceber.getFtfDataVencimento().getText(),
 								contasAReceber.getFtfDataFluxo().getText(), codigoAtual,
 								contasAReceber.getTfValor().getText(), contasAReceber.getTfReferencia().getText(),

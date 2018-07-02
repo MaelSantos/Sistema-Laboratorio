@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 import javax.swing.table.AbstractTableModel;
 
-import model.BancoDados;
-import model.Paciente;
+import modelDao.BancoDados;
+import modelVo.Paciente;
 
 public class TableModel extends AbstractTableModel {
 	

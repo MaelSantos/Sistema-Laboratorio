@@ -1,4 +1,4 @@
-package model;
+package modelVo;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 

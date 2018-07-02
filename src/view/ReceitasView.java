@@ -8,24 +8,23 @@ import javax.swing.JTable;
 import javax.swing.table.AbstractTableModel;
 
 import modelDao.BancoDados;
-import modelVo.DespesasVo;
+import modelVo.ReceitaVo;
 
-public class DespesasView extends PanelGeral{
+public class ReceitasView extends PanelGeral{
 
 	private JTable tblDespesas;
 	private ModelGenerico model;
 	private JScrollPane scpDespesas;
 
-	public DespesasView() {
+	public ReceitasView() {
 		super();
 	}
 
 	@Override
 	public void inicializar() {
 
-		model = new ModelGenerico(BancoDados.getInstance().getDespesas(), new String[] {
-				"Discricao", "Fornecedor", "Plano", "Centro Custo", "Data",
-				"Valor", "Nº de Parcelas","Valor Parcela","Intervalo Parcelas"});
+		model = new ModelGenerico(BancoDados.getInstance().getContasARecebers(), new String[] {
+				"CPF Paciente", "Vencimento", "Fluxo", "Codigo", "Valor", "Referencia", "Tipo Pagamento", "Parcelas" });
 		tblDespesas = new JTable(model);
 		scpDespesas = new JScrollPane(tblDespesas);
 		
@@ -37,9 +36,9 @@ public class DespesasView extends PanelGeral{
 	public class ModelGenerico extends AbstractTableModel {
 
 		private String [] colunas;	
-		private ArrayList<DespesasVo> entidades;
+		private ArrayList<ReceitaVo> entidades;
 
-		public ModelGenerico(ArrayList<DespesasVo> entidades, String... colunas) {
+		public ModelGenerico(ArrayList<ReceitaVo> entidades, String... colunas) {
 
 			this.entidades = entidades;		
 			this.colunas = colunas;
@@ -64,31 +63,30 @@ public class DespesasView extends PanelGeral{
 		@Override
 		public Object getValueAt(int linha, int coluna) {
 
-//			"Discricao", "Fornecedor", "Plano", "Centro Custo", "Data",
-//			"Valor", "Nº de Parcelas","Intervalo Parcelas"
+//			cpfPaciente, dataVencimento, dataFluxo, codigo, valor, referencia, tipoPagamento, qtdParcelas;
 			
 			switch(coluna) {
 			case 0:
-				return entidades.get(linha).getDiscricao();
+				return entidades.get(linha).getCpfPaciente();
 			case 1:
-				return entidades.get(linha).getFornecedor();
+				return entidades.get(linha).getDataVencimento();
 			case 2:
-				return entidades.get(linha).getPlano();
+				return entidades.get(linha).getDataFluxo();
 			case 3:
-				return entidades.get(linha).getCentro_custo();
+				return entidades.get(linha).getCodigo();
 			case 4:
-				return entidades.get(linha).getData();
-			case 5:
 				return entidades.get(linha).getValor();
+			case 5:
+				return entidades.get(linha).getReferencia();
 			case 6:
-				return entidades.get(linha).getNumeros_parcela();
+				return entidades.get(linha).getTipoPagamento();
 			case 7:
-				return entidades.get(linha).getIntervalo_parcelas();
+				return entidades.get(linha).getQtdParcelas();
 			}
 			return null;
 		}
 
-		public void addRow(DespesasVo p){
+		public void addRow(ReceitaVo p){
 			this.entidades.add( p);			
 			this.fireTableDataChanged();
 			fireTableStructureChanged();
@@ -107,14 +105,7 @@ public class DespesasView extends PanelGeral{
 			this.colunas = colunas;
 		}
 
-		public ArrayList<DespesasVo> getEntidades() {
-			return entidades;
-		}
-
-		public void setEntidades(ArrayList<DespesasVo> entidades) {
-			this.entidades = entidades;
-		}
+		
 	}
-
 
 }

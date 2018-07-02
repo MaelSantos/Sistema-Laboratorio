@@ -18,9 +18,9 @@ import javax.swing.JTextField;
 import javax.swing.table.AbstractTableModel;
 
 import controlle.Controle;
-import model.BancoDados;
-import model.ExameGeral;
-import model.MarcarExame;
+import modelDao.BancoDados;
+import modelVo.ExameGeral;
+import modelVo.MarcarExame;
 
 public class ConsultaExames extends PanelGeral {
 

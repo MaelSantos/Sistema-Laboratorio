@@ -2,8 +2,8 @@ package view;
 
 import javax.swing.BorderFactory;
 
-import model.ExameGeral;
-import model.Paciente;
+import modelVo.ExameGeral;
+import modelVo.Paciente;
 
 public class EditarExame extends CadastroExames{
 	private ExameGeral exame;

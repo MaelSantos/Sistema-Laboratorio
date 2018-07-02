@@ -3,7 +3,7 @@ package view;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 
-import model.Paciente;
+import modelVo.Paciente;
 
 @SuppressWarnings("serial")
 public class DetalhesPaciente extends CadastroPacientes{

@@ -1,5 +1,7 @@
-package model;
+package modelBo;
 
+import modelDao.BancoDados;
+import modelVo.Paciente;
 import view.CadastroPacientes;
 import view.ContasAReceber;
 import view.ContasPagar;

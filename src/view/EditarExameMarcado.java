@@ -5,8 +5,8 @@ package view;
 import javax.swing.BorderFactory;
 import javax.swing.JComboBox;
 
-import model.Andamento;
-import model.MarcarExame;
+import modelVo.Andamento;
+import modelVo.MarcarExame;
 
 @SuppressWarnings("serial")
 public class EditarExameMarcado extends Marcar{

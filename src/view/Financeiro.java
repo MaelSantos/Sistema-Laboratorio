@@ -1,17 +1,15 @@
 package view;
 
 import java.awt.BorderLayout;
-import java.awt.FlowLayout;
 
 import javax.swing.BorderFactory;
 import javax.swing.JTabbedPane;
-
-import model.Funcionario;
 
 public class Financeiro extends PanelGeral{
 
 	private JTabbedPane tbpFinaceiro;
 	private DespesasView despesas;
+	private ReceitasView receitas;
 	
 	public Financeiro() {
 		super();
@@ -26,7 +24,10 @@ public class Financeiro extends PanelGeral{
 		tbpFinaceiro = new JTabbedPane();
 		despesas = new DespesasView();
 		
+		receitas = new ReceitasView();
+		
 		tbpFinaceiro.add("Despesas", despesas);
+		tbpFinaceiro.addTab("Receitas", receitas);
 		
 		setLayout(new BorderLayout());
 		add(tbpFinaceiro, BorderLayout.CENTER);
@@ -41,8 +42,8 @@ public class Financeiro extends PanelGeral{
 		return despesas;
 	}
 
-	
-	
-	
+	public ReceitasView getReceitas() {
+		return receitas;
+	}
 
 }

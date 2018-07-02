@@ -1,6 +1,8 @@
-package model;
+package modelVo;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
+
+import modelDao.BancoDados;
 
 @XStreamAlias(value = "MarcarExame") 
 public class MarcarExame{

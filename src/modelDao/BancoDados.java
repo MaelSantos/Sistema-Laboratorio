@@ -1,4 +1,4 @@
-package model;
+package modelDao;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -7,11 +7,20 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 
 import com.thoughtworks.xstream.XStream;
-import com.thoughtworks.xstream.io.xml.Dom4JDriver;
 import com.thoughtworks.xstream.io.xml.DomDriver;
 import com.thoughtworks.xstream.security.NoTypePermission;
 import com.thoughtworks.xstream.security.NullPermission;
 import com.thoughtworks.xstream.security.PrimitiveTypePermission;
+
+import modelVo.Administrador;
+import modelVo.Andamento;
+import modelVo.DespesasVo;
+import modelVo.Endereco;
+import modelVo.ExameGeral;
+import modelVo.Funcionario;
+import modelVo.MarcarExame;
+import modelVo.Paciente;
+import modelVo.ReceitaVo;
 
 @SuppressWarnings("unchecked")
 public class BancoDados {
@@ -23,7 +32,7 @@ public class BancoDados {
 	private ArrayList<ExameGeral> examesGerais;
 	private ArrayList<MarcarExame> examesMarcados;
 	private ArrayList<DespesasVo> despesas;
-	private ArrayList<ContasAReceber> contasARecebers;
+	private ArrayList<ReceitaVo> contasARecebers;
 	private XStream xStream;
 
 	private BancoDados() {
@@ -38,7 +47,7 @@ public class BancoDados {
 		xStream.alias("ExameGeral", ExameGeral.class);
 		xStream.alias("Despesas", DespesasVo.class);
 		xStream.alias("Andamento", Andamento.class);
-		xStream.alias("ContasAReceber", ContasAReceber.class);
+		xStream.alias("ContasAReceber", ReceitaVo.class);
 
 		// remover mesnagem de erro
 		XStream.setupDefaultSecurity(xStream);
@@ -51,7 +60,7 @@ public class BancoDados {
 				ExameGeral.class, 
 				DespesasVo.class, 
 				Andamento.class, 
-				ContasAReceber.class });
+				ReceitaVo.class });
 		// clear out existing permissions and set own ones
 		xStream.addPermission(NoTypePermission.NONE);
 		// allow some basics
@@ -64,7 +73,7 @@ public class BancoDados {
 		funcionarios = (ArrayList<Funcionario>) lerArquivo("files/funcionarios.xml");
 		examesGerais = (ArrayList<ExameGeral>) lerArquivo("files/examesValor.xml");
 		despesas = (ArrayList<DespesasVo>) lerArquivo("files/despesas.xml");
-		contasARecebers = (ArrayList<ContasAReceber>) lerArquivo("files/ContasAReceber.xml");
+		contasARecebers = (ArrayList<ReceitaVo>) lerArquivo("files/ContasAReceber.xml");
 		
 	}
 
@@ -75,7 +84,7 @@ public class BancoDados {
 	}
 
 	public boolean addDado(Object object) {
-		boolean add = true;
+		
 		if (object instanceof Paciente) { // add paciente
 			Paciente paciente = (Paciente) object;
 			for (Paciente p : pacientes) {
@@ -118,8 +127,8 @@ public class BancoDados {
 			gravar(pacientes, "files/pacientes.xml");
 			return true;
 		}
-		if (object instanceof ContasAReceber) {
-			ContasAReceber contasAReceber = (ContasAReceber) object;
+		if (object instanceof ReceitaVo) {
+			ReceitaVo contasAReceber = (ReceitaVo) object;
 
 			contasARecebers.add(contasAReceber);
 			gravar(contasARecebers, "files/ContasAReceber.xml");
@@ -321,7 +330,7 @@ public class BancoDados {
 		return despesas;
 	}
 
-	public ArrayList<ContasAReceber> getContasARecebers() {
+	public ArrayList<ReceitaVo> getContasARecebers() {
 		return contasARecebers;
 	}
 

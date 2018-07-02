@@ -13,8 +13,8 @@ import javax.swing.text.MaskFormatter;
 
 import com.thoughtworks.xstream.mapper.CGLIBMapper.Marker;
 
-import model.BancoDados;
-import model.ExameGeral;
+import modelDao.BancoDados;
+import modelVo.ExameGeral;
 
 public class Marcar extends PanelGeral {
 

@@ -1,9 +1,10 @@
-package model;
+package modelVo;
 
-public class ContasAReceber {
+public class ReceitaVo {
+	
 	private String cpfPaciente, dataVencimento, dataFluxo, codigo, valor, referencia, tipoPagamento, qtdParcelas;
 
-	public ContasAReceber(String cpfPaciente, String dataVencimento, String dataFluxo, String codigo, String valor,
+	public ReceitaVo(String cpfPaciente, String dataVencimento, String dataFluxo, String codigo, String valor,
 			String referencia, String tipoPagamento, String qtdParcelas) {
 		super();
 		this.cpfPaciente = cpfPaciente;
@@ -16,7 +17,7 @@ public class ContasAReceber {
 		this.qtdParcelas = qtdParcelas;
 	}
 
-	public ContasAReceber(String cpfPaciente, String dataVencimento, String dataFluxo, String codigo, String valor,
+	public ReceitaVo(String cpfPaciente, String dataVencimento, String dataFluxo, String codigo, String valor,
 			String referencia, String tipoPagamento) {
 		super();
 		this.cpfPaciente = cpfPaciente;

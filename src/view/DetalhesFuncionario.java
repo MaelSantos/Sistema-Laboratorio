@@ -3,7 +3,7 @@ package view;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 
-import model.Funcionario;
+import modelVo.Funcionario;
 
 public class DetalhesFuncionario extends CadastroFuncionario {
 

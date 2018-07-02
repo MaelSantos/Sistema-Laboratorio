@@ -14,7 +14,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import model.Usuario;
+import modelVo.Usuario;
 
 public class Perfil extends JPanel {
 	private JLabel labeltipo, labelft, labelNome;

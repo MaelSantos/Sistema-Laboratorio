@@ -1,4 +1,4 @@
-package model;
+package modelVo;
 
 public enum Andamento {
 
