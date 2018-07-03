@@ -43,7 +43,7 @@ public class MenuPaneContainer extends PanelGeral {
 		btnFinanceiro = new JButton(new ImageIcon(getClass().getClassLoader().getResource("financeiro.png")));
 		btnContasPagar =  new JButton(new ImageIcon(getClass().getClassLoader().getResource("contaspagar.png")));
 		btnContasAReceber = new JButton(new ImageIcon(getClass().getClassLoader().getResource("contasReceber.png")));
-		btnRelatorios = new JButton("Relatorios");
+		btnRelatorios = new JButton(new ImageIcon(getClass().getClassLoader().getResource("relatorios.png")));
 		
 		btnConsulta.setContentAreaFilled(false);
 		btnConsulta.setBorderPainted(false);
@@ -63,6 +63,8 @@ public class MenuPaneContainer extends PanelGeral {
 		btnContasPagar.setContentAreaFilled(false);
 		btnContasAReceber.setBorderPainted(false);
 		btnContasAReceber.setContentAreaFilled(false);
+		btnRelatorios.setBorderPainted(false);
+		btnRelatorios.setContentAreaFilled(false);
 		
 		taskpanecontainer = new JXTaskPaneContainer();
 		

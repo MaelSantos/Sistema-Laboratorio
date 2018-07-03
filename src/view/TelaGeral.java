@@ -10,7 +10,7 @@ import javax.swing.JFrame;
 
 public abstract class TelaGeral extends JFrame {
 
-	public static final int LARGURA = 800;
+	public static final int LARGURA = 900;
 	public static final int ALTURA = 600;
 		
 	public TelaGeral(String titulo) {
