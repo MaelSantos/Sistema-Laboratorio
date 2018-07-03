@@ -3,7 +3,7 @@ package modelVo;
 public class DespesasVo {
 
 	private String discricao, fornecedor, plano, centro_custo, data;
-	private double valor,valorPacerla;
+	private double valor, valorPacerla;
 	private int numeros_parcela;
 	private int intervalo_parcelas;
 	

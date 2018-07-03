@@ -25,13 +25,15 @@ public class Principal extends TelaGeral{
 	private ContasAReceber contasAReceber;
 	private EditarExameMarcado editarExameMarcado;
 	private MenuPaneContainer menuPaneContainer;
+	private RelatoriosView relatorios;
 	
 //	 Menu menu
 	public Principal(String titulo,MenuPaneContainer menuPaneContainer, CadastroPacientes cadastro,ConsultaPacientes consulta, 
 			DetalhesPaciente detalhesPaciente, CadastroFuncionario cadastroFuncionario, 
 			DetalhesFuncionario detalhesFuncionario, Perfil perfil, CadastroExames cadastroExames,
 			ConsultaExames consultaExames, EditarExame editarExame, Marcar marcar, Financeiro financeiro,
-			ContasPagar contasPaga, ContasAReceber contasAReceber, EditarExameMarcado editarExameMarcado) {
+			ContasPagar contasPaga, ContasAReceber contasAReceber, EditarExameMarcado editarExameMarcado,
+			RelatoriosView relatorios) {
 		super(titulo);
 		
 		this.cadastro = cadastro;
@@ -49,6 +51,7 @@ public class Principal extends TelaGeral{
 		this.financeiro = financeiro;
 		this.contasPagar = contasPaga;
 		this.contasAReceber = contasAReceber;
+		this.relatorios = relatorios;
 		
 		inicializar();
 		setVisible(false);
@@ -106,5 +109,6 @@ public class Principal extends TelaGeral{
 		add(contasPagar,cons);
 		add(contasAReceber,cons);
 		add(editarExameMarcado,cons);
+		add(relatorios,cons);
 	}	
 }

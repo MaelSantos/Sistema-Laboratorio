@@ -18,9 +18,9 @@ import org.jdesktop.swingx.JXTaskPaneContainer;
 public class MenuPaneContainer extends PanelGeral {
 	
 	private JXTaskPaneContainer taskpanecontainer;
-	private JXTaskPane taskpaneCadastro,taskpaneConsulta,taskpaneFinanceiro,taskpaneMarcar,taskpaneCaixa;
+	private JXTaskPane taskpaneCadastro,taskpaneConsulta,taskpaneFinanceiro,taskpaneMarcar,taskpaneCaixa, taskpaneRelatorio;
 	private JButton btnCadastro, btnConsulta, btnCadastroFuncionario, btnCadastrarExame,
-	btnConsultaExames, btnMarcarExame, btnFinanceiro,btnContasPagar, btnContasAReceber;
+	btnConsultaExames, btnMarcarExame, btnFinanceiro,btnContasPagar, btnContasAReceber, btnRelatorios;
 //	private BufferedImage fundo;
 	
 	@Override
@@ -43,6 +43,7 @@ public class MenuPaneContainer extends PanelGeral {
 		btnFinanceiro = new JButton(new ImageIcon(getClass().getClassLoader().getResource("financeiro.png")));
 		btnContasPagar =  new JButton(new ImageIcon(getClass().getClassLoader().getResource("contaspagar.png")));
 		btnContasAReceber = new JButton(new ImageIcon(getClass().getClassLoader().getResource("contasReceber.png")));
+		btnRelatorios = new JButton("Relatorios");
 		
 		btnConsulta.setContentAreaFilled(false);
 		btnConsulta.setBorderPainted(false);
@@ -70,18 +71,21 @@ public class MenuPaneContainer extends PanelGeral {
 		taskpaneFinanceiro= new JXTaskPane();
 		taskpaneMarcar= new JXTaskPane();
 		taskpaneCaixa= new JXTaskPane();
+		taskpaneRelatorio = new JXTaskPane();
 		
 		taskpaneCadastro.setTitle("Cadastro");
 		taskpaneConsulta.setTitle("Consulta");
 		taskpaneFinanceiro.setTitle("Financeiro");
 		taskpaneMarcar.setTitle("Marcar");
 		taskpaneCaixa.setTitle("Caixa");
+		taskpaneRelatorio.setTitle("Relatorios");
 		
 		taskpaneCadastro.setCollapsed(true);
 		taskpaneConsulta.setCollapsed(true);
 		taskpaneFinanceiro.setCollapsed(true);
 		taskpaneMarcar.setCollapsed(true);
 		taskpaneCaixa.setCollapsed(true);
+		taskpaneRelatorio.setCollapsed(true);
 		
 		taskpaneCadastro.add(btnCadastroFuncionario);
 		taskpaneCadastro.add(btnCadastro);
@@ -97,11 +101,14 @@ public class MenuPaneContainer extends PanelGeral {
 		taskpaneCaixa.add(btnContasPagar);
 		taskpaneCaixa.add(btnContasAReceber);
 		
+		taskpaneRelatorio.add(btnRelatorios);
+		
 		taskpanecontainer.add(taskpaneCadastro);
 		taskpanecontainer.add(taskpaneConsulta);
 		taskpanecontainer.add(taskpaneMarcar);
 		taskpanecontainer.add(taskpaneCaixa);
 		taskpanecontainer.add(taskpaneFinanceiro);
+		taskpanecontainer.add(taskpaneRelatorio);
 		
 		taskpanecontainer.setBackground(new Color(176,224,230));
 		
@@ -166,6 +173,9 @@ public class MenuPaneContainer extends PanelGeral {
 //	public BufferedImage getFundo() {
 //		return fundo;
 //	}
+	public JButton getBtnRelatorios() {
+		return btnRelatorios;
+	}
 	
 	
 

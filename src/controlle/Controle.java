@@ -42,15 +42,14 @@ import view.Financeiro;
 import view.Login;
 import view.Marcar;
 import view.Mensagem;
-import view.Menu;
 import view.MenuPaneContainer;
 import view.Perfil;
 import view.Principal;
+import view.RelatoriosView;
 
 public class Controle extends MouseAdapter implements ActionListener, ItemListener {
 
 	private Principal principal;// jframe
-	private Menu menu;// jpanel
 	private CadastroPacientes cadastro;// jpanel
 	private ConsultaPacientes consulta;// jpanel
 	private DetalhesPaciente detalhesPaciente;// jpanel
@@ -67,6 +66,7 @@ public class Controle extends MouseAdapter implements ActionListener, ItemListen
 	private ContasAReceber contasAReceber;
 	private Financeiro financeiro;
 	private MenuPaneContainer menuPaneContainer;
+	private RelatoriosView relatorios;
 
 	public static String cpfPacientde;
 
@@ -74,7 +74,8 @@ public class Controle extends MouseAdapter implements ActionListener, ItemListen
 			DetalhesPaciente detalhesPaciente, CadastroFuncionario cadastroFuncionario,
 			DetalhesFuncionario detalhesFuncionario, Perfil perfil, CadastroExames cadastroExames,
 			ConsultaExames consultaExames, EditarExame editarExame, Marcar marcar, Financeiro financeiro,
-			ContasPagar contasPagar, ContasAReceber contasAReceber, EditarExameMarcado editarExameMarcado) {
+			ContasPagar contasPagar, ContasAReceber contasAReceber, EditarExameMarcado editarExameMarcado,
+			RelatoriosView relatorios) {
 
 		this.principal = principal;
 		this.menuPaneContainer=menuPaneContainer;
@@ -93,7 +94,8 @@ public class Controle extends MouseAdapter implements ActionListener, ItemListen
 		this.financeiro = financeiro;
 		this.contasPagar = contasPagar;
 		this.contasAReceber = contasAReceber;
-
+		this.relatorios = relatorios;
+		
 		cadastro.getBtnAdd().addActionListener(this);
 		consulta.getConsultaB().addActionListener(this);
 		consulta.getDetalhesButton().addActionListener(this);
@@ -107,6 +109,7 @@ public class Controle extends MouseAdapter implements ActionListener, ItemListen
 		menuPaneContainer.getBtnFinanceiro().addActionListener(this);
 		menuPaneContainer.getBtnContasPagar().addActionListener(this);
 		menuPaneContainer.getBtnContasAReceber().addActionListener(this);
+		menuPaneContainer.getBtnRelatorios().addActionListener(this);
 		detalhesPaciente.getBtnAdd().addActionListener(this);
 		detalhesPaciente.getBntVoltar().addActionListener(this);
 		detalhesFuncionario.getBtnVoltar().addActionListener(this);
@@ -225,6 +228,9 @@ public class Controle extends MouseAdapter implements ActionListener, ItemListen
 		}
 		if (e.getSource() == menuPaneContainer.getBtnContasAReceber()) {
 			mudarTela(contasAReceber);
+		}
+		if (e.getSource() == menuPaneContainer.getBtnRelatorios()) {
+			mudarTela(relatorios);
 		}
 		if (e.getSource() == consulta.getConsultaB()) {
 			if (!consulta.getConsultaT().getText().trim().equals("")) {
