@@ -45,58 +45,24 @@ public class RelatorioDao {
 		//compila o relatório
 		JasperReport relatorio = JasperCompileManager.compileReport(desenho);
 
-//		JasperPrint print = JasperFillManager.fillReport(relatorio, null, new JRBeanCollectionDataSource(list));
-//
+		Map<String, Object> parametros = new HashMap<String, Object>();
+		parametros.put("Dados", new Double(list.size()));
+		
+		JasperPrint print = JasperFillManager.fillReport(relatorio, parametros, new JRBeanCollectionDataSource(list));
 //		JasperViewer.viewReport(print,false);
 		
-		Map<String, Object> parametros = new HashMap<String, Object>();
-		
-		for(int i = 0;i < list.size();i++)
-			parametros.put(list.get(i).hashCode()+"", list.get(i));
-			
-//		parametros.put("nota", new Double(list.size()));
-		JasperPrint impressao = JasperFillManager.fillReport( relatorio , parametros, new JRBeanCollectionDataSource(list));
-		JasperViewer.viewReport(impressao, false);
-		
-//		showReport(layout, parametros, list, true);
-		
+		JasperViewer jasperViewer = new JasperViewer(print, false);
+		jasperViewer.setZoomRatio(0.75F);
+		jasperViewer.setLocationRelativeTo(null);
+		jasperViewer.show();		
 		
 	}
-	
-	public void showReport(String report, Map params, 
-			Collection collection, boolean showPrint){
-		JasperPrint jasperPrint;
-		JasperViewer jasperViewer;
-		JRDataSource dataSource;
-		if (collection != null){
-			dataSource = new JRBeanCollectionDataSource(collection);
-		}
-		else{
-			dataSource = null;
-		}
-		try{
-			jasperPrint = JasperFillManager.fillReport("files/"+report, params, dataSource);
-			if (showPrint){
-				jasperViewer = new JasperViewer(jasperPrint, false);
-				jasperViewer.setZoomRatio(0.75F);
-				jasperViewer.setLocationRelativeTo(null);
-				jasperViewer.show();
-			}
-			else{
-				JasperPrintManager.printReport(jasperPrint, true);
-			}
-		}
-		catch(Exception exception){
-			System.out.println(exception.getMessage());
-		}
-	}
+
 	
 	public static void main(String[] args) {
 		try
 		{
-			RelatorioDao.getInstance().gerar(BancoDados.getInstance().getDespesas(), "Despesas.jrxml");
-//			RelatorioDao.getInstance().gerar(BancoDados.getInstance().getContasARecebers(), "Receitas.jrxml");
-//			RelatorioDao.getInstance().gerar(BancoDados.getInstance().getPacientes(), "Clientes.jrxml");			
+//			RelatorioDao.getInstance().gerar(BancoDados.getInstance().getContasARecebers(), "Receitas.jrxml");		
 		}
 		catch (Exception e) {
 			System.err.println(e.getMessage());

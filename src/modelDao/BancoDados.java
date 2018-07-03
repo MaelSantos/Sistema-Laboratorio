@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.List;
 
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.xml.DomDriver;
@@ -333,7 +334,4 @@ public class BancoDados {
 	public ArrayList<ReceitaVo> getContasARecebers() {
 		return contasARecebers;
 	}
-
-	
-	
 }

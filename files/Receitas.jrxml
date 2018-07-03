@@ -67,108 +67,102 @@
 		<band splitType="Stretch"/>
 	</pageHeader>
 	<columnHeader>
-		<band height="18" splitType="Stretch"/>
-	</columnHeader>
-	<detail>
-		<band height="18" splitType="Stretch">
+		<band height="59" splitType="Stretch">
 			<frame>
-				<reportElement style="Row" mode="Opaque" x="0" y="0" width="797" height="18" uuid="34a2ae4b-4055-476b-8676-d499f6af510b"/>
-				<frame>
-					<reportElement mode="Opaque" x="0" y="1" width="797" height="24" forecolor="#D0B48E" backcolor="#000000" uuid="ffb10ec8-0371-4545-8eaa-96d62ad3cec0"/>
-					<textField evaluationTime="Report">
-						<reportElement style="Column header" x="660" y="4" width="40" height="20" forecolor="#FFFFFF" uuid="b5521ea6-5f36-4864-856f-58d0bcd011f2"/>
-						<textElement verticalAlignment="Middle">
-							<font size="10" isBold="false"/>
-						</textElement>
-						<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
-					</textField>
-					<textField>
-						<reportElement style="Column header" x="579" y="4" width="80" height="20" forecolor="#FFFFFF" uuid="e625ea3c-1741-4cfe-81cf-fbbdd00162c8"/>
-						<textElement textAlignment="Right" verticalAlignment="Middle">
-							<font size="10" isBold="false"/>
-						</textElement>
-						<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
-					</textField>
-					<textField pattern="EEEEE dd MMMMM yyyy">
-						<reportElement style="Column header" x="2" y="3" width="197" height="20" forecolor="#FFFFFF" uuid="0c9f7e91-d3f5-47f9-82b7-0b2b3a43a5d6"/>
-						<textElement verticalAlignment="Middle">
-							<font size="10" isBold="false"/>
-						</textElement>
-						<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
-					</textField>
-				</frame>
+				<reportElement mode="Opaque" x="5" y="6" width="797" height="24" forecolor="#D0B48E" backcolor="#000000" uuid="0a0831a3-5007-4be9-8f0d-01c55587d7c9"/>
+				<textField evaluationTime="Report">
+					<reportElement style="Column header" x="660" y="4" width="40" height="20" forecolor="#FFFFFF" uuid="20682b67-769b-462f-9b2b-8f6687c93470"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Column header" x="579" y="4" width="80" height="20" forecolor="#FFFFFF" uuid="e0623375-44a2-498e-803b-27db86e0990a"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement style="Column header" x="2" y="3" width="197" height="20" forecolor="#FFFFFF" uuid="79c7b951-f9e7-480d-bb73-a6aac1d78c74"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+			<frame>
+				<reportElement style="Row" mode="Opaque" x="0" y="41" width="797" height="18" uuid="34a2ae4b-4055-476b-8676-d499f6af510b"/>
 			</frame>
 		</band>
-	</detail>
-	<columnFooter>
-		<band height="7" splitType="Stretch">
-			<line>
-				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="501ac6c4-e9d4-43cb-ba6b-7f2f44394cf3"/>
-				<graphicElement>
-					<pen lineWidth="0.5" lineColor="#999999"/>
-				</graphicElement>
-			</line>
-		</band>
-	</columnFooter>
-	<pageFooter>
-		<band height="235" splitType="Stretch">
+	</columnHeader>
+	<detail>
+		<band height="66" splitType="Stretch">
 			<staticText>
-				<reportElement x="0" y="10" width="100" height="30" uuid="08d9c8ed-a9e5-4439-bd61-22629c820e0c"/>
+				<reportElement x="5" y="15" width="100" height="30" uuid="b887c91a-2c8b-442c-bdb1-94dcded43809"/>
 				<text><![CDATA[CPF Pasciente]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="120" y="10" width="100" height="30" uuid="97645d63-3467-438b-99ce-df0b73caa347"/>
+				<reportElement x="125" y="15" width="100" height="30" uuid="b8247bea-a883-437f-8a86-1ff1c3c61a7a"/>
 				<text><![CDATA[Vencimento]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="240" y="10" width="100" height="30" uuid="12325cdb-a644-4403-8f37-f865ea9a66c2"/>
+				<reportElement x="245" y="15" width="100" height="30" uuid="b9e3b162-d272-4339-b557-c3b6399a52fd"/>
 				<text><![CDATA[Data Fluxo]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="360" y="10" width="100" height="30" uuid="1df8a902-c1aa-45f8-8256-f54353cfc4d7"/>
+				<reportElement x="365" y="15" width="100" height="30" uuid="10105b4c-92fb-467e-a687-0ce3c267e592"/>
 				<text><![CDATA[Codigo]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="480" y="10" width="100" height="30" uuid="a747aea4-9756-4c89-8ed4-38b04c87eacf"/>
+				<reportElement x="485" y="15" width="100" height="30" uuid="e661eb5c-04c3-4a3b-a08e-7ea974116bec"/>
 				<text><![CDATA[Valor]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="588" y="10" width="100" height="30" uuid="611e55e3-c2be-4fcb-882c-9314c8230189"/>
+				<reportElement x="593" y="15" width="100" height="30" uuid="a3dde46b-6b3e-43f4-b7c5-1bda098bc1cb"/>
 				<text><![CDATA[Referencia]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="700" y="10" width="100" height="30" uuid="c882cacc-e3fe-4366-bab7-9b9ac41a0eaa"/>
+				<reportElement x="705" y="15" width="100" height="30" uuid="6c86c9aa-53c4-47ce-a0e0-c88b5b95670d"/>
 				<text><![CDATA[Tipo Pagamento]]></text>
 			</staticText>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="109" splitType="Stretch">
 			<textField>
-				<reportElement x="0" y="60" width="100" height="30" uuid="a2b8d2fb-2203-4d83-a912-d517b8942714"/>
+				<reportElement x="0" y="30" width="100" height="30" uuid="031860eb-9ede-4cdc-817a-69409bca7c2a"/>
 				<textFieldExpression><![CDATA[$F{cpfPaciente}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="120" y="60" width="100" height="30" uuid="d72edd63-c89b-479a-a339-2ef5520e8f72"/>
+				<reportElement x="120" y="30" width="100" height="30" uuid="6b9704d1-22bd-4515-8246-a8afa9df9c8f"/>
 				<textFieldExpression><![CDATA[$F{dataVencimento}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="240" y="60" width="100" height="30" uuid="05302997-d2de-48ca-b060-8ab6d88ea4a6"/>
+				<reportElement x="240" y="30" width="100" height="30" uuid="4a5755e6-ce29-479f-a252-4d4d2da53a67"/>
 				<textFieldExpression><![CDATA[$F{dataFluxo}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="360" y="60" width="100" height="30" uuid="6d1fcb6b-252a-47c9-9989-dbe18b451a63"/>
+				<reportElement x="360" y="30" width="100" height="30" uuid="8c6a0cf6-5533-460c-883b-06ad382fb7a3"/>
 				<textFieldExpression><![CDATA[$F{codigo}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="480" y="60" width="100" height="30" uuid="a8838ef0-7deb-48d0-93ac-03a6e81701b5"/>
+				<reportElement x="480" y="30" width="100" height="30" uuid="6682976c-a6bc-4afe-83c5-3f3289747bcd"/>
 				<textFieldExpression><![CDATA[$F{valor}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="588" y="60" width="100" height="30" uuid="1f02f0ec-3ba8-4488-83ad-165fc16a5289"/>
+				<reportElement x="588" y="30" width="100" height="30" uuid="77081e0f-df3d-490e-a29c-7148f538b710"/>
 				<textFieldExpression><![CDATA[$F{referencia}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="700" y="60" width="100" height="30" uuid="01689ce2-18c8-4b96-bfd1-f24ff77c46c8"/>
+				<reportElement x="700" y="30" width="100" height="30" uuid="8266be47-4b0a-47ae-9a37-d0ff79e53ced"/>
 				<textFieldExpression><![CDATA[$F{tipoPagamento}]]></textFieldExpression>
 			</textField>
 		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="235" splitType="Stretch"/>
 	</pageFooter>
 	<summary>
 		<band splitType="Stretch"/>
