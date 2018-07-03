@@ -3,12 +3,12 @@ package modelVo;
 public class DespesasVo {
 
 	private String discricao, fornecedor, plano, centro_custo, data;
-	private double valor, valorPacerla;
-	private int numeros_parcela;
-	private int intervalo_parcelas;
+	private String valor, valorParcela;
+	private String numeros_parcela;
+	private String intervalo_parcelas;
 	
-	public DespesasVo(String discricao, String fornecedor, String plano, String centro_custo, String data, double valor,
-			int numeros_parcela, int intervalo_parcelas, double valorPacerla) {
+	public DespesasVo(String discricao, String fornecedor, String plano, String centro_custo, String data, String valor,
+			String numeros_parcela, String intervalo_parcelas, String valorParcela) {
 		this.discricao = discricao;
 		this.fornecedor = fornecedor;
 		this.plano = plano;
@@ -17,7 +17,7 @@ public class DespesasVo {
 		this.valor = valor;
 		this.numeros_parcela = numeros_parcela;
 		this.intervalo_parcelas = intervalo_parcelas;
-		this.valorPacerla = valorPacerla;
+		this.valorParcela = valorParcela;
 	}
 
 	public String getDiscricao() {
@@ -60,38 +60,35 @@ public class DespesasVo {
 		this.data = data;
 	}
 
-	public double getValor() {
+	public String getValor() {
 		return valor;
 	}
 
-	public void setValor(double valor) {
+	public void setValor(String valor) {
 		this.valor = valor;
 	}
 
-	public int getNumeros_parcela() {
+	public String getNumeros_parcela() {
 		return numeros_parcela;
 	}
 
-	public void setNumeros_parcela(int numeros_parcela) {
+	public void setNumeros_parcela(String numeros_parcela) {
 		this.numeros_parcela = numeros_parcela;
 	}
 
-	public int getIntervalo_parcelas() {
+	public String getIntervalo_parcelas() {
 		return intervalo_parcelas;
 	}
 
-	public void setIntervalo_parcelas(int intervalo_parcelas) {
+	public void setIntervalo_parcelas(String intervalo_parcelas) {
 		this.intervalo_parcelas = intervalo_parcelas;
 	}
 
-	public double getValorPacerla() {
-		return valorPacerla;
+	public String getValorParcela() {
+		return valorParcela;
 	}
 
-	public void setValorPacerla(double valorPacerla) {
-		this.valorPacerla = valorPacerla;
+	public void setValorParcela(String valorParcela) {
+		this.valorParcela = valorParcela;
 	}
-	
-
-	
 }

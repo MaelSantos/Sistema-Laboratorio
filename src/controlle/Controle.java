@@ -19,6 +19,7 @@ import javax.swing.JPopupMenu;
 
 import modelBo.Verificar;
 import modelDao.BancoDados;
+import modelDao.RelatorioDao;
 import modelVo.Andamento;
 import modelVo.DespesasVo;
 import modelVo.Endereco;
@@ -141,6 +142,8 @@ public class Controle extends MouseAdapter implements ActionListener, ItemListen
 
 		contasPagar.getLancar().addActionListener(this);
 		
+		relatorios.getBtnEscolha().addActionListener(this);
+		
 	}
 
 	@SuppressWarnings("unchecked")
@@ -231,6 +234,33 @@ public class Controle extends MouseAdapter implements ActionListener, ItemListen
 		}
 		if (e.getSource() == menuPaneContainer.getBtnRelatorios()) {
 			mudarTela(relatorios);
+		}
+		if(e.getSource() == relatorios.getBtnEscolha())
+		{
+			try {
+				
+			
+			if(relatorios.getJcbTipo().getSelectedIndex() == 0)
+			{
+				System.out.println("Despesas");
+				RelatorioDao.getInstance().gerar(BancoDados.getInstance().getDespesas(), "Despesas.jrxml");
+				
+			}
+			if(relatorios.getJcbTipo().getSelectedIndex() == 1)
+			{
+				System.out.println("Receitas");
+				RelatorioDao.getInstance().gerar(BancoDados.getInstance().getContasARecebers(), "Receitas.jrxml");
+			}
+			if(relatorios.getJcbTipo().getSelectedIndex() == 2)
+			{
+				System.out.println("Clientes");
+				RelatorioDao.getInstance().gerar(BancoDados.getInstance().getPacientes(), "Clientes.jrxml");
+			}
+			}
+			catch (Exception e1) {
+				System.out.println(e1.getMessage());
+			}
+			
 		}
 		if (e.getSource() == consulta.getConsultaB()) {
 			if (!consulta.getConsultaT().getText().trim().equals("")) {
@@ -463,10 +493,10 @@ public class Controle extends MouseAdapter implements ActionListener, ItemListen
 						contasPagar.getPlanoDeContaC().getSelectedItem().toString(), // plano,
 						contasPagar.getCentroLucroC().getSelectedItem().toString(), // centro de custo
 						contasPagar.getTfdDataVencimento().getText().trim(), // data,
-						Double.parseDouble(contasPagar.getTfdValorTotal().getText().trim()), // valor,
-						Integer.parseInt(contasPagar.getNumParcelasC().getSelectedItem().toString()), // numeros_parcela,
-						Integer.parseInt(contasPagar.getIntervaloParcelaC().getSelectedItem().toString().trim()), // intervalo_parcelas,
-						Integer.parseInt(contasPagar.getTfdValorParcela().getText().trim())))) // valorPacerla
+						contasPagar.getTfdValorTotal().getText().trim(), // valor,
+						contasPagar.getNumParcelasC().getSelectedItem().toString(), // numeros_parcela,
+						contasPagar.getIntervaloParcelaC().getSelectedItem().toString().trim(), // intervalo_parcelas,
+						contasPagar.getTfdValorParcela().getText().trim()))) // valorPacerla
 					Mensagem.exibirMensagem("Despesa Adicionada Com Sucesso!!!");
 				else
 					Mensagem.exibirMensagem("Falha Ao Adicionar Despesa!!!");

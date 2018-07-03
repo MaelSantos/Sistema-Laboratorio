@@ -6,7 +6,18 @@
     <centro__custo>50%</centro__custo>
     <data>/  /</data>
     <valor>10000.0</valor>
-    <valorPacerla>200.0</valorPacerla>
+    <valorParcela>200.0</valorParcela>
+    <numeros__parcela>2</numeros__parcela>
+    <intervalo__parcelas>30</intervalo__parcelas>
+  </Despesas>
+  <Despesas>
+    <discricao>Teste</discricao>
+    <fornecedor>Teste</fornecedor>
+    <plano>Pacelado</plano>
+    <centro__custo>50%</centro__custo>
+    <data>/  /</data>
+    <valor>10000.0</valor>
+    <valorParcela>200.0</valorParcela>
     <numeros__parcela>2</numeros__parcela>
     <intervalo__parcelas>30</intervalo__parcelas>
   </Despesas>

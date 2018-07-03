@@ -20,15 +20,13 @@
 	<queryString>
 		<![CDATA[]]>
 	</queryString>
-	<field name="discricao" class="java.lang.String"/>
-	<field name="fornecedor" class="java.lang.String"/>
-	<field name="plano" class="java.lang.String"/>
-	<field name="centro_custo" class="java.lang.String"/>
-	<field name="data" class="java.lang.String"/>
-	<field name="valor" class="java.lang.String"/>
-	<field name="numeros_parcela" class="java.lang.String"/>
-	<field name="intervalo_parcelas" class="java.lang.String"/>
-	<field name="valorParcela" class="java.lang.String"/>
+	<field name="nomeCompleto" class="java.lang.String"/>
+	<field name="cpf" class="java.lang.String"/>
+	<field name="idade" class="java.lang.String"/>
+	<field name="sexo" class="java.lang.String"/>
+	<field name="tipoSanguineo" class="java.lang.String"/>
+	<field name="email" class="java.lang.String"/>
+	<field name="telefone" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -42,14 +40,14 @@
 					<textElement verticalAlignment="Bottom">
 						<font isBold="false"/>
 					</textElement>
-					<text><![CDATA[Despesas]]></text>
+					<text><![CDATA[Clientes]]></text>
 				</staticText>
 				<staticText>
 					<reportElement style="SubTitle" x="370" y="37" width="316" height="29" uuid="cfa21334-0634-4605-9ea7-aca4981f67e4"/>
 					<textElement textAlignment="Right">
 						<font size="22" isBold="false"/>
 					</textElement>
-					<text><![CDATA[Despesas: Sistema - Laboratorio]]></text>
+					<text><![CDATA[Clientes: Sistema - Laboratorio]]></text>
 				</staticText>
 			</frame>
 			<frame>
@@ -115,59 +113,59 @@
 		<band height="90" splitType="Stretch">
 			<staticText>
 				<reportElement x="0" y="10" width="100" height="30" uuid="08d9c8ed-a9e5-4439-bd61-22629c820e0c"/>
-				<text><![CDATA[Discrição]]></text>
+				<text><![CDATA[CPF Pasciente]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="120" y="10" width="100" height="30" uuid="97645d63-3467-438b-99ce-df0b73caa347"/>
-				<text><![CDATA[Fornecedor]]></text>
+				<text><![CDATA[Vencimento]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="240" y="10" width="100" height="30" uuid="12325cdb-a644-4403-8f37-f865ea9a66c2"/>
-				<text><![CDATA[Plano]]></text>
+				<text><![CDATA[Data Fluxo]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="360" y="10" width="100" height="30" uuid="1df8a902-c1aa-45f8-8256-f54353cfc4d7"/>
-				<text><![CDATA[Centro Custo]]></text>
+				<text><![CDATA[Codigo]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="480" y="10" width="100" height="30" uuid="a747aea4-9756-4c89-8ed4-38b04c87eacf"/>
-				<text><![CDATA[Data]]></text>
+				<text><![CDATA[Valor]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="588" y="10" width="100" height="30" uuid="611e55e3-c2be-4fcb-882c-9314c8230189"/>
-				<text><![CDATA[Valor Total]]></text>
+				<text><![CDATA[Referencia]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="700" y="10" width="100" height="30" uuid="c882cacc-e3fe-4366-bab7-9b9ac41a0eaa"/>
-				<text><![CDATA[Valor Parcela]]></text>
+				<text><![CDATA[Tipo Pagamento]]></text>
 			</staticText>
 			<textField>
 				<reportElement x="0" y="60" width="100" height="30" uuid="a2b8d2fb-2203-4d83-a912-d517b8942714"/>
-				<textFieldExpression><![CDATA[$F{discricao}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{nomeCompleto}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="120" y="60" width="100" height="30" uuid="d72edd63-c89b-479a-a339-2ef5520e8f72"/>
-				<textFieldExpression><![CDATA[$F{fornecedor}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{cpf}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="240" y="60" width="100" height="30" uuid="05302997-d2de-48ca-b060-8ab6d88ea4a6"/>
-				<textFieldExpression><![CDATA[$F{plano}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{idade}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="360" y="60" width="100" height="30" uuid="6d1fcb6b-252a-47c9-9989-dbe18b451a63"/>
-				<textFieldExpression><![CDATA[$F{centro_custo}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{sexo}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="480" y="60" width="100" height="30" uuid="a8838ef0-7deb-48d0-93ac-03a6e81701b5"/>
-				<textFieldExpression><![CDATA[$F{data}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{tipoSanguineo}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="588" y="60" width="100" height="30" uuid="1f02f0ec-3ba8-4488-83ad-165fc16a5289"/>
-				<textFieldExpression><![CDATA[$F{valor}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{email}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="700" y="60" width="100" height="30" uuid="01689ce2-18c8-4b96-bfd1-f24ff77c46c8"/>
-				<textFieldExpression><![CDATA[$F{valorParcela}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{telefone}]]></textFieldExpression>
 			</textField>
 		</band>
 	</pageFooter>
