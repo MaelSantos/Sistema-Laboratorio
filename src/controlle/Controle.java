@@ -239,7 +239,6 @@ public class Controle extends MouseAdapter implements ActionListener, ItemListen
 		{
 			try {
 				
-			
 			if(relatorios.getJcbTipo().getSelectedIndex() == 0)
 			{
 				System.out.println("Despesas");
@@ -357,8 +356,8 @@ public class Controle extends MouseAdapter implements ActionListener, ItemListen
 
 		if (e.getSource() == cadastroExames.getBtnSalvar()) {
 			String tipoAmostra = (String) cadastroExames.getComboBoxTipoAmostra().getSelectedItem();
-			String codigoAtual = contarCodigo(Integer.parseInt(BancoDados.getInstance().getExamesGerais()
-					.get(BancoDados.getInstance().getExamesGerais().size() - 1).getCodigo()) + 1);
+			String codigoAtual = contarCodigo(BancoDados.getInstance().getExamesGerais().size());
+			
 			try {
 				ExameGeral exame = new ExameGeral(cadastroExames.getFieldTipoExame().getText().trim(), tipoAmostra,
 						Double.parseDouble(cadastroExames.getFieldvalor().getText()), codigoAtual);
@@ -396,8 +395,7 @@ public class Controle extends MouseAdapter implements ActionListener, ItemListen
 
 				}
 				if (geral != null) {
-					String codigoAtual = contarCodigo(Integer.parseInt(BancoDados.getInstance().getExamesMarcados()
-							.get(BancoDados.getInstance().getExamesMarcados().size() - 1).getCodigo()) + 1);
+					String codigoAtual = contarCodigo(BancoDados.getInstance().getExamesMarcados().size());
 
 					BancoDados.getInstance()
 							.addDado(new MarcarExame(geral, marcar.getTfdNomeMedico().getText().trim(),

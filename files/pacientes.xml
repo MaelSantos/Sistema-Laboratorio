@@ -1,217 +1,41 @@
 <list>
   <Paciente>
-    <login>abimael jonas</login>
-    <senha>198.218.921-89</senha>
-    <nomeCompleto>abimael jonas furtuoso dos santos</nomeCompleto>
-    <nome>abimael</nome>
-    <sobrenome>jonas</sobrenome>
-    <endereco>
-      <rua>898899</rua>
-      <numero>8989h</numero>
-      <bairro>hjjhghj</bairro>
-      <cidade>hgggjg</cidade>
-      <estado>Acre ï¿½ AC</estado>
-      <complemento>hjgggh</complemento>
-      <cep>77786-798</cep>
-    </endereco>
-    <cpf>198.218.921-89</cpf>
-    <idade>88/99/8989</idade>
-    <sexo>Masculino</sexo>
-    <tipoSanguineo>O+</tipoSanguineo>
-    <email>mmamammam</email>
-    <telefone>(88)9 9889-8989</telefone>
-    <exames>
-      <ExameMarcado>
-        <exame>
-          <codigo>002</codigo>
-          <tipoExame>PSA</tipoExame>
-          <tipoDeColeta>Fezes</tipoDeColeta>
-          <valor>300.0</valor>
-        </exame>
-        <nomeMedico>gfhg</nomeMedico>
-        <cpfPaciente>198.218.921-89</cpfPaciente>
-        <nomePaciente>abimael jonas furtuoso dos santos</nomePaciente>
-        <parecer>uio</parecer>
-        <status>nao_realizado</status>
-      </ExameMarcado>
-      <ExameMarcado>
-        <exame>
-          <codigo>001</codigo>
-          <tipoExame>Hemograma</tipoExame>
-          <tipoDeColeta>Sangue</tipoDeColeta>
-          <valor>40.0</valor>
-        </exame>
-        <nomeMedico>s</nomeMedico>
-        <cpfPaciente>198.218.921-89</cpfPaciente>
-        <nomePaciente>abimael jonas furtuoso dos santos</nomePaciente>
-        <parecer>s</parecer>
-        <status>nao_realizado</status>
-        <codigo>002</codigo>
-      </ExameMarcado>
-      <ExameMarcado>
-        <exame>
-          <codigo>002</codigo>
-          <tipoExame>PSA</tipoExame>
-          <tipoDeColeta>Fezes</tipoDeColeta>
-          <valor>300.0</valor>
-        </exame>
-        <nomeMedico>sr v</nomeMedico>
-        <cpfPaciente>198.218.921-89</cpfPaciente>
-        <nomePaciente>abimael jonas furtuoso dos santos</nomePaciente>
-        <parecer>otimo</parecer>
-        <status>nao_realizado</status>
-        <codigo>002</codigo>
-      </ExameMarcado>
-      <ExameMarcado>
-        <exame>
-          <codigo>002</codigo>
-          <tipoExame>PSA</tipoExame>
-          <tipoDeColeta>Fezes</tipoDeColeta>
-          <valor>300.0</valor>
-        </exame>
-        <nomeMedico>ds</nomeMedico>
-        <cpfPaciente>198.218.921-89</cpfPaciente>
-        <nomePaciente>abimael jonas furtuoso dos santos</nomePaciente>
-        <parecer>sd</parecer>
-        <status>nao_realizado</status>
-        <codigo>002</codigo>
-      </ExameMarcado>
-      <ExameMarcado>
-        <exame>
-          <codigo>001</codigo>
-          <tipoExame>Hemograma</tipoExame>
-          <tipoDeColeta>Sangue</tipoDeColeta>
-          <valor>40.0</valor>
-        </exame>
-        <nomeMedico>hjh</nomeMedico>
-        <cpfPaciente>198.218.921-89</cpfPaciente>
-        <nomePaciente>abimael jonas furtuoso dos santos</nomePaciente>
-        <parecer>hj</parecer>
-        <status>nao_realizado</status>
-        <codigo>003</codigo>
-      </ExameMarcado>
-      <ExameMarcado>
-        <exame reference="../../ExameMarcado[5]/exame"/>
-        <nomeMedico>jhj</nomeMedico>
-        <cpfPaciente>198.218.921-89</cpfPaciente>
-        <nomePaciente>abimael jonas furtuoso dos santos</nomePaciente>
-        <parecer>hjhj</parecer>
-        <status>nao_realizado</status>
-        <codigo>004</codigo>
-      </ExameMarcado>
-    </exames>
-  </Paciente>
-  <Paciente>
-    <login>Felipe Douglas</login>
-    <senha>108.590.464-43</senha>
-    <nomeCompleto>Felipe Douglas</nomeCompleto>
-    <nome>Felipe</nome>
-    <sobrenome>Douglas</sobrenome>
-    <endereco>
-      <rua>tal</rua>
-      <numero>56</numero>
-      <bairro>tal tal</bairro>
-      <cidade>tal ali</cidade>
-      <estado>Acre ï¿½ AC</estado>
-      <complemento>ali</complemento>
-      <cep>88888-888</cep>
-    </endereco>
-    <cpf>108.590.464-43</cpf>
-    <idade>21/10/1998</idade>
-    <sexo>Masculino</sexo>
-    <tipoSanguineo>O+</tipoSanguineo>
-    <email>fd@gmaill.com</email>
-    <telefone>(88)8 8888-8888</telefone>
-    <caminho>Felipe.jpg</caminho>
-    <exames>
-      <ExameMarcado>
-        <exame>
-          <codigo>000</codigo>
-          <tipoExame>Hemograma</tipoExame>
-          <tipoDeColeta>Sangue</tipoDeColeta>
-          <valor>40.0</valor>
-        </exame>
-        <nomeMedico>Sr. Felipe Alencar</nomeMedico>
-        <cpfPaciente>108.590.464-43</cpfPaciente>
-        <nomePaciente>Felipe Douglas</nomePaciente>
-        <parecer>tal tal</parecer>
-        <status>nao_realizado</status>
-      </ExameMarcado>
-      <ExameMarcado>
-        <exame>
-          <codigo>002</codigo>
-          <tipoExame>PSA</tipoExame>
-          <tipoDeColeta>Fezes</tipoDeColeta>
-          <valor>300.0</valor>
-        </exame>
-        <nomeMedico>Sr. Fernado</nomeMedico>
-        <cpfPaciente>108.590.464-43</cpfPaciente>
-        <nomePaciente>Felipe Douglas</nomePaciente>
-        <parecer>tal tal</parecer>
-        <status>nao_realizado</status>
-      </ExameMarcado>
-      <ExameMarcado>
-        <exame>
-          <codigo>002</codigo>
-          <tipoExame>PSA</tipoExame>
-          <tipoDeColeta>Fezes</tipoDeColeta>
-          <valor>300.0</valor>
-        </exame>
-        <nomeMedico>Sr. Clécio</nomeMedico>
-        <cpfPaciente>108.590.464-43</cpfPaciente>
-        <nomePaciente>Felipe Douglas</nomePaciente>
-        <parecer>DST</parecer>
-        <status>nao_realizado</status>
-        <codigo>005</codigo>
-      </ExameMarcado>
-    </exames>
-  </Paciente>
-  <Paciente>
-    <login>teste banco</login>
+    <login>Abimael Jonas</login>
     <senha>000.000.000-00</senha>
-    <nomeCompleto>teste banco</nomeCompleto>
-    <nome>teste</nome>
-    <sobrenome>banco</sobrenome>
+    <nomeCompleto>Abimael Jonas</nomeCompleto>
+    <nome>Abimael</nome>
+    <sobrenome>Jonas</sobrenome>
     <endereco>
-      <rua>0</rua>
-      <numero>0</numero>
-      <bairro>0</bairro>
-      <cidade>0</cidade>
-      <estado>Acre ï¿½ AC</estado>
-      <complemento>0</complemento>
+      <rua>0000</rua>
+      <numero>000000</numero>
+      <bairro>0000</bairro>
+      <cidade>000</cidade>
+      <estado>Acre - AC</estado>
+      <complemento>0000</complemento>
       <cep>00000-000</cep>
     </endereco>
     <cpf>000.000.000-00</cpf>
-    <idade>00/00/0000</idade>
+    <idade>02/09/1998</idade>
     <sexo>Masculino</sexo>
     <tipoSanguineo>O+</tipoSanguineo>
-    <email>0</email>
+    <email>jdwjdkajs</email>
     <telefone>(00)0 0000-0000</telefone>
-    <caminho>teste.jpg</caminho>
-    <exames/>
-  </Paciente>
-  <Paciente>
-    <login>Lucas Souza</login>
-    <senha>999.999.999-99</senha>
-    <nomeCompleto>Lucas Souza</nomeCompleto>
-    <nome>Lucas</nome>
-    <sobrenome>Souza</sobrenome>
-    <endereco>
-      <rua>aaaaaaaa</rua>
-      <numero>54</numero>
-      <bairro>aaaa</bairro>
-      <cidade>aaaa</cidade>
-      <estado>Acre – AC</estado>
-      <complemento>asa</complemento>
-      <cep>88888-888</cep>
-    </endereco>
-    <cpf>999.999.999-99</cpf>
-    <idade>99/99/9999</idade>
-    <sexo>Masculino</sexo>
-    <tipoSanguineo>O+</tipoSanguineo>
-    <email>fd@gmail.com</email>
-    <telefone>(88)8 8888-8888</telefone>
-    <caminho>Lucas.jpg</caminho>
-    <exames/>
+    <caminho>Abimael.jpg</caminho>
+    <exames>
+      <MarcarExame>
+        <exame>
+          <codigo>000</codigo>
+          <tipoExame>HIV</tipoExame>
+          <tipoDeColeta>Sangue</tipoDeColeta>
+          <valor>100.0</valor>
+        </exame>
+        <nomeMedico>Mael Santos</nomeMedico>
+        <cpfPaciente>000.000.000-00</cpfPaciente>
+        <nomePaciente>Abimael Jonas</nomePaciente>
+        <parecer>A beira da morte</parecer>
+        <status>nao_realizado</status>
+        <codigo>000</codigo>
+      </MarcarExame>
+    </exames>
   </Paciente>
 </list>

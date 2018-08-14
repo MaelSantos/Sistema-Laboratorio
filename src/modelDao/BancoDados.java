@@ -2,12 +2,16 @@ package modelDao;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileReader;
+import java.io.IOException;
+import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
 import com.thoughtworks.xstream.XStream;
+import com.thoughtworks.xstream.io.xml.Dom4JDriver;
 import com.thoughtworks.xstream.io.xml.DomDriver;
 import com.thoughtworks.xstream.security.NoTypePermission;
 import com.thoughtworks.xstream.security.NullPermission;
@@ -37,8 +41,8 @@ public class BancoDados {
 	private XStream xStream;
 
 	private BancoDados() {
-
-		xStream = new XStream(new DomDriver());
+		
+		xStream = new XStream(new DomDriver("ISO-8859-1"));
 
 		xStream.alias("Paciente", Paciente.class);
 		xStream.alias("Funcionario", Funcionario.class);
@@ -68,6 +72,8 @@ public class BancoDados {
 		xStream.addPermission(NullPermission.NULL);
 		xStream.addPermission(PrimitiveTypePermission.PRIMITIVES);
 		xStream.allowTypeHierarchy(Object.class);
+		xStream.autodetectAnnotations(true);
+//		xStream.
 
 		pacientes = (ArrayList<Paciente>) lerArquivo("files/pacientes.xml");
 		examesMarcados = (ArrayList<MarcarExame>) lerArquivo("files/examesMarcados.xml");
@@ -75,7 +81,7 @@ public class BancoDados {
 		examesGerais = (ArrayList<ExameGeral>) lerArquivo("files/examesValor.xml");
 		despesas = (ArrayList<DespesasVo>) lerArquivo("files/despesas.xml");
 		contasARecebers = (ArrayList<ReceitaVo>) lerArquivo("files/ContasAReceber.xml");
-		
+
 	}
 
 	public static BancoDados getInstance() {
@@ -85,7 +91,7 @@ public class BancoDados {
 	}
 
 	public boolean addDado(Object object) {
-		
+
 		if (object instanceof Paciente) { // add paciente
 			Paciente paciente = (Paciente) object;
 			for (Paciente p : pacientes) {
@@ -206,7 +212,7 @@ public class BancoDados {
 
 		}
 	}
-	
+
 	public void editarExameMarcado(MarcarExame exame) {
 
 		File file = new File("files/examesMarcados.xml");
@@ -256,7 +262,7 @@ public class BancoDados {
 		}
 
 	}
-	
+
 	public void excluirExameMarcado(MarcarExame exame) {
 		File file = new File("files/examesMarcados.xml");
 		this.examesMarcados.remove(exame);
@@ -279,38 +285,51 @@ public class BancoDados {
 
 	public void gravar(ArrayList<? extends Object> dados, String caminho) {
 
-		String xml = xStream.toXML(dados);
-
-		PrintWriter print = null;
+		File file = new File(caminho);
+		OutputStream stream = null;
+		
 		try {
-			File file = new File(caminho);
-			print = new PrintWriter(file);
-			print.write(xml);
-			print.flush();
-
-		} catch (FileNotFoundException e) {
+			if(!file.exists())
+				file.createNewFile();
+			else
+			{
+				file.delete();
+				file.createNewFile();
+			}
+			
+			stream = new FileOutputStream(file);
+			xStream.toXML(dados, stream);
+			
+		} catch (IOException e) {
 			System.err.println("Erro ao gravar: " + e.getMessage() + "Local: " + e.getLocalizedMessage());
 			e.printStackTrace();
-		} finally {
-			print.close();
 		}
+		
 	}
 
 	public ArrayList<? extends Object> lerArquivo(String caminho) {
 
-		FileReader ler = null;
+		File file = new File(caminho);
 		ArrayList<? extends Object> temp = null;
+
 		try {
-			ler = new FileReader(new File(caminho));
-
-			temp = (ArrayList<? extends Object>) xStream.fromXML(ler);
-		} catch (Exception e) {
+			if(!file.exists())
+			{
+				file.createNewFile();
+				xStream.toXML(new ArrayList<>(), new FileOutputStream(file));
+			}
+			else
+				temp = (ArrayList<? extends Object>) xStream.fromXML(file);
+		} catch (IOException e) {
 			System.err.println("Erro ao Ler: " + e.getMessage() + "Local: " + e.getLocalizedMessage());
+			e.printStackTrace();
 		}
-
-		return temp;
+		if(temp != null)
+			return temp;
+		else
+			return new ArrayList<>();
 	}
-
+	
 	public ArrayList<Paciente> getPacientes() {
 		return pacientes;
 	}
@@ -334,4 +353,5 @@ public class BancoDados {
 	public ArrayList<ReceitaVo> getContasARecebers() {
 		return contasARecebers;
 	}
+	
 }

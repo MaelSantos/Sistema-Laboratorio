@@ -62,7 +62,7 @@ public class RelatorioDao {
 	public static void main(String[] args) {
 		try
 		{
-//			RelatorioDao.getInstance().gerar(BancoDados.getInstance().getContasARecebers(), "Receitas.jrxml");		
+			RelatorioDao.getInstance().gerar(BancoDados.getInstance().getContasARecebers(), "Receitas.jrxml");		
 		}
 		catch (Exception e) {
 			System.err.println(e.getMessage());

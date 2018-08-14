@@ -1,140 +1,27 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="ISO-8859-1" ?> 
 
 <list>
-  <Funcionario>
-    <login>filipe</login>
-    <senha>filipe</senha>
-    <nomeCompleto>Luiz Filipe</nomeCompleto>
-    <nome>Luiz</nome>
-    <sobrenome>Filipe</sobrenome>
-    <endereco>
-      <rua>mnasdjk</rua>
-      <numero>12</numero>
-      <bairro>jkhkjhjk</bairro>
-      <cidade>sdijkjksa</cidade>
-      <estado>Acre ï¿½ AC</estado>
-      <complemento>dsahf'</complemento>
-      <cep>99999-999</cep>
-    </endereco>
-    <cpf>000.000.000-02</cpf>
-    <idade>00/00/0000</idade>
-    <sexo>Masculino</sexo>
-    <tipoSanguineo>O+</tipoSanguineo>
-    <email>jkhsakhjsa</email>
-    <telefone>(87)9 9999-9999</telefone>
-  </Funcionario>
-  <Funcionario>
-    <login>mael_santos7</login>
-    <senha>0708</senha>
-    <nomeCompleto>Mael Santos</nomeCompleto>
-    <nome>Mael</nome>
-    <sobrenome>Santos</sobrenome>
-    <endereco>
-      <rua>00</rua>
-      <numero>00</numero>
-      <bairro>00</bairro>
-      <cidade>00</cidade>
-      <estado>Cearï¿½ ï¿½ CE</estado>
-      <complemento>00</complemento>
-      <cep>00000-000</cep>
-    </endereco>
-    <cpf>000.000.000-00</cpf>
-    <idade>02/09/1998</idade>
-    <sexo>Masculino</sexo>
-    <tipoSanguineo>A+</tipoSanguineo>
-    <email>maelsantos777@gmail.com</email>
-    <telefone>(00)0 0000-0000</telefone>
-  </Funcionario>
-  <Funcionario>
-    <login>joao</login>
-    <senha>joao</senha>
-    <nomeCompleto>sdfs sss</nomeCompleto>
-    <nome>sdfs</nome>
-    <sobrenome>sss</sobrenome>
-    <endereco>
-      <rua>uiuiui</rua>
-      <numero>88</numero>
-      <bairro>ijhkk</bairro>
-      <cidade>jhjhj</cidade>
-      <estado>Acre – AC</estado>
-      <complemento>hjhj</complemento>
-      <cep>77777-777</cep>
-    </endereco>
-    <cpf>888.888.888-88</cpf>
-    <idade>88/88/8888</idade>
-    <sexo>Masculino</sexo>
-    <tipoSanguineo>O+</tipoSanguineo>
-    <email>jhj</email>
-    <telefone>(88)8 8888-8888</telefone>
-    <caminho>sdfs.jpg</caminho>
-  </Funcionario>
-  <Funcionario>
-    <login>jj</login>
-    <senha>jj</senha>
-    <nomeCompleto>asd asd</nomeCompleto>
-    <nome>asd</nome>
-    <sobrenome>asd</sobrenome>
-    <endereco>
-      <rua>xxx</rua>
-      <numero>34</numero>
-      <bairro>xxxx</bairro>
-      <cidade>xxxx</cidade>
-      <estado>Acre – AC</estado>
-      <complemento>xxx</complemento>
-      <cep>33434-344</cep>
-    </endereco>
-    <cpf>123.412.334-12</cpf>
-    <idade>12/34/1342</idade>
-    <sexo>Masculino</sexo>
-    <tipoSanguineo>O+</tipoSanguineo>
-    <email>fgddgf</email>
-    <telefone>(34)3 4343-4343</telefone>
-    <caminho>asd.jpg</caminho>
-  </Funcionario>
-  <Funcionario>
-    <login>mama</login>
-    <senha>mama</senha>
-    <nomeCompleto>hhh jj</nomeCompleto>
-    <nome>hhh</nome>
-    <sobrenome>jj</sobrenome>
-    <endereco>
-      <rua>8</rua>
-      <numero>8</numero>
-      <bairro>8</bairro>
-      <cidade>8</cidade>
-      <estado>Acre – AC</estado>
-      <complemento>8</complemento>
-      <cep>88888-888</cep>
-    </endereco>
-    <cpf>898.888.888-88</cpf>
-    <idade>88/88/8888</idade>
-    <sexo>Masculino</sexo>
-    <tipoSanguineo>O+</tipoSanguineo>
-    <email>888</email>
-    <telefone>(88)8 8888-8888</telefone>
-    <caminho>hhh.jpg</caminho>
-  </Funcionario>
-  <Funcionario>
-    <login>teste novo</login>
-    <senha>123</senha>
-    <nomeCompleto>iuui hhhh</nomeCompleto>
-    <nome>iuui</nome>
-    <sobrenome>hhhh</sobrenome>
-    <endereco>
-      <rua>888</rua>
-      <numero>888</numero>
-      <bairro>88</bairro>
-      <cidade>88</cidade>
-      <estado>Acre – AC</estado>
-      <complemento>88</complemento>
-      <cep>88888-888</cep>
-    </endereco>
-    <cpf>288.888.888-88</cpf>
-    <idade>88/88/8888</idade>
-    <sexo>Masculino</sexo>
-    <tipoSanguineo>O+</tipoSanguineo>
-    <email>88</email>
-    <telefone>(88)8 8888-8888</telefone>
-    <caminho>iuui.jpg</caminho>
-  </Funcionario>
+	<Funcionario>
+		<login>admin</login>
+		<senha>admin</senha>
+		<nomeCompleto>Abimael Jonas</nomeCompleto>
+		<nome>Abimael</nome>
+		<sobrenome>Jonas</sobrenome>
+		<endereco>
+			<rua>Quirino Cordeiro Magalh�es</rua>
+			<numero>1240</numero>
+			<bairro>AABB</bairro>
+			<cidade>Serra Talhada</cidade>
+			<estado>Pernambuco - PE</estado>
+			<complemento>Perto da academia das cidades</complemento>
+			<cep>00000-000</cep>
+		</endereco>
+		<cpf>000.000.000-00</cpf>
+		<idade>02/09/1998</idade>
+		<sexo>Masculino</sexo>
+		<tipoSanguineo>A+</tipoSanguineo>
+		<email>maelsantos777@gmail.com</email>
+		<telefone>(00)0 0000-0000</telefone>
+		<caminho>Abimael.jpg</caminho>
+	</Funcionario>
 </list>
